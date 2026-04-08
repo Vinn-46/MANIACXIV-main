@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.btn:hover {
+    background-color: rgb(54, 102, 89);
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.bg-belakang {
+    z-index: -10;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bg-depan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}
+
+.wrap-all {
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.atas-kiri {
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 300;
+}
+
+.atas-tengah {
+    z-index: 300;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2%;
+}
+
+.health-bar-container {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border-radius: 10px;
+    width: 50vw;
+    background-color: white;
+    height: 1rem;
+    box-shadow: 0.1px 0.05px 8px rgba(255, 255, 255, 0.5);
+}
+
+.health-bar {
+    background-color: rgb(128, 0, 0);
+    width: 100%;
+    height: 100%;
+    transition: all 0.4s linear;
+}
+
+.atas-kanan {
+    z-index: 300;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white; /* Sementara */
+}
+
+.bawah-tengah {
+    transform: translateX(-50%);
+    gap: 40px;
+}
+
+.bawah-tengah div:nth-child(1) {
+    margin-right: 10%;
+}
+
+.bawah-tengah div:nth-child(2) {
+    margin-right: 10%;
+}
+
+.bawah-tengah div:nth-child(3) {
+    margin-right: 10%;
+}
+
+.bawah-tengah div:nth-child(4) {
+    margin-right: 10%;
+}
+
+.bawah-tengah div:nth-child(5) {
+    margin-right: 10%;
+}
+
+#addOns {
+    cursor: pointer;
+}
+
+.border-merah {
+    /* box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box; */
+    box-shadow: 20px 20px 50px 50px red inset;
+    z-index: 99999999;
+}
+
+/* /////////////////////// */
+/* Menu Pop Up Items Add On*/
+/* /////////////////////// */
+
+#popUpStore {
+    z-index: 9999;
+}
+.pop-up-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 60vh;
+    background-color: rgb(1, 106, 71);
+    color: white;
+    z-index: 999999;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.pop-up-item h1 {
+    font-family: "Cinzel";
+}
+
+.wrap-pop-up-item {
+    position: relative;
+}
+
+.pop-up-item .wrap-pop-up-item .close-pop-up-item {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+}
+
+.add-ons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 10vw;
+    height: 50vh;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.img-add-on {
+    width: 100px;
+    height: 100px;
+    justify-self: center;
+    margin-top: 1rem;
+}
+
+.animat-item-store:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+}
+/* /////////////////////// */
+/* Menu Pop Up Items Add On*/
+/* /////////////////////// */
+
+#store {
+    cursor: pointer;
+}
+/* ///////////////// */
+/* Menu Pop Up Store */
+/* ///////////////// */
+.pop-up-store {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50vw;
+    height: 60vh;
+    color: white;
+}
+
+.wrap-pop-up-store {
+    position: relative;
+}
+
+.pop-up-store .wrap-pop-up-store .close-pop-up-store {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+}
+/* //////////////// */
+/* Menu Pop Up Store*/
+/* //////////////// */
+
+/* ////////// */
+/* Naga Alpha */
+/* ////////// */
+
+.dragon-alpha {
+    z-index: 1;
+    position: absolute;
+}

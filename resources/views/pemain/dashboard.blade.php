@@ -1,0 +1,188 @@
+@extends('pemain.layout.layout', ['title' => 'Dashboard'])
+@section('cdn')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
+
+@section('styles')
+    <style>
+        body {
+            background: url("{{ asset('asset2024') }}/main/peserta-dashboard.png") no-repeat center;
+            background-size: cover;
+        }
+
+        #decordDataTim {
+            transform: scaleX(-1);
+        }
+
+        .action:hover {
+            color: #E7EADF !important;
+        }
+    </style>
+@endsection
+
+@section('content')
+<div class="grid grid-cols-1 gap-8 w-full max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {{--  Data Peserta  --}}
+        <div class="bg-light-brown flex flex-col p-4 rounded-md shadow-md data relative">
+            <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Data Peserta</h1>
+            <div class="text-md md:text-xl bg-cream py-2 px-4 rounded-md mt-4">
+                <table class="table text-dark-brown font-semibold text-base" >
+                    <tbody>
+                        @foreach($participants as $participant)
+                            <tr>
+                                <td class="p-0">Nama</td>
+                                <td class="p-0">:</td>
+                                <td class="break-words">{{ $participant->name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0">Email</td>
+                                <td class="p-0">:</td>
+                                <td class="break-words">{{ $participant->email }}</td>
+                            </tr>
+                            <tr>
+                                <td class="p-0">Posisi</td>
+                                <td class="p-0">:</td>
+                                @php($pos = ($participant->position == 'leader') ? 'ketua' : 'anggota')
+                                <td class="break-words">
+                                    <span class="badge badge-md rounded-lg text-slate-900 {{ $pos == 'ketua' ? 'badge-success text-white' : 'badge-warning ' }} font-semibold">{{ $pos }}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="p-0">
+                                    <div class="w-full divider"></div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        {{--  Data Team  --}}
+        <div class="bg-light-brown flex flex-col p-4 rounded-md shadow-md data relative">
+            {{-- <img
+                src="{{ asset('asset2024') }}/main/11.png"
+                alt=""
+                class="absolute hidden lg:block w-32 bottom-2 right-2"
+                id="decordDataTim"
+                draggable="false"
+            > --}}
+            <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Data Tim</h1>
+            <div class="text-md md:text-xl bg-cream py-2 px-4 rounded-md mt-4 h-full">
+                <table class="table text-dark-brown font-semibold text-base" >
+                    <tbody>
+                    <tr>
+                        <td class="p-0">Nama Tim</td>
+                        <td class="p-0">:</td>
+                        <td class="break-words">{{ $team->name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-0">Nama Sekolah</td>
+                        <td class="p-0">:</td>
+                        <td class="break-words">{{ $team->school_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-0">Alamat Sekolah</td>
+                        <td class="p-0">:</td>
+                        <td class="break-all">{{ $team->school_address }}</td>
+                    </tr>
+                    <tr>
+                        <td class="p-0">Nomor Sekolah</td>
+                        <td class="p-0">:</td>
+                        <td class="break-words">{{ $team->school_number }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 gap-8">
+        {{--  Timeline  --}}
+        <div class="bg-light-brown flex flex-col p-4 rounded-md w-full shadow-md data">
+            <img
+                src="{{ asset('asset2024') }}/main/1.png"
+                alt=""
+                class="absolute hidden lg:block bottom-3 left-1/2 w-80"
+                style="transform: translateX(-50%)"
+                draggable="false"
+            >
+            <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Timeline</h1>
+            <div class="text-md md:text-xl bg-cream py-4 px-4 rounded-md mt-4 h-full">
+                <img src="{{ asset('asset2025') }}/timeline.png" alt="Timeline maniac 2025" draggable="false">
+            </div>
+        </div>
+
+        {{--  Instruksi Penggunaan  --}}
+        <div class="bg-light-brown flex flex-col p-4 rounded-md w-full shadow-md data relative">
+            {{-- <img
+                src="{{ asset('asset2024') }}/main/6.png"
+                alt=""
+                class="absolute hidden lg:block bottom-3 left-0 w-40"
+                draggable="false"
+            >
+            <img
+                src="{{ asset('asset2024') }}/main/7.png"
+                alt=""
+                class="absolute hidden lg:block bottom-3 right-0 w-40"
+                draggable="false"
+            >
+            <img
+                src="{{ asset('asset2024') }}/main/2.png"
+                alt=""
+                class="absolute hidden lg:block bottom-3 left-1/2 w-52"
+                style="transform: translateX(-50%)"
+                draggable="false"
+            > --}}
+            <h1 class="text-xl md:text-xl font-bold bg-cream py-4 px-4 text-center text-dark-brown rounded-md uppercase">Instruksi Penggunaan</h1>
+            <div class="text-md md:text-xl bg-cream max-md:py-1 max-md:px-4 md:py-2 md:px-8 rounded-md mt-4 h-full">
+                <div class="flex flex-col gap-3 text-dark-brown">
+                    <div class="badge badge-accent rounded-md text-sm text-bone mt-6 p-4 font-semibold">6 Mei 2025</div>
+                    <div class="divider"></div>
+                    <div>
+                        <p class="p-0 pb-2 m-o font-bold">Akun</p>
+                        <p class="p-0 m-0 font-medium">Setiap akun hanya bisa login di satu komputer. Apabila login lebih dari satu komputer, maka akun yang login pertama otomatis logout.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <p class="p-0 pb-2 m-o font-bold">Browser</p>
+                        <p class="p-0 m-0 font-medium">Disarankan menggunakan web browser Chrome dan TIDAK disarankan menggunakan web browser Safari dalam penggunaan web ini.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <p class="p-0 pb-2 m-o font-bold">Contest</p>
+                        <p class="p-0 m-0 font-medium">Menu <strong>Contest</strong> digunakan untuk mengumpulkan tugas Workshop berupa link Google Drive dari <strong class="text-bold">File</strong> (<strong class="text-bold text-red-600">BUKAN FOLDER</strong>) yang akan dikumpulkan berupa <strong>PDF</strong>.</p>
+                    </div>
+                    <div class="divider"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+    <script>
+        const datas = gsap.utils.toArray('.data');
+        datas.forEach(data => {
+            const anim = gsap.fromTo(
+                data,
+                {
+                    autoAlpha: 0,
+                    y: 100,
+                },
+                {
+                    duration: 0.6,
+                    autoAlpha: 1,
+                    y: 0,
+                    x: 0,
+                }
+            );
+            ScrollTrigger.create({
+                trigger: data,
+                animation: anim,
+            });
+        });
+    </script>
+@endsection

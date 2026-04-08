@@ -1,0 +1,432 @@
+@extends('visitor.welcome')
+
+@section('styles')
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        hr {
+            color: white;
+            border: 1px solid;
+        }
+
+        .mount {
+            width: 500px;
+            bottom: 0px;
+            left: 0px;
+            z-index: 0;
+        }
+
+        .label-stroke {
+            /*text-shadow: 0px 0px 8px #e7eadf;*/
+            font-weight: bolder;
+        }
+
+        .container-fluid {
+            background-color: transparent;
+        }
+
+        body {
+            background-color: #e7eadf !important;
+        }
+
+        .hiasan{
+            position: relative;
+            width: 40%;
+            z-index: 1;
+            left: 30%;
+        }
+
+        .hiasan-atas{
+            transform: scaleY(-1);
+            margin-top: 2vw;
+        }
+        
+        .btn-register{
+            background-color: #be8f57;
+        }
+
+        .text-danger{
+            font-family: nunito;
+        }
+
+        .burung{
+            width: 20%;
+        }
+        
+        .burung-kanan-atas{
+            top: 5%%;
+            right: -10%;
+            transform: scaleX(-1);
+        }
+        
+        .burung-kiri-atas{
+            top: 25%;
+            left: -10%;
+        }
+
+        .burung-kanan-tengah{
+            top: 45%;
+            right: -10%;
+            transform: scaleX(-1);
+        }
+        
+        .burung-kiri-bawah{
+            top: 65%;
+            left: -10%;
+        }
+        
+        .burung-kanan-bawah{
+            top: 85%;
+            right: -10%;
+            transform: scaleX(-1);
+        }
+
+
+        #formContainer {
+            border:2px solid #be8f57;
+            border-radius: 8px;
+            background-color: #e7eadf;
+        }
+
+
+        #formContainer>form {
+            padding: 1rem;
+        }
+
+        @media screen and (min-width : 1344px) {
+            form {
+                min-width: 50%;
+            }
+        }
+
+        @keyframes moveCloud {
+            0% {
+                transform: translateX(0)
+            }
+
+            50% {
+                transform: translateX(100px);
+            }
+
+            100% {
+                transform: translateX(-100px);
+            }
+        }
+    </style>
+@endsection
+
+@section('content')
+    <div class="container-xxl position-relative">
+        <div class="title d-flex justify-content-center w-100 py-2 position-relative">
+            <img class="w-50 z-1" src="{{ asset('asset2025/logo-maniac-xiv.png') }}" alt="logo-maniac" data-aos="fade-in">
+            <img class="position-absolute clouds" style="width: 500px; height: 200px; top: 100px; right: 20px;"
+                src="{{ asset('asset2024/main/cloud.png') }}" alt="">
+
+        </div>
+        <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan hiasan-atas">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas position-absolute">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas position-absolute">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah position-absolute">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah position-absolute">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute">
+        <div class="container-fluid"></div>
+        <div class="w-75 container position-relative" id="formContainer" data-aos="fade-up" data-aos-delay="100">
+            <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('register') }}"
+                enctype="multipart/form-data">
+                @csrf
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustomUsername" class="form-label text-dark label-stroke">Username Akun</label>
+                    <div class="input-group has-validation">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror"
+                            id="validationCustomUsername" aria-describedby="inputGroupPrepend" name="username" required
+                            placeholder="ex: someone" value="{{ old('username') ?? '' }}" />
+                        @error('username')
+                            <div class="invalid-feedback alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="text-danger mt-1" id="passwordCriteriaMessage">
+                        *) Minimal 1 Karakter dan Maximal 15 Karakter. <strong>Tidak mengandung Spasi</strong>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustomUsername" class="form-label text-dark label-stroke">Password</label>
+                    <div class="input-group has-validation">
+                        <input type="password" id="validationCustomUsername"
+                            class="form-control d-block @error('password') is-invalid @enderror" placeholder="********"
+                            aria-describedby="inputGroupPrepend" required name="password" />
+                        @error('password')
+                            <div class="invalid-feedback alert-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="text-danger mt-1" id="passwordCriteriaMessage">
+                        *) Minimal 8 Karakter
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom01" class="form-label text-dark label-stroke">Nama Tim</label>
+                    <input type="text" class="form-control @error('nama_tim') is-invalid @enderror"
+                        id="validationCustom01" placeholder="ex: Tim Maniac" required name="nama_tim"
+                        value="{{ old('nama_tim') }}" />
+                    @error('nama_tim')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    <div class="text-danger mt-1" id="passwordCriteriaMessage">
+                        *) Maximal 15 Karakter (termasuk spasi)
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom02" class="form-label text-dark label-stroke">Nama Sekolah</label>
+                    <input type="text" class="form-control  @error('nama_sekolah') is-invalid @enderror"
+                        id="validationCustom02" placeholder="ex: UBAYA" required name="nama_sekolah"
+                        value="{{ old('nama_sekolah') }}">
+                    @error('nama_sekolah')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Alamat Sekolah</label>
+                    <input type="text" class="form-control @error('alamat_sekolah') is-invalid @enderror"
+                        id="validationCustom03"
+                        placeholder="ex: Jl. Raya Kalirungkut, Kali Rungkut, Kec. Rungkut, Surabaya, Jawa Timur" required
+                        name="alamat_sekolah" value="{{ old('alamat_sekolah') }}" />
+                    @error('alamat_sekolah')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nomor Telepon
+                        Sekolah</label>
+                    <input type="text" class="form-control @error('nomor_sekolah') is-invalid @enderror"
+                        id="validationCustom03" name="nomor_sekolah" required placeholder="ex: 08123456789"
+                        value="{{ old('nomor_sekolah') }}" />
+                    @error('nomor_sekolah')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <hr>
+                {{-- Leader --}}
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nama Ketua Tim</label>
+                    <input type="text" class="form-control @error('nama_leader') is-invalid @enderror"
+                        id="validationCustom03" placeholder="ex: someone1" required name="nama_leader"
+                        value="{{ old('nama_leader') }}">
+                    @error('nama_leader')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Email</label>
+                    <input type="text" class="form-control @error('email_leader') is-invalid @enderror"
+                        id="validationCustom03" required placeholder="ex: someone1@gmail.com" name="email_leader"
+                        value="{{ old('email_leader') }}" />
+                    @error('email_leader')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nomor Telepon</label>
+                    <input type="text" class="form-control @error('nomor_leader') is-invalid @enderror"
+                        id="validationCustom03" placeholder="ex: 08123456789" required name="nomor_leader"
+                        value="{{ old('nomor_leader') }}">
+                    @error('nomor_leader')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Kartu Pelajar/ Surat
+                        Keterangan Sekolah</label>
+                    <input type="file" class="form-control @error('foto_leader') is-invalid @enderror"
+                        id="validationCustom03" required name="foto_leader" accept="image/png, image/jpeg, image/jpg" />
+                    <p class="text-danger">*) Format yang didukung jpg, jpeg, png. MAX 10MB </p>
+                    @error('foto_leader')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Alergi</label>
+                    <input type="text" class="form-control" id="validationCustom03" name="alergi_leader"
+                        value="{{ old('alergi_leader') }}" placeholder="Berikan tanda - jika tidak ada">
+                </div>
+                {{--                <div class="information mt-2 fw-bold"> --}}
+                {{--                    *) Berikan tanda - jika tidak ada --}}
+                {{--                </div> --}}
+                <hr>
+                {{-- anggota 1 --}}
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nama Anggota 1</label>
+                    <input type="text" class="form-control @error('nama_anggota1') is-invalid @enderror"
+                        id="validationCustom03" required name="nama_anggota1" placeholder="ex: someone2"
+                        value="{{ old('nama_anggota1') }}">
+                    @error('nama_anggota1')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Email</label>
+                    <input type="text" class="form-control @error('email_anggota1') is-invalid @enderror"
+                        id="validationCustom03" required name="email_anggota1" placeholder="ex: someone2@gmail.com"
+                        value="{{ old('email_anggota1') }}">
+                    @error('email_anggota1')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nomor Telepon</label>
+                    <input type="text" class="form-control @error('nomor_anggota1') is-invalid @enderror"
+                        id="validationCustom03" required name="nomor_anggota1" placeholder="ex: 08123456789"
+                        value="{{ old('nomor_anggota1') }}">
+                    @error('nomor_anggota1')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Kartu Pelajar/ Surat
+                        Keterangan Sekolah</label>
+                    <input type="file" class="form-control @error('foto_anggota1') is-invalid @enderror"
+                        id="validationCustom03" required name="foto_anggota1">
+                    <p class="text-danger">*) Format yang didukung jpg, jpeg, png. MAX 10MB </p>
+                    @error('foto_anggota1')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Alergi</label>
+                    <input type="text" class="form-control" id="validationCustom03" name="alergi_anggota1"
+                        value="{{ old('alergi_anggota1') }}" placeholder="Berikan tanda - jika tidak ada!">
+                </div>
+                {{--                <div class="information mt-2 fw-bold"> --}}
+                {{--                    *) Berikan tanda - jika tidak ada --}}
+                {{--                </div> --}}
+                <hr>
+                {{-- anggota 2 --}}
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nama Anggota 2</label>
+                    <input type="text" class="form-control @error('nama_anggota2') is-invalid @enderror"
+                        id="validationCustom03" required name="nama_anggota2" placeholder="ex: someone3"
+                        value="{{ old('nama_anggota2') }}">
+                    @error('nama_anggota2')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Email</label>
+                    <input type="text" class="form-control @error('email_anggota2') is-invalid @enderror"
+                        id="validationCustom03" required name="email_anggota2" value="{{ old('email_anggota2') }}"
+                        placeholder="someone3@gmail.com">
+                    @error('email_anggota2')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Nomor Telepon</label>
+                    <input type="text" class="form-control @error('nomor_anggota2') is-invalid @enderror"
+                        id="validationCustom03" required name="nomor_anggota2" placeholder="ex: 08123456789"
+                        value="{{ old('nomor_anggota2') }}">
+                    @error('nomor_anggota2')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12 col-lg-6">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Kartu Pelajar/ Surat
+                        Keterangan Sekolah</label>
+                    <input type="file" class="form-control @error('foto_anggota2') is-invalid @enderror"
+                        id="validationCustom03" required name="foto_anggota2">
+                    <p class="text-danger">*) Format yang didukung jpg, jpeg, png. MAX 10MB </p>
+
+                    @error('nomor_anggota2')
+                        <div class="invalid-feedback alert-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="col-md-12">
+                    <label for="validationCustom03" class="form-label text-dark label-stroke">Alergi</label>
+                    <input type="text" class="form-control" id="validationCustom03" name="alergi_anggota2"
+                        value="{{ old('alergi_anggota2') }}" placeholder="Berikan tanda - jika tidak ada!">
+                </div>
+                {{--                <div class="information mt-2 fw-bold text-white"> --}}
+                {{--                    *) Berikan tanda - jika tidak ada --}}
+                {{--                </div> --}}
+                <div class="col-12 mb-3">
+                    {{-- <button class="btn btn-primary fs-5 w-25" type="button" data-bs-target="#confirmationModal"
+                        data-bs-toggle="modal" id="registerButton">Register</button> --}}
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn-register btn btn-primary fs-5 px-4" data-bs-toggle="modal"
+                            data-bs-target="#confirmationModal">
+                            Register
+                        </button>
+                    </div>
+                    <div class="modal fade" id="confirmationModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-3 fw-bold" id="staticBackdropLabel">Konfirmasi</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Data yang telah dikumpulkan tidak dapat diubah lagi. Apakah anda yakin untuk
+                                    mengumpulkan ?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">BATAL</button>
+                                    <button type="submit" class="btn btn-primary">KUMPUL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan">
+    </div>
+@endsection

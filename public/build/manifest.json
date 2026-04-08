@@ -1,0 +1,41 @@
+{
+  "__commonjsHelpers-Cpj98o6Y.js": {
+    "file": "assets/_commonjsHelpers-Cpj98o6Y.js",
+    "name": "_commonjsHelpers"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-Cgt4yfUg.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CRbXoTv5.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js"
+    ]
+  },
+  "resources/js/datepicker.js": {
+    "file": "assets/datepicker-9dpA9DVJ.js",
+    "name": "datepicker",
+    "src": "resources/js/datepicker.js",
+    "isEntry": true,
+    "imports": [
+      "__commonjsHelpers-Cpj98o6Y.js"
+    ],
+    "css": [
+      "assets/datepicker-CxHcPGqG.css"
+    ]
+  },
+  "resources/js/swiper.js": {
+    "file": "assets/swiper-CN8zSHr6.js",
+    "name": "swiper",
+    "src": "resources/js/swiper.js",
+    "isEntry": true,
+    "css": [
+      "assets/swiper-B_l4pjL9.css"
+    ]
+  }
+}
