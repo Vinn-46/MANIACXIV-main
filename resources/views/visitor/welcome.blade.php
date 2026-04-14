@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MANIAC XIV</title>
+    <title>MANIAC XV</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -49,11 +49,11 @@
         }
 
         #navbarNav {
-            justify-content: end;
+            justify-content: center;
         }
 
         body {
-            background-image: url("{{ asset('asset2025/pendaftaran/bg.png') }}") !important;
+            background-image: url("{{ asset('asset2026/home/bg.png') }}") !important;
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
@@ -67,13 +67,33 @@
             background-color: transparent;
         }
 
+        .dropdown {
+            margin-left: auto;
+        }
+
         .dropDownMenu {
             z-index: 950;
             display: block;
         }
 
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 32px;
+            padding-top: 100px;
+            padding: 0 40px;
+        }
+
         .navbar {
-            background-color: #733B22 !important;   /* Menyesuaikan VI */
+            background-color: #8b181b !important;   /* Menyesuaikan VI */
+            border-radius: 50px;
+            height: 80px;
+            margin: 0;
+            margin-right: 90px;
+            margin-left: 30px;
+            padding: 25px 0px;
+            width: 100%;
         }
 
         .bg-red {
@@ -90,18 +110,19 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            z-index: -1;
         }
-
+.main {
+    min-height: 100vh;
+}
         .dropdown-item,
         .nav-link {
             font-weight: 600;
             font-family: "Roboto";
+            font-size: 16pt;
         }
 
         .navbar-nav {
-            gap: 8px;
-
+            gap: 25px;
         }
 
         .icon {
@@ -185,6 +206,12 @@
             }
         }
 
+        @media screen and (max-width: 992px) {
+            .dropdown{
+                display: none;
+            }
+        }
+
         #notificationOverlay{
             position: fixed;
             top: 50%;
@@ -252,19 +279,18 @@
             <h2 accesskey=""class="mb-2">Batch Pendaftaran Early Bird Telah Berakhir</h2>
             <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 9 Juni 2025</p>
         </div>
-        <img src="{{ asset('asset2025/pendaftaran/secret-place.png') }}" style="width: 100%" class="notif-bg">
+        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" style="width: 100%" class="notif-bg">
     </div>
     @if (Route::has('login'))
+    <div class="nav-wrapper">
+        <div class="logo d-flex" style="width: 40%">
+            <div class="c-logo d-flex .align-items-center rounded">
+                <img src="{{ asset('asset2026/Logo.png') }}" style="width: 100%">
+            </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid" style="padding-inline: 2rem;">
-                <div class="logo d-flex" style="width: 200px">
-                    <div style="background-color: white;" class="c-logo d-flex .align-items-center  rounded">
-                        <img src="{{ asset('asset2025/logo-ubaya.png') }}" style="width: 100%">
-                    </div>
-                    <div style="background-color: white;" class="c-logo d-flex .align-items-center ms-2  rounded">
-                        <img src="{{ asset('asset2025/logo-maniac.png') }}" style="width: 100%">
-                    </div>
-                </div>
+            <div class="container-fluid d-flex justify-content-end">
+                
 
                 <!-- Toggle button for small screens -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -294,22 +320,26 @@
                         <li>
                             {{-- <a class="nav-link" href="{{ asset('asset2024/main/guidebook.pdf') }}"
                                 download="Guidebook MANIAC XIV.pdf">GUIDEBOOK</a> --}}
-                            <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">GUIDEBOOK</a>
+                            <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">CONTACT</a>
                         </li>
-                        <li>
-                            <div class="dropdown">
-                                <button style="background-color: #7f4c42;"
-                                    class="btn btn-secondary nav-link dropdown-toggle text-center" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <strong>
-                                        {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" --}}
-                                        {{--                                            fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"> --}}
-                                        {{--                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" /> --}}
-                                        {{--                                            <path fill-rule="evenodd" --}}
-                                        {{--                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" /> --}}
-                                        {{--                                        </svg>&nbsp; --}}
-                                        ACCOUNT
-                                    </strong>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- User -->
+        <div class="dropdown">
+            <button class="btn btn-secondary nav-link text-center" type="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+                <strong >
+                    {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"--}}
+                    {{-- fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"> --}}
+                    {{-- <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" /> --}}
+                    {{-- <path fill-rule="evenodd" --}}
+                    {{-- d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" /> --}}
+                    {{-- </svg>&nbsp; --}}
+                    <img src="{{ asset('asset2026/User.png') }}" style="width: 90px">
+                 </strong>
                                 </button>
                                 <ul class="dropdown-menu">
                                     @auth
@@ -365,12 +395,7 @@
                                     @endauth
                                 </ul>
                             </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
+    </div>
         <!-- Offcanvas menu -->
         <div class="offcanvas offcanvas-start bg-red" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
@@ -470,118 +495,10 @@
     <main class="position-relative">
         @yield('content')
         <span class="d-block" style="height: 7rem;"></span>
-        <img src="{{ asset('asset2025/pendaftaran/secret-place-2.png') }}" class="bottom-web-home position-absolute">
+        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="bottom-web-home position-absolute">
     </main>
 
-    <footer class="w-100 bg-red pt-2">
-        <div class="container-fluid px-4 py-4">
-            <div class="row">
-                <div class="col-lg-6 col-sm-12 pe-3 pb-5">
-                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XIV</h3>
-                    <p class="text-white text-justify"><strong>MANIAC (Multimedia ANd Interactive Art Competition)
-                        </strong> adalah lomba
-                        berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset
-                        design, yang diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.</p>
-                    <img src="{{ asset('asset2024/footer/logo-ubaya.png') }}" width="150px" height="auto"
-                        alt="logo-ubaya" class="pt-3">
-                    <img src="{{ asset('asset2024/footer/logo-maniac.png') }}" width="150px" height="auto"
-                        alt="logo-maniac" class="pt-3">
-                </div>
-                <div class="col-lg-6 ps-lg-5 pt-sm-2">
-                    <h5 class="text-white"><strong>SOCIAL MEDIA</strong></h5>
-                    <div class="grid gap-4">
-                        <div class="text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2024/footer/IG.png') }}" alt="Instagram">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.instagram.com/maniac_ubaya?"
-                                target="_blank" rel="noopener">
-                                &nbsp;@maniac_ubaya
-                            </a>
-                        </div>
-                        <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-tiktok.png') }}" alt="TikTok">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.tiktok.com/@maniac_ubaya"
-                                target="_blank" rel="noopener">
-                                &nbsp;@maniac_ubaya
-                            </a>
-                        </div>
-                        <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-youtube.png') }}" alt="YouTube">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.youtube.com/@maniacubaya9585"
-                                target="_blank" rel="noopener">
-                                &nbsp;@maniac_ubaya
-                            </a>
-                        </div>
-                        <br><br><br>
-                        <h5 class="text-white"><strong>CONTACT US</strong></h5>
-                        <div class="d-flex flex-column">
-                            <a class="text-white pb-2 sosmedLink" href="https://line.me/R/ti/p/%40994nxsfr"
-                                target="_blank" rel="noopener">
-                                <img class="icon" src="{{ asset('asset2024/footer/line.png') }}" alt="line">
-                                @994nxsfr
-                            </a>
-                            <a class="text-white pb-2 sosmedLink" href="mailto:maniac.ubayaa@gmail.com"
-                                target="_blank" rel="noopener">
-                                <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
-                                @maniac.ubayaa@gmail.com
-                            </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6289699833080" target="_blank"
-                                rel="noopener" style="font-size: 1rem;">
-                                <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
-                                    alt="whatsapp">
-                                089699833080 (Nicho)
-                            </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6285330001180" target="_blank"
-                                rel="noopener" style="font-size: 1rem;">
-                                <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
-                                    alt="whatsapp">
-                                085330001180 (Gioshelyn)
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-10 pt-sm-2 mt-5">
-                    <h5 class="text-white"><strong>SPONSORED BY</strong></h5>
-                    <div class="d-flex flex-wrap">
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2025/footer/sponsor/Zurich.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2025/footer/sponsor/Okebis.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Teh Sepeda Balap.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2024/footer/LogoSPRent.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Crystalin.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/pilot.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Kristin.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XIV Information System, All
-                    Rights Reserved</p>
-            </div>
-        </div>
-    </footer>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

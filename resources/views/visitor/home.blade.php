@@ -12,6 +12,7 @@
                 --logo-maniac: 75%;
                 --fs-1: 0.87rem;
                 --fs-timeline: 9.5px;
+                --fs-win-up: 9.5px;
                 --fs-prizes: 10.4px;
                 --fs-join-now: 10.3px;
                 --fs-ket-prizes-1: 9px;
@@ -37,6 +38,7 @@
                 --logo-maniac: 75%;
                 --fs-1: 1.7rem;
                 --fs-timeline: 22px;
+                --fs-win-up: 22px;
                 --fs-prizes: 24px;
                 --fs-join-now: 24px;
                 --fs-ket-prizes-1: 14px;
@@ -62,10 +64,11 @@
                 --logo-maniac: 65%;
                 --fs-1: 2.3rem;
                 --fs-timeline: 29px;
+                --fs-win-up: 29px;
                 --fs-prizes: 33px;
                 --fs-join-now: 32px;
                 --fs-ket-prizes-1: 17px;
-                --fs-ket-prizes-2: 14x;
+                --fs-ket-prizes-2: 14px;
                 --button: 23.5px;
                 --button-radius: 16px;
                 --button-weight: 600;
@@ -84,9 +87,10 @@
         @media (min-width: 993px) and (max-width: 1200px) {
             :root {
                 /* Titik Tengah: 1096.5 */
-                --logo-maniac: 65%;
+                --logo-maniac: 85%;
                 --fs-1: 3rem;
                 --fs-timeline: 37px;
+                --fs-win-up: 37px;
                 --fs-prizes: 41px;
                 --fs-join-now: 40px;
                 --fs-ket-prizes-1: 20px;
@@ -109,9 +113,10 @@
         @media (min-width: 1201px) {
             :root {
                 /* Ambil width 1350 */
-                --logo-maniac: 65%;
+                --logo-maniac: 85%;
                 --fs-1: 3rem;
                 --fs-timeline: 44px;
+                --fs-win-up: 44px;
                 --fs-prizes: 48px;
                 --fs-join-now: 47px;
                 --fs-ket-prizes-1: 23px;
@@ -156,7 +161,7 @@
         }
 
         .container-page-6 {
-            margin-top: 35%;
+            margin-top: 80%;
         }
 
         .container-juara {
@@ -166,14 +171,10 @@
         }
 
         /* Text */
-        .text-maniac {
-            margin: 0;
-            padding: 0;
-            z-index: 1;
-            font-family: augustus;
-            font-size: var(--fs-1);
-            font-weight: 200;
-            color: #620706;
+        .win-up{
+            margin: 135px;
+            padding: 50px;
+            width: 850px;
         }
 
         .text-timeline,
@@ -184,10 +185,6 @@
             font-family: dalek;
             font-weight: 300;
             text-shadow: -3px 3px  #be8f57;
-        }
-
-        .text-timeline {
-            font-size: var(--fs-timeline);
         }
 
         .text-prizes {
@@ -214,7 +211,6 @@
         .container-text-3 p:nth-child(2) {
             font-size: var(--fs-ket-prizes-2);
         }
-
 
         /* Text */
 
@@ -247,14 +243,15 @@
 
         .dec-3 {
             width: 22%;
+            opacity: 1;
         }
         
-        .dec-3-1{
-            transform: rotate(3.14159rad);
+        .dec-3-1{ 
+            z-index: -1;
         }
 
         .dec-3-2 {
-            margin-bottom: 5%;
+            z-index: -1;
         }
 
         .dec-3-4 {
@@ -298,16 +295,12 @@
 
         /* Button */
         .register-now {
-            margin-bottom: calc(0.063rem + 4.25%);
-            padding: calc(0.063rem + 1.025%) calc(1px + 4%);
-            background-color: #733b22;
-            border-radius: var(--button-radius);
-            border: none;
-            font-family: Lato;
-            font-size: var(--button);
-            font-weight: var(--button-weight);
-            letter-spacing: 1.5px;
-            color: white;
+            margin: 95px;
+            
+        }
+        .button-register
+        {
+            width: 600px;
             cursor: default;
         }
 
@@ -331,16 +324,11 @@
         /* Axe */
 
         /* Poster */
-        .wrap-poster {
-            width: 60%;
-            margin: 2%;
-            padding: 2.8%;
-            background-color: #be8f57;
-            box-shadow: 0 3px 5px -2px gray;
-        }
 
         .poster {
-            z-index: 4;
+            margin: 30px;
+            margin-bottom: 100px;
+            width: 80%;
         }
 
         /* Poster */
@@ -348,15 +336,25 @@
         /* Timeline */
         .timeline {
             width: 90%;
+            margin-bottom: 73px;
+            transform: translateY(38%);
         }
 
-        /* Timeline */
+        /* Title*/
+        .joinNow-title,
+        .prize-title,
+        .timeline-title {
+            width: 30%;
+            max-width: 400px;
+        }
+
+        
 
         /* Juara */
         .juara {
             padding-top: 2vw;
             width: 25vw;
-            margin: 0;
+            margin-top: 100px;
             position: relative;
         }
         
@@ -390,10 +388,10 @@
             width: 50%;
             height: 100%;
             padding: 2% 3.5%;
-            margin-bottom: 37%;
+            margin-bottom: 50%;
             border-bottom: 1px solid #D9D9D9;
             border-radius: var(--video-container-br);
-            background-color: #A67563;
+            background-color: #B34A37;
             box-shadow: 0 4px 6px -2px gray;
         }
 
@@ -435,16 +433,15 @@
     <div class="container-xxl">
         <div class="container-page-1 position-relative">
             <div class="d-flex align-items-center flex-column" data-aos="fade-up">
-                <img src="{{ asset('asset2025/logo-maniac-xiv.png') }}" alt="Logo Maniac" class="logo-maniac mb-3 z-1">
+                <img src="{{ asset('asset2026/Title.png') }}" alt="Logo Maniac" class="logo-maniac mb-3 z-1">
             </div>
         </div>
         <div class="container-page-2 position-relative">
             <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas">
             <div class="d-flex align-items-center flex-column">
-                <h1 class="text-maniac text-red text-center">WIN UP TO <br> 100++ MILLIONS</h1>
-                <img src="{{ asset('asset2025/pendaftaran/1.png') }}" class="dec-1">
+                <img src="{{ asset('asset2026/win-up.png') }}" class="win-up">
                 <div class="register-now">
-                    <a class="text-white" style="text-decoration: none" href="{{ url('/register') }}">REGISTER NOW</a>
+                    <img href="{{ url('/register') }}" src="{{ asset('asset2026/Register-Button.png') }}" class="button-register">
                 </div>
             </div>
         </div>
@@ -454,25 +451,15 @@
                 <!--<img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
                 <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2">-->
             </div>
-            <div class="wrap-axe-poster">
-                <div class="container-axe-poster d-flex justify-content-center">
-                    <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-1">
-                    <div class="wrap-poster d-flex justify-content-center position-relative">
                         <div class="container-poster d-flex justify-content-center">
-                            <img src="{{ asset('asset2025/pendaftaran/poster.png') }}" alt="Poster 
-Maniac" class="poster w-100">
+                            <img src="{{ asset('asset2026/home/Poster.png') }}" alt="Poster Maniac" class="poster">
                         </div>
-                    </div>
-                    <div class="wrap-dec-2">
-                        <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-2 position-absolute">
-                    </div>
-                </div>
             </div>
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-timeline">TIMELINE</h1>
+                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="timeline-title">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
                 <img src="{{ asset('asset2025/timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
@@ -480,9 +467,7 @@ Maniac" class="poster w-100">
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
             <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah">
             <div class="d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-prizes">PRIZES</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4">
+                <img src="{{ asset('asset2026/home/Prizes.png') }}" class="prize-title">
                 <div class="container-juara position-absolute">
                     <div class="img-juara-1 d-flex justify-content-center align-items-center">
                         <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara I" class="juara juara-1-2">
@@ -534,8 +519,8 @@ Maniac" class="poster w-100">
             <!-- <img src="{{ asset('asset2025/pendaftaran/cloud/c4.png') }}" class="position-absolute c-c1"> -->
             <div class="container-text-iframe d-flex justify-content-center flex-column align-items-center ">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-join-now">JOIN NOW</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-5">
+                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="joinNow-title">
+                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
                     <iframe src="https://www.youtube.com/embed/KxdrfSuRerc?si=fkgBesLHYBUQIa3K" frameborder="0"
