@@ -10,11 +10,12 @@
             :root {
                 /* Ambil width : 420 */
                 --logo-maniac: 75%;
+                --win-up: 65%;
+                --register-button: 40%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
                 --fs-1: 0.87rem;
-                --fs-timeline: 9.5px;
-                --fs-win-up: 9.5px;
-                --fs-prizes: 10.4px;
-                --fs-join-now: 10.3px;
                 --fs-ket-prizes-1: 9px;
                 --fs-ket-prizes-2: 7px;
                 --button: 9px;
@@ -24,22 +25,19 @@
                 --video-br: 10px;
                 --video-height: 130px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -1px 0.5px  #be8f57;
-            }
         }
 
         @media (min-width: 576px) and (max-width: 768px) {
             :root {
                 /* Titik tengah : 672 */
                 --logo-maniac: 75%;
+                --win-up: 65%;
+                --register-button: 40%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 40%;
                 --fs-1: 1.7rem;
-                --fs-timeline: 22px;
-                --fs-win-up: 22px;
-                --fs-prizes: 24px;
                 --fs-join-now: 24px;
                 --fs-ket-prizes-1: 14px;
                 --fs-ket-prizes-2: 11px;
@@ -50,25 +48,23 @@
                 --video-br: 17px;
                 --video-height: 190px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -2px 1px  #be8f57;
-            }
         }
 
         @media (min-width: 769px) and (max-width: 992px) {
             :root {
                 /* Titik Tengah : 880.5 */
                 --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 30%;
                 --fs-1: 2.3rem;
                 --fs-timeline: 29px;
-                --fs-win-up: 29px;
-                --fs-prizes: 33px;
                 --fs-join-now: 32px;
                 --fs-ket-prizes-1: 17px;
-                --fs-ket-prizes-2: 14px;
+                --fs-ket-prizes-2: 14x;
                 --button: 23.5px;
                 --button-radius: 16px;
                 --button-weight: 600;
@@ -76,22 +72,20 @@
                 --video-br: 21px;
                 --video-height: 250px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -2px 1px  #be8f57;
-            }
         }
 
         @media (min-width: 993px) and (max-width: 1200px) {
             :root {
                 /* Titik Tengah: 1096.5 */
-                --logo-maniac: 85%;
+                --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 30%;
                 --fs-1: 3rem;
                 --fs-timeline: 37px;
-                --fs-win-up: 37px;
-                --fs-prizes: 41px;
                 --fs-join-now: 40px;
                 --fs-ket-prizes-1: 20px;
                 --fs-ket-prizes-2: 17px;
@@ -102,22 +96,19 @@
                 --video-br: 25px;
                 --video-height: 300px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -3px 2px  #be8f57;
-            }
         }
 
         @media (min-width: 1201px) {
             :root {
                 /* Ambil width 1350 */
-                --logo-maniac: 85%;
+                --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
                 --fs-1: 3rem;
                 --fs-timeline: 44px;
-                --fs-win-up: 44px;
-                --fs-prizes: 48px;
                 --fs-join-now: 47px;
                 --fs-ket-prizes-1: 23px;
                 --fs-ket-prizes-2: 20px;
@@ -128,12 +119,6 @@
                 --video-br: 29px;
                 --video-height: 400px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -3px 2px  #be8f57;
-            }
         }
 
         /* Variabel */
@@ -142,9 +127,29 @@
             margin: 0;
             padding: 0;
         }
-
+        
+        .register-button{
+            margin-top: 20%;
+            width: var(--register-button);
+        }
+        
+        .win-up{
+            width: var(--win-up);
+        }
         .logo-maniac {
             width: var(--logo-maniac);
+        }
+
+        .timeline-text {
+            width: var(--timeline-text);
+        }
+
+        .prizes-text {
+            width: var(--prizes-text);
+        }
+
+        .joinNow-text {
+            width: var(--joinNow-text);
         }
 
         .container-page-1 {
@@ -152,7 +157,7 @@
         }
 
         .container-page-2 {
-            margin-top: 6%
+            margin-top: 20%
         }
 
         .container-page-4 {
@@ -161,7 +166,8 @@
         }
 
         .container-page-6 {
-            margin-top: 80%;
+            margin-top: 30%;
+            margin-bottom: 5%;
         }
 
         .container-juara {
@@ -171,28 +177,10 @@
         }
 
         /* Text */
-        .win-up{
-            margin: 135px;
-            padding: 50px;
-            width: 850px;
-        }
-
-        .text-timeline,
-        .text-join-now,
-        .text-prizes {
-            color: #733b22;
-            margin: 1% 0 1% 0;
-            font-family: dalek;
-            font-weight: 300;
-            text-shadow: -3px 3px  #be8f57;
-        }
-
-        .text-prizes {
-            font-size: var(--fs-prizes);
-        }
-
-        .text-join-now {
-            font-size: var(--fs-join-now);
+        .win-up {
+            margin: 0;
+            padding: 0;
+            z-index: 1;
         }
 
         .container-text-3 {
@@ -211,6 +199,7 @@
         .container-text-3 p:nth-child(2) {
             font-size: var(--fs-ket-prizes-2);
         }
+
 
         /* Text */
 
@@ -243,19 +232,18 @@
 
         .dec-3 {
             width: 22%;
-            opacity: 1;
         }
         
-        .dec-3-1{ 
-            z-index: -1;
+        .dec-3-1{
+            transform: rotate(3.14159rad);
         }
 
         .dec-3-2 {
-            z-index: -1;
+            margin-bottom: 5%;
         }
 
         .dec-3-4 {
-            margin-bottom: 37%;
+            margin-bottom: 10%;
         }
 
         .dec-3-5 {
@@ -268,39 +256,16 @@
             width: 100vw;
         }
         /* Decoration */
-        
-        /* Bird */
-        .burung{
-            position: absolute;
-            width: 22%;
-            z-index: 0;
-        }
-
-        .burung-kiri-atas{
-            top: 9%;
-            left: -1%;
-        }
-        
-        .burung-kanan-tengah{
-            top: 80%;
-            right: -6%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kiri-bawah{
-            left: -9%;
-            bottom: -110%;
-        }
-        /* Bird */
 
         /* Button */
         .register-now {
-            margin: 95px;
-            
-        }
-        .button-register
-        {
-            width: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            z-index: 1;
+            color: white;
             cursor: default;
         }
 
@@ -324,11 +289,15 @@
         /* Axe */
 
         /* Poster */
+        .wrap-poster {
+            width: 60%;
+            margin: 2%;
+            padding: 2.8%;
+        }
 
         .poster {
-            margin: 30px;
-            margin-bottom: 100px;
-            width: 80%;
+            width: 70%;
+            z-index: 4;
         }
 
         /* Poster */
@@ -336,25 +305,15 @@
         /* Timeline */
         .timeline {
             width: 90%;
-            margin-bottom: 73px;
-            transform: translateY(38%);
         }
 
-        /* Title*/
-        .joinNow-title,
-        .prize-title,
-        .timeline-title {
-            width: 30%;
-            max-width: 400px;
-        }
-
-        
+        /* Timeline */
 
         /* Juara */
         .juara {
             padding-top: 2vw;
             width: 25vw;
-            margin-top: 100px;
+            margin: 0;
             position: relative;
         }
         
@@ -388,11 +347,10 @@
             width: 50%;
             height: 100%;
             padding: 2% 3.5%;
-            margin-bottom: 50%;
             border-bottom: 1px solid #D9D9D9;
             border-radius: var(--video-container-br);
             background-color: #B34A37;
-            box-shadow: 0 4px 6px -2px gray;
+            box-shadow: 0 4px 6px -2px #be8f57;
         }
 
         .iframe {
@@ -430,45 +388,42 @@
             <p>{{ $msgSession }}</p>
         </div>
     @endif
-    <div class="container-xxl">
+    <div class="container-fluid p-0">
         <div class="container-page-1 position-relative">
             <div class="d-flex align-items-center flex-column" data-aos="fade-up">
-                <img src="{{ asset('asset2026/Title.png') }}" alt="Logo Maniac" class="logo-maniac mb-3 z-1">
+                <img src="{{ asset('asset2026/home/Title.png') }}" alt="Logo Maniac" class="logo-maniac z-1">
             </div>
         </div>
         <div class="container-page-2 position-relative">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas">
             <div class="d-flex align-items-center flex-column">
-                <img src="{{ asset('asset2026/win-up.png') }}" class="win-up">
+                <img src="{{ asset('asset2026/home/winUp.png') }}" class="win-up z-1">
                 <div class="register-now">
-                    <img href="{{ url('/register') }}" src="{{ asset('asset2026/Register-Button.png') }}" class="button-register">
+                    <a class = "d-flex align-items-center flex-column"href="{{ route('register') }}"><img src="{{ asset('asset2026/home/Register Button.png') }}" class="register-button mb-3 z-1"></a>
                 </div>
             </div>
         </div>
         <div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah">
             <div class="container-axe d-flex justify-content-center ">
                 <!--<img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
                 <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2">-->
             </div>
-                        <div class="container-poster d-flex justify-content-center">
-                            <img src="{{ asset('asset2026/home/Poster.png') }}" alt="Poster Maniac" class="poster">
-                        </div>
-            </div>
+                <div class="container-poster d-flex  justify-content-center">
+                <img src="{{ asset('asset2026/home/Poster.png') }}" alt="Poster Maniac" class="poster">
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="timeline-title">
+                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="timeline-text z-1">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
                 <img src="{{ asset('asset2025/timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah">
             <div class="d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2026/home/Prizes.png') }}" class="prize-title">
-                <div class="container-juara position-absolute">
+                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1 position-absolute"> -->
+                <img src="{{ asset('asset2026/home/Prizes.png') }}" class="prizes-text z-1">
+                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4 position-absolute"> -->
+                <div class="container-juara">
                     <div class="img-juara-1 d-flex justify-content-center align-items-center">
                         <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara I" class="juara juara-1-2">
                         <img src="{{ asset('asset2025/pendaftaran/juara-1.png') }}" alt="Juara II" class="juara juara-1-1">
@@ -519,8 +474,8 @@
             <!-- <img src="{{ asset('asset2025/pendaftaran/cloud/c4.png') }}" class="position-absolute c-c1"> -->
             <div class="container-text-iframe d-flex justify-content-center flex-column align-items-center ">
                 <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="joinNow-title">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
+                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="joinNow-text z-1">
+                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
                     <iframe src="https://www.youtube.com/embed/KxdrfSuRerc?si=fkgBesLHYBUQIa3K" frameborder="0"
