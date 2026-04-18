@@ -412,9 +412,7 @@
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="timeline-text z-1">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
+                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="dec-3 dec-3-2">
                 <img src="{{ asset('asset2025/timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
@@ -473,9 +471,7 @@
         <div class="container-page-6 position-relative">
             <!-- <img src="{{ asset('asset2025/pendaftaran/cloud/c4.png') }}" class="position-absolute c-c1"> -->
             <div class="container-text-iframe d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="joinNow-text z-1">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-5">
+                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
                     <iframe src="https://www.youtube.com/embed/KxdrfSuRerc?si=fkgBesLHYBUQIa3K" frameborder="0"

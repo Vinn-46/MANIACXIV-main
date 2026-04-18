@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MANIAC XV</title>
+    <title>MANIAC XIV</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -59,9 +59,10 @@
             background-repeat: no-repeat;
             min-height: 100vh;
         }
+        
         .active-link {
             background-color: white;
-            color: #8b181b !important; /* biar kontras sama navbar merah */
+            color: #8b181b !important;
             border-radius: 20px;
             padding: 6px 30px;
         }
@@ -87,12 +88,18 @@
         }
 
         .navbar {
-            background-color: #8b181b !important;   /* Menyesuaikan VI */
-            width: 70%;
+            background-color: #8b181b !important; 
+            width: 70%; 
+        }
+
+        .navbar-collapse.ms-auto {
+                margin-left: 0 !important;
+                margin: 0 auto !important;
+                width: 100%;
         }
 
         .bg-red {
-            background-color: #8b181b !important; /* Menyesuaikan VI */
+            background-color: #8b181b !important;
         }
 
         .container-bottom-home {
@@ -117,8 +124,8 @@
         }
 
         .navbar-nav {
-            gap: 20px;
-
+                width: 100%;
+                justify-content: space-evenly !important;
         }
 
         .icon {
@@ -284,6 +291,23 @@
             display: block;
         }
 
+        @media screen and (min-width: 992px) {
+            /* 1. Membagi ruang antara Logo, Kapsul Merah, dan Ikon Profile */
+            .nav-wrapper {
+                justify-content: space-between !important;
+            }
+            
+            /* 2. Menghapus dorongan bawaan agar posisinya seimbang */
+            .dropdown.ms-auto {
+                margin-left: 0 !important;
+            }
+
+            /* 3. Melebarkan kapsul merah dan memberi jarak lega di ujungnya */
+            .navbar {
+                width: 65% !important; /* Bisa kamu naik-turunkan sesuai selera (misal 60% atau 70%) */
+                padding: 8px 3rem !important; 
+            }
+
     </style>
     @yield('styles')
 
@@ -421,7 +445,7 @@
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h4 class="offcanvas-title text-white" id="offcanvasNavbarLabel" style="font-family: 'cinzel'">MANIAC
-                    XV</h4>
+                    XIV</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -535,7 +559,7 @@
         <div class="container-fluid px-4 py-4">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 pe-3 pb-5">
-                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XV</h3>
+                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XIV</h3>
                     <p class="text-white text-justify"><strong>MANIAC (Multimedia And Interactive Art Competition)
                         </strong> adalah lomba
                         berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset
@@ -585,17 +609,17 @@
                                 <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
                                 @maniac.ubayaa@gmail.com
                             </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6289699833080" target="_blank"
+                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
-                                089699833080 (Nicho)
+                                082229088089 (Jovanka)
                             </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6285330001180" target="_blank"
+                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282232958165" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
-                                085330001180 (Gioshelyn)
+                                082232958165 (Nadya)
                             </a>
                         </div>
                     </div>
@@ -636,7 +660,7 @@
                 </div> -->
                 <br>
                 <br>
-                <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XV Information System, All
+                <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XIV Information System, All
                     Rights Reserved</p>
             </div>
         </div>

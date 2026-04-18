@@ -240,32 +240,32 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-1.jpg') }}" class="rounded img-fluid" alt="foto1" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-1.jpg') }}" class="rounded img-fluid" alt="foto1" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-2.jpg') }}" class="rounded img-fluid" alt="foto2" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-2.jpg') }}" class="rounded img-fluid" alt="foto2" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-3.jpg') }}" class="rounded img-fluid" alt="foto3" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-3.jpg') }}" class="rounded img-fluid" alt="foto3" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-4.jpg') }}" class="rounded img-fluid" alt="foto4" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-4.jpg') }}" class="rounded img-fluid" alt="foto4" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-5.jpg') }}" class="rounded img-fluid" alt="foto5" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-5.jpg') }}" class="rounded img-fluid" alt="foto5" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-6.jpg') }}" class="rounded img-fluid" alt="foto6" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-6.jpg') }}" class="rounded img-fluid" alt="foto6" loading="lazy">
                                 </div>
                             </div>
 
