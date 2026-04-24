@@ -88,13 +88,13 @@
                                 $username = $user->username;
                                 switch ($user->role) {
                                     case 'admin':
-                                        $name = $user->admin->name;
+                                        $name = optional($user->admin)->name ?? 'Unknown';
                                         break;
                                     case 'acara':
-                                        $name = $user->acara->name;
+                                        $name = optional($user->acara)->name ?? 'Unknown';
                                         break;
                                     case 'penpos':
-                                        $name = $user->rallyGame->name;
+                                        $name = optional($user->rallyGame)->name ?? 'Unknown';
                                         break;
                                     default:
                                         $name = 'undefined';

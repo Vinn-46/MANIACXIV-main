@@ -35,7 +35,7 @@
 @endsection
 
 @section('content')
-    @php($author = auth()->user()->acara->name)
+    @php($author = optional(auth()->user()->acara)->name ?? auth()->user()->name)
     <div class="grid grid-cols-1 gap-10 w-full max-w-7xl">
         {{--   Introduction    --}}
         <div class="card rounded-lg shadow-md data">
