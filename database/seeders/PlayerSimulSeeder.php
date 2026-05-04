@@ -27,7 +27,6 @@ class PlayerSimulSeeder extends Seeder
             if ($team) {
                 Player::create([
                     'team_id' => $team->id,
-                    'tears' => 0,
                 ]);
             }
         }

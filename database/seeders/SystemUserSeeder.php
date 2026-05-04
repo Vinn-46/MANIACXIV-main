@@ -54,7 +54,7 @@ class SystemUserSeeder extends Seeder
         // Create new SYSTEM player
         $player = Player::create([
             'team_id' => $team->id,
-            'tears'   => 999999999,
+            'points'   => 999999999,
         ]);
 
         // Give the player all relics in high quantities
@@ -67,4 +67,4 @@ class SystemUserSeeder extends Seeder
             ]);
         }
     }
-} 
+}
