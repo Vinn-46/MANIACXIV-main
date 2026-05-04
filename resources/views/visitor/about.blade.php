@@ -45,7 +45,7 @@
         }
 
         .box {
-            background-color: #BE8F57;
+            background-color: #8b181b;
             border-radius: 20px 20px 0 0;
         }
 
@@ -115,28 +115,7 @@
             height: 10%;
             padding: 1.25rem 2rem;
             border-radius: 30px;
-            background-color: #A67563;
-        }
-
-        .burung {
-            width: 20%;
-        }
-
-        .burung-kanan-atas {
-            top: 3%;
-            right: -10%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kanan-bawah {
-            top: 30%;
-            right: -10%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kiri {
-            top: 15%;
-            left: -10%;
+            background-color: #B34A37;
         }
 
         /*.video-container video {*/
@@ -154,9 +133,13 @@
             border-radius: 1rem;
         }
 
+        .title{
+            width: var(--title);
+        }
         @media (max-width: 486px) {
             :root {
                 --video-w: 100%;
+                --title: 75%;
             }
 
             .carousel-indicators {
@@ -181,6 +164,7 @@
         @media (min-width: 486px) {
             :root {
                 --video-h: 240px;
+                --title: 75%;
             }
             
             .carousel-image-wrapper {
@@ -192,6 +176,7 @@
             :root {
                 --video-h: 225px;
                 --video-w: 100%;
+                --title: 65%;
             }
 
             .video-container {
@@ -202,24 +187,23 @@
         @media (min-width: 992px) {
             :root {
                 --video-h: 314px;
+                --title: 65%;
             }
         }
 
         @media (min-width: 1200px) {
             :root {
                 --video-h: 440px;
+                --title: 65%;
             }
         }
     </style>
 @endsection
 
 @section('content')
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas position-absolute">
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri position-absolute">
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute">
     <div class="container-fluid">
-        <div class="container py-5">
-            <h1 data-aos="zoom-in" class="text-center text-bold py-2">WHAT IS MANIAC</h1>
+        <div class="container py-5 d-flex align-items-center flex-column">
+           <img src="{{ asset('asset2026/ABOUT US/title.png') }}" alt="What is MANIAC" class="title" data-aos="zoom-in">
             <br>
             <div class="center-image">
                 <div class="box py-5">

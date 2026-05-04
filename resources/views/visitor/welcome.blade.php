@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MANIAC XIV</title>
+    <title>MANIAC XV</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -318,7 +318,7 @@
     <div onclick="hideNotification(this)" id="notificationOverlay" class="overflow-hidden container-notif bg-white text-center hide">
         <div id="notificationBox">
             <h2 accesskey=""class="mb-2">Batch Pendaftaran Early Bird Telah Berakhir</h2>
-            <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 9 Juni 2025</p>
+            <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 11 Juni 2026</p>
         </div>
         <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" style="width: 100%" class="notif-bg">
     </div>
@@ -327,7 +327,7 @@
 
         <!-- Logo -->
         <div class="logo d-flex" style="width: 270px">
-            <div class="c-logo d-flex .align-items-center  rounded">
+            <div class="c-logo d-flex .align-items-center rounded">
                 <img src="{{ asset('asset2026/!header_footer/Logo.png') }}" class="logo-header">
             </div>
         </div>
@@ -363,7 +363,7 @@
                         <li>
                             {{-- <a class="nav-link" href="{{ asset('asset2024/main/guidebook.pdf') }}"
                                 download="Guidebook MANIAC XIV.pdf">GUIDEBOOK</a> --}}
-                            <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">CONTACT</a>
+                            <a class="nav-link" href="#contact">CONTACT</a>
                         </li>
                     </ul>
                 </div>
@@ -452,20 +452,20 @@
                 <!-- Offcanvas menu links -->
                 <ul class="navbar-nav">
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link text-white d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('index') ? 'active-link' : '' }}" aria-current="page" href="{{ route('index') }}">HOME</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('index') ? 'active-link' : '' }}" aria-current="page" href="{{ route('index') }}">HOME</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link text-white d-flex align-items-center gap-2 px-2 mb-1{{ request()->routeIs('visitor.about') ? 'active-link' : '' }}" href="{{ route('visitor.about') }}">ABOUT US</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.about') ? 'active-link' : '' }}" href="{{ route('visitor.about') }}">ABOUT US</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link text-white d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.competition') ? 'active-link' : '' }}" href="{{ route('visitor.competition') }}">COMPETITION</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.competition') ? 'active-link' : '' }}" href="{{ route('visitor.competition') }}">COMPETITION</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link text-white d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.faq') ? 'active-link' : '' }}" href="{{ route('visitor.faq') }}">FAQ</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.faq') ? 'active-link' : '' }}" href="{{ route('visitor.faq') }}">FAQ</a>
                     </li>
                     <li>
                         {{-- <a class="nav-link text-white offcanvas-item" href="{{ asset('asset2024/main/guidebook.pdf') }}" download="Guidebook MANIAC XIII.pdf">GUIDEBOOK</a> --}}
-                        <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">CONTACT</a>
+                        <a class="nav-link" href="#contact">CONTACT</a>
                     </li>
                      <li>
                         <hr class="text-white">
@@ -555,11 +555,11 @@
         <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="bottom-web-home">
     </main>
 
-    <footer class="w-100 bg-red pt-2">
+    <footer id="contact" class="w-100 bg-red pt-2">
         <div class="container-fluid px-4 py-4">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 pe-3 pb-5">
-                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XIV</h3>
+                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XV</h3>
                     <p class="text-white text-justify"><strong>MANIAC (Multimedia And Interactive Art Competition)
                         </strong> adalah lomba
                         berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset
@@ -609,7 +609,7 @@
                                 <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
                                 @maniac.ubayaa@gmail.com
                             </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
+                            {{-- <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
@@ -620,7 +620,7 @@
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
                                 082232958165 (Nadya)
-                            </a>
+                            </a> --}}
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,8 @@
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
         :root {
+            --competitions-title: 40%;
+            --guidebook-title: 25%;
             /* Variabel ukuran font untuk responsivitas */
             --base-font-size: 16px;
             /* Ukuran dasar */
@@ -16,10 +18,10 @@
             /* Kecil */
 
             /* Variabel warna */
-            --color-bg: #be8f57;
+            --color-bg: #8b181b;
             --color-fg: white;
             --color-primary: #733b22;
-            --color-primary-dark: #be8f57;
+            --color-primary-dark: #8b181b;
         }
 
         .container-page {
@@ -85,6 +87,10 @@
         }
 
         @media (max-width: 900px) {
+            :root{
+                --competitions-title: 40%;
+                --guidebook-title: 25%;
+            }
             h1{
                 font-size: 5.5vw;
                 text-shadow:-3px 2px #be8f57;
@@ -92,6 +98,10 @@
         }
 
         @media (max-width: 768px) {
+            :root{
+                --competitions-title: 40%;
+                --guidebook-title: 25%;
+            }
             h1 {
                 font-size: 6vw;
                 text-shadow:-2px 1px #be8f57;
@@ -108,6 +118,10 @@
         }
        
         @media (max-width: 480px) {
+            :root{
+                --competitions-title: 40%;
+                --guidebook-title: 25%;
+            }
             h1 {
                 font-size: 8vw;
                 text-shadow:-2px 1px #be8f57;
@@ -147,6 +161,10 @@
         }
 
         @media screen and (max-width: 768px){
+            :root{
+                --competitions-title: 40%;
+                --guidebook-title: 25%;
+            }
             .bird {
                 width: 120px;
                 z-index: -1;
@@ -167,17 +185,24 @@
                 right: -60px;
             }
         }
+
+        .competitions-title {
+            width: var(--competitions-title);
+        }
+
+        .guidebook-title {
+            width: var(--guidebook-title);
+        }
     </style>
 @endsection
 
 @section('content')
 <div class="container-fluid overflow-x-hidden">
-    <div class="container py-5"> 
+    <div class="container py-5 d-flex align-items-center flex-column"> 
     <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-right-1" alt="Burung Kanan Atas">
     <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-left-1" alt="Burung Kiri Tengah">
     <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-right-2" alt="Burung Kanan Bawah">
-
-        <h1 class="">COMPETITIONS</h1>
+        <img src="{{ asset('asset2026/COMPETITION BOARD/competitions.png') }}" alt="competitions-title" class="competitions-title mb-4">
         <br>
         <div class="box-container">
             <div data-aos="fade-up" data-aos-delay="100">
@@ -217,7 +242,7 @@
         <br>
 
 <div class="d-flex flex-column align-items-center mb-2">
-    <h1 class="fs-1">GUIDEBOOK</h1>
+    <img src="{{ asset('asset2026/COMPETITION BOARD/guidebook.png') }}" alt="guidebook-title" class="guidebook-title mb-4">
     <br>
     <a href="http://bit.ly/GuideBookMANIACXIV" target="_blank">
         {{-- <button class="button btn-lg">

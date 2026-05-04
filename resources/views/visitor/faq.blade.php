@@ -14,7 +14,7 @@
         }
 
         .accordion-button {
-            background-color: #be8f57;
+            background-color: #8b181b;
             color: white;
             font-family: Lato;
             font-weight: bold;
@@ -22,12 +22,12 @@
         }
 
         .accordion-button:not(.collapsed) {
-            background-color: #be8f57;
+            background-color: #8b181b;
             color: #fff;
         }
 
         .bg-faq {
-            background-color: #be8f57;
+            background-color: #8b181b;
         }
 
         .accordion-body {
@@ -63,19 +63,13 @@
             width: 13vw;
         }
 
-        h1 {
-            color: #733b22;
-            font-family: dalek;
-            font-size: 3vw;
-            font-weight: 100;
-            text-shadow:-3px 2px #be8f57;
-            margin-bottom: 30px;
+        .faq-title{
+            width: var(--faq-title);
         }
 
         @media screen and (max-width: 575px) {
-            h1 {
-                font-size: 7vw; 
-                text-shadow:-2px 1px #be8f57;
+            :root{
+                --faq-title: 60%;
             }
             
             .burung {
@@ -97,9 +91,8 @@
         }
 
         @media (min-width: 576px) and (max-width: 768px) {
-            h1{
-                font-size: 5vw;
-                text-shadow:-2px 1px #be8f57;
+            :root{
+                --faq-title: 60%;
             }
             
             .burung {
@@ -121,9 +114,8 @@
         }
 
         @media (min-width: 769px) and (max-width: 992px) {
-            h1{
-                font-size: 4vw; 
-                text-shadow:-2px 1px #be8f57;
+            :root{
+                --faq-title: 60%;
             }
             
             .burung {
@@ -145,8 +137,8 @@
         }
 
         @media (min-width: 993px) and (max-width: 1200px) {
-            h1{
-                font-size: 4vw;
+            :root{
+                --faq-title: 60%;
             }
             
             .burung {
@@ -168,8 +160,8 @@
         }
 
         @media screen and (min-width: 1201px) {
-            h1{
-                font-size: 3vw;
+            :root{
+                --faq-title: 60%;
             }
             
             .burung {
@@ -197,13 +189,10 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="container py-5">
-            <h1 class="text-center text-bold py-2"><strong>FREQUENTLY ASKED QUESTIONS</strong></h1>
+        <div class="container py-5 d-flex align-items-center flex-column">
+            <img src="{{ asset('asset2026/FAQ/faq_title.png') }}" alt="FAQ-title" class="faq-title">
             <br>
             <div class="faq">
-                <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas">
-                <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-tengah">
-                <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah">
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item" data-aos="fade-up">
                         <h2 class="accordion-header">
