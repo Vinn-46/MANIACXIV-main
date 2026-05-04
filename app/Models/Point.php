@@ -11,9 +11,9 @@ class Point extends Model
     use HasFactory;
 
     protected $fillable = [
-        'point',
         'type',
-        'condition'
+        'condition',
+        'value',
     ];
 
     public function scores() : HasMany {

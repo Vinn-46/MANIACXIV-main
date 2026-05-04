@@ -17,11 +17,11 @@ class Team extends Model
 
     protected $fillable = [
         'name',
+        'user_id',
         'school_name',
         'school_address',
         'school_number',
         'status',
-        'user_id',
         'payment_photo',
     ];
 

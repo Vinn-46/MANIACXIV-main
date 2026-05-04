@@ -15,7 +15,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'team_id'
+        'team_id',
     ];
 
     public function team() : BelongsTo {

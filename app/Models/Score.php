@@ -14,7 +14,7 @@ class Score extends Model
     protected $fillable = [
         'rally_game_id',
         'player_id',
-        'point_id'
+        'point_id',
     ];
 
     public function rallyGame() : BelongsTo {

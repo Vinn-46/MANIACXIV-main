@@ -11,13 +11,12 @@ use Illuminate\Support\Facades\Auth;
 
 class RallyGame extends Model
 {
-    protected $table = 'rally_games';
     use HasFactory;
 
     protected $fillable = [
         'user_id',
         'name',
-        'type'
+        'type',
     ];
 
     public function user() : BelongsTo {
@@ -49,14 +48,14 @@ class RallyGame extends Model
         $scores = $this->scores()
             ->with('point')  // Eager Loading to increase performance of query
             ->join('points', 'scores.point_id', '=', 'points.id')
-            ->orderBy('points.point', 'DESC')
+            ->orderBy('points.value', 'DESC')
             ->get();
         return $scores;
     }
 
     public static function getPenposScores($id) {
         $scores = Score::where('rally_game_id', $id)
-            ->with(['player.team', 'point', 'relicChosen'])
+            ->with(['player.team', 'point'])
             ->orderBy('scores.created_at', 'DESC')
             ->get();
 

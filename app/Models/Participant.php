@@ -16,10 +16,10 @@ class Participant extends Model
         'team_id',
         'email',
         'position',
+        'name',
         'phone_number',
         'student_photo',
-        'name',
-        'alergi'
+        'alergi',
     ];
 
     public function team() : BelongsTo {
