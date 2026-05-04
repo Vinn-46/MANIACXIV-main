@@ -33,35 +33,35 @@ class PenposController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        $relics = Relic::all();
+        // $relics = Relic::all();
 
-        $session = GameBesarSession::where('open', '<=', Carbon::now())
-                    ->where('close', '>=', Carbon::now())
-                    ->first();
-        
-        if (!$session) {
-            $relicsInMission = null;
-            return view('penpos.index', compact('points', 'scores', 'relics', 'relicsInMission'));
-        }
+        // $session = GameBesarSession::where('open', '<=', Carbon::now())
+        //             ->where('close', '>=', Carbon::now())
+        //             ->first();
 
-        $relicsInMission = RelicMission::select("relic_missions.mission_id", "relic_missions.relic_id", "relic_missions.qty")
-            ->join("missions", "missions.id", "=", "relic_missions.mission_id")
-            ->join("game_besar_sessions", "game_besar_sessions.mission_id", "=", "missions.id");
+        // if (!$session) {
+        //     $relicsInMission = null;
+        //     return view('penpos.index', compact('points', 'scores', 'relics', 'relicsInMission'));
+        // }
 
-        if ($session) {
-            $relicsInMission = $relicsInMission->where("game_besar_sessions.id", "=", $session->id)->get();
-        } else {
-            $relicsInMission = $relicsInMission->get();
-        }
+        // $relicsInMission = RelicMission::select("relic_missions.mission_id", "relic_missions.relic_id", "relic_missions.qty")
+        //     ->join("missions", "missions.id", "=", "relic_missions.mission_id")
+        //     ->join("game_besar_sessions", "game_besar_sessions.mission_id", "=", "missions.id");
 
-        return view('penpos.index', compact('points', 'scores', 'relics', 'relicsInMission'));
+        // if ($session) {
+        //     $relicsInMission = $relicsInMission->where("game_besar_sessions.id", "=", $session->id)->get();
+        // } else {
+        //     $relicsInMission = $relicsInMission->get();
+        // }
+
+        return view('penpos.index', compact('points', 'scores'));
     }
 
-    public function updateStock(Request $request)
-    {
-        event(new UpdateAvailableStock());
-        return response()->json(['success' => true]);
-    }
+    // public function updateStock(Request $request)
+    // {
+    //     event(new UpdateAvailableStock());
+    //     return response()->json(['success' => true]);
+    // }
 
     public function store(Request $request)
     {
@@ -76,11 +76,13 @@ class PenposController extends Controller
 
             // Cari Player dan Point (Cari tim dlu baru player)
             $team = Team::where('name', $request->get('tim'))->first();
+            if ($team == null)
+                throw \Exception("Could not find team named '{$request->get('tim')}'");
+
             $player = Player::where('team_id', $team->id)->first();
-            $point = Point::find($request->get('point_id'));
 
             $desc = "Berhasil menambahkan poin ke Tim " . $team->name;
-            
+
             // Cek Apakah Tim sudah pernah main (udah ada poin-nya), klo iya langsung return aja
             $flag = Score::where('player_id', $player->id)
                 ->where('rally_game_id', Auth::user()->rallyGame->id)
@@ -93,53 +95,54 @@ class PenposController extends Controller
                 ], 409);
             }
 
-            $relicRequests = $request->input('relics', []); // struktur: ['red' => 2, 'blue' => 1, ...]
-            $redRelicRequest = $relicRequests['red'] ?? 0;
-            $blueRelicRequest = $relicRequests['blue'] ?? 0;
-            $purpleRelicRequest = $relicRequests['purple'] ?? 0;
+            // $relicRequests = $request->input('relics', []); // struktur: ['red' => 2, 'blue' => 1, ...]
+            // $redRelicRequest = $relicRequests['red'] ?? 0;
+            // $blueRelicRequest = $relicRequests['blue'] ?? 0;
+            // $purpleRelicRequest = $relicRequests['purple'] ?? 0;
 
-            // Check if relic request not above the limit
-            $relicQtyRequest = $redRelicRequest + $blueRelicRequest + $purpleRelicRequest;
-            $relicQtyGiven = $point->relic_qty;
+            // // Check if relic request not above the limit
+            // $relicQtyRequest = $redRelicRequest + $blueRelicRequest + $purpleRelicRequest;
+            // $relicQtyGiven = $point->relic_qty;
 
-            if ($relicQtyGiven < $relicQtyRequest) {
-                $msg = "YES";
-                return response()->json([
-                    'msg' => 'YES',
-                    'error_code' => 'RELIC_OVER_LIMIT',
-                    'error_message' => 'Jumlah relic yang diminta melebihi batas.',
-                ], 400);
-            }
+            // if ($relicQtyGiven < $relicQtyRequest) {
+            //     $msg = "YES";
+            //     return response()->json([
+            //         'msg' => 'YES',
+            //         'error_code' => 'RELIC_OVER_LIMIT',
+            //         'error_message' => 'Jumlah relic yang diminta melebihi batas.',
+            //     ], 400);
+            // }
 
-            $points = $point->point;
+            $point = Point::find($request->get('point_id'));
+            $points = $point->value;
 
-            $gameBesarSession = null;
-            
+            // $gameBesarSession = null;
+
             if ($points > 0) {
-                $gameBesarSession = GameBesarSession::where('open', '<=', Carbon::now())
-                        ->where('close', '>=', Carbon::now())
-                        ->first();
-    
-                // Check if game besar session is active
-                if (!$gameBesarSession) {
-                    return response()->json([
-                        'error_code' => 'SESSION_NOT_FOUND',
-                        'error_message' => '[HUBUNGI SI] Sesi GameBesar tidak ditemukan atau belum aktif.',
-                    ], 404);
-                }
-                
-                // Check if relic stock is enough
-                if (
-                    $redRelicRequest > $gameBesarSession->red_relic_stock ||
-                    $blueRelicRequest > $gameBesarSession->blue_relic_stock ||
-                    $purpleRelicRequest > $gameBesarSession->purple_relic_stock
-                ) {
-                    return response()->json([
-                        'msg' => 'YES',
-                        'error_code' => 'RELIC_STOCK_NOT_AVAILABLE',
-                        'error_message' => 'Stok relic tidak mencukupi untuk salah satu warna.',
-                    ], 400);
-                }
+                // $gameBesarSession = GameBesarSession::where('open', '<=', Carbon::now())
+                //         ->where('close', '>=', Carbon::now())
+                //         ->first();
+
+                // // Check if game besar session is active
+                // if (!$gameBesarSession) {
+                //     return response()->json([
+                //         'error_code' => 'SESSION_NOT_FOUND',
+                //         'error_message' => '[HUBUNGI SI] Sesi GameBesar tidak ditemukan atau belum aktif.',
+                //     ], 404);
+                // }
+
+                // // Check if relic stock is enough
+                // if (
+                //     $redRelicRequest > $gameBesarSession->red_relic_stock ||
+                //     $blueRelicRequest > $gameBesarSession->blue_relic_stock ||
+                //     $purpleRelicRequest > $gameBesarSession->purple_relic_stock
+                // ) {
+                //     return response()->json([
+                //         'msg' => 'YES',
+                //         'error_code' => 'RELIC_STOCK_NOT_AVAILABLE',
+                //         'error_message' => 'Stok relic tidak mencukupi untuk salah satu warna.',
+                //     ], 400);
+                // }
             }
 
             // Create Score
@@ -148,52 +151,50 @@ class PenposController extends Controller
                 'player_id' => $player->id,
                 'point_id' => $point->id
             ]);
-            
-            // Create Relic Chosen
-            $relicChosen = RelicChosen::create([
-                'score_id' => $score->id,
-                'red_relic_qty' => $redRelicRequest,
-                'blue_relic_qty' => $blueRelicRequest,
-                'purple_relic_qty' => $purpleRelicRequest,
-            ]);
 
-            // Give Relics
-            $relicModels = Relic::all()->keyBy('color');
-            foreach ($relicRequests as $color => $qty) {
-                if ($qty > 0 && isset($relicModels[$color])) {
-                    Inventory::where('player_id', $player->id)
-                        ->where('relic_id', $relicModels[$color]->id)
-                        ->increment('qty', $qty);
-                }
-            }
+            // // Create Relic Chosen
+            // $relicChosen = RelicChosen::create([
+            //     'score_id' => $score->id,
+            //     'red_relic_qty' => $redRelicRequest,
+            //     'blue_relic_qty' => $blueRelicRequest,
+            //     'purple_relic_qty' => $purpleRelicRequest,
+            // ]);
 
-            // Update Tears
+            // // Give Relics
+            // $relicModels = Relic::all()->keyBy('color');
+            // foreach ($relicRequests as $color => $qty) {
+            //     if ($qty > 0 && isset($relicModels[$color])) {
+            //         Inventory::where('player_id', $player->id)
+            //             ->where('relic_id', $relicModels[$color]->id)
+            //             ->increment('qty', $qty);
+            //     }
+            // }
+
             $player->update([
-                'tears' => $player->tears + $points,
+                'points' => $player->points + $points,
             ]);
 
-            // Reduce relic stock
-            if ($points > 0) {
-                $gameBesarSession->decrement('red_relic_stock', $redRelicRequest);
-                $gameBesarSession->decrement('blue_relic_stock', $blueRelicRequest);
-                $gameBesarSession->decrement('purple_relic_stock', $purpleRelicRequest);
-            }
+            // // Reduce relic stock
+            // if ($points > 0) {
+            //     $gameBesarSession->decrement('red_relic_stock', $redRelicRequest);
+            //     $gameBesarSession->decrement('blue_relic_stock', $blueRelicRequest);
+            //     $gameBesarSession->decrement('purple_relic_stock', $purpleRelicRequest);
+            // }
 
-            // Fire events
-            event(new UpdateTearsSemiPrivate($player->id));
-            event(new UpdateAvailableStock());
-            
+            // // Fire events
+            // event(new UpdateTearsSemiPrivate($player->id));
+            // event(new UpdateAvailableStock());
+
             $scores = RallyGame::getPenposScores(Auth::user()->rallyGame->id);
 
             DB::commit();
-            
+
             return response()->json([
                 'msg' => 'NO',
                 'point' => $point,
                 'team' => $team,
                 'scores' => $scores,
                 'desc' => 'Berhasil menambahkan poin ke Tim ' . $team->name,
-                'relic_chosen' => $relicChosen
             ], 200);
 
         } catch (\Exception $x) {
@@ -201,7 +202,7 @@ class PenposController extends Controller
             return response()->json([
                 'msg' => 'ERROR',
                 'error_code' => 'SERVER_EXCEPTION',
-                'error_message' => "[HUBUNGI SI]" . $x->getMessage()
+                'error_message' => "[HUBUNGI SI] " . $x->getMessage()
             ], 500);
         }
     }
@@ -216,56 +217,55 @@ class PenposController extends Controller
             $rallyGame = RallyGame::where("user_id", $request->user_id)->firstOrFail();
             $desc = 'Berhasil Menghapus Score untuk Tim ' . $team->name;
 
-            // Update Tears
-            $points = $score->point->point;
-            $newTears = max($player->tears - $points, 0); // cap at 0
-            $player->update(['tears' => $newTears]);
+            $points = $score->point->value;
+            $newPoints = max($player->points - $points, 0); // cap at 0
+            $player->update(['points' => $newPoints]);
 
-            // Get Relic Chosen record
-            $relicChosen = RelicChosen::where('score_id', $score->id)->first();
+            // // Get Relic Chosen record
+            // $relicChosen = RelicChosen::where('score_id', $score->id)->first();
 
-            if ($relicChosen) {
-                // Reduce Inventory (player's relics)
-                $relicModels = Relic::all()->keyBy('color');
+            // if ($relicChosen) {
+            //     // Reduce Inventory (player's relics)
+            //     $relicModels = Relic::all()->keyBy('color');
 
-                $relicMap = [
-                    'red' => $relicChosen->red_relic_qty,
-                    'blue' => $relicChosen->blue_relic_qty,
-                    'purple' => $relicChosen->purple_relic_qty,
-                ];
+            //     $relicMap = [
+            //         'red' => $relicChosen->red_relic_qty,
+            //         'blue' => $relicChosen->blue_relic_qty,
+            //         'purple' => $relicChosen->purple_relic_qty,
+            //     ];
 
-                foreach ($relicMap as $color => $qty) {
-                    if ($qty > 0 && isset($relicModels[$color])) {
-                        Inventory::where('player_id', $player->id)
-                            ->where('relic_id', $relicModels[$color]->id)
-                            ->decrement('qty', $qty);
-                    }
-                }
+            //     foreach ($relicMap as $color => $qty) {
+            //         if ($qty > 0 && isset($relicModels[$color])) {
+            //             Inventory::where('player_id', $player->id)
+            //                 ->where('relic_id', $relicModels[$color]->id)
+            //                 ->decrement('qty', $qty);
+            //         }
+            //     }
 
-                // Add back to stock in current session
-                $gameBesarSession = GameBesarSession::where('open', '<=', Carbon::now())
-                    ->where('close', '>=', Carbon::now())
-                    ->first();
+            //     // Add back to stock in current session
+            //     $gameBesarSession = GameBesarSession::where('open', '<=', Carbon::now())
+            //         ->where('close', '>=', Carbon::now())
+            //         ->first();
 
-                if ($gameBesarSession) {
-                    $gameBesarSession->increment('red_relic_stock', $relicMap['red']);
-                    $gameBesarSession->increment('blue_relic_stock', $relicMap['blue']);
-                    $gameBesarSession->increment('purple_relic_stock', $relicMap['purple']);
-                }
+            //     if ($gameBesarSession) {
+            //         $gameBesarSession->increment('red_relic_stock', $relicMap['red']);
+            //         $gameBesarSession->increment('blue_relic_stock', $relicMap['blue']);
+            //         $gameBesarSession->increment('purple_relic_stock', $relicMap['purple']);
+            //     }
 
-                // Delete relic chosen record
-                $relicChosen->delete();
-            }
-            
+            //     // Delete relic chosen record
+            //     $relicChosen->delete();
+            // }
+
             // Delete score
             $score->delete();
 
             // Refresh scores
             $scores = RallyGame::getPenposScores($rallyGame->id);
 
-            // Fire events
-            event(new UpdateTearsSemiPrivate($player->id));
-            event(new UpdateAvailableStock());
+            // // Fire events
+            // event(new UpdateTearsSemiPrivate($player->id));
+            // event(new UpdateAvailableStock());
 
             DB::commit();
 
@@ -284,48 +284,48 @@ class PenposController extends Controller
         }
     }
 
-    public function getPlayerInventory(Request $request)
-    {
-        $team = Team::where('name', $request->team_name)->first();
-        $player = Player::where('team_id', $team->id)->first();
+    // public function getPlayerInventory(Request $request)
+    // {
+    //     $team = Team::where('name', $request->team_name)->first();
+    //     $player = Player::where('team_id', $team->id)->first();
 
-        if (!$player) {
-            return response()->json(['error' => 'Player not found'], 404);
-        }
+    //     if (!$player) {
+    //         return response()->json(['error' => 'Player not found'], 404);
+    //     }
 
-        $inventory = $player->inventory()->with('relic')->get(['relic_id', 'qty']);
+    //     $inventory = $player->inventory()->with('relic')->get(['relic_id', 'qty']);
 
-        $formattedInventory = [
-            [
-                'relic_id' => 1,
-                'nama' => $inventory->firstWhere('relic_id', 1)->relic->nama,
-                'color' => 'red',
-                'qty' => $inventory->firstWhere('relic_id', 1)->qty ?? 0,
-            ],
-            [
-                'relic_id' => 2,
-                'nama' => $inventory->firstWhere('relic_id', 2)->relic->nama,
-                'color' => 'purple',
-                'qty' => $inventory->firstWhere('relic_id', 2)->qty ?? 0,
-            ],
-            [
-                'relic_id' => 3,
-                'nama' => $inventory->firstWhere('relic_id', 3)->relic->nama,
-                'color' => 'blue',
-                'qty' => $inventory->firstWhere('relic_id', 3)->qty ?? 0,
-            ],
-        ];
+    //     $formattedInventory = [
+    //         [
+    //             'relic_id' => 1,
+    //             'nama' => $inventory->firstWhere('relic_id', 1)->relic->nama,
+    //             'color' => 'red',
+    //             'qty' => $inventory->firstWhere('relic_id', 1)->qty ?? 0,
+    //         ],
+    //         [
+    //             'relic_id' => 2,
+    //             'nama' => $inventory->firstWhere('relic_id', 2)->relic->nama,
+    //             'color' => 'purple',
+    //             'qty' => $inventory->firstWhere('relic_id', 2)->qty ?? 0,
+    //         ],
+    //         [
+    //             'relic_id' => 3,
+    //             'nama' => $inventory->firstWhere('relic_id', 3)->relic->nama,
+    //             'color' => 'blue',
+    //             'qty' => $inventory->firstWhere('relic_id', 3)->qty ?? 0,
+    //         ],
+    //     ];
 
-        return response()->json([
-            'player' => $player,
-            'inventory' => $formattedInventory
-        ]);
-    }
+    //     return response()->json([
+    //         'player' => $player,
+    //         'inventory' => $formattedInventory
+    //     ]);
+    // }
 
     public function informSI(Request $request)
     {
         $rallyGameId = $request->input('rallyGame_id');
-        
+
         Notification::create([
             'rally_game_id' => $rallyGameId,
             'called_at' => now(),

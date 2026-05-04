@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ParticipantSeeder::class);
 
         // SIMUL & GLADI PLAYER SEEDER
-        // $this->call(PlayerSimulSeeder::class);
+        $this->call(PlayerSimulSeeder::class);
 
         // FINAL PLAYER SEEDER
         // $this->call(FinalPlayerSeeder::class);

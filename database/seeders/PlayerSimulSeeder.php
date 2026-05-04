@@ -14,8 +14,6 @@ class PlayerSimulSeeder extends Seeder
      */
     public function run(): void
     {
-        $teams = [];
-
         // Truncate Table Player and reset auto increment to 1 just in case
         // Kalo bisa, hapus manual datanya dan JANGAN LUPA SET AUTO INCREMENT JADI 1
         // if (Player::all()->count() != 0) {
