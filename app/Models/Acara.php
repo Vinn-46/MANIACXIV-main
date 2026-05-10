@@ -14,7 +14,7 @@ class Acara extends Model
 
     protected $fillable = [
         'user_id',
-        'name'
+        'name',
     ];
 
     protected $table = 'acara';

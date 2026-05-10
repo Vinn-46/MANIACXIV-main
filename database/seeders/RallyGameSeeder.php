@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\RallyGame;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Hash;
 
 class RallyGameSeeder extends Seeder
 {
@@ -14,58 +15,47 @@ class RallyGameSeeder extends Seeder
      */
     public function run(): void
     {
-        $startPenposId = User::where('role', 'penpos')->first()->id;
-
-        $singleRallyGameDatas = [
-            "Guess the Shape",
-            "Colour Box",
-            "Remember and Shape",
-            "Secret Picture",
-            "Hopscotch", 
-            "Blindbox",
-            "Pitch it",
-            "UI Recall",
+        $rallyGames = [
+            'single' => [
+                'Scrab the Rubble' => 'michael',
+                'Trail Fixer' => 'aldo',
+                'Flow Reconstruction' => 'helena',
+                'Remember the Map' => 'joriel',
+                'Sheriff\'s Directive' => 'nathan',
+                'Clearing Colors' => 'elis',
+                'Decision Rush' => 'cecilia',
+                'What the Hex?' => 'ferry',
+            ],
+            'battle' => [
+                'Which is Better?' => 'icel',
+                'Duel Shoot Out' => 'lionell',
+                'Lorem Ipsum' => 'lapod',
+                'Shape with Path' => 'nana',
+            ],
+            'inferno' => [
+                'Match or Burn' => 'valent',
+                'Noise Cancellation' => 'maritzka',
+                'Catch the Bandit' => 'cenneth',
+                'Your Personal Assistant' => 'jannice',
+            ],
         ];
 
-        foreach ($singleRallyGameDatas as $single) {
-            RallyGame::create([
-                'name' => $single,
-                'user_id' => $startPenposId,
-                'type' => 'single'
-            ]);
-            $startPenposId++;
-        }
+        $password = Hash::make('PenposRallyManiac!@#$');
 
-        $battleRallyGames = [
-            "Don't Touch the Color",
-            "Search the Sound",
-            "JengQuiz",
-            "This is Your Time",
-        ];
+        foreach ($rallyGames as $type => $games) {
+            foreach ($games as $name => $keeperName) {
+                $user = User::create([
+                    'username' => "penpos_{$keeperName}",
+                    'password' => $password,
+                    'role' => 'penpos',
+                ]);
 
-        foreach ($battleRallyGames as $battle) {
-            RallyGame::create([
-                'name' => $battle,
-                'user_id' => $startPenposId,
-                'type' => 'battle'  
-            ]);
-            $startPenposId++;
-        }
-
-        $hellRallyGames = [
-            "UI Duplicate",
-            "Colorsig",
-            "PixPerfect",
-            "Reshape It",
-        ];
-        
-        foreach ($hellRallyGames as $hell) {
-            RallyGame::create([
-                'name' => $hell,
-                'user_id' => $startPenposId,
-                'type' => 'hel'
-            ]);
-            $startPenposId++;
+                RallyGame::create([
+                    'name' => $name,
+                    'user_id' => $user->id,
+                    'type' => $type,
+                ]);
+            }
         }
     }
 }

@@ -54,63 +54,65 @@
                 <select class="select select-bordered bg-[#F0E9CF] text-primary rounded-md font-medium" name="point_id" id="point_id" onchange="handlePointChange()">
                     <option disabled selected>--- Pilih Score ---</option>
                     @foreach($points as $point)
-                        <option value="{{ $point->id }}" data-score="{{ $point->point }}" data-relic_qty="{{ $point->relic_qty }}" class="font-medium">{{ $point->point }}</option>
+                        <option value="{{ $point->id }}" data-score="{{ $point->value }}" class="font-medium">{{ $point->value }}</option>
                     @endforeach
                 </select>
             </label>
         </div>
-        {{-- ADD RELIC --}}
-        <div id="addRelicSection" class="grid grid-cols-1 mt-4 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8] hidden">
-            <div class="label-text font-bold text-lg p-1 my-2 text-center">
-                Jatah Relic Terpakai: <span id="jatahUsed">-</span> dari <span id="jatahMax">-</span>
-            </div>
-            @foreach($relics as $relic)
-                <div class="bg-[#e5d1b8] rounded-lg p-3 shadow flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                    <div class="flex items-center gap-4">
-                        <div>
-                            <p class="text-lg font-bold text-[#6e481a] title">{{ $relic->nama }} ({{ $relic->color }})</p>
-                            <p class="text-sm text-gray-700">Stock Tersisa: <span class="font-semibold" id="stock-{{ $relic->color }}">-</span></p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <button type="button" class="px-3 py-1 bg-red-500 text-white rounded" onclick="adjustRelic('{{ $relic->color }}', -1)">-</button>
-                        <div class="relative flex items-center">
-                            <input type="number" id="input-{{ $relic->color }}" value="0" min="0" class="w-16 text-center rounded border border-gray-400" onchange="updateJatahUsed()">
-                            <span id="icon-{{ $relic->color }}" class="danger-icon hidden">⚠️</span>
-                        </div>
-                        <button type="button" class="px-3 py-1 bg-green-600 text-white rounded" onclick="adjustRelic('{{  $relic->color }}', 1)">+</button>
-                    </div>
-
+        @if(false)
+            {{-- ADD RELIC --}}
+            <div id="addRelicSection" class="grid grid-cols-1 mt-4 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8] hidden">
+                <div class="label-text font-bold text-lg p-1 my-2 text-center">
+                    Jatah Relic Terpakai: <span id="jatahUsed">-</span> dari <span id="jatahMax">-</span>
                 </div>
-            @endforeach
-        </div>
-        {{-- Relic Mission Display --}}
-        <div class="grid grid-cols-1 mt-6 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8]">
-            <div class="text-lg font-bold text-center label-text mb-4">Relic Misi Aktif</div>
-            @if($relicsInMission === null || $relicsInMission->count() === 0)
-                <div class="text-center text-white font-semibold">Tidak ada sesi aktif saat ini.</div>
-            @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    <?php $relic_images = ['asset2025/gameBesar/relic-red.png', 'asset2025/gameBesar/relic-purple.png', 'asset2025/gameBesar/relic-blue.png']; ?>
-                    @foreach($relicsInMission as $idx => $relics)
-                        <div class="relative bg-[#e5d1b8] rounded-lg p-3 flex flex-col items-center shadow">
-                            <img src="{{ asset($relic_images[$idx]) }}" class="h-24">
-                            <p class="text-md font-bold text-center text-[#6e481a] mt-2">{{ $relics->relic->nama }}<br>({{ $relics->relic->color }})</p>
-                            <div class="absolute bottom-2 right-2 bg-[#6e481a] text-white text-xs font-bold px-2 py-1 rounded-full">
-                                x{{ $relics->qty }}
+                @foreach($relics as $relic)
+                    <div class="bg-[#e5d1b8] rounded-lg p-3 shadow flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <p class="text-lg font-bold text-[#6e481a] title">{{ $relic->nama }} ({{ $relic->color }})</p>
+                                <p class="text-sm text-gray-700">Stock Tersisa: <span class="font-semibold" id="stock-{{ $relic->color }}">-</span></p>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-        {{-- Player Inventory Display --}}
-        <div id="playerInventoryBox" class="grid grid-cols-1 mt-6 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8] hidden">
-            <div class="text-lg font-bold text-center label-text mb-4">Relic Inventory Pemain</div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="inventoryItems">
-                {{-- Inventory items will be injected here --}}
+                        <div class="flex items-center gap-2">
+                            <button type="button" class="px-3 py-1 bg-red-500 text-white rounded" onclick="adjustRelic('{{ $relic->color }}', -1)">-</button>
+                            <div class="relative flex items-center">
+                                <input type="number" id="input-{{ $relic->color }}" value="0" min="0" class="w-16 text-center rounded border border-gray-400" onchange="updateJatahUsed()">
+                                <span id="icon-{{ $relic->color }}" class="danger-icon hidden">⚠️</span>
+                            </div>
+                            <button type="button" class="px-3 py-1 bg-green-600 text-white rounded" onclick="adjustRelic('{{  $relic->color }}', 1)">+</button>
+                        </div>
+
+                    </div>
+                @endforeach
             </div>
-        </div>
+            {{-- Relic Mission Display --}}
+            <div class="grid grid-cols-1 mt-6 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8]">
+                <div class="text-lg font-bold text-center label-text mb-4">Relic Misi Aktif</div>
+                @if($relicsInMission === null || $relicsInMission->count() === 0)
+                    <div class="text-center text-white font-semibold">Tidak ada sesi aktif saat ini.</div>
+                @else
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <?php $relic_images = ['asset2025/gameBesar/relic-red.png', 'asset2025/gameBesar/relic-purple.png', 'asset2025/gameBesar/relic-blue.png']; ?>
+                        @foreach($relicsInMission as $idx => $relics)
+                            <div class="relative bg-[#e5d1b8] rounded-lg p-3 flex flex-col items-center shadow">
+                                <img src="{{ asset($relic_images[$idx]) }}" class="h-24">
+                                <p class="text-md font-bold text-center text-[#6e481a] mt-2">{{ $relics->relic->nama }}<br>({{ $relics->relic->color }})</p>
+                                <div class="absolute bottom-2 right-2 bg-[#6e481a] text-white text-xs font-bold px-2 py-1 rounded-full">
+                                    x{{ $relics->qty }}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+            {{-- Player Inventory Display --}}
+            <div id="playerInventoryBox" class="grid grid-cols-1 mt-6 bg-[#BE8F57] rounded p-4 border-[2px] border-[#e5d1b8] hidden">
+                <div class="text-lg font-bold text-center label-text mb-4">Relic Inventory Pemain</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="inventoryItems">
+                    {{-- Inventory items will be injected here --}}
+                </div>
+            </div>
+        @endif
         <div class="modal-action">
             <button class="btn btn-primary" id="btnSubmit" type="button">Submit Score</button>
         </div>
@@ -124,7 +126,6 @@
                     <tr>
                         <th width="25%" class="text-center">Tim</th>
                         <th width="20%" class="text-center">Point</th>
-                        <th width="35%" class="text-center">Relic</th>
                         <th width="20%" class="text-center">Hapus</th>
                     </tr>
                 </thead>
@@ -132,17 +133,19 @@
                     @foreach($scores as $score)
                         <tr>
                             <td width="25%" class="text-center">{{ $score->player->team->name }}</td>
-                            <td width="20%" class="text-center">{{ $score->point->point }}</td>
-                            <td width="35%" class="text-center">
-                                <?php $relics = $score->relicChosen; ?>
-                                @if($relics)
-                                    <span class="text-red-500 font-bold">{{ $relics->red_relic_qty }} 🔴</span><br>
-                                    <span class="text-purple-500 font-bold">{{ $relics->purple_relic_qty }} 🟣</span><br>
-                                    <span class="text-blue-500 font-bold">{{ $relics->blue_relic_qty }} 🔵</span><br>
-                                @else
-                                    <span class="text-gray-400 italic">-</span>
-                                @endif
-                            </td>
+                            <td width="20%" class="text-center">{{ $score->point->value }}</td>
+                            @if(false)
+                                <td width="35%" class="text-center">
+                                    <?php $relics = $score->relicChosen; ?>
+                                    @if($relics)
+                                        <span class="text-red-500 font-bold">{{ $relics->red_relic_qty }} 🔴</span><br>
+                                        <span class="text-purple-500 font-bold">{{ $relics->purple_relic_qty }} 🟣</span><br>
+                                        <span class="text-blue-500 font-bold">{{ $relics->blue_relic_qty }} 🔵</span><br>
+                                    @else
+                                        <span class="text-gray-400 italic">-</span>
+                                    @endif
+                                </td>
+                            @endif
                             <td width="20%" class="text-center">
                                 <button class="btn btn-error btn-md rounded" onclick="openModalHapus('{{ $score->id }}', '{{ $score->player->team->name }}')">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash-fill" viewBox="0 0 16 16">
@@ -242,7 +245,7 @@
         $("#tim").attr("value", decodedText);
 
         // For interface of player inventory
-        fetchPlayerInventory(decodedText);
+        //fetchPlayerInventory(decodedText);
 
         console.log(`Code matched = ${decodedText}`, decodedResult);
     }
@@ -298,14 +301,15 @@
 
         btnSubmit.disabled = true;
 
-        // Gather relics and their quantities
-        let relics = {};
-        document.querySelectorAll('[id^="input-"]').forEach(input => {
-            const color = input.id.replace('input-', '');
-            const quantity = parseInt(input.value || 0);
-            relics[color] = quantity;
-        });
-        console.log("CHOSEN RELICS: " + relics);
+        // // Gather relics and their quantities
+        // let relics = {};
+        // document.querySelectorAll('[id^="input-"]').forEach(input => {
+        //     const color = input.id.replace('input-', '');
+        //     const quantity = parseInt(input.value || 0);
+        //     relics[color] = quantity;
+        // });
+        // console.log("CHOSEN RELICS: " + relics);
+
         // Submit AJAX
         $.ajax({
             type: 'POST',
@@ -314,7 +318,7 @@
                 '_token': '{{ csrf_token() }}',
                 'tim': $('#tim').val(),
                 'point_id': $('#point_id').val(),
-                'relics': relics
+                //'relics': relics
             }),
             contentType: 'application/json',
             processData: false,
@@ -368,7 +372,7 @@
                 '_token': '{{ csrf_token() }}',
                 '_method': 'delete',
                 "user_id": {{ Auth::User()->id }},
-                "scoreId": scoreId 
+                "scoreId": scoreId
             },
             success: function (data) {
                 showNotifError(data.msg);
@@ -395,25 +399,25 @@
 
         for (const score of Object.values(scoresData)) {
             const teamName = score?.player?.team?.name ?? 'N/A';
-            const pointValue = score?.point?.point ?? 0;
+            const pointValue = score?.point?.value ?? 0;
             const scoreId = score?.id ?? '';
 
-            const red = score?.relic_chosen?.red_relic_qty ?? 0;
-            const blue = score?.relic_chosen?.blue_relic_qty ?? 0;
-            const purple = score?.relic_chosen?.purple_relic_qty ?? 0;
+            //const red = score?.relic_chosen?.red_relic_qty ?? 0;
+            //const blue = score?.relic_chosen?.blue_relic_qty ?? 0;
+            //const purple = score?.relic_chosen?.purple_relic_qty ?? 0;
 
-            const relicDisplay = `
-                <span class="text-red-600 font-semibold">${red} 🔴</span><br>
-                <span class="text-purple-600 font-semibold">${purple} 🟣</span><br>
-                <span class="text-blue-600 font-semibold">${blue} 🔵</span><br>
-            `;
+            //const relicDisplay = `
+            //    <span class="text-red-600 font-semibold">${red} 🔴</span><br>
+            //    <span class="text-purple-600 font-semibold">${purple} 🟣</span><br>
+            //    <span class="text-blue-600 font-semibold">${blue} 🔵</span><br>
+            //`;
 
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td width="30%" class="text-center">${teamName}</td>
-                <td width="20%" class="text-center">${pointValue}</td>
-                <td width="30%" class="text-center">${relicDisplay}</td>
-                <td width="20%" class="text-center">
+                <td width="20%" class="text-center">${pointValue}</td>` +
+                // <td width="30%" class="text-center">${relicDisplay}</td>
+                `<td width="20%" class="text-center">
                     <button class="btn btn-error btn-md rounded" onclick="openModalHapus('${scoreId}', '${teamName}')">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-trash-fill" viewBox="0 0 16 16">
                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
@@ -430,29 +434,30 @@
         const selectedOption = select.options[select.selectedIndex];
 
         const score = parseInt(selectedOption.dataset.score || 0);
-        const relicQty = parseInt(selectedOption.dataset.relic_qty || 0);
+        //const relicQty = parseInt(selectedOption.dataset.relic_qty || 0);
 
-        const addRelicSection = document.getElementById('addRelicSection');
+        //const addRelicSection = document.getElementById('addRelicSection');
 
         if (score > 0) {
-            addRelicSection.classList.remove('hidden');
-            addRelicSection.classList.add('grid');
+        //    addRelicSection.classList.remove('hidden');
+        //    addRelicSection.classList.add('grid');
 
-            document.getElementById('jatahMax').innerText = relicQty;
-            updateJatahUsed();
-        } else {
-            addRelicSection.classList.remove('grid');
-            addRelicSection.classList.add('hidden');
+        //    document.getElementById('jatahMax').innerText = relicQty;
+        //    updateJatahUsed();
+        //} else {
+        //    addRelicSection.classList.remove('grid');
+        //    addRelicSection.classList.add('hidden');
 
             // Update input values
             const inputs = document.querySelectorAll('[id^="input-"]'); // Starts with 'input-'
             inputs.forEach(input => {
                 input.value = 0;
             });
-            document.getElementById('jatahUsed').innerText = 0;
+            //document.getElementById('jatahUsed').innerText = 0;
         }
     }
 
+    /*
     function updateJatahUsed() {
         let totalUsed = 0;
         const inputs = document.querySelectorAll('[id^="input-"]'); // Starts with 'input-'
@@ -482,7 +487,7 @@
 
     function adjustRelic(color, delta) {
         const input = document.getElementById(`input-${color}`);
-        
+
         let value = parseInt(input.value || 0);
         const max = parseInt(input.max || 0);
         const min = parseInt(input.min || 0);
@@ -497,7 +502,7 @@
                     true
                 );
                 return;
-            } 
+            }
         }
 
         value += delta;
@@ -563,6 +568,7 @@
             }
         });
     }
+    */
 
     let pendingRallyGameId = null; // For modal panggil SI
 
@@ -621,40 +627,44 @@
         closeBtn.onclick = () => modal.close();
     }
 
-    window.addEventListener('DOMContentLoaded', function () {
-        setTimeout(() => {
-            $.ajax({
-                url: '{{ route("penpos.updateStock") }}',
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function (res) {
-                    console.log("Stock updated via event.");
-                },
-                error: function (err) {
-                    console.error("Failed to update stock:", err);
-                }
-            });
-        }, 500); // delay of loading stock, first time (milliseconds)
-    });
+    @if(false)
+        window.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => {
+                $.ajax({
+                    url: '{{ route("penpos.updateStock") }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (res) {
+                        console.log("Stock updated via event.");
+                    },
+                    error: function (err) {
+                        console.error("Failed to update stock:", err);
+                    }
+                });
+            }, 500); // delay of loading stock, first time (milliseconds)
+        });
+    @endif
 </script>
-@vite('resources/js/app.js')
-<script type="module">
-    window.Echo.channel('update-available-stock').listen('UpdateAvailableStock', event => { 
-        console.log("[UpdateAvailableStock] Event:", event);
+@if(false)
+    @vite('resources/js/app.js')
+    <script type="module">
+        window.Echo.channel('update-available-stock').listen('UpdateAvailableStock', event => {
+            console.log("[UpdateAvailableStock] Event:", event);
 
-        // Display
-        $('#stock-red').text(event.availableStock.red_relic_stock);
-        $('#stock-blue').text(event.availableStock.blue_relic_stock);
-        $('#stock-purple').text(event.availableStock.purple_relic_stock);
+            // Display
+            $('#stock-red').text(event.availableStock.red_relic_stock);
+            $('#stock-blue').text(event.availableStock.blue_relic_stock);
+            $('#stock-purple').text(event.availableStock.purple_relic_stock);
 
-        // Max
-        $('#input-red').attr('max', event.availableStock.red_relic_stock);
-        $('#input-blue').attr('max', event.availableStock.blue_relic_stock);
-        $('#input-purple').attr('max', event.availableStock.purple_relic_stock);
+            // Max
+            $('#input-red').attr('max', event.availableStock.red_relic_stock);
+            $('#input-blue').attr('max', event.availableStock.blue_relic_stock);
+            $('#input-purple').attr('max', event.availableStock.purple_relic_stock);
 
-        updateJatahUsed();
-    });
-</script>
+            updateJatahUsed();
+        });
+    </script>
+@endif
 @endsection

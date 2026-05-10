@@ -14,11 +14,9 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $table = 'players';
-
     protected $fillable = [
         'team_id',
-        'tears',
+        'points',
     ];
 
     public function team() : BelongsTo {
@@ -31,26 +29,5 @@ class Player extends Model
 
     public function scores() : HasMany {
         return $this->hasMany(Score::class, 'player_id');
-    }
-
-    public function marketLogs() : HasMany {
-        return $this->hasMany(MarketLog::class, 'player_id');
-    }
-
-    public function inventory() : HasMany {
-        return $this->hasMany(Inventory::class, 'player_id');
-    }
-
-    public function markets() : HasManyThrough {
-        return $this->hasManyThrough(Market::class, Inventory::class, 'player_id', 'player_id', 'id');
-    }
-
-    public function success() : HasOne {
-        return $this->hasOne(Success::class, 'player_id');
-    }
-
-    public function successes()
-    {
-        return $this->hasMany(Success::class);
     }
 }

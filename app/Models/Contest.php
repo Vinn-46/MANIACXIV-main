@@ -19,7 +19,7 @@ class Contest extends Model
         'slug',
         'open_date',
         'close_date',
-        'type'
+        'type',
     ];
 
     public function author() : BelongsTo {

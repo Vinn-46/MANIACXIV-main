@@ -13,58 +13,48 @@ class PointSeeder extends Seeder
      */
     public function run(): void
     {
-        $pointDatas = [
+        $points = [
             'single' => [
                 'win' => [
-                    'tears' => 100,
-                    'relic_qty' => 1,
+                    'value' => 100,
                 ],
                 'draw' => [
-                    'tears' => 50,
-                    'relic_qty' => 0,
+                    'value' => 50,
                 ],
                 'lose' => [
-                    'tears' => 0,
-                    'relic_qty' => 0,
+                    'value' => 0,
                 ],
             ],
             'battle' => [
                 'win' => [
-                    'tears' => 200,
-                    'relic_qty' => 2,
+                    'value' => 200,
                 ],
                 'draw' => [
-                    'tears' => 100,
-                    'relic_qty' => 1,
+                    'value' => 100,
                 ],
                 'lose' => [
-                    'tears' => 0,
-                    'relic_qty' => 0,
+                    'value' => 0,
                 ],
             ],
-            'hel' => [
+            'inferno' => [
                 'win' => [
-                    'tears' => 200,
-                    'relic_qty' => 3,
+                    'value' => 300,
                 ],
                 'draw' => [
-                    'tears' => 100,
-                    'relic_qty' => 2,
+                    'value' => 100,
                 ],
                 'lose' => [
-                    'tears' => 0,
-                    'relic_qty' => 0,
+                    'value' => 0,
                 ],
             ],
         ];
 
-        foreach ($pointDatas as $type => $data) {
-            foreach ($data as $condition => $value) {
+        foreach ($points as $type => $point) {
+            foreach ($point as $condition => $data) {
                 Point::create([
                     'type' => $type,
                     'condition' => $condition,
-                    'point' => $value['tears'],
-                    'relic_qty' => $value['relic_qty'],
+                    'value' => $data['value'],
                 ]);
             }
         }

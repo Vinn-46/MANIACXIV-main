@@ -10,11 +10,9 @@ class Log extends Model
 {
     use HasFactory;
 
-    protected $table = 'logs';
-    
     protected $fillable = [
         'player_id',
-        'desc'
+        'desc',
     ];
 
     public function player() : BelongsTo {

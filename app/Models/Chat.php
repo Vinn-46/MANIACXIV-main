@@ -15,10 +15,10 @@ class Chat extends Model
 
     protected $fillable = [
         'admin_id',
+        'message_id',
         'message',
         'is_from_admin',
-        'message_id',
-        'status'
+        'status',
     ];
 
     public function admin() : BelongsTo {
