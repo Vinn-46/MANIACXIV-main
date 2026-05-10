@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MANIAC XIV</title>
+    <title>MANIAC XV</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -25,38 +25,44 @@
     <link rel="stylesheet" href="{{ asset('css/font.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
-    <link rel="icon" href="{{ asset('asset2025/Icon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
 
     <style>
-        html{
+        html {
             overflow-x: hidden;
         }
 
         body {
-            cursor: url("{{ asset('asset2025') }}/cursor/cursor.cur"),
-                url("{{ asset('asset2025') }}/cursor/cursor.svg"),
-                url("{{ asset('asset2025') }}/cursor/cursor.png"), auto;
+            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
         }
 
         button:hover,
         a:hover,
         li:hover {
-            cursor: url("{{ asset('asset2025') }}/cursor/pointer.png"), pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2025') }}/cursor/type.png"), text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
         }
 
         #navbarNav {
-            justify-content: end;
+            justify-content: center;
         }
 
         body {
-            background-image: url("{{ asset('asset2025/pendaftaran/bg.png') }}") !important;
+            background-image: url("{{ asset('asset2026/home/bg.png') }}") !important;
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        .active-link {
+            background-color: white;
+            color: #8b181b !important;
+            border-radius: 20px;
+            padding: 6px 30px;
         }
 
         p {
@@ -72,12 +78,26 @@
             display: block;
         }
 
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            gap: clamp(10px, 3vw, 50px);
+            padding: 15px 20px;
+        }
+
         .navbar {
-            background-color: #733B22 !important;   /* Menyesuaikan VI */
+            background-color: #8b181b !important;
+            width: 70%;
+        }
+
+        .navbar-collapse.ms-auto {
+            margin-left: 0 !important;
+            margin: 0 auto !important;
+            width: 100%;
         }
 
         .bg-red {
-            background-color: #733B22 !important; /* Menyesuaikan VI */
+            background-color: #8b181b !important;
         }
 
         .container-bottom-home {
@@ -86,22 +106,24 @@
         }
 
         .bottom-web-home {
-            position: absolute;
+            position: relative;
             bottom: 0;
             left: 0;
             width: 100%;
             z-index: -1;
+            height: auto;
         }
 
         .dropdown-item,
         .nav-link {
             font-weight: 600;
+            font-size: 18px;
             font-family: "Roboto";
         }
 
         .navbar-nav {
-            gap: 8px;
-
+            width: 100%;
+            justify-content: space-evenly !important;
         }
 
         .icon {
@@ -127,65 +149,98 @@
             border-radius: 20px;
         }
 
-        .c-logo{
-           padding: 0.5rem; 
+        .c-logo {
+            padding: 0.5rem;
         }
 
-        @media (max-width: 500px){
-            .c-logo{
-               padding: 0.15rem; 
-            }   
+        @media (max-width: 500px) {
+            :root {
+                --logo: 100%;
+            }
+
+            .c-logo {
+                padding: 0.15rem;
+            }
+
+            .dropdown {
+                display: none;
+            }
         }
 
         @media screen and (min-width: 993px) {
-            :root{
+            :root {
+                --logo: 110%;
                 --c-h2-notif: 2.9vw;
                 --c-p-notif: 1.4vw;
                 --c-width-notif: 50vw;
                 --c-height-notif: 35vh;
             }
         }
-        
+
         @media screen and (min-width: 769px) and (max-width: 992px) {
-            :root{
+            :root {
+                --logo: 100%;
                 --c-h2-notif: 3.2vw;
                 --c-p-notif: 1.7vw;
                 --c-width-notif: 60vw;
                 --c-height-notif: 35vh;
             }
+
+            .dropdown {
+                display: none;
+            }
         }
-        
+
         @media screen and (min-width: 576px) and (max-width: 768px) {
-            :root{
+            :root {
+                --logo: 100%;
                 --c-h2-notif: 3.7vw;
                 --c-p-notif: 2.2vw;
 
                 --c-width-notif: 70vw;
                 --c-height-notif: 35vh;
             }
+
+            .dropdown {
+                display: none;
+            }
         }
-        
+
         @media screen and (min-width: 383px) and (max-width: 575px) {
-            :root{
+            :root {
+                --logo: 100%;
                 --c-h2-notif: 6vw;
                 --c-p-notif: 3.2vw;
-    
+
                 --c-width-notif: 90vw;
                 --c-height-notif: 32vh;
+            }
+
+            .dropdown {
+                display: none;
             }
         }
 
         @media screen and (max-width: 382px) {
-            :root{
+            :root {
+                --logo: 100%;
                 --c-h2-notif: 6vw;
                 --c-p-notif: 3.7vw;
-    
+
                 --c-width-notif: 90vw;
                 --c-height-notif: 32vh;
             }
+
+            .dropdown {
+                display: none;
+            }
         }
 
-        #notificationOverlay{
+        .logo-header {
+            width: var(--logo);
+        }
+
+        #notificationOverlay {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -204,7 +259,7 @@
             padding: 0 9%;
             width: 100%;
             height: 100%;
-            
+
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -217,14 +272,14 @@
             color: #733B22;
             font-size: var(--c-h2-notif);
         }
-        
+
         #notificationBox p {
             font-size: var(--c-p-notif);
             font-weight: bold;
             color: black;
         }
 
-        .notif-bg{
+        .notif-bg {
             position: absolute;
             bottom: -90%;
             left: 0;
@@ -232,14 +287,32 @@
             opacity: 30%;
         }
 
-        .hide{
+        .hide {
             display: none;
         }
 
-        .non-hide{
+        .non-hide {
             display: block;
         }
 
+        @media screen and (min-width: 992px) {
+
+            /* 1. Membagi ruang antara Logo, Kapsul Merah, dan Ikon Profile */
+            .nav-wrapper {
+                justify-content: space-between !important;
+            }
+
+            /* 2. Menghapus dorongan bawaan agar posisinya seimbang */
+            .dropdown.ms-auto {
+                margin-left: 0 !important;
+            }
+
+            /* 3. Melebarkan kapsul merah dan memberi jarak lega di ujungnya */
+            .navbar {
+                width: 65% !important;
+                /* Bisa kamu naik-turunkan sesuai selera (misal 60% atau 70%) */
+                padding: 8px 3rem !important;
+            }
     </style>
     @yield('styles')
 
@@ -247,129 +320,133 @@
 
 <body class="antialiased overflow-x-hidden">
     {{-- <x-notification-overlay/>  --}}
-    <div onclick="hideNotification(this)" id="notificationOverlay" class="overflow-hidden container-notif bg-white text-center hide">
+    <div onclick="hideNotification(this)" id="notificationOverlay"
+        class="overflow-hidden container-notif bg-white text-center hide">
         <div id="notificationBox">
             <h2 accesskey=""class="mb-2">Batch Pendaftaran Early Bird Telah Berakhir</h2>
-            <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 9 Juni 2025</p>
+            <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 11 Juni 2026</p>
         </div>
-        <img src="{{ asset('asset2025/pendaftaran/secret-place.png') }}" style="width: 100%" class="notif-bg">
+        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" style="width: 100%" class="notif-bg">
     </div>
     @if (Route::has('login'))
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid" style="padding-inline: 2rem;">
-                <div class="logo d-flex" style="width: 200px">
-                    <div style="background-color: white;" class="c-logo d-flex .align-items-center  rounded">
-                        <img src="{{ asset('asset2025/logo-ubaya.png') }}" style="width: 100%">
-                    </div>
-                    <div style="background-color: white;" class="c-logo d-flex .align-items-center ms-2  rounded">
-                        <img src="{{ asset('asset2025/logo-maniac.png') }}" style="width: 100%">
-                    </div>
-                </div>
+        <div class="nav-wrapper d-flex align-items-center">
 
-                <!-- Toggle button for small screens -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-list text-white" style="transform: scale(1.2)" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
-                    </svg>
-                </button>
-
-                <!-- Navbar links -->
-                <div class="collapse navbar-collapse ms-auto" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ route('index') }}">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('visitor.about') }}">ABOUT US</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('visitor.competition') }}">COMPETITION</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('visitor.faq') }}">FAQ</a>
-                        </li>
-                        <li>
-                            {{-- <a class="nav-link" href="{{ asset('asset2024/main/guidebook.pdf') }}"
-                                download="Guidebook MANIAC XIV.pdf">GUIDEBOOK</a> --}}
-                            <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">GUIDEBOOK</a>
-                        </li>
-                        <li>
-                            <div class="dropdown">
-                                <button style="background-color: #7f4c42;"
-                                    class="btn btn-secondary nav-link dropdown-toggle text-center" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <strong>
-                                        {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" --}}
-                                        {{--                                            fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"> --}}
-                                        {{--                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" /> --}}
-                                        {{--                                            <path fill-rule="evenodd" --}}
-                                        {{--                                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" /> --}}
-                                        {{--                                        </svg>&nbsp; --}}
-                                        ACCOUNT
-                                    </strong>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @auth
-                                        @php
-                                            $endpoint = '';
-                                            switch (\Illuminate\Support\Facades\Auth::user()->role) {
-                                                case 'participant':
-                                                    $endpoint = '/team';
-                                                    break;
-                                                case 'acara':
-                                                    $endpoint = '/acara';
-                                                    break;
-                                                case 'si':
-                                                    $endpoint = '/si';
-                                                    break;
-                                                case 'supersi':
-                                                    $endpoint = '/super-si';
-                                                    break;
-                                                case 'admin':
-                                                    $endpoint = '/admin';
-                                                    break;
-                                                case 'judge':
-                                                    $endpoint = '/judge';
-                                                    break;
-                                                default:
-                                                    $endpoint = '/penpos';
-                                                    break;
-                                            }
-                                        @endphp
-                                        <li>
-                                            <a href="{{ url($endpoint) }}"
-                                                style="font-size: 1rem !important; letter-spacing: 1px !important;"
-                                                class="dropdown-item text-white">Dashboard</a>
-                                        </li>
-                                        <li>
-                                            <form action="{{ route('logout') }}" method="POST" id="logout">
-                                                @csrf
-                                                <button class="btn-logout dropdown-item text-white"
-                                                    style="font-size: 1rem !important; letter-spacing: 1px !important;"
-                                                    type="submit">Logout</button>
-                                            </form>
-                                        </li>
-                                    @else
-                                        <li>
-                                            <a href="{{ route('login') }}" class="dropdown-item text-white">LOGIN</a>
-                                        </li>
-                                        @if (Route::has('register'))
-                                            <li>
-                                                <a href="{{ route('register') }}"
-                                                    class="dropdown-item text-white">REGISTER</a>
-                                            </li>
-                                        @endif
-                                    @endauth
-                                </ul>
-                            </div>
-                        </li>
-                    </ul>
+            <!-- Logo -->
+            <div class="logo d-flex" style="width: 270px">
+                <div class="c-logo d-flex .align-items-center rounded">
+                    <img src="{{ asset('asset2026/!header_footer/Logo.png') }}" class="logo-header">
                 </div>
             </div>
-        </nav>
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-5">
+                <div class="container-fluid d-flex justify-content-end">
+                    <!-- Toggle button for small screens -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-list text-white" style="transform: scale(1.2)" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                        </svg>
+                    </button>
+
+                    <!-- Navbar links -->
+                    <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('index') ? 'active-link' : '' }}"
+                                    aria-current="page" href="{{ route('index') }}">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('visitor.about') ? 'active-link' : '' }}"
+                                    href="{{ route('visitor.about') }}">ABOUT US</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('visitor.competition') ? 'active-link' : '' }}"
+                                    href="{{ route('visitor.competition') }}">COMPETITION</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('visitor.faq') ? 'active-link' : '' }}"
+                                    href="{{ route('visitor.faq') }}">FAQ</a>
+                            </li>
+                            <li>
+                                {{-- <a class="nav-link" href="{{ asset('asset2024/main/guidebook.pdf') }}"
+                                download="Guidebook MANIAC XIV.pdf">GUIDEBOOK</a> --}}
+                                <a class="nav-link" href="#contact">CONTACT</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- User -->
+            <div class="dropdown ms-auto">
+                <button class="btn nav-link text-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <strong>
+                        {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" --}}
+                        {{-- fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"> --}}
+                        {{-- <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" /> --}}
+                        {{-- <path fill-rule="evenodd" --}}
+                        {{-- d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" /> --}}
+                        {{-- </svg>&nbsp; --}}
+                        <img src="{{ asset('asset2026/User.png') }}" style="width: 70px">
+                    </strong>
+                </button>
+                <ul class="dropdown-menu bg-red">
+                    @auth
+                        @php
+                            $endpoint = '';
+                            switch (\Illuminate\Support\Facades\Auth::user()->role) {
+                                case 'participant':
+                                    $endpoint = '/team';
+                                    break;
+                                case 'acara':
+                                    $endpoint = '/acara';
+                                    break;
+                                case 'si':
+                                    $endpoint = '/si';
+                                    break;
+                                case 'supersi':
+                                    $endpoint = '/super-si';
+                                    break;
+                                case 'admin':
+                                    $endpoint = '/admin';
+                                    break;
+                                case 'judge':
+                                    $endpoint = '/judge';
+                                    break;
+                                default:
+                                    $endpoint = '/penpos';
+                                    break;
+                            }
+                        @endphp
+                        <li>
+                            <a href="{{ url($endpoint) }}"
+                                style="font-size: 1rem !important; letter-spacing: 1px !important;"
+                                class="dropdown-item text-white">Dashboard</a>
+                        </li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST" id="logout">
+                                @csrf
+                                <button class="btn-logout dropdown-item text-white"
+                                    style="font-size: 1rem !important; letter-spacing: 1px !important;"
+                                    type="submit">Logout</button>
+                            </form>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('login') }}" class="dropdown-item text-white">LOGIN</a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li>
+                                <a href="{{ route('register') }}" class="dropdown-item text-white">REGISTER</a>
+                            </li>
+                        @endif
+                    @endauth
+                </ul>
+            </div>
+        </div>
 
         <!-- Offcanvas menu -->
         <div class="offcanvas offcanvas-start bg-red" tabindex="-1" id="offcanvasNavbar"
@@ -383,28 +460,50 @@
                 <!-- Offcanvas menu links -->
                 <ul class="navbar-nav">
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('index') }}">HOME</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('index') ? 'active-link' : '' }}"
+                            aria-current="page" href="{{ route('index') }}">HOME</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link" href="{{ route('visitor.about') }}">ABOUT US</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.about') ? 'active-link' : '' }}"
+                            href="{{ route('visitor.about') }}">ABOUT US</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link" href="{{ route('visitor.competition') }}">COMPETITION</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.competition') ? 'active-link' : '' }}"
+                            href="{{ route('visitor.competition') }}">COMPETITION</a>
                     </li>
                     <li class="nav-item offcanvas-item">
-                        <a class="nav-link" href="{{ route('visitor.faq') }}">FAQ</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.faq') ? 'active-link' : '' }}"
+                            href="{{ route('visitor.faq') }}">FAQ</a>
                     </li>
                     <li>
                         {{-- <a class="nav-link text-white offcanvas-item" href="{{ asset('asset2024/main/guidebook.pdf') }}" download="Guidebook MANIAC XIII.pdf">GUIDEBOOK</a> --}}
-                        <a class="nav-link" href="http://bit.ly/GuideBookMANIACXIV" target="_blank">GUIDEBOOK</a>
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li>
+                        <hr class="text-white">
+                        <div class="d-flex align-items-center gap-2 px-2">
+                            <img src="{{ asset('asset2026/User.png') }}"
+                                style="width: 60px; border: 2px solid white; border-radius: 50%;">
+                        </div>
+
+                        @auth
+                            <a href="{{ url($endpoint) }}"
+                                class="nav-link text-white d-flex align-items-center gap-2 px-2">Dashboard</a>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button
+                                    class="nav-link text-white w-100 d-flex align-items-center gap-2 px-2">Logout</button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}"
+                                class="nav-link text-white d-flex align-items-center gap-2 px-2 mt-3 mb-2 {{ request()->routeIs('login') ? 'active-link' : '' }}">LOGIN</a>
+                            <a href="{{ route('register') }}"
+                                class="nav-link text-white d-flex align-items-center gap-2 px-2 {{ request()->routeIs('register') ? 'active-link' : '' }}">REGISTER</a>
+                        @endauth
                     </li>
                     <li>
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle text-white offcanvas-item" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #7f4c42;">
-                                ACCOUNT
-                            </button>
-                            <ul class="dropdown-menu btn-secondary">
+                            <ul class="dropdown-menu">
                                 @auth
                                     @php
                                         $endpoint = '';
@@ -451,7 +550,8 @@
                                     </li>
                                     @if (Route::has('register'))
                                         <li>
-                                            <a href="{{ route('register') }}" class="dropdown-item text-white">REGISTER</a>
+                                            <a href="{{ route('register') }}"
+                                                class="dropdown-item text-white">REGISTER</a>
                                         </li>
                                     @endif
                                 @endauth
@@ -467,21 +567,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     @endif
-    <main class="position-relative">
+    <main class="position-relative p-0 m-0 w-100">
         @yield('content')
         <span class="d-block" style="height: 7rem;"></span>
-        <img src="{{ asset('asset2025/pendaftaran/secret-place-2.png') }}" class="bottom-web-home position-absolute">
+        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="bottom-web-home">
     </main>
 
-    <footer class="w-100 bg-red pt-2">
+    <footer id="contact" class="w-100 bg-red pt-2">
         <div class="container-fluid px-4 py-4">
             <div class="row">
                 <div class="col-lg-6 col-sm-12 pe-3 pb-5">
-                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XIV</h3>
-                    <p class="text-white text-justify"><strong>MANIAC (Multimedia ANd Interactive Art Competition)
-                        </strong> adalah lomba
-                        berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset
-                        design, yang diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.</p>
+                    <h3 class="text-white d-block" style="font-family: 'cinzel';">MANIAC XV</h3>
+                    <p class="text-white text-justify"><strong>MANIAC (Multimedia and Interactive Art Competition)
+                        </strong> merupakan lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup
+                        Penyisihan (online), Semifinal (Rally Games & Game Besar), dan Final (presentasi). Materi yang
+                        dilombakan adalah mengenai User Interface dan User Experience. MANIAC diselenggarakan oleh
+                        Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.</p>
                     <img src="{{ asset('asset2024/footer/logo-ubaya.png') }}" width="150px" height="auto"
                         alt="logo-ubaya" class="pt-3">
                     <img src="{{ asset('asset2024/footer/logo-maniac.png') }}" width="150px" height="auto"
@@ -492,24 +593,23 @@
                     <div class="grid gap-4">
                         <div class="text-white d-flex align-items-center">
                             <img class="icon" src="{{ asset('asset2024/footer/IG.png') }}" alt="Instagram">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.instagram.com/maniac_ubaya?"
+                            <a class="mb-0 sosmedLink text-white" href="https://www.instagram.com/maniac_ubaya?"
                                 target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
                         </div>
                         <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-tiktok.png') }}" alt="TikTok">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.tiktok.com/@maniac_ubaya"
+                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-tiktok.png') }}"
+                                alt="TikTok">
+                            <a class="mb-0 sosmedLink text-white" href="https://www.tiktok.com/@maniac_ubaya"
                                 target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
                         </div>
                         <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-youtube.png') }}" alt="YouTube">
-                            <a class="mb-0 sosmedLink text-white"
-                                href="https://www.youtube.com/@maniacubaya9585"
+                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-youtube.png') }}"
+                                alt="YouTube">
+                            <a class="mb-0 sosmedLink text-white" href="https://www.youtube.com/@maniacubaya9585"
                                 target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
@@ -527,21 +627,22 @@
                                 <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
                                 @maniac.ubayaa@gmail.com
                             </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6289699833080" target="_blank"
+                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
-                                089699833080 (Nicho)
+                                082229088089 (Jovanka)
                             </a>
-                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6285330001180" target="_blank"
+                            <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282232958165" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
                                 <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
                                     alt="whatsapp">
-                                085330001180 (Gioshelyn)
+                                082232958165 (Nadya)
                             </a>
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="col-lg-10 pt-sm-2 mt-5">
                     <h5 class="text-white"><strong>SPONSORED BY</strong></h5>
                     <div class="d-flex flex-wrap">
@@ -574,10 +675,10 @@
                                 <img src="{{ asset('asset2025/footer/sponsor/Kristin.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <br>
                 <br>
-                <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XIV Information System, All
+                <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XV Information System, All
                     Rights Reserved</p>
             </div>
         </div>
@@ -605,7 +706,7 @@
                 hideNotification();
             }, 5000);
         }
-        
+
         // Menyembunyikan notif 
         // Jika sudah mencapai 5 detik maka objek dengan class notificationOverlay akan di sembunyikan dengan diberikan class hide
         // yang berisi perintah display : none
@@ -620,10 +721,11 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
-            @if(session('show_early_bird_ended_announcement'))
+            @if (session('show_early_bird_ended_announcement'))
                 showStaticNotification();
             @endif
         });
     </script>
 </body>
+
 </html>

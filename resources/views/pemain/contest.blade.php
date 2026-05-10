@@ -28,7 +28,7 @@
                 class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
                 draggable="false"
             > --}}
-            <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Contest Maniac XIV 🏆</h1>
+            <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Contest Maniac XV 🏆</h1>
             <div class="md:card-body max-md:p-4 bg-cream rounded-lg mt-4">
                 <p class="pb-3 sm:pb-0 break-words">
                     Anda dapat melihat <strong>Available Contest</strong>, <strong>Upcoming Contest</strong>, and <strong>Finished Contest</strong> di sini.
@@ -114,7 +114,12 @@
                                         @if ( $contest->type == "pengumuman")
                                             -
                                         @elseif( $contest->type == "penyisihan" )
-                                            <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ asset("Soal Penyisihan Online") }}/Modul Penyisihan MANIAC XIV.pdf" target="_blank">Download</a>
+                                            <div class="flex flex-col gap-2">
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ asset("Soal Penyisihan Online") }}/Modul Penyisihan MANIAC XIV.pdf" target="_blank">Download</a>
+                                                <a class="btn btn-outline btn-info btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ route('team.contest.submission', $contest) }}">
+                                                    {{ $action }}
+                                                </a>
+                                            </div>
                                         @elseif($contest->type == "final")
                                             {{-- Pengumpulan tugas final berdasarkan drive setiap tim (Cara manual, kalau mau ada yang otomatis perlu update erd dan buat tampilan untuk acara input link pengumpulannya) --}}
                                             @if($team->id == 44)

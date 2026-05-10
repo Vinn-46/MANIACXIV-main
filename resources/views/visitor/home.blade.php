@@ -10,10 +10,12 @@
             :root {
                 /* Ambil width : 420 */
                 --logo-maniac: 75%;
+                --win-up: 65%;
+                --register-button: 40%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
                 --fs-1: 0.87rem;
-                --fs-timeline: 9.5px;
-                --fs-prizes: 10.4px;
-                --fs-join-now: 10.3px;
                 --fs-ket-prizes-1: 9px;
                 --fs-ket-prizes-2: 7px;
                 --button: 9px;
@@ -23,21 +25,19 @@
                 --video-br: 10px;
                 --video-height: 130px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -1px 0.5px  #be8f57;
-            }
         }
 
         @media (min-width: 576px) and (max-width: 768px) {
             :root {
                 /* Titik tengah : 672 */
                 --logo-maniac: 75%;
+                --win-up: 65%;
+                --register-button: 40%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 40%;
                 --fs-1: 1.7rem;
-                --fs-timeline: 22px;
-                --fs-prizes: 24px;
                 --fs-join-now: 24px;
                 --fs-ket-prizes-1: 14px;
                 --fs-ket-prizes-2: 11px;
@@ -48,21 +48,20 @@
                 --video-br: 17px;
                 --video-height: 190px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -2px 1px  #be8f57;
-            }
         }
 
         @media (min-width: 769px) and (max-width: 992px) {
             :root {
                 /* Titik Tengah : 880.5 */
                 --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 30%;
                 --fs-1: 2.3rem;
                 --fs-timeline: 29px;
-                --fs-prizes: 33px;
                 --fs-join-now: 32px;
                 --fs-ket-prizes-1: 17px;
                 --fs-ket-prizes-2: 14x;
@@ -73,21 +72,20 @@
                 --video-br: 21px;
                 --video-height: 250px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -2px 1px  #be8f57;
-            }
         }
 
         @media (min-width: 993px) and (max-width: 1200px) {
             :root {
                 /* Titik Tengah: 1096.5 */
                 --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
+                --register-timeline: 30%;
                 --fs-1: 3rem;
                 --fs-timeline: 37px;
-                --fs-prizes: 41px;
                 --fs-join-now: 40px;
                 --fs-ket-prizes-1: 20px;
                 --fs-ket-prizes-2: 17px;
@@ -98,21 +96,19 @@
                 --video-br: 25px;
                 --video-height: 300px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -3px 2px  #be8f57;
-            }
         }
 
         @media (min-width: 1201px) {
             :root {
                 /* Ambil width 1350 */
                 --logo-maniac: 65%;
+                --win-up: 55%;
+                --register-button: 30%;
+                --timeline-text: 25%;
+                --prizes-text: 25%;
+                --joinNow-text: 25%;
                 --fs-1: 3rem;
                 --fs-timeline: 44px;
-                --fs-prizes: 48px;
                 --fs-join-now: 47px;
                 --fs-ket-prizes-1: 23px;
                 --fs-ket-prizes-2: 20px;
@@ -123,12 +119,6 @@
                 --video-br: 29px;
                 --video-height: 400px;
             }
-
-            h1.text-timeline,
-            h1.text-join-now,
-            h1.text-prizes {
-                text-shadow: -3px 2px  #be8f57;
-            }
         }
 
         /* Variabel */
@@ -137,9 +127,29 @@
             margin: 0;
             padding: 0;
         }
-
+        
+        .register-button{
+            margin-top: 20%;
+            width: var(--register-button);
+        }
+        
+        .win-up{
+            width: var(--win-up);
+        }
         .logo-maniac {
             width: var(--logo-maniac);
+        }
+
+        .timeline-text {
+            width: var(--timeline-text);
+        }
+
+        .prizes-text {
+            width: var(--prizes-text);
+        }
+
+        .joinNow-text {
+            width: var(--joinNow-text);
         }
 
         .container-page-1 {
@@ -147,7 +157,7 @@
         }
 
         .container-page-2 {
-            margin-top: 6%
+            margin-top: 20%
         }
 
         .container-page-4 {
@@ -156,7 +166,8 @@
         }
 
         .container-page-6 {
-            margin-top: 35%;
+            margin-top: 30%;
+            margin-bottom: 5%;
         }
 
         .container-juara {
@@ -166,36 +177,10 @@
         }
 
         /* Text */
-        .text-maniac {
+        .win-up {
             margin: 0;
             padding: 0;
             z-index: 1;
-            font-family: augustus;
-            font-size: var(--fs-1);
-            font-weight: 200;
-            color: #620706;
-        }
-
-        .text-timeline,
-        .text-join-now,
-        .text-prizes {
-            color: #733b22;
-            margin: 1% 0 1% 0;
-            font-family: dalek;
-            font-weight: 300;
-            text-shadow: -3px 3px  #be8f57;
-        }
-
-        .text-timeline {
-            font-size: var(--fs-timeline);
-        }
-
-        .text-prizes {
-            font-size: var(--fs-prizes);
-        }
-
-        .text-join-now {
-            font-size: var(--fs-join-now);
         }
 
         .container-text-3 {
@@ -258,7 +243,7 @@
         }
 
         .dec-3-4 {
-            margin-bottom: 37%;
+            margin-bottom: 10%;
         }
 
         .dec-3-5 {
@@ -271,42 +256,15 @@
             width: 100vw;
         }
         /* Decoration */
-        
-        /* Bird */
-        .burung{
-            position: absolute;
-            width: 22%;
-            z-index: 0;
-        }
-
-        .burung-kiri-atas{
-            top: 9%;
-            left: -1%;
-        }
-        
-        .burung-kanan-tengah{
-            top: 80%;
-            right: -6%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kiri-bawah{
-            left: -9%;
-            bottom: -110%;
-        }
-        /* Bird */
 
         /* Button */
         .register-now {
-            margin-bottom: calc(0.063rem + 4.25%);
-            padding: calc(0.063rem + 1.025%) calc(1px + 4%);
-            background-color: #733b22;
-            border-radius: var(--button-radius);
-            border: none;
-            font-family: Lato;
-            font-size: var(--button);
-            font-weight: var(--button-weight);
-            letter-spacing: 1.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            z-index: 1;
             color: white;
             cursor: default;
         }
@@ -335,11 +293,10 @@
             width: 60%;
             margin: 2%;
             padding: 2.8%;
-            background-color: #be8f57;
-            box-shadow: 0 3px 5px -2px gray;
         }
 
         .poster {
+            width: 70%;
             z-index: 4;
         }
 
@@ -355,14 +312,15 @@
         /* Juara */
         .juara {
             padding-top: 2vw;
-            width: 25vw;
+            width: 85vw;
             margin: 0;
             position: relative;
         }
         
         .juara-1-1 {
-            margin-left: 2.5vw;
-            margin-right: 2.5vw;
+            margin-left: auto; 
+            margin-right: auto;
+            display: block;
             top: 4vw;
         }
 
@@ -390,11 +348,10 @@
             width: 50%;
             height: 100%;
             padding: 2% 3.5%;
-            margin-bottom: 37%;
             border-bottom: 1px solid #D9D9D9;
             border-radius: var(--video-container-br);
-            background-color: #A67563;
-            box-shadow: 0 4px 6px -2px gray;
+            background-color: #B34A37;
+            box-shadow: 0 4px 6px -2px #be8f57;
         }
 
         .iframe {
@@ -420,6 +377,31 @@
             background-color: rgba(230, 230, 230, 0.95);
             border-radius: 1rem;
         }
+
+        /* Pastikan container-nya relative */
+        .container-poster {
+            position: relative; 
+        }
+
+        /* Ini kodemu yang asli, tidak ada yang diubah */
+        .poster {
+            width: 60%;
+            z-index: 4;
+        }
+
+        /* Ini class baru untuk gambar polosan yang menimpa */
+        .poster-download {
+            position: absolute;
+            width: 60%; /* Lebarnya wajib persis sama dengan class .poster */
+            height: 100%; /* Agar tingginya menutupi seluruh gambar berbingkai */
+            z-index: 10; /* Berada di paling atas */
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* INI KUNCINYA: Membuat gambar polosan tidak terlihat sama sekali */
+            opacity: 0; 
+        }
+
         /* video */
     </style>
 @endsection
@@ -432,68 +414,56 @@
             <p>{{ $msgSession }}</p>
         </div>
     @endif
-    <div class="container-xxl">
+    <div class="container-fluid p-0">
         <div class="container-page-1 position-relative">
             <div class="d-flex align-items-center flex-column" data-aos="fade-up">
-                <img src="{{ asset('asset2025/logo-maniac-xiv.png') }}" alt="Logo Maniac" class="logo-maniac mb-3 z-1">
+                <img src="{{ asset('asset2026/home/Title.png') }}" alt="Logo Maniac" class="logo-maniac z-1">
             </div>
         </div>
         <div class="container-page-2 position-relative">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas">
             <div class="d-flex align-items-center flex-column">
-                <h1 class="text-maniac text-red text-center">WIN UP TO <br> 100++ MILLIONS</h1>
-                <img src="{{ asset('asset2025/pendaftaran/1.png') }}" class="dec-1">
+                <img src="{{ asset('asset2026/home/winUp.png') }}" class="win-up z-1">
                 <div class="register-now">
-                    <a class="text-white" style="text-decoration: none" href="{{ url('/register') }}">REGISTER NOW</a>
+                    <a class = "d-flex align-items-center flex-column"href="{{ route('register') }}"><img src="{{ asset('asset2026/home/Register Button.png') }}" class="register-button mb-3 z-1"></a>
                 </div>
             </div>
         </div>
-        <div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah">
+        <<div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
             <div class="container-axe d-flex justify-content-center ">
-                <!--<img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
-                <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2">-->
+                <!-- <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
+                <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2"> -->
             </div>
-            <div class="wrap-axe-poster">
-                <div class="container-axe-poster d-flex justify-content-center">
-                    <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-1">
-                    <div class="wrap-poster d-flex justify-content-center position-relative">
-                        <div class="container-poster d-flex justify-content-center">
-                            <img src="{{ asset('asset2025/pendaftaran/poster.png') }}" alt="Poster 
-Maniac" class="poster w-100">
-                        </div>
-                    </div>
-                    <div class="wrap-dec-2">
-                        <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-2 position-absolute">
-                    </div>
-                </div>
+            
+            <div class="container-poster d-flex justify-content-center position-relative">
+                <!-- LAYER BAWAH (Visual): Ini gambar yang dilihat oleh user (Poster + Bingkai) -->
+                <img src="{{ asset('asset2026/home/bingkai.png') }}" alt="Poster Maniac" class="poster">
+
+                <!-- LAYER ATAS (Tersembunyi): Ini gambar yang akan didownload user (Hanya Poster) -->
+                <img src="{{ asset('asset2026/home/poster.png') }}" alt="Download Poster" class="poster-download">
             </div>
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-timeline">TIMELINE</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-2">
-                <img src="{{ asset('asset2025/timeline.png') }}" alt="Timeline Maniac" class="timeline">
+                <img src="{{ asset('asset2026/home/TimelineLogo.png') }}" class="dec-3 dec-3-2">
+                <img src="{{ asset('asset2026/home/timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
-            <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah">
             <div class="d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-prizes">PRIZES</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4">
-                <div class="container-juara position-absolute">
+                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1 position-absolute"> -->
+                <img src="{{ asset('asset2026/home/Prizes.png') }}" class="prizes-text z-1">
+                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4 position-absolute"> -->
+                <div class="container-juara">
                     <div class="img-juara-1 d-flex justify-content-center align-items-center">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara I" class="juara juara-1-2">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-1.png') }}" alt="Juara II" class="juara juara-1-1">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-3.png') }}" alt="Juara III" class="juara juara-1-3">
+                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara II" class="juara juara-1-2"> --}}
+                        <img src="{{ asset('asset2026/home/prizepool.png') }}" alt="Juara I" class="juara juara-1-1">
+                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-3.png') }}" alt="Juara III" class="juara juara-1-3"> --}}
                     </div>
-                    <div class="img-juara-2 d-flex justify-content-center align-items-center">
+                    {{-- <div class="img-juara-2 d-flex justify-content-center align-items-center">
                         <img src="{{ asset('asset2025/pendaftaran/Harapan -1.png') }}" alt="Harapan I" class="juara-2 juara-2-1">
                         <img src="{{ asset('asset2025/pendaftaran/text-usp.png') }}" alt="Teks usp" class="container-usp">
                         <img src="{{ asset('asset2025/pendaftaran/Harapan -2.png') }}" alt="Harapan II" class="juara-2 juara-2-2">
-                    </div>
+                    </div>  --}}
                 </div>
                 {{-- <div class="container-text-3 d-flex justify-content-center flex-column ">
                     <p>*Terdiri atas 3 orang dari SMA/SMK yang sama</p>
@@ -533,12 +503,10 @@ Maniac" class="poster w-100">
         <div class="container-page-6 position-relative">
             <!-- <img src="{{ asset('asset2025/pendaftaran/cloud/c4.png') }}" class="position-absolute c-c1"> -->
             <div class="container-text-iframe d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-join-now">JOIN NOW</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-5">
+                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
-                    <iframe src="https://www.youtube.com/embed/KxdrfSuRerc?si=fkgBesLHYBUQIa3K" frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" frameborder="0"
                         class="iframe d-flex align-items-center justify-content-center"></iframe>
                 </div>
             </div>

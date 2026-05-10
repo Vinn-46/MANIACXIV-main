@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Contest' }}</title>
-    <link rel="icon" href="{{ asset('asset2025') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     @vite('resources/css/app.css')
     @yield('cdn')
     @yield('styles')

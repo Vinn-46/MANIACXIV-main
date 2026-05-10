@@ -29,8 +29,8 @@ class RegisteredUserController extends Controller
         
     public function create()
     {
-        $openDate = strtotime('9 May 2025');
-        $closeDate = strtotime('16 July 2025');
+        $openDate = strtotime('9 May 2026');
+        $closeDate = strtotime('17 July 2026');
         $now = time();
         
         // Pendaftaran early bird ditutup sementara, dan dibuka lagi di tanggal 9 Mei
@@ -55,8 +55,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $openDate = strtotime('5 May 2025');
-        $closeDate = strtotime('16 July 2025');
+        $openDate = strtotime('9 May 2026');
+        $closeDate = strtotime('17 July 2026');
         $now = time();
 
         if ($now < $openDate) {

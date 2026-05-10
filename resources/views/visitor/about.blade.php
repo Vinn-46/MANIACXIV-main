@@ -2,6 +2,11 @@
 
 @section('styles')
     <style>
+        @font-face {
+            font-family: 'Rustler';
+            src: url("{{ asset('fonts/rustler/RUSTLER_.TTF')}}") format("opentype");
+            font-weight: 500;
+        }
         :root {
             --video-h: 165px;
             --video-w: 200%;
@@ -45,7 +50,7 @@
         }
 
         .box {
-            background-color: #BE8F57;
+            background-color: #8b181b;
             border-radius: 20px 20px 0 0;
         }
 
@@ -115,28 +120,7 @@
             height: 10%;
             padding: 1.25rem 2rem;
             border-radius: 30px;
-            background-color: #A67563;
-        }
-
-        .burung {
-            width: 20%;
-        }
-
-        .burung-kanan-atas {
-            top: 3%;
-            right: -10%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kanan-bawah {
-            top: 30%;
-            right: -10%;
-            transform: scaleX(-1);
-        }
-
-        .burung-kiri {
-            top: 15%;
-            left: -10%;
+            background-color: #B34A37;
         }
 
         /*.video-container video {*/
@@ -154,9 +138,13 @@
             border-radius: 1rem;
         }
 
+        .title{
+            width: var(--title);
+        }
         @media (max-width: 486px) {
             :root {
                 --video-w: 100%;
+                --title: 75%;
             }
 
             .carousel-indicators {
@@ -181,6 +169,7 @@
         @media (min-width: 486px) {
             :root {
                 --video-h: 240px;
+                --title: 75%;
             }
             
             .carousel-image-wrapper {
@@ -192,6 +181,7 @@
             :root {
                 --video-h: 225px;
                 --video-w: 100%;
+                --title: 65%;
             }
 
             .video-container {
@@ -202,24 +192,23 @@
         @media (min-width: 992px) {
             :root {
                 --video-h: 314px;
+                --title: 65%;
             }
         }
 
         @media (min-width: 1200px) {
             :root {
                 --video-h: 440px;
+                --title: 65%;
             }
         }
     </style>
 @endsection
 
 @section('content')
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas position-absolute">
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri position-absolute">
-    <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute">
     <div class="container-fluid">
-        <div class="container py-5">
-            <h1 data-aos="zoom-in" class="text-center text-bold py-2">WHAT IS MANIAC</h1>
+        <div class="container py-5 d-flex align-items-center flex-column">
+           <img src="{{ asset('asset2026/ABOUT US/title.png') }}" alt="What is MANIAC" class="title" data-aos="zoom-in">
             <br>
             <div class="center-image">
                 <div class="box py-5">
@@ -240,32 +229,32 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-1.jpg') }}" class="rounded img-fluid" alt="foto1" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-1.jpg') }}" class="rounded img-fluid" alt="foto1" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-2.jpg') }}" class="rounded img-fluid" alt="foto2" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-2.jpg') }}" class="rounded img-fluid" alt="foto2" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-3.jpg') }}" class="rounded img-fluid" alt="foto3" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-3.jpg') }}" class="rounded img-fluid" alt="foto3" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-4.jpg') }}" class="rounded img-fluid" alt="foto4" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-4.jpg') }}" class="rounded img-fluid" alt="foto4" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-5.jpg') }}" class="rounded img-fluid" alt="foto5" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-5.jpg') }}" class="rounded img-fluid" alt="foto5" loading="lazy">
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="carousel-image-wrapper d-flex justify-content-center">
-                                    <img src="{{ asset('asset2025/about/foto-peserta-6.jpg') }}" class="rounded img-fluid" alt="foto6" loading="lazy">
+                                    <img src="{{ asset('asset2026/about/foto-peserta-6.jpg') }}" class="rounded img-fluid" alt="foto6" loading="lazy">
                                 </div>
                             </div>
 
@@ -281,17 +270,19 @@
                 </div>
                 <div class="body">
                     <p class="fs-5 font-normal">
-                        MANIAC (Multimedia ANd Interactive Art Competition) adalah lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset design, yang diselenggarakan oleh jurusan Teknik Informatika Program Digital Media Technology Universitas Surabaya.
+                        MANIAC (Multimedia and Interactive Art Competition) XV merupakan lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup Penyisihan (online), Semifinal (Rally Games & Game Besar), dan Final (presentasi). Materi yang dilombakan adalah mengenai User Interface dan User Experience. MANIAC diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.
                     </p>
                 </div>
             </div>
 
             <br>
-            <h1 class="text-center text-bold py-2 mt-5">JOIN NOW</h1>
+            <div class="d-flex justify-content-center py-2 mt-5">
+                <img src="{{ asset('asset2026/ABOUT US/joinNow.png') }}" alt="JOIN NOW" class="img-fluid" style="max-width: 300px;">
+            </div>
             <div class="container py-2 d-flex justify-content-center">
                 <div class="video-container" data-aos="fade-up">
                     <div class="d-flex justify-content-center align-items-center z-1">
-                        <iframe id="video" src="https://www.youtube.com/embed/KxdrfSuRerc?si=dbg21tsiVFSn5Few" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe id="video" src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

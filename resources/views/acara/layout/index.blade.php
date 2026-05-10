@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Dashboard' }}</title>
-    <link rel="icon" href="{{ asset('asset2025') }}/Icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -47,8 +47,8 @@
             </ul>
         </div>
         <a class="btn btn-ghost text-2xl">
-            <img src="{{ asset('asset2025') }}/logo-maniac-xiv.png" alt="" class="w-8 rounded">
-            Maniac XIV
+            <img src="{{ asset('asset2026') }}/logoNoBg.png" alt="" class="w-8 rounded">
+            Maniac XV
         </a>
     </div>
     <div class="flex-none z-50">
@@ -113,7 +113,7 @@
 <div class="p-10 mt-7 flex flex-col items-center">
     @yield('content')
     <div class="w-full pt-12 px-2">
-        <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XIV Information System, All rights Reserved</p>
+        <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XV Information System, All rights Reserved</p>
     </div>
 </div>
 @yield('scripts')

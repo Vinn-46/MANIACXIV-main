@@ -46,7 +46,7 @@
 @section('content')
     {{--  Container  --}}
     <div class="c-container w-full max-w-7xl relative">
-        <img draggable="false" src="{{ asset('asset2024') }}/main/cloud.png" alt="" class="absolute left-1/6 z-[1] w-80 top-[-0.1rem] select-none" id="cloud">
+        <!-- <img draggable="false" src="{{ asset('asset2024') }}/main/cloud.png" alt="" class="absolute left-1/6 z-[1] w-80 top-[-0.1rem] select-none" id="cloud"> -->
         <h1 class="text-4xl mb-2 text-center text-accent font-bold z-[9]">{{ $contest->name }}</h1>
         <div class="bg-slate-100 h-[20%] mb-10 p-2 rounded grid grid-cols-1">
             <h2 class="text-xl text-center font-bold text-black z-[9]">Waktu Kumpul</h2>
@@ -97,11 +97,11 @@
                     <label class="form-control w-full lg:col-span-2">
                         <input type="text" placeholder="Link GDrive PDF" class="input input-bordered rounded-md w-full" name="link" />
                     </label>
-                    <button type="submit" class="btn btn-primary w-full rounded-md lg:col-span-1">{{ $isSubmit ? "Resubmit" : "Submit" }}</button>
+                    <button type="submit" class="btn bg-[#847E31] hover:bg-[#733B2] w-full rounded-md lg:col-span-1">{{ $isSubmit ? "Resubmit" : "Submit" }}</button>
                 </form>
                 @if($isSubmit)
                     <div>
-                        <a class="btn btn-sm btn-accent px-12 rounded" target="_blank" href="{{ $link }}">Lihat Submission</a>
+                        <a class="btn btn-sm bg-[#847E31] hover:bg-[#733B2] px-12 rounded" target="_blank" href="{{ $link }}">Lihat Submission</a>
                     </div>
                 @endif
             </div>

@@ -25,7 +25,7 @@ class UserSeederFakePassword extends Seeder
         }
 
         // Make Pubreg
-        $listPubreg = ['shelyn', 'dariel', "admin1", "admin2", "admin3", "admin4"];
+        $listPubreg = ['nadya', 'felly', "cecilia", "jessika", "admin3", "admin4"];
         foreach ($listPubreg as $admin){
             User::create([
                 'username' => $admin,
@@ -35,7 +35,7 @@ class UserSeederFakePassword extends Seeder
         }
 
         // Make Acara
-        $listAcara = ['jeni', 'leon', "acara1", "acara2", "acara3", "acara4"];
+        $listAcara = ['joshua', 'vellya', "acara1", "acara2", "acara3", "acara4"];
         foreach ($listAcara as $acara) {
             User::create([
                 'username' => $acara,
@@ -54,7 +54,7 @@ class UserSeederFakePassword extends Seeder
         }
 
         // Make si
-        $listSi = ['ricky', 'yosua', 'cedric', 'nicholas', 'aileen'];
+        $listSi = ['kelvin', 'leon', 'arkan', 'margaret'];
         foreach ($listSi as $si) {
             User::create([
                 'username' => $si,
@@ -64,7 +64,7 @@ class UserSeederFakePassword extends Seeder
         }
 
         // Make supersi
-        $superSI = ['super_ricky', 'super_yosua'];
+        $superSI = ['super_kelvin', 'super_leon'];
         foreach ($superSI as $super) {
             User::create([
                 'username' => $super,

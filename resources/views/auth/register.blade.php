@@ -8,6 +8,17 @@
             box-sizing: border-box;
         }
 
+        .btn-register {
+            background-color: #847E31 !important;
+            border-color: #847E31 !important;
+            color: white !important;
+        }
+
+        .btn-register:hover {
+            background-color: #A8A365 !important;
+            border-color: #A8A365 !important;
+        }
+
         html,
         body {
             height: 100%;
@@ -54,7 +65,18 @@
         }
         
         .btn-register{
-            background-color: #be8f57;
+            background-color: #847E31;
+        }
+
+        .form-control {
+            border: 2px solid #847E31 !important;
+            border-radius: 10px !important;
+            background-color: #ffffff !important;
+        }
+
+        .form-control:focus {
+            border-color: #847E31 !important;
+            box-shadow: 0 0 0 0.25rem rgba(132, 126, 49, 0.25) !important;
         }
 
         .text-danger{
@@ -95,9 +117,9 @@
 
 
         #formContainer {
-            border:2px solid #be8f57;
+            border:2px solid #847E31;
             border-radius: 8px;
-            background-color: #e7eadf;
+            background-color: #FBF5E5;
         }
 
 
@@ -130,19 +152,19 @@
 @section('content')
     <div class="container-xxl position-relative">
         <div class="title d-flex justify-content-center w-100 py-2 position-relative">
-            <img class="w-50 z-1" src="{{ asset('asset2025/logo-maniac-xiv.png') }}" alt="logo-maniac" data-aos="fade-in">
+            <img class="w-50 z-1" src="{{ asset('asset2026/Title.png') }}" alt="logo-maniac" data-aos="fade-in">
             <img class="position-absolute clouds" style="width: 500px; height: 200px; top: 100px; right: 20px;"
                 src="{{ asset('asset2024/main/cloud.png') }}" alt="">
 
         </div>
-        <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan hiasan-atas">
+        <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan hiasan-atas">
         <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas position-absolute">
         <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas position-absolute">
         <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah position-absolute">
         <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah position-absolute">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute"> -->
         <div class="container-fluid"></div>
-        <div class="w-75 container position-relative" id="formContainer" data-aos="fade-up" data-aos-delay="100">
+        <div class="w-75 container position-relative mt-4" id="formContainer" data-aos="fade-up" data-aos-delay="100">
             <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('register') }}"
                 enctype="multipart/form-data">
                 @csrf
@@ -417,9 +439,9 @@
                                     mengumpulkan ?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
+                                    <button type="button" class="btn text-white" style="background-color: #A8A365; border-color: #A8A365;"
                                         data-bs-dismiss="modal">BATAL</button>
-                                    <button type="submit" class="btn btn-primary">KUMPUL</button>
+                                    <button type="submit" class="btn text-white" style="background-color: #847E31; border-color: #847E31;">KUMPUL</button>
                                 </div>
                             </div>
                         </div>
@@ -427,6 +449,5 @@
                 </div>
             </form>
         </div>
-    <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan">
     </div>
 @endsection
