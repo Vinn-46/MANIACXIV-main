@@ -90,7 +90,7 @@
                     <div class="dropdown dropdown-end">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                             <div class="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2025') }}/Icon.png" />
+                                <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2026') }}/Icon.png" />
                             </div>
                         </div>
                         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -116,7 +116,7 @@
 
         {{--  Footer  --}}
         <div class="w-full pt-12">
-            <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XIV, All Rights Reserved</p>
+            <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XV, All Rights Reserved</p>
         </div>
     </div>
 </div>

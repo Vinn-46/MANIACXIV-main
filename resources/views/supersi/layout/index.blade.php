@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Super SI | MANIAC XIV</title>
+    <title>Super SI | MANIAC XV</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('asset2025') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Icons -->
@@ -93,7 +93,7 @@
                     <img src="{{ asset('asset2024') }}/logo-maniac.jpg" class="h-6 me-3 sm:h-7" alt="Flowbite Logo" />
                 </div>
             </div>
-            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Maniac XIV</span>
+            <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Maniac XV</span>
         </a>
 
         <ul class="space-y-2 font-medium">
@@ -174,7 +174,7 @@
             <div class="dropdown dropdown-end">
                 <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                     <div class="w-10 rounded-full">
-                        <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2025') }}/icon.png" />
+                        <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2026') }}/icon.png" />
                     </div>
                 </div>
                 <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -201,7 +201,7 @@
 
     {{--  Footer  --}}
     <div class="w-full pt-12">
-        <p class="text-slate-400 text-md">COPYRIGHT &copy; MANIAC XIV, All Rights Reserved</p>
+        <p class="text-slate-400 text-md">COPYRIGHT &copy; MANIAC XV, All Rights Reserved</p>
     </div>
 </div>
 

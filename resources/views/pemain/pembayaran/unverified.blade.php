@@ -28,11 +28,11 @@
         <div class="flex flex-col items-center px-4 py-16 bg-base-300">
             <img src="{{ asset('asset2024') }}/verification.svg" class="w-2/3 sm:w-1/2 md:w-1/4" draggable="false">
             <div class="flex flex-col justify-center md:flex-row md:items-center mt-6 bg-base-200 py-4 px-8 rounded-md gap-3">
-                <p class="font-medium text-center"><span class="text-xl md:text-md">Maniac</span><br /><span class="text-2xl md:text-xl">XIV</span></p>
+                <p class="font-medium text-center"><span class="text-xl md:text-md">Maniac</span><br /><span class="text-2xl md:text-xl">XV</span></p>
                 <div class="divider divider-vertical md:divider-horizontal divider-secondary my-0 md:mx-0"></div>
                 <div class="flex flex-col items-start">
                     <p class="font-medium mb-3 md:mb-0">Harap Menunggu Proses Verifikasi Data</p>
-                    <p class="text-sm">Apabila terjadi kesalahan, dapat menghubungi: <a target="_blank" href="https://wa.me/+6285330001180" style="cursor: pointer !important;" class="font-bold text-primary">Gioshelyn Sanisa Leksono (085330001180)</a></p>
+                    <p class="text-sm">Apabila terjadi kesalahan, dapat menghubungi: <a target="_blank" href="https://wa.me/+6282232958165" style="cursor: pointer !important;" class="font-bold text-primary">Nadya Putri Ramadhani (082232958165)</a></p>
                 </div>
             </div>
         </div>

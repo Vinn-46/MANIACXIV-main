@@ -203,11 +203,7 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>MANIAC (Multimedia ANd Interactive Art Competition)</strong> adalah lomba berbasis
-                                multimedia untuk
-                                anak SMA/K sederajat yang mencakup <em>Rally Games</em>, <em>Game Concept Design</em>, dan <em>Game Asset Design</em>
-                                yang diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology
-                                Universitas Surabaya.
+                                <strong>MANIAC (Multimedia and Interactive Art Competition)</strong> merupakan lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup Penyisihan (online), Semi Final (Rally Games & Game Besar), dan Final (presentasi). Materi yang dilombakan adalah mengenai User Interface dan User Experience. MANIAC diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.
                             </div>
                         </div>
                     </div>
@@ -217,16 +213,14 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 <span>
-                                    Apakah MANIAC XIV akan diadakan
+                                    Apakah MANIAC XV akan diadakan
                                     secara&nbsp;<em>online</em>&nbsp;atau&nbsp;<em>offline</em>?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <em>Online</em> untuk babak penyisihan. <em>Offline</em> di Universitas Surabaya untuk <em>Technical meeting</em>, 
-                                babak Semifinal,
-                                dan babak Final.
+                                <em>Online</em> untuk babak Penyisihan. <em>Offline</em> di Universitas Surabaya untuk <em>Technical Meeting</em> &nbsp;FINAL, babak Semifinal, dan babak Final.
                             </div>
                         </div>
                     </div>
@@ -235,16 +229,16 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Apa saja tahap dalam MANIAC XIV?
+                                Apa saja tahap dalam MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <ul>
                                     <li>Babak Penyisihan</li>
-                                    <li><em>Technical Meeting </em> Babak Semi Final</li>
+                                    <li><em>Technical Meeting </em> &nbsp;Babak Semi Final</li>
                                     <li>Babak Semi Final</li>
-                                    <li><em>Technical Meeting </em> Babak Final</li>
+                                    <li><em>Technical Meeting </em> &nbsp;Babak Final</li>
                                     <li>Babak Final</li>
                                 </ul>
                             </div>
@@ -255,14 +249,19 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Apakah MANIAC XIV bersifat akademis (seperti mengerjakan soal-soal
-                                pelajaran)?
+                                Bagaimana timeline MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Tidak, Maniac XIV berfokus pada bidang Multimedia. Bidang akademis hanya akan diuji di
-                                beberapa pos pada <em>rally games</em>.
+                                <ul>
+                                    <li>Masa Pengerjaan Penyisihan (12 Mei - 21 Juli 2026)</li>
+                                    <li>Babak Penjurian (22 - 24 Juli 2026)</li>
+                                    <li>Pengumuman Finalis (26 Juli 2026)</li>
+                                    <li>Babak Semifinal (1 Agustus 2026)</li>
+                                    <li><em>Technical Meeting</em> &nbsp;Babak Final (1 Agustus 2026)</li>
+                                    <li>Final (3 Agustus 2026)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -271,15 +270,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Apakah bidang lomba yang diujikan hanya tentang Digital Media
-                                Technology?
+                                Berapa jumlah anggota tim untuk mengikuti lomba MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                MANIAC berfokus pada 2 bidang Multimedia, yaitu <em>Game Concept Design
-                                </em> dan <em>Game Asset Design</em>.
-                                Namun terdapat bidang Multimedia selain game pada babak semifinal.
+                                Maksimal 3 anggota per tim dari sekolah yang sama.
                             </div>
                         </div>
                     </div>
@@ -288,15 +284,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Apakah akan ada pelatihan sebelum pelaksanaan acara?
+                                Apakah terdapat batasan jumlah tim yang mendaftar (dari tiap sekolah)?
                             </button>
                         </h2>
                         <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Ya, akan ada Workshop yang bersifat tidak wajib namun dapat diikuti sebagai bekal untuk lomba MANIAC
-                                <um>
-                                    <li>Workshop <em>Game Concept Design</em> & Workshop <em>Game Asset Design</em> pada tanggal 31 Mei 2025.</li>
-                                </um>
+                                Tidak ada.
                             </div>
                         </div>
                     </div>
@@ -306,14 +299,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                                 <span>
-                                    <em>Software</em>&nbsp;apa yang digunakan selama lomba?
+                                    Bagaimana cara mendaftarkan sebagai peserta lomba MANIAC XV?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Untuk pengerjaan, <em>software</em> yang digunakan dibebaskan bagi para peserta, 
-                                namun penggunaan <em>software Artificial Intelligence </em> untuk <em>generate</em> hasil karya tidak diperbolehkan.
+                                Pendaftaran dapat dilakukan secara online melalui website <strong><a href="https://maniacubaya.com" target="_blank" style="color:skyblue">maniacubaya.com</a></strong>.
                             </div>
                         </div>
                     </div>
@@ -322,14 +314,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
-                                Bagaimana cara mendaftar menjadi peserta MANIAC XIV?
+                                Berapakah biaya untuk daftar MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Pendaftaran dilakukan secara <em>online</em> dengan mengisi form pendaftaran yang tersedia
-                                di website
-                                <strong><a href="https://maniacubaya.com" target="_blank" style="color:skyblue">maniacubaya.com</a></strong>.
+                                Untuk biaya pendaftaran lomba MANIAC XV sebesar Rp 40.000/tim (Early Bird) dan Rp 65.000/tim (Normal). Jika pendaftaran 3 tim atau lebih (dari sekolah yang sama) secara langsung akan mendapat potongan harga menjadi Rp 40.000/tim
                             </div>
                         </div>
                     </div>
@@ -339,14 +329,19 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
                                 <span>
-                                    Bagaimana cara mendaftar menjadi peserta <em>workshop</em>?
+                                    Bagaimana informasi lebih lanjut terkait MANIAC XV bisa didapatkan?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Pendaftaran dilakukan secara <em>online</em> dengan mengisi form pendaftaran 
-                                pada link berikut <a href="https://bit.ly/PendaftaranWorkshopManiacXIV" target="_blank" style="color:skyblue">bit.ly/PendaftaranWorkshopManiacXIV</a> 
+                                 <ul>
+                                    <li>Website: <strong><a href="https://maniacubaya.com" target="_blank" style="color:skyblue">maniacubaya.com</a></strong>.</li>
+                                    <li>IG: <strong><a href="https://www.instagram.com/maniac_ubaya" target="_blank" style="color:skyblue">@maniac_ubaya</a></strong>.</li></li>
+                                    <li>OA Line: @994nxsfr</li>
+                                    <li>Email: maniac.ubayaa@gmail.com</li>
+                                    <li>CP: Nadya (WA: 082232958165), Jovanka (WA: 082229088089)</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -356,22 +351,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
                                 <span>
-                                    Bagaimana&nbsp;<em>timeline</em>&nbsp;lomba MANIAC XIV?
+                                    Bagaimana pengumpulan karya lomba dan sampai kapan pengerjaanya?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <ul>
-                                    <li>Pengumuman Penyisihan (21 Juli 2025)</li>
-                                    <li>Masa Pengerjaan Penyisihan (21 - 22 Juli 2025)</li>
-                                    <li>Babak Penjurian (23 - 25 Juli 2025)</li>
-                                    <li>Pemberitahuan Semifinalis (25 Juli 2025)</li>
-                                    <li>Babak Semifinal (26 Juli 2025)</li>
-                                    <li><em>Technical Meeting</em> Babak Final (26 Juli 2025)</li>
-                                    <li>Masa Pengerjaan Final (26 - 29 Juli 2025)</li>
-                                    <li>Babak Final (30 Juli 2025)</li>
-                                </ul>
+                                Pengumpulan proposal dan prototype dapat dikumpulkan sampai penutupan pendaftaran.
                             </div>
                         </div>
                     </div>
@@ -380,19 +366,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
-                                Berapakah biaya pendaftaran untuk MANIAC XIV?
+                                Apakah semua anggota tim wajib hadir di <em>Technical Meeting</em> ?
                             </button>
                         </h2>
                         <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <ul>
-                                    <li>Pendaftaran untuk mengikuti lomba dikenakan biaya sebesar Rp40.000,00/tim (Early Bird) 
-                                        & Rp65.000,00/tim (Normal), 
-                                        terdapat juga potongan biaya pendaftaran bagi sekolah yang mendaftarkan 3 tim/lebih sebesar Rp40.000,00</li>
-                                    <li>
-                                        Pendaftaran workshop tidak dikenakan biaya (GRATIS).
-                                    </li>
-                                </ul>
+                                Semua tim wajib menghadiri <em>Technical Meeting</em> &nbsp;dengan mengirimkan salah satu perwakilan tim.
                             </div>
                         </div>
                     </div>
@@ -402,13 +381,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
                                 <span>
-                                    Apakah terdapat batasan jumlah tim yang mendaftar (dari tiap sekolah)?
+                                    Darimana saya mengetahui tentang S&K tentang perlombaan?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Tidak ada.
+                                Informasi mengenai perlombaan MANIAC XV akan di informasikan melalui instagram MANIAC XV
                             </div>
                         </div>
                     </div>
@@ -417,12 +396,15 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
-                                Berapa jumlah orang dalam satu tim ?
+                                Sampai kapan batas pendaftaran MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapse13" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                3 anggota dari sekolah yang sama.
+                                <ul>
+                                    <li>Open Registrasi Lomba (EarlyBird)  : 12 Mei 2026 - 2 Juni 2026</li>
+                                    <li>Open Registrasi Lomba (Normal)  : 3 Juni 2026 - 17 Juli 2026</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -431,18 +413,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
-                                Dimana saya dapat memperoleh informasi terkait MANIAC XIV?
+                                Apakah yang diujikan pada perlombaan hanya tentang Digital Media Technology?
                             </button>
                         </h2>
                         <div id="collapse14" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <ul>
-                                    <li>Website: maniacubaya.com</li>
-                                    <li>IG: maniac_ubaya</li>
-                                    <li>OA Line: @994nxsfr</li>
-                                    <li>Email: maniac.ubayaa@gmail.com</li>
-                                    <li>CP: Nicho (WA: 089699833080), Gioshelyn (WA: 085330001180)</li>
-                                </ul>
+                                MANIAC berfokus pada 2 bidang yaitu <em>UI (User Interface)</em> &nbsp;dan <em>UX (User Experience)</em>. Juga terdapat Rally Games yang akan dilakukan pada babak semifinal.
                             </div>
                         </div>
                     </div>
@@ -451,12 +427,16 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
-                                Dimana saya dapat melihat kisi-kisi perlombaan?
+                                Apa saja yang akan dilombakan pada babak penyisihan, semi final, dan final?
                             </button>
                         </h2>
                         <div id="collapse15" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Semua informasi mengenai lomba akan diinfokan melalui Instagram MANIAC XIV.
+                                <ul>
+                                    <li>Penyisihan : Proposal karya desain <em>UI/UX</em></li>
+                                    <li>Semi Final : <em>Rally Games</em></li>
+                                    <li>Final : Presentasi hasil karya yang telah dibuat</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -466,13 +446,13 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
                                 <span>
-                                    Apakah wajib mengikuti&nbsp;<em>Technical Meeting</em>?
+                                    Apakah kelas 12 boleh mengikuti MANIAC XV?
                                 </span>
                             </button>
                         </h2>
                         <div id="collapse16" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Setiap tim wajib mengirimkan salah satu perwakilan tim.
+                                Kelas 12 angkatan  2025/2026 dilarang berpartisipasi, sementara siswa yang baru memasuki kelas 12 diperbolehkan dengan izin sekolah dan bukti kesiswaan.
                             </div>
                         </div>
                     </div>
@@ -481,16 +461,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
-                                Batas pendaftaran MANIAC XIV hingga kapan?
+                                Apakah diperbolehkan jika ada satu anggota yang berbeda angkatan?
                             </button>
                         </h2>
                         <div id="collapse17" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <ul>
-                                    <li>5 Mei - 24 Mei 2025 (Open Registration Workshop)</li>
-                                    <li>5 Mei - 5 Juni 2025 (Open Registration Lomba <em>Early Bird</em>)</li>
-                                    <li>9 Juni - 16 Juli 2025 (Open Registration Lomba Normal)</li>
-                                </ul>
+                                Diperbolehkan, dengan syarat tetap berada di jenjang yang sama (SMA/K sederajat) serta sekolah yang sama, dan untuk kelas 12 mengikuti ketentuan pada pertanyaan sebelumnya
                             </div>
                         </div>
                     </div>
@@ -499,18 +475,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
-                                Apa saja yang dilombakan pada babak utama penyisihan dan final?
+                                Apakah diperbolehkan menggantikan rekan satu tim jika mendadak tidak bisa mengikuti rangkaian lomba MANIAC XV?
                             </button>
                         </h2>
                         <div id="collapse18" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <ul>
-                                    <li>Penyisihan: Proposal <em>Game Concept Design</em> dan <em>Game Asset Design</em>.</li>
-                                    <li>Semi Final: <em>Rally Games</em></li>
-                                    <li>Final: <em>Game Concept Design</em> dan <em>Game Asset Design</em></li>
-                                </ul>
-                                Selengkapnya dapat dilihat pada 
-                                <a href="https://maniacubaya.com/competition" target="_blank" style="color:skyblue">maniacubaya.com/competition</a>
+                                Diperbolehkan, untuk konfirmasi bisa dilakukan ke CP Nadya (WA: 082232958165)  2 minggu sebelum acara perlombaan di mulai.
                             </div>
                         </div>
                     </div>
@@ -519,14 +489,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
-                                Apakah kelas 12 boleh mengikuti MANIAC XIV?
+                                Jika salah satu anggota dalam satu tim tidak hadir dalam perlombaan MANIAC XV apakah diperbolehkan?
                             </button>
                         </h2>
                         <div id="collapse19" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Untuk kelas 12 angkatan lulus Tahun Ajaran 2024/2025 tidak diperbolehkan, sedangkan untuk
-                                angkatan yang naik ke kelas 12 pada Tahun Ajaran 2025/2026 diperbolehkan, asalkan mendapat
-                                izin dari sekolah dan memiliki bukti status kesiswaan.
+                                Diperbolehkan, akan tetapi resiko ditanggung tim sendiri
                             </div>
                         </div>
                     </div>
@@ -535,43 +503,12 @@
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">
-                                Apakah diperbolehkan jika teman satu kelompok berbeda angkatan?
+                                Apakah software yang digunakan untuk merancang UI terbatas pada Figma saja?
                             </button>
                         </h2>
                         <div id="collapse20" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                Diperbolehkan, dengan syarat tetap berada di jenjang yang sama (SMA/K sederajat), dan untuk
-                                kelas 12 mengikuti ketentuan pada pertanyaan sebelumnya (no.19).
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="1000">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse21" aria-expanded="false" aria-controls="collapse21">
-                                Apakah ada keringanan apabila terdapat gangguan koneksi?
-                            </button>
-                        </h2>
-                        <div id="collapse21" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Tidak ada, risiko ditanggung masing-masing peserta.
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="1050">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse22" aria-expanded="false" aria-controls="collapse22">
-                                Apakah diperbolehkan menggantikan rekan satu tim jika mendadak tidak bisa
-                                mengikuti MANIAC XIV?
-                            </button>
-                        </h2>
-                        <div id="collapse22" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Diperbolehkan, namun ada batasan waktu, yaitu 2 minggu sebelum pelaksanaan lomba 
-                                yaitu paling lambat tanggal 7 Juli 2025.
+                                Penggunaan software lain diperbolehkan, selama hasil prototype dapat dioperasikan dengan baik.
                             </div>
                         </div>
                     </div>

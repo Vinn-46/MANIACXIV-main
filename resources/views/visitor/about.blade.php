@@ -2,6 +2,11 @@
 
 @section('styles')
     <style>
+        @font-face {
+            font-family: 'Rustler';
+            src: url("{{ asset('fonts/rustler/RUSTLER_.TTF')}}") format("opentype");
+            font-weight: 500;
+        }
         :root {
             --video-h: 165px;
             --video-w: 200%;
@@ -265,17 +270,19 @@
                 </div>
                 <div class="body">
                     <p class="fs-5 font-normal">
-                        MANIAC (Multimedia ANd Interactive Art Competition) adalah lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup game concept design dan game asset design, yang diselenggarakan oleh jurusan Teknik Informatika Program Digital Media Technology Universitas Surabaya.
+                        MANIAC (Multimedia and Interactive Art Competition) XV merupakan lomba berbasis multimedia untuk anak SMA/K sederajat yang mencakup Penyisihan (online), Semifinal (Rally Games & Game Besar), dan Final (presentasi). Materi yang dilombakan adalah mengenai User Interface dan User Experience. MANIAC diselenggarakan oleh Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.
                     </p>
                 </div>
             </div>
 
             <br>
-            <h1 class="text-center text-bold py-2 mt-5">JOIN NOW</h1>
+            <div class="d-flex justify-content-center py-2 mt-5">
+                <img src="{{ asset('asset2026/ABOUT US/joinNow.png') }}" alt="JOIN NOW" class="img-fluid" style="max-width: 300px;">
+            </div>
             <div class="container py-2 d-flex justify-content-center">
                 <div class="video-container" data-aos="fade-up">
                     <div class="d-flex justify-content-center align-items-center z-1">
-                        <iframe id="video" src="https://www.youtube.com/embed/KxdrfSuRerc?si=dbg21tsiVFSn5Few" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe id="video" src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

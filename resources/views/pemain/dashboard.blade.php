@@ -6,6 +6,15 @@
 
 @section('styles')
     <style>
+        @font-face {
+            font-family: 'duality';
+            src: url("{{ asset('fonts/duality/duality.otf') }}") format("opentype");
+        }
+
+        .font-duality {
+            font-family: 'duality', sans-serif;
+        }
+
         body {
             background: url("{{ asset('asset2024') }}/main/peserta-dashboard.png") no-repeat center;
             background-size: cover;
@@ -27,9 +36,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {{--  Data Peserta  --}}
         <div class="bg-dark-red flex flex-col p-4 rounded-md shadow-md data relative">
-            <h1 class="text-xl md:text-xl font-bold bg-white py-2 px-4 text-center text-dark-red rounded-md uppercase">Data Peserta</h1>
+            <h1 class="text-xl md:text-xl font-normal bg-white py-2 px-4 text-center text-[#3B1910] rounded-md uppercase font-duality">Data Peserta</h1>
             <div class="text-md md:text-xl bg-white py-2 px-4 rounded-md mt-4">
-                <table class="table text-dark-red font-semibold text-base" >
+                <table class="table text-black font-semibold text-base" >
                     <tbody>
                         @foreach($participants as $participant)
                             <tr>
@@ -70,9 +79,9 @@
                 id="decordDataTim"
                 draggable="false"
             > --}}
-            <h1 class="text-xl md:text-xl font-bold bg-white py-2 px-4 text-center text-dark-red rounded-md uppercase">Data Tim</h1>
+            <h1 class="text-xl md:text-xl font-normal bg-white py-2 px-4 text-center text-[#3B1910] rounded-md uppercase font-duality">Data Tim</h1>
             <div class="text-md md:text-xl bg-white py-2 px-4 rounded-md mt-4 h-full">
-                <table class="table text-dark-red font-semibold text-base" >
+                <table class="table text-black font-semibold text-base" >
                     <tbody>
                     <tr>
                         <td class="p-0">Nama Tim</td>
@@ -102,16 +111,16 @@
     <div class="grid grid-cols-1 gap-8">
         {{--  Timeline  --}}
         <div class="bg-dark-red flex flex-col p-4 rounded-md w-full shadow-md data">
-            <img
+            {{-- <img
                 src="{{ asset('asset2024') }}/main/1.png"
                 alt=""
                 class="absolute hidden lg:block bottom-3 left-1/2 w-80"
                 style="transform: translateX(-50%)"
                 draggable="false"
-            >
-            <h1 class="text-xl md:text-xl font-bold bg-white py-2 px-4 text-center text-dark-red rounded-md uppercase">Timeline</h1>
+            > --}}
+            <h1 class="text-xl md:text-xl font-normal bg-white py-2 px-4 text-center text-[#3B1910] rounded-md uppercase font-duality">Timeline</h1>
             <div class="text-md md:text-xl bg-white py-4 px-4 rounded-md mt-4 h-full">
-                <img src="{{ asset('asset2025') }}/timeline.png" alt="Timeline maniac 2025" draggable="false">
+                <img src="{{ asset('asset2026') }}/home/timeline.png" alt="Timeline maniac 2026" draggable="false">
             </div>
         </div>
 
@@ -136,9 +145,9 @@
                 style="transform: translateX(-50%)"
                 draggable="false"
             > --}}
-            <h1 class="text-xl md:text-xl font-bold bg-white py-4 px-4 text-center text-dark-red rounded-md uppercase">Instruksi Penggunaan</h1>
+            <h1 class="text-xl md:text-xl font-normal bg-white py-4 px-4 text-center text-[#3B1910] rounded-md uppercase font-duality">Instruksi Penggunaan</h1>
             <div class="text-md md:text-xl bg-white max-md:py-1 max-md:px-4 md:py-2 md:px-8 rounded-md mt-4 h-full">
-                <div class="flex flex-col gap-3 text-dark-red">
+                <div class="flex flex-col gap-3 text-black">
                     {{--
                     <div class="badge badge-accent rounded-md text-sm text-bone mt-6 p-4 font-semibold">6 Mei 2025</div> --}}
                     <div class="divider"></div>

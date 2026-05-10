@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peserta | Deactivated Page</title>
-    <link rel="icon" href="{{ asset('asset2025') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -14,21 +14,17 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2024') }}/cursor/CURSOR.cur"),
-            url("{{ asset('asset2024') }}/cursor/CURSOR.svg"),
-            url("{{ asset('asset2024') }}/cursor/CURSOR.png"), auto;
-            background: url("{{ asset('asset2024') }}/main/peserta-pembayaran.png") no-repeat center;
+            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
+            background: url("{{ asset('asset2026') }}/pendaftaran/background.png") no-repeat center;
             background-size: cover;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2024') }}/cursor/shield.svg"),
-            url("{{ asset('asset2024') }}/cursor/shield.png"), pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2024') }}/cursor/sword.svg"),
-            url("{{ asset('asset2024') }}/cursor/sword.png"), text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
         }
 
         body::-webkit-scrollbar {
@@ -50,11 +46,11 @@
 </head>
 <body class="min-h-screen">
 {{--  Navigation Bar  --}}
-<div class="navbar bg-base-200 px-4 mb-2 z-50 rounded-br-xl rounded-bl-xl">
+<div class="navbar bg-[#8B181B] text-white px-4 mb-2 z-50 rounded-br-xl rounded-bl-xl">
     <div class="flex-1">
         <a class="btn btn-ghost text-2xl">
             <img src="{{ asset('asset2024') }}/logo-maniac.jpg" alt="" class="w-8 rounded">
-            Maniac XIV
+            Maniac XV
         </a>
     </div>
     <div class="flex-none z-50">
@@ -64,7 +60,7 @@
                     <summary>
                         Menu
                     </summary>
-                    <ul class="p-2 bg-base-100 rounded-t-none">
+                    <ul class="p-2 bg-[#8B181B] text-white rounded-t-none">
                         <li>
                             <a href="{{ route('index') }}">
                                 Home
@@ -87,7 +83,7 @@
 {{--  Content  --}}
 <div class="p-10 mt-10 flex flex-col items-center">
     <div class="card rounded-lg shadow-md data max-w-lg">
-        <img
+        <!-- <img
             src="{{ asset('asset2024') }}/main/viking-head.png"
             alt=""
             class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
@@ -105,12 +101,12 @@
             class="absolute hidden sm:block w-28 sm:w-32 top-[-4.4rem] sm:top-[-4.7rem] sm:right-[37.5%] z-[-1]"
             style="transform: scaleX(-1)"
             draggable="false"
-        >
+        > -->
         <h1 class="text-2xl bg-base-300 p-4 font-black rounded-t-lg text-center text-primary select-none">Account Deactivated!</h1>
         <div class="card-body bg-base-200 rounded-b-lg">
             <div class="flex justify-center items-center">
                 <img
-                    src="{{ asset('asset2024') }}/main/maniac.png"
+                    src="{{ asset('asset2026') }}/Title.png"
                     alt=""
                     class="w-80 rounded"
                 >
@@ -120,13 +116,13 @@
                 <li>Akun anda teranggap akun spam.</li>
                 <li>Akun anda melanggar ketentuan yang berlaku.</li>
             </ul>
-            <p>Apabila terjadi kesalahan dalam penonaktifan akun anda, harap hubungi <a target="_blank" href="https://wa.me/6285104914848" style="cursor: pointer !important;" class="font-bold text-primary">Fiorello Austin Ardianto (085104914848)</a></p>
-            <p class="mt-3">Thanks,<br />Information System Maniac XIV</p>
+            <p>Apabila terjadi kesalahan dalam penonaktifan akun anda, harap hubungi <a target="_blank" href="https://wa.me/6285104914848" style="cursor: pointer !important;" class="font-bold text-primary">Nadya Putri Ramadhani (082232958165)</a></p>
+            <p class="mt-3">Thanks,<br />Information System Maniac XV</p>
             <a href="{{ route('index') }}" class="btn btn-primary mt-5">Back to Home</a>
         </div>
     </div>
     <div class="w-full pt-12 px-2">
-        <p class="text-white text-md" id="footer">COPYRIGHT &copy; MANIAC XIV Information System, All rights Reserved</p>
+        <p class="text-white text-md" id="footer">COPYRIGHT &copy; MANIAC XV Information System, All rights Reserved</p>
     </div>
 </div>
 </body>

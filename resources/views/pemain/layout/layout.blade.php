@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Dashboard' }}</title>
-    <link rel="icon" href="{{ asset('asset2025/Icon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -14,7 +14,7 @@
         }
         
         body {
-            background-image: url("{{ asset('asset2026/pendaftaran/bg.png') }}") !important;
+            background-image: url("{{ asset('asset2026/home/bg.png') }}") !important;
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
@@ -22,19 +22,15 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2024') }}/cursor/CURSOR.cur"),
-                    url("{{ asset('asset2024') }}/cursor/CURSOR.svg"),
-                    url("{{ asset('asset2024') }}/cursor/CURSOR.png"), auto;
+            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2024') }}/cursor/shield.svg"),
-                    url("{{ asset('asset2024') }}/cursor/shield.png"), pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2024') }}/cursor/sword.svg"),
-                    url("{{ asset('asset2024') }}/cursor/sword.png"), text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
         }
 
         body::-webkit-scrollbar {
@@ -277,7 +273,7 @@
     <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="w-full">
     <div class="absolute bottom-0 left-0 w-full text-center pb-6 md:pb-16">
         <p class="text-white" style="font-size: clamp(10px, 1.8vw, 14px)">
-            &copy; Developed by MANIAC XIV commitee <br> <span class="font-bold">Social Media</span>
+            &copy; Developed by MANIAC XV commitee <br> <span class="font-bold">Social Media</span>
         </p>
         <div class="flex justify-center items-center gap-7 mt-4">
     

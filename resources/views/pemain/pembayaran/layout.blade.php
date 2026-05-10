@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peserta | {{ $title ?? 'Pembayaran' }}</title>
 
-    <link rel="icon" href="{{ asset('asset2025/Icon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -15,19 +15,17 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2025') }}/cursor/cursor.cur"),
-            url("{{ asset('asset2025') }}/cursor/cursor.svg"),
-            url("{{ asset('asset2025') }}/cursor/cursor.png"), auto;
-            background: url("{{ asset('asset2025') }}/.png") no-repeat center;
+            cursor: url("{{ asset('asset2026') }}/cursor/cursor.png"), auto;
+            background: url("{{ asset('asset2026') }}/pendaftaran/background.png") no-repeat center;
             background-size: cover;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2025') }}/cursor/pointer.png"), pointer !important;
+            cursor: url("{{ asset('asset2026') }}/cursor/pointer.png"), pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2025') }}/cursor/type.png"), text !important;
+            cursor: url("{{ asset('asset2026') }}/cursor/type.png"), text !important;
         }
 
         body::-webkit-scrollbar {
@@ -63,14 +61,14 @@
 </head>
 <body class="min-h-screen relative">
 {{--  Navigation Bar  --}}
-<div class="navbar bg-[#733B22] px-4 mb-2 c-z-1 rounded-br-xl rounded-bl-xl ">
+<div class="navbar bg-[#8B181B] px-4 mb-2 c-z-1 rounded-br-xl rounded-bl-xl ">
     <div class="flex-1">
         <a class="btn btn-ghost text-2xl">
             <div class="bg-white p-2 rounded-lg mr-1">
                 <img src="{{ asset('asset2025') }}/logo-maniac.png" alt="" class="w-16 rounded">
             </div>      
             <div class="text-white">
-                Maniac XIV
+                Maniac XV
             </div>      
         </a>
     </div>
@@ -81,7 +79,7 @@
                     <summary>
                         Menu
                     </summary>
-                    <ul class="p-2 rounded-t-none bg-[#BE8F57]" >
+                    <ul class="p-2 rounded-t-none bg-[#8B181B]" >
                         <li>
                             <a href="{{ route('index') }}">
                                 Home
@@ -111,12 +109,12 @@
             class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
             draggable="false"
         > --}}
-        <h1 class="text-2xl bg-[#BE8F57] p-5 font-black rounded-t-lg text-center text-white ">{{ $heading ?? "Verifikasi Bukti Pembayaran" }}</h1>
-        <div class="card-body bg-[#F0E9CF] rounded-b-lg">
+        <h1 class="text-2xl bg-[#8B181B] p-5 font-black rounded-t-lg text-center text-white ">{{ $heading ?? "Verifikasi Bukti Pembayaran" }}</h1>
+        <div class="card-body bg-[#FBF5E5] rounded-b-lg">
             <div class="grid grid-cols-1 md:grid-cols-3 place-content-center gap-7 md:gap-12">
                 <div class="flex gap-3 items-center">
                     <div
-                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded bg-[#733B22] text-primary-content">
+                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded bg-[#847E31] text-primary-content">
                         1
                     </div>
                     <div class="flex flex-col">
@@ -126,7 +124,7 @@
                 </div>
                 <div class="flex gap-3 items-center">
                     <div
-                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded {{ isset($step2) ? "bg-[#733B22]" : "bg-base-300" }} text-primary-content"
+                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded {{ isset($step2) ? "bg-[#847E31]" : "bg-[#8C8C8C]" }} text-primary-content"
                     >
                         2
                     </div>
@@ -137,7 +135,7 @@
                 </div>
                 <div class="flex gap-3 items-center">
                     <div
-                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded bg-base-300 text-primary-content"
+                        class="text-lg flex justify-content-center items-center py-2 px-5 rounded {{ isset($step3) ? "bg-[#847E31]" : "bg-[#8C8C8C]" }} text-primary-content"
                     >
                         3
                     </div>
@@ -158,11 +156,10 @@
         </div>
     </div>
     <div class="w-full pt-12 px-2">
-        <p class="text-white text-md" id="footer">COPYRIGHT &copy; MANIAC XIV Information System, All rights Reserved</p>
+        <p class="text-white text-md" id="footer">COPYRIGHT &copy; MANIAC XV Information System, All rights Reserved</p>
     </div>
 </div>
 <span class="d-block" style="height: 7rem;"></span>
-<img src="{{ asset('asset2025/pendaftaran/secret-place-2.png') }}" class="bottom-web-home">
 
 
 

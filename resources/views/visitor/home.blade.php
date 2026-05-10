@@ -312,14 +312,15 @@
         /* Juara */
         .juara {
             padding-top: 2vw;
-            width: 25vw;
+            width: 85vw;
             margin: 0;
             position: relative;
         }
         
         .juara-1-1 {
-            margin-left: 2.5vw;
-            margin-right: 2.5vw;
+            margin-left: auto; 
+            margin-right: auto;
+            display: block;
             top: 4vw;
         }
 
@@ -376,6 +377,31 @@
             background-color: rgba(230, 230, 230, 0.95);
             border-radius: 1rem;
         }
+
+        /* Pastikan container-nya relative */
+        .container-poster {
+            position: relative; 
+        }
+
+        /* Ini kodemu yang asli, tidak ada yang diubah */
+        .poster {
+            width: 60%;
+            z-index: 4;
+        }
+
+        /* Ini class baru untuk gambar polosan yang menimpa */
+        .poster-download {
+            position: absolute;
+            width: 60%; /* Lebarnya wajib persis sama dengan class .poster */
+            height: 100%; /* Agar tingginya menutupi seluruh gambar berbingkai */
+            z-index: 10; /* Berada di paling atas */
+            left: 50%;
+            transform: translateX(-50%);
+            
+            /* INI KUNCINYA: Membuat gambar polosan tidak terlihat sama sekali */
+            opacity: 0; 
+        }
+
         /* video */
     </style>
 @endsection
@@ -402,18 +428,24 @@
                 </div>
             </div>
         </div>
-        <div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
+        <<div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
             <div class="container-axe d-flex justify-content-center ">
-                <!--<img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
-                <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2">-->
+                <!-- <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
+                <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2"> -->
             </div>
-                <div class="container-poster d-flex  justify-content-center">
-                <img src="{{ asset('asset2026/home/Poster.png') }}" alt="Poster Maniac" class="poster">
+            
+            <div class="container-poster d-flex justify-content-center position-relative">
+                <!-- LAYER BAWAH (Visual): Ini gambar yang dilihat oleh user (Poster + Bingkai) -->
+                <img src="{{ asset('asset2026/home/bingkai.png') }}" alt="Poster Maniac" class="poster">
+
+                <!-- LAYER ATAS (Tersembunyi): Ini gambar yang akan didownload user (Hanya Poster) -->
+                <img src="{{ asset('asset2026/home/poster.png') }}" alt="Download Poster" class="poster-download">
+            </div>
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('asset2026/home/Timeline.png') }}" class="dec-3 dec-3-2">
-                <img src="{{ asset('asset2025/timeline.png') }}" alt="Timeline Maniac" class="timeline">
+                <img src="{{ asset('asset2026/home/TimelineLogo.png') }}" class="dec-3 dec-3-2">
+                <img src="{{ asset('asset2026/home/timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
@@ -423,15 +455,15 @@
                 <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4 position-absolute"> -->
                 <div class="container-juara">
                     <div class="img-juara-1 d-flex justify-content-center align-items-center">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara I" class="juara juara-1-2">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-1.png') }}" alt="Juara II" class="juara juara-1-1">
-                        <img src="{{ asset('asset2025/pendaftaran/juara-3.png') }}" alt="Juara III" class="juara juara-1-3">
+                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara II" class="juara juara-1-2"> --}}
+                        <img src="{{ asset('asset2026/home/prizepool.png') }}" alt="Juara I" class="juara juara-1-1">
+                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-3.png') }}" alt="Juara III" class="juara juara-1-3"> --}}
                     </div>
-                    <div class="img-juara-2 d-flex justify-content-center align-items-center">
+                    {{-- <div class="img-juara-2 d-flex justify-content-center align-items-center">
                         <img src="{{ asset('asset2025/pendaftaran/Harapan -1.png') }}" alt="Harapan I" class="juara-2 juara-2-1">
                         <img src="{{ asset('asset2025/pendaftaran/text-usp.png') }}" alt="Teks usp" class="container-usp">
                         <img src="{{ asset('asset2025/pendaftaran/Harapan -2.png') }}" alt="Harapan II" class="juara-2 juara-2-2">
-                    </div>
+                    </div>  --}}
                 </div>
                 {{-- <div class="container-text-3 d-flex justify-content-center flex-column ">
                     <p>*Terdiri atas 3 orang dari SMA/SMK yang sama</p>
@@ -474,7 +506,7 @@
                 <img src="{{ asset('asset2026/home/Join Now.png') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
-                    <iframe src="https://www.youtube.com/embed/KxdrfSuRerc?si=fkgBesLHYBUQIa3K" frameborder="0"
+                    <iframe src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" frameborder="0"
                         class="iframe d-flex align-items-center justify-content-center"></iframe>
                 </div>
             </div>

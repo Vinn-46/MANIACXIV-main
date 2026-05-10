@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | MANIAC XIV</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('asset2025') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Icons -->
@@ -107,7 +107,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-pale-cream">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center ps-2.5">
                 <div class="avatar mr-3">
-                    <img src="{{ asset('asset2025') }}/logo-maniac-xiv.png" class="h-6 me-3 sm:h-7" alt="Logo ManiacXIV" />
+                    <img src="{{ asset('asset2026') }}/logoNoBg.png" class="h-6 me-3 sm:h-7" alt="Logo ManiacXIV" />
                 </div>
             </a>
             <ul class="space-y-2 font-medium mt-4">
@@ -204,7 +204,7 @@
 
         {{-- Footer --}}
         <div class="w-full pt-12">
-            <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XIV, All Rights Reserved</p>
+            <p class="text-gray-500 text-md">COPYRIGHT &copy; MANIAC XV, All Rights Reserved</p>
         </div>
     </div>
 

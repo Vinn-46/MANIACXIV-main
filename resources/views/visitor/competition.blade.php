@@ -210,29 +210,17 @@
                     <div class="sub fs-2">{{ $section }}</div>
                     <div class="text fs-6 fw-normal">
                         @if ($section == 'PENYISIHAN')
-                        Bapak penyisihan MANIAC XIV berupa pengumpulan proposal Game Concept Design dan Game Asset Design secara daring. Tema dan studi kasus akan diberikan pada saat pengumuman penyisihan. Setelah itu, peserta harus mengumpulkan proposal mereka ke tempat pengumpulan yang sudah disediakan oleh panitia. Hasil akhir yang sudah dikumpulkan tidak dapat diubah.
+                        Babak Penyisihan MANIAC XV berupa pengumpulan proposal dan link prototype dari design UI/UX. Peserta akan diberikan waktu hingga tanggal 21 Juli 2026 untuk membuat proposal karya dan prototype yang akan dilombakan sesuai dengan tema dan studi kasus yang diberikan oleh panitia. Setelah itu, peserta harus mengumpulkan hasil kerja mereka ke tempat pengumpulan yang sudah disediakan oleh panitia. Hasil akhir yang sudah dikumpulkan tidak dapat diubah.
                         @elseif ($section == 'SEMIFINAL')
-                            Babak semifinal MANIAC XIV akan diadakan di Fakultas Teknik Universitas Surabaya. Babak 
-                            penyisihan akan terdiri dari Rally Games dan Game Besar yang wajib diikuti oleh setiap tim. 
-                            Pada Rally Games akan terdapat pos-pos permainan yang harus diselesaikan dengan strategi dan 
-                            kerja sama tim. Terdapat pula pos yang berisi pertanyaan teori mengenai game dan multimedia dasar, 
-                            serta pertanyaan logika dan juga pos yang menguji kerja sama tim. Pada Game Besar, setiap tim
-                            akan bermain dan berkompetisi untuk memenangkan permainan.
+                            Babak Semifinal MANIAC XV akan diadakan di Fakultas Teknik Universitas Surabaya. Babak ini akan terdiri dari Rally Games dan Game Besar yang wajib diikuti oleh setiap tim. Pada Rally Games akan terdapat pos-pos permainan yang harus diselesaikan dengan strategi dan kerja sama tim. Terdapat pula pos yang berisi pertanyaan teori mengenai User Interface, User Experience dan multimedia dasar, serta pertanyaan umum dan juga pos yang menguji kerja sama tim. Pada Game Besar, setiap tim akan bermain dan berkompetisi untuk memenangkan permainan.
                         @else
-                            Babak Final MANIAC XIV akan diadakan secara on-site di Universitas Surabaya.
-                            Topik yang akan dilombakan pada babak final adalah Game Concept Design dan
-                            Game Asset Design.
+                            Babak final MANIAC XV akan diadakan secara on-site di Universitas Surabaya. Topik yang akan dilombakan pada babak final adalah User Interface Design dan User Experience Design.
                             <br><br>
-                            Game Concept Design adalah cabang lomba untuk membuat sebuah konsep
-                            cerita atau alur dalam sebuah game. Peserta diharapkan dapat membuat
-                            konsep game yang sesuai dengan tema.
+                            User Interface Design adalah cabang lomba untuk membuat sebuah desain antarmuka untuk sebuah aplikasi. Peserta diharapkan dapat membuat desain antarmuka yang sesuai dengan salah satu contoh studi kasus.
+                            <br>
+                            User Experience Design adalah cabang lomba untuk mendesain pengalaman yang baik untuk user untuk aplikasi yang dibuat. Peserta diharapkan dapat mendesain User Experience semenarik mungkin sesuai dengan alur dan konsep yang telah dibuat.
                             <br><br>
-                            Game Asset Design adalah cabang lomba untuk mendesain aset-aset yang
-                            dibutuhkan dalam game tersebut. Peserta diharapkan dapat mendesain aset
-                            game semenarik mungkin sesuai dengan alur dan konsep yang telah dibuat.
-                            Setiap tim akan mempresentasikan hasil kerjanya pada Babak Final. Peserta
-                            harus bisa memberikan penjelasan mengenai konsep game beserta asetnya
-                            yang menarik dan kreatif sesuai dengan tema yang ditentukan.
+                            Setiap tim akan mempresentasikan hasil kerjanya pada Babak Final. Peserta harus bisa memberikan penjelasan mengenai User Interface dan User Experience yang menarik dan kreatif sesuai dengan studi kasus yang telah ditentukan.
                         @endif
                     </div>
                     <br>
@@ -244,13 +232,13 @@
 <div class="d-flex flex-column align-items-center mb-2">
     <img src="{{ asset('asset2026/COMPETITION BOARD/guidebook.png') }}" alt="guidebook-title" class="guidebook-title mb-4">
     <br>
-    <a href="http://bit.ly/GuideBookMANIACXIV" target="_blank">
+    <a href="https://bit.ly/GuidebookMANIACXV" target="_blank">
         {{-- <button class="button btn-lg">
             <img src="{{ asset('asset2025/arrow-left.png') }}" alt="Arrow" style="width: 30px; height: auto;">
             Download
         </button>  --}}
         <button class="button btn-lg">
-            Guide Book Maniac XIV
+            Guide Book Maniac XV
         </button> 
     </a>
 </div>

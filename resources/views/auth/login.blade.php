@@ -5,6 +5,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 
         @font-face {
+            font-family: 'Rustler';
+            src: url("{{ asset('fonts/rustler/RUSTLER_.TTF')}}") format("opentype");
+            font-weight: 500;
+        }
+
+        @font-face {
             font-family: 'Montserrat';
             src: url("../fonts/montserrat/Montserrat-SemiBold.otf") format("otf");
             font-weight: 300;
@@ -69,7 +75,7 @@
 
         .wrap-all {
             padding-bottom: 4%;
-            font-family: Lato !important; 
+            font-family: 'Creato Display', sans-serif !important; 
             font-weight: 700;
             letter-spacing: 1.2px;
             width: 100vw;
@@ -94,17 +100,18 @@
             padding: 0;
             border: 2px solid #be8f57;
             border-radius: 21px;
-            background-color: #e7eadf;
+            background-color: #FBF5E5;
             backdrop-filter: blur(8px);
         }
 
         .text-login {
             color: #733b22;
-            font-family: dalek;
-            font-weight: 100;
-            text-shadow:-3px 2px  #be8f57;
+            font-family: 'Rustler', sans-serif !important;
+            font-weight: 700;
+            font-size: 3.5rem;
+            text-shadow: -1px 3px 0px #be8f57;
+            margin-top: 30px;
             margin-bottom: 20px;
-            margin-top: 20px;
         }
 
         .button {
@@ -121,7 +128,7 @@
 
         .button:hover {
             color: #D9D9D9;
-            background-color: #733b22;
+            background-color: #8E5324;
         }
 
         .txtPass {
@@ -138,7 +145,7 @@
         .register-box {
             margin-top: 12px;
             bottom: -22%;
-            background-color: #733b22;
+            background-color: #8E5324;
             color: white;
             border-bottom-left-radius: 19px;
             border-bottom-right-radius: 19px;
@@ -176,7 +183,7 @@
             }
 
             .text-login {
-                text-shadow: -1px 0.5px #be8f57;
+                text-shadow: -2px 1.5px 0px #be8f57;
             }
 
             .burung-kanan {
@@ -198,7 +205,7 @@
             }
 
             .text-login {
-                text-shadow: -2px 1px #be8f57;
+                text-shadow: -3px 2px 0px #be8f57;
             }
         }
 
@@ -212,7 +219,7 @@
             }
             
             .text-login {
-                text-shadow: -2px 1px #be8f57;
+                text-shadow: -3px 2px 0px #be8f57;
             }
         }
 
@@ -226,7 +233,7 @@
             }
 
             .text-login {
-                text-shadow: -2px 1px #be8f57;
+                text-shadow: -3px 2px 0px #be8f57;
             }
         }
 
@@ -240,7 +247,7 @@
             }
 
             .text-login {
-                text-shadow: -3px 2px #be8f57;
+                text-shadow: -4px 3px 0px #be8f57;
             }
         }
 
@@ -250,7 +257,7 @@
             }
 
             .text-login {
-                text-shadow: -3px 2px #be8f57;
+                text-shadow: -4px 3px 0px #be8f57;
             }
         }
 
@@ -281,16 +288,22 @@
         .error-password{
             width: 40%;
         }
+
+        /* Hide default edge/chrome password reveal icon */
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
     </style>
 @endsection
 
 
 @section('content')
     <div class="container-fluid m-0 p-0">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri">
+        <!-- <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan">
+        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri"> -->
         <div class="wrap-all d-flex justify-content-center align-items-center flex-column ">
-            <img data-aos="fade-in" src="{{ asset('asset2025/logo-maniac-xiv.png') }}" alt="logo-maniac" class="logo-maniac z-1">
+            <img data-aos="fade-in" src="{{ asset('asset2026/Title.png') }}" alt="logo-maniac" class="logo-maniac z-1">
             @if (session()->has('gagal'))
                 <div class="alert alert-danger" role="alert">
                     {{ session()->get('gagal') }}
@@ -301,7 +314,7 @@
                     {{ $message }}
                 </div>
             @enderror
-            <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-1 z-1">
+            {{-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-1 z-1"> --}}
             <div class="container-form d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                 data-aos-delay="50">
                 <form method="POST" action="{{ route('login') }}"
@@ -334,21 +347,11 @@
                             <input id="password" class="input-1 block mt-1 w-full @error('password') is-invalid @enderror"
                             type="password" name="password" autocomplete="current-password" />
                            
-                            <svg style="width: 20px; height:auto;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                class="togle-position eye-close" onclick="togglePasswordVisibility()">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                            </svg>
-
-                            <svg style="width: 20px; height:auto;" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="togle-position eye"
-                                onclick="togglePasswordVisibility()">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
-                            </svg>
+                            <!-- Ganti src ini dengan path gambar mata tertutup milikmu -->
+                            <img src="{{ asset('asset2026/pendaftaran/hide.png') }}" class="togle-position eye-close" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer;">
+                            
+                            <!-- Ganti src ini dengan path gambar mata terbuka milikmu -->
+                            <img src="{{ asset('asset2026/pendaftaran/show.png') }}" class="togle-position eye" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer; display: none;">
                             @error('password')
                                 <div id="sumberError" class="error-password invalid-feedback alert-danger" >
                                     {{ $message }}
@@ -385,17 +388,16 @@
                         </div>
 
                         <!-- Button Log in -->
-                        <button class="button btn text-light">
-                            {{ __('Log in') }}
+                        <button type="submit" class="bg-transparent border-0 p-0" style="margin-top: 1.5rem; margin-bottom: 2rem; display: flex; justify-content: center; width: 100%;">
+                            <img src="{{ asset('asset2026/pendaftaran/login.png') }}" alt="Log in" style="width: 70%; max-width: 220px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         </button>
                     </div>
-                    {{-- Uncomment jika sudah fix --}}
                     <div class="register-box d-flex align-items-center flex-column">
-                        <p>Not registered yet? <a class="register-link" href="https://maniacubaya.com/register" target="_blank">Click for register</a></p>
+                        <p>Not registered yet? <a class="register-link" href="https://maniacubaya.com/register" target="_blank">Click to register</a></p>
                     </div>
             </div>
             </form>
-            <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-2 z-1">
+            {{-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-2 z-1"> --}}
         </div>
     </div>
 @endsection
@@ -405,16 +407,17 @@
         
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
-            const toggleReveal = document.querySelector('.eye');
-            const toggleHidden = document.querySelector('.eye-close');
+            const eyeOpen = document.querySelector('.eye');
+            const eyeClose = document.querySelector('.eye-close');
 
             if (passwordInput.getAttribute('type') === 'password') {
                 passwordInput.setAttribute('type', 'text');
-                toggleReveal.classList.add('show-password');
-                toggleReveal.style.display('none');
+                eyeOpen.style.display = 'block';
+                eyeClose.style.display = 'none';
             } else {
                 passwordInput.setAttribute('type', 'password');
-                toggleReveal.classList.remove('show-password');
+                eyeOpen.style.display = 'none';
+                eyeClose.style.display = 'block';
             }
         }
     </script>
