@@ -445,7 +445,7 @@
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
                 <img src="{{ asset('asset2026/home/TimelineLogo.png') }}" class="dec-3 dec-3-2">
-                <img src="{{ asset('asset2026/home/timeline.png') }}" alt="Timeline Maniac" class="timeline">
+                <img src="{{ asset('asset2026/home/Timeline.png') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
