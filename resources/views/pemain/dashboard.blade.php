@@ -120,7 +120,7 @@
             > --}}
             <h1 class="text-xl md:text-xl font-normal bg-white py-2 px-4 text-center text-[#3B1910] rounded-md uppercase font-duality">Timeline</h1>
             <div class="text-md md:text-xl bg-white py-4 px-4 rounded-md mt-4 h-full">
-                <img src="{{ asset('asset2026') }}/home/timeline.png" alt="Timeline maniac 2026" draggable="false">
+                <img src="{{ asset('asset2026') }}/home/Timeline.png" alt="Timeline maniac 2026" draggable="false">
             </div>
         </div>
 
