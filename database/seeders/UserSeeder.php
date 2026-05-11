@@ -16,12 +16,12 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $passwords = [
-            'admin'       => Hash::make('AdminManiac!@#$'),
-            'acara'       => Hash::make('AcaraManiac!@#$'),
-            'si'          => Hash::make('SIManiacJago!@#$'),
-            'supersi'     => Hash::make('SuperSIJago!@#$'),
-            'participant' => Hash::make('TimManiac!@#$'),
-            'penpos'      => Hash::make('Penpos!@#$'),
+            'admin'       => Hash::make('AdminManiac!123'),
+            'acara'       => Hash::make('AcaraManiac!123'),
+            'si'          => Hash::make('SIManiacJago!123'),
+            'supersi'     => Hash::make('SuperSIJago!123'),
+            // 'participant' => Hash::make('TimManiac!123'),
+            // 'penpos'      => Hash::make('Penpos!123'),
         ];
 
         $users = [
@@ -29,8 +29,8 @@ class UserSeeder extends Seeder
             'acara'       => ['joshua', 'vellya', 'acara1', 'acara2', 'acara3', 'acara4'],
             'si'          => ['kelvin', 'leon', 'arkan', 'margaret'],
             'supersi'     => ['super_kelvin', 'super_leon'],
-            'participant' => collect(range(1, 20))->map(fn($i) => "tim_$i")->toArray(),
-            'penpos'      => collect(range(1, 20))->map(fn($i) => "penpos_$i")->toArray(),
+            // 'participant' => collect(range(1, 20))->map(fn($i) => "tim_$i")->toArray(),
+            // 'penpos'      => collect(range(1, 20))->map(fn($i) => "penpos_$i")->toArray(),
         ];
 
         foreach ($users as $role => $names) {

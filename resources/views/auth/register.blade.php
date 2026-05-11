@@ -181,7 +181,7 @@
                         @enderror
                     </div>
                     <div class="text-danger mt-1" id="passwordCriteriaMessage">
-                        *) Minimal 1 Karakter dan Maximal 15 Karakter. <strong>Tidak mengandung Spasi</strong>
+                        *) Minimal 1 karakter dan maximal 15 karakter. <strong>Tidak mengandung spasi</strong>
                     </div>
                 </div>
 
@@ -198,7 +198,7 @@
                         @enderror
                     </div>
                     <div class="text-danger mt-1" id="passwordCriteriaMessage">
-                        *) Minimal 8 Karakter
+                        *) Minimal 8 karakter
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6">
@@ -212,7 +212,7 @@
                         </div>
                     @enderror
                     <div class="text-danger mt-1" id="passwordCriteriaMessage">
-                        *) Maximal 15 Karakter (termasuk spasi)
+                        *) Maximal 15 karakter (termasuk spasi)
                     </div>
                 </div>
                 <div class="col-md-12 col-lg-6">

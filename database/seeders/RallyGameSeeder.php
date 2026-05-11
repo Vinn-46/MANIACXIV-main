@@ -40,7 +40,7 @@ class RallyGameSeeder extends Seeder
             ],
         ];
 
-        $password = Hash::make('PenposRallyManiac!@#$');
+        $password = Hash::make('PenposRallyManiac!123');
 
         foreach ($rallyGames as $type => $games) {
             foreach ($games as $name => $keeperName) {
