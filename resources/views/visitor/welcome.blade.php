@@ -453,7 +453,7 @@
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
                 <h4 class="offcanvas-title text-white" id="offcanvasNavbarLabel" style="font-family: 'cinzel'">MANIAC
-                    XIV</h4>
+                    XV</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
