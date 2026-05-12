@@ -428,7 +428,7 @@
                 </div>
             </div>
         </div>
-        <<div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
+        <div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
             <div class="container-axe d-flex justify-content-center ">
                 <!-- <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
                 <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2"> -->
