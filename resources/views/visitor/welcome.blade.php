@@ -625,7 +625,7 @@
                             <a class="text-white pb-2 sosmedLink" href="mailto:maniac.ubayaa@gmail.com"
                                 target="_blank" rel="noopener">
                                 <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
-                                @maniac.ubaya@gmail.com
+                                maniac.ubayaa@gmail.com
                             </a>
                             <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
