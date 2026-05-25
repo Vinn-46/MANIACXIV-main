@@ -190,6 +190,12 @@ Route::group(
     ['middleware'=> 'si', 'prefix' => 'si', 'as'=>'si.'],
     function(){
         Route::get('/', [Si\SiController::class, 'index'])->name('index');
+
+        // Shop System (Black Market)
+        Route::get('/shop', [Si\ShopController::class, 'index'])->name('shop.index');
+        Route::post('/shop/player-details', [Si\ShopController::class, 'getPlayerDetails'])->name('shop.playerDetails');
+        Route::post('/shop/buy-peluru', [Si\ShopController::class, 'buyPeluru'])->name('shop.buyPeluru');
+        Route::post('/shop/upgrade-weapon', [Si\ShopController::class, 'upgradeWeapon'])->name('shop.upgradeWeapon');
     }
 );
 

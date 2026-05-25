@@ -3,20 +3,11 @@
 namespace App\Http\Controllers\Si;
 
 use Exception;
-use App\Models\Market;
 use App\Models\Player;
-use App\Models\Success;
-use App\Models\Inventory;
-use App\Events\UpdateMarket;
-use App\Models\RelicMission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Enums\BuyMultiplierEnum;
-use App\Models\GameBesarSession;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Enums\WithdrawMultiplierEnum;
-use App\Events\UpdateTearsSemiPrivate;
 
 // Uncomment ini waktu Hari H
 define('DUMMY', [
@@ -45,17 +36,7 @@ class SiController extends Controller
         return response()->json($response, $status);
     }
 
-    public function checkSession() {
-        $session = GameBesarSession::where('open', '<=', Carbon::now())
-                    ->where('close', '>=', Carbon::now())
-                    ->first();
 
-        return $session;
-    }
-
-    public function testPusher(Request $request) {
-        return $this->ajaxResponse(false, "Ini Response AJAX");
-    }
 
     public function index(){
         // Testing
@@ -69,11 +50,7 @@ class SiController extends Controller
                     ->whereNotIn('players.id', DUMMY)
                     ->get();
 
-        $session = $this->checkSession();
-        $sessionMission = $session->mission ?? 0;
-        $relicMisis = collect([]); // Remove relic missions
-
-        return view('si.beranda', compact("players", "relicMisis", 'sessionMission'));
+        return view('si.beranda', compact("players"));
     }
 
 }
