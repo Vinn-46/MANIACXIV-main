@@ -6,19 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Point extends Model
+class TargetBase extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'type',
-        'condition',
-        'value',
-        'honor_reward',
-        'peluru_reward',
+        'max_hp',
+        'point_reward',
     ];
 
-    public function scores() : HasMany {
-        return $this->hasMany(Score::class, 'point_id');
+    public function playerTargetBases() : HasMany {
+        return $this->hasMany(PlayerTargetBase::class, 'target_base_id');
     }
 }

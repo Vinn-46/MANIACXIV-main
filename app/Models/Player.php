@@ -17,6 +17,11 @@ class Player extends Model
     protected $fillable = [
         'team_id',
         'points',
+        'honor',
+        'peluru',
+        'weapon_level',
+        'game_besar_points',
+        'bonus_points',
     ];
 
     public function team() : BelongsTo {
@@ -29,5 +34,9 @@ class Player extends Model
 
     public function scores() : HasMany {
         return $this->hasMany(Score::class, 'player_id');
+    }
+
+    public function playerTargetBases() : HasMany {
+        return $this->hasMany(PlayerTargetBase::class, 'player_id');
     }
 }

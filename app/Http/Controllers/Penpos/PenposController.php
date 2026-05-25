@@ -56,7 +56,6 @@ class PenposController extends Controller
             }
 
             $point = Point::find($request->get('point_id'));
-            $points = $point->value;
 
             $score = Score::create([
                 'rally_game_id' => Auth::user()->rallyGame->id,
@@ -65,7 +64,9 @@ class PenposController extends Controller
             ]);
 
             $player->update([
-                'points' => $player->points + $points,
+                'points' => $player->points + $point->value,
+                'honor' => $player->honor + $point->honor_reward,
+                'peluru' => $player->peluru + $point->peluru_reward,
             ]);
 
             $scores = RallyGame::getPenposScores(Auth::user()->rallyGame->id);
@@ -100,9 +101,19 @@ class PenposController extends Controller
             $rallyGame = RallyGame::where("user_id", $request->user_id)->firstOrFail();
             $desc = 'Berhasil Menghapus Score untuk Tim ' . $team->name;
 
-            $points = $score->point->value;
-            $newPoints = max($player->points - $points, 0); // cap at 0
-            $player->update(['points' => $newPoints]);
+            $honor_reward = $score->point->honor_reward;
+            $peluru_reward = $score->point->peluru_reward;
+            $points_reward = $score->point->value;
+
+            $newHonor = max($player->honor - $honor_reward, 0);
+            $newPeluru = max($player->peluru - $peluru_reward, 0);
+            $newPoints = max($player->points - $points_reward, 0);
+
+            $player->update([
+                'points' => $newPoints,
+                'honor' => $newHonor,
+                'peluru' => $newPeluru
+            ]);
 
             // Delete score
             $score->delete();
