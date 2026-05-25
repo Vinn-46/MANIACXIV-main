@@ -64,7 +64,7 @@ class PlayerController extends Controller
             ->orderBy('name', "ASC")
             ->get();
         $points = Point::all();
-        $scores = Score::with(['rallyGame', 'relicChosen', 'point'])
+        $scores = Score::with(['rallyGame', 'point'])
             ->where('player_id', $player->id)
             ->get()
             ->keyBy('rally_game_id');
@@ -79,8 +79,6 @@ class PlayerController extends Controller
         try {
             $request->validate([
                 'point_id' => ['required', 'exists:points,id'],
-                'relics' => ['nullable', 'array'],
-                'checkSessionStock' => ['nullable', 'boolean'],
             ]);
 
             $player = Player::findOrFail($player);
@@ -89,8 +87,6 @@ class PlayerController extends Controller
             $team = $player->team;
             $point = Point::findOrFail($request->point_id);
 
-            $checkSessionStock = $request->boolean('checkSessionStock', true);
-
             $score = Score::create([
                 'player_id' => $player->id,
                 'rally_game_id' => $rallyGame->id,
@@ -98,65 +94,8 @@ class PlayerController extends Controller
             ]);
 
             $player->update([
-                'tears' => $player->tears + $point->point
+                'points' => $player->points + $point->value
             ]);
-            
-            $relicRequests = $request->input('relics', []);
-            $relicModels = Relic::all()->keyBy('color');
-
-            $gameBesarSession = GameBesarSession::where('open', '<=', now())
-                ->where('close', '>=', now())
-                ->first();
-
-            if (!$gameBesarSession) {
-                throw new \Exception("Session Game Besar tidak aktif.");
-            }
-
-            $redRelic = $relicRequests['red'] ?? 0;
-            $blueRelic = $relicRequests['blue'] ?? 0;
-            $purpleRelic = $relicRequests['purple'] ?? 0;
-
-            $totalRequested = $redRelic + $blueRelic + $purpleRelic;
-
-            if ($point->relic_qty < $totalRequested) {
-                return back()->with('error', "Jumlah relic melebihi batas maksimal dari point ini.");
-            }
-
-            if ($checkSessionStock && $gameBesarSession) {
-                if (
-                    $redRelic > $gameBesarSession->red_relic_stock ||
-                    $blueRelic > $gameBesarSession->blue_relic_stock ||
-                    $purpleRelic > $gameBesarSession->purple_relic_stock
-                ) {
-                    return back()->with('error', "Stock relic tidak mencukupi.");
-                }
-            }
-
-            RelicChosen::create([
-                'score_id' => $score->id,
-                'red_relic_qty' => $relicRequests['red'] ?? 0,
-                'blue_relic_qty' => $relicRequests['blue'] ?? 0,
-                'purple_relic_qty' => $relicRequests['purple'] ?? 0,
-            ]);
-
-            foreach (['red', 'blue', 'purple'] as $color) {
-                $qty = $relicRequests[$color] ?? 0;
-
-                if ($qty > 0 && isset($relicModels[$color])) {
-                    Inventory::updateOrCreate(
-                        ['player_id' => $player->id, 'relic_id' => $relicModels[$color]->id],
-                        ['qty' => DB::raw("qty + $qty")]
-                    );
-
-                    if ($checkSessionStock) {
-                        $gameBesarSession->decrement("{$color}_relic_stock", $qty);
-                    }
-                }
-            }
-
-            // Fire events after successful creation
-            event(new UpdateTearsSemiPrivate($player->id));
-            event(new UpdateAvailableStock());
 
             DB::commit();
 
@@ -174,9 +113,6 @@ class PlayerController extends Controller
         try {
             $request->validate([
                 'point_id' => ['required', 'exists:points,id'],
-                'relics' => ['nullable', 'array'],
-                'checkSessionStock' => ['nullable', 'boolean'],
-                'addBackSessionStock' => ['nullable', 'boolean'],
             ]);
 
             $score = Score::findOrFail($score);
@@ -184,102 +120,22 @@ class PlayerController extends Controller
             $oldPoint = $score->point;
             $newPoint = Point::find($request->get('point_id'));
 
-            $oldTears = $oldPoint->point;
-            $newTears = $newPoint->point;
+            $oldPoints = $oldPoint->value;
+            $newPoints = $newPoint->value;
 
             $team = $player->team;
-
-            $checkSessionStock = $request->boolean('checkSessionStock', true);
-            $addBackSessionStock = $request->boolean('addBackSessionStock', true);
 
             $score->update([
                 'point_id' => $newPoint->id
             ]);
 
             $player->update([
-                'tears' => $player->tears - $oldTears + $newTears
+                'points' => $player->points - $oldPoints + $newPoints
             ]);
-
-            $relicRequests = $request->input('relics', []);
-            $relicModels = Relic::all()->keyBy('color');
-
-            $gameBesarSession = GameBesarSession::where('open', '<=', now())
-                ->where('close', '>=', now())
-                ->first();
-
-            if (!$gameBesarSession) {
-                throw new \Exception("[Error] Sesi GameBesar tidak ditemukan atau belum aktif.");
-            }
-
-            $relicChosen = RelicChosen::where('score_id', $score->id)->first();
-
-            if ($relicChosen) {
-                foreach (['red', 'blue', 'purple'] as $color) {
-                    $qty = $relicChosen->{$color . '_relic_qty'} ?? 0;
-                    if ($qty > 0 && isset($relicModels[$color])) {
-                        Inventory::where('player_id', $player->id)
-                            ->where('relic_id', $relicModels[$color]->id)
-                            ->decrement('qty', $qty);
-                        if ($addBackSessionStock && $gameBesarSession) {
-                            $gameBesarSession->increment("{$color}_relic_stock", $qty);
-                        }
-                    }
-                }
-
-                $relicChosen->delete();
-            }
-
-            $redRelic = $relicRequests['red'] ?? 0;
-            $blueRelic = $relicRequests['blue'] ?? 0;
-            $purpleRelic = $relicRequests['purple'] ?? 0;
-
-            $totalRequested = $redRelic + $blueRelic + $purpleRelic;
-
-            if ($newPoint->relic_qty < $totalRequested) {
-                return back()->with('error', "Jumlah relic melebihi batas maksimal dari point ini.");
-            }
-
-            if ($checkSessionStock && $gameBesarSession) {
-                if (
-                    $redRelic > $gameBesarSession->red_relic_stock ||
-                    $blueRelic > $gameBesarSession->blue_relic_stock ||
-                    $purpleRelic > $gameBesarSession->purple_relic_stock
-                ) {
-                    return back()->with('error', "Stock relic tidak mencukupi.");
-                }
-            }
-
-            RelicChosen::create([
-                'score_id' => $score->id,
-                'red_relic_qty' => $redRelic,
-                'blue_relic_qty' => $blueRelic,
-                'purple_relic_qty' => $purpleRelic,
-            ]);
-
-            foreach (
-                [
-                    'red' => $redRelic, 
-                    'blue' => $blueRelic, 
-                    'purple' => $purpleRelic
-                ] as $color => $qty) {
-                if ($qty > 0 && isset($relicModels[$color])) {
-                    Inventory::where('player_id', $player->id)
-                        ->where('relic_id', $relicModels[$color]->id)
-                        ->increment('qty', $qty);
-
-                    if ($checkSessionStock && $gameBesarSession) {
-                        $gameBesarSession->decrement("{$color}_relic_stock", $qty);
-                    }
-                }
-            }
-
-            // Fire events
-            event(new UpdateTearsSemiPrivate($player->id));
-            event(new UpdateAvailableStock());
 
             DB::commit();
 
-            return back()->with('updateSuccess', "Score & Relic berhasil di-update untuk Tim <strong>{$team->name}</strong>.");
+            return back()->with('updateSuccess', "Score berhasil di-update untuk Tim <strong>{$team->name}</strong>.");
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', "[Error] " . $e->getMessage());
@@ -291,54 +147,20 @@ class PlayerController extends Controller
         DB::beginTransaction();
 
         try {
-            $request->validate([
-                'add_back_session_stock' => ['nullable', 'boolean'],
-            ]);
-            
             $score = Score::findOrFail($score);
             $player = $score->player;
             $point = $score->point;
             $team = $player->team;
             
-            $addBackSessionStock = $request->boolean('add_back_session_stock', true);
-            
-            $gameBesarSession = GameBesarSession::where('open', '<=', now())
-                ->where('close', '>=', now())
-                ->first();
-
-            $relicModels = Relic::all()->keyBy('color');
-            $relicChosen = RelicChosen::where('score_id', $score->id)->first();
-
-            if ($relicChosen) {
-                foreach (['red', 'blue', 'purple'] as $color) {
-                    $qty = $relicChosen->{$color . '_relic_qty'} ?? 0;
-
-                    if ($qty > 0 && isset($relicModels[$color])) {
-                        Inventory::where('player_id', $player->id)
-                            ->where('relic_id', $relicModels[$color]->id)
-                            ->decrement('qty', $qty);
-
-                        if ($addBackSessionStock && $gameBesarSession) {
-                            $gameBesarSession->increment("{$color}_relic_stock", $qty);
-                        }
-                    }
-                }
-
-                $relicChosen->delete();
-            }
-
             $player->update([
-                'tears' => max(0, $player->tears - $point->point)
+                'points' => max(0, $player->points - $point->value)
             ]);
 
             $score->delete();
 
-            event(new UpdateTearsSemiPrivate($player->id));
-            event(new UpdateAvailableStock());
-
             DB::commit();
 
-            return back()->with('deleteSuccess', "Score & relic berhasil dihapus dari tim <strong>{$team->name}</strong>.");
+            return back()->with('deleteSuccess', "Score berhasil dihapus dari tim <strong>{$team->name}</strong>.");
         } catch (\Exception $e) {
             DB::rollBack();
             return back()->with('error', "[Error] " . $e->getMessage());

@@ -190,12 +190,6 @@ Route::group(
     ['middleware'=> 'si', 'prefix' => 'si', 'as'=>'si.'],
     function(){
         Route::get('/', [Si\SiController::class, 'index'])->name('index');
-        Route::get('/{player}/jualRelic', [Si\SiController::class, 'jualRelic'])->name('jualRelic');
-        
-        Route::post('/{player}/detail', [Si\SiController::class, 'playerDetail'])->name('player.detail');
-        Route::post('/{player}/buy/relic', [Si\SiController::class, 'buyRelic']) ->name('buyRelic');
-        Route::post('/{player}/sell/relic', [Si\SiController::class, 'sellRelic']) ->name('sellRelic');
-        Route::post('/{player}/redeemMission', [Si\SiController::class, 'redeemMission']) ->name('redeemMission');
     }
 );
 
@@ -228,7 +222,6 @@ Route::group(
         Route::get('/player', [SuperSI\PlayerController::class, 'index'])
             ->name('player.index');
         Route::get('/player/log/{player}', [SuperSI\PlayerController::class, 'log']);
-        Route::get('player/marketlog/{player}', [SuperSI\PlayerController::class, 'marketLog']);
         Route::get('/player/score/{player}', [SuperSI\PlayerController::class, 'score']);
         Route::get('/player/rallygame/{player}', [SuperSI\PlayerController::class, 'rallyGame']);
         Route::post('/player/{player}/score/create/{rallyGame}', [SuperSI\PlayerController::class, 'createScore'])

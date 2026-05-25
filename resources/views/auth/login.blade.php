@@ -321,7 +321,7 @@
                     class="d-flex justify-content-center align-items-center flex-column">
                     @csrf
                     <h1 class="text-login">LOGIN</h1>
-                    {{-- <p>Coming Soon MANIAC XIV</p> --}}
+                    {{-- <p>Coming Soon MANIAC XV</p> --}}
                     {{-- Hapus Jika Webnya sudah Fix --}}
                     <!-- Email Address -->
                     <div>

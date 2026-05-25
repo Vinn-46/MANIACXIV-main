@@ -43,7 +43,7 @@
     <div class="grid grid-cols-1 gap-10 w-full max-w-7xl">
         {{--   Introduction    --}}
         <div class="card rounded-lg shadow-md data relative">
-            <h1 class="text-xl text-slate-200 bg-primary p-5 font-medium rounded-t-lg">Contest Maniac XIV 🏆</h1>
+            <h1 class="text-xl text-slate-200 bg-primary p-5 font-medium rounded-t-lg">Contest Maniac XV 🏆</h1>
             <div class="card-body bg-accent rounded-b-lg">
                 <h2 class="text-xl font-medium text-white mb-3">Selamat Datang, <span class="text-warning">{{ $author }}</span></h2>
                 <p class="text-slate-100 pb-3 sm:pb-0 break-words">

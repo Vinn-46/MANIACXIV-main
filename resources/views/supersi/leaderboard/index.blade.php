@@ -171,13 +171,7 @@
                             <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rank</th>
                             <th style="padding: 8px 12px; border-bottom: 1px solid white;">Player ID</th>
                             <th style="padding: 8px 12px; border-bottom: 1px solid white;">Team Name</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Rally Tears</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rally Win</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rally Played</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rally Point</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Game Besar Point</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Total</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Convert Tears Game Besar</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Total Points</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -186,13 +180,7 @@
                                 <td style="padding: 8px 12px;">{{ $idx + 1 }}</td>
                                 <td style="padding: 8px 12px;">{{ $row->player_id }}</td>
                                 <td style="padding: 8px 12px;">{{ $row->team_name }}</td>
-                                <td style="padding: 8px 12px; border-left: 2px solid white;">{{ $row->r_tears }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->r_jumlah_pos_win }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->r_jumlah_pos_dimainkan }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->point_rally }}</td>
-                                <td style="padding: 8px 12px; border-left: 2px solid white;">{{ $row->gb_points }}</td>
                                 <td style="padding: 8px 12px; border-left: 2px solid white;"><b>{{ $row->total_score }}</b></td>
-                                <td style="padding: 8px 12px; border-left: 2px solid white;">{{ $row->converted_points }}</td>
                             </tr>
                         @endforeach
                     </tbody>

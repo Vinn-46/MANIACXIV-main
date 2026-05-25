@@ -6,12 +6,10 @@ use Carbon\Carbon;
 use App\Models\Alpha;
 use App\Models\Score;
 use App\Models\Mission;
-use App\Models\Inventory;
-use Illuminate\Http\Request;
 use App\Models\GameBesarSession;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Enums\GameBesarRelicStockEnum;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class GameBesarController extends Controller
@@ -50,31 +48,10 @@ class GameBesarController extends Controller
 
             $missionId = $request->get('mission_id');
             
-            // ASSIGN STOCK
-            $redStock = 0;
-            $purpleStock = 0;
-            $blueStock = 0;
-            if ($missionId == 1) {
-                $redStock = GameBesarRelicStockEnum::FIRST_RED->value();
-                $purpleStock = GameBesarRelicStockEnum::FIRST_PURPLE->value();
-                $blueStock = GameBesarRelicStockEnum::FIRST_BLUE->value();
-            } else if ($missionId == 2) {
-                $redStock = GameBesarRelicStockEnum::SECOND_RED->value();
-                $purpleStock = GameBesarRelicStockEnum::SECOND_PURPLE->value();
-                $blueStock = GameBesarRelicStockEnum::SECOND_BLUE->value();
-            } else if ($missionId == 3) {
-                $redStock = GameBesarRelicStockEnum::THIRD_RED->value();
-                $purpleStock = GameBesarRelicStockEnum::THIRD_PURPLE->value();
-                $blueStock = GameBesarRelicStockEnum::THIRD_BLUE->value();
-            }
-
             GameBesarSession::create([
                 'mission_id' => $request->get('mission_id'),
                 'open' => $openDate,
                 'close' => $closeDate,
-                'red_relic_stock' => $redStock,
-                'purple_relic_stock' => $purpleStock,
-                'blue_relic_stock' => $blueStock
             ]);
 
             DB::commit();
@@ -107,30 +84,6 @@ class GameBesarController extends Controller
                 'close' => $closeDate,
             ];
 
-            if ($request->has('reset_session_stock_update')) {
-                $redStock = 0;
-                $purpleStock = 0;
-                $blueStock = 0;
-
-                if ($missionId == 1) {
-                    $redStock = GameBesarRelicStockEnum::FIRST_RED->value();
-                    $purpleStock = GameBesarRelicStockEnum::FIRST_PURPLE->value();
-                    $blueStock = GameBesarRelicStockEnum::FIRST_BLUE->value();
-                } else if ($missionId == 2) {
-                    $redStock = GameBesarRelicStockEnum::SECOND_RED->value();
-                    $purpleStock = GameBesarRelicStockEnum::SECOND_PURPLE->value();
-                    $blueStock = GameBesarRelicStockEnum::SECOND_BLUE->value();
-                } else if ($missionId == 3) {
-                    $redStock = GameBesarRelicStockEnum::THIRD_RED->value();
-                    $purpleStock = GameBesarRelicStockEnum::THIRD_PURPLE->value();
-                    $blueStock = GameBesarRelicStockEnum::THIRD_BLUE->value();
-                }
-
-                $updateData['red_relic_stock'] = $redStock;
-                $updateData['purple_relic_stock'] = $purpleStock;
-                $updateData['blue_relic_stock'] = $blueStock;
-            }
-
             // Perform update
             $session->update($updateData);
 
@@ -158,17 +111,4 @@ class GameBesarController extends Controller
         }
     }
 
-    public function resetInventory()
-    {
-        try {
-            Inventory::where('qty', '>', 0)
-                ->whereHas('player.team', function ($query) {
-                    $query->where('name', '!=', 'SYSTEM');
-                })->update(['qty' => 0]);
-                
-            return back()->with('success', 'All player inventories have been reset.');
-        } catch (\Exception $e) {
-            return back()->with('error', 'Failed to reset inventories: ' . $e->getMessage());
-        }
-    }
 }

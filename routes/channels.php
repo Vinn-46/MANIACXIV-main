@@ -16,13 +16,3 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
-
-Broadcast::channel('update-tears.{id}', function ($user, $id) {
-    if (!$user || !isset($user->id)) {
-        Log::warning('Unauthorized access attempt to update-tears channel by user: ' . json_encode($user));
-        return false;
-    }
-
-    Log::info('User ' . $user->id . ' is authorized to access update-tears channel with ID: ' . $id);
-    return (int) $user->id === (int) $id; 
-});

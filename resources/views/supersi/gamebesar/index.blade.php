@@ -116,51 +116,14 @@
 
     {{--  Content  --}}
     <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-3 rounded-md mt-4">
+    <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-3 rounded-md mt-4">
         <div class="w-full my-6">
-            <!-- Button to open modal -->
-            <button
-                id="openResetModalBtn"
-                class="w-full bg-red-600 text-white font-semibold py-3 px-4 rounded hover:bg-red-700 active:scale-95 transition-all"
-            >
-                Reset All Player Inventories
-            </button>
-
-            <!-- Hidden form to submit -->
-            <form id="resetInventoryForm" action="{{ route('super-si.gamebesar.resetInventory') }}" method="POST" style="display:none;">
-                @csrf
-                @method('PATCH')
-            </form>
-
             <!-- Backup Database Link -->
             <a href="{{ route('super-si.backup.db') }}"
                 class="w-full inline-block text-center bg-blue-600 text-white font-semibold py-3 px-4 rounded hover:bg-blue-700 active:scale-95 transition-all">
                 Backup Database
             </a>
         </div>
-        <dialog id="resetModal" class="modal modal-bottom sm:modal-middle">
-            <div class="modal-box bg-slate-800">
-                <h3 class="text-lg font-bold text-slate-50">Confirm Reset</h3>
-                <p class="py-4 text-slate-300">
-                    Are you sure you want to reset all player inventories? This action cannot be undone.
-                </p>
-
-                <div class="modal-action">
-                    <button id="cancelResetBtn" type="button"
-                        class="bg-slate-600 text-slate-50 font-semibold py-2.5 px-4 rounded-lg hover:bg-slate-500 active:scale-95 transition-all">
-                        Cancel
-                    </button>
-
-                    <button id="confirmResetBtn" type="button"
-                        class="bg-red-600 text-white font-semibold py-2.5 px-4 rounded-lg hover:bg-red-700 active:scale-95 transition-all">
-                        Confirm Reset
-                    </button>
-                </div>
-            </div>
-
-            <form method="dialog" class="modal-backdrop">
-                <button>close</button>
-            </form>
-        </dialog>
         <div role="tablist" class="tabs tabs-lifted">
             {{--  Session  --}}
             <input type="radio" name="my_tabs_2" role="tab" class="tab bg-slate-500 font-medium text-slate-50"
@@ -175,7 +138,6 @@
                                 <th width="20%" class="text-center py-3">Open</th>
                                 <th width="20%" class="text-center py-3">Close</th>
                                 <th width="25%" class="text-center py-3">Mission</th>
-                                <th width="10%" class="text-center py-3">Stock</th>
                                 <th width="10%" class="text-center py-3">Status</th>
                                 <th width="10%" class="text-center py-3">Action</th>
                             </tr>
@@ -187,13 +149,6 @@
                                     <td width="20%" class="text-center py-5 text-white">{{ $session->open }}</td>
                                     <td width="20%" class="text-center py-5 text-white">{{ $session->close }}</td>
                                     <td width="25%" class="text-center py-5 text-white">{{ $session->mission->name }}</td>
-                                    <td width="10%" class="text-center py-5 text-white">
-                                        <div class="flex flex-col gap-1 items-center">
-                                            <span class="text-red-400" id="stock-red-{{ $session->id }}">🔴 {{ $session->red_relic_stock }}</span>
-                                            <span class="text-blue-400" id="stock-blue-{{ $session->id }}">🔵 {{ $session->blue_relic_stock }}</span>
-                                            <span class="text-purple-400" id="stock-purple-{{ $session->id }}">🟣 {{ $session->purple_relic_stock }}</span>
-                                        </div>
-                                    </td>
                                     <td width="10%" class="text-center py-5 text-white">
                                         @php
                                             $status = 'inactive';
@@ -299,17 +254,6 @@
     <script type="module">
         const calendar = minMaxDatePicker("#addOpenDate", '#addCloseDate', true);
     </script>
-    <script type="module">
-        console.log("[UpdateAvailableStock]");
-        window.Echo.channel('update-available-stock').listen('UpdateAvailableStock', event => { 
-            console.log("Stock ID:", event);
-            const stock = event.availableStock;
-
-            $(`#stock-red-${stock.id}`).text(`🔴 ${stock.red_relic_stock}`);
-            $(`#stock-blue-${stock.id}`).text(`🔵 ${stock.blue_relic_stock}`);
-            $(`#stock-purple-${stock.id}`).text(`🟣 ${stock.purple_relic_stock}`);
-        });
-    </script>
     <script>
         const addModal = $("#addModal");
         const formAdd = $("#formAdd");
@@ -317,24 +261,5 @@
         const openAddModal = () => {
             addModal[0].showModal();
         }
-    </script>
-    <script type="module">
-        const resetModal = document.getElementById('resetModal');
-        const openResetModalBtn = document.getElementById('openResetModalBtn');
-        const cancelResetBtn = document.getElementById('cancelResetBtn');
-        const confirmResetBtn = document.getElementById('confirmResetBtn');
-        const resetInventoryForm = document.getElementById('resetInventoryForm');
-
-        openResetModalBtn.addEventListener('click', () => {
-            resetModal.showModal();
-        });
-
-        cancelResetBtn.addEventListener('click', () => {
-            resetModal.close();
-        });
-
-        confirmResetBtn.addEventListener('click', () => {
-            resetInventoryForm.submit();
-        });
     </script>
 @endsection

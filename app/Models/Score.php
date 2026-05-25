@@ -29,7 +29,4 @@ class Score extends Model
         return $this->belongsTo(Point::class, 'point_id');
     }
 
-    public function relicChosen() : HasOne {
-        return $this->hasOne(RelicChosen::class, 'score_id');
-    }
 }

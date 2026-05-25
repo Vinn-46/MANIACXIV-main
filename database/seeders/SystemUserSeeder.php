@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\{User, Team, Player, Relic, Inventory};
+use App\Models\{User, Team, Player};
 use Illuminate\Support\Facades\Hash;
 
 class SystemUserSeeder extends Seeder
@@ -20,7 +20,6 @@ class SystemUserSeeder extends Seeder
             // Find and delete inventory related to the player of the SYSTEM team
             $playerOld = Player::whereHas('team', fn($q) => $q->where('name', 'SYSTEM'))->first();
             if ($playerOld) {
-                Inventory::where('player_id', $playerOld->id)->delete();
                 $playerOld->delete();
             }
 
@@ -57,14 +56,6 @@ class SystemUserSeeder extends Seeder
             'points'   => 999999999,
         ]);
 
-        // Give the player all relics in high quantities
-        $relics = Relic::all();
-        foreach ($relics as $relic) {
-            Inventory::create([
-                'player_id' => $player->id,
-                'relic_id'  => $relic->id,
-                'qty'       => 99999,
-            ]);
-        }
+        // Removed relic and inventory seeding
     }
 }

@@ -265,7 +265,10 @@
     {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c5.png" alt="" class="absolute hidden lg:block right-0 w-50 translate-y-[200%]" draggable="false">--}}
     {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c6.png" alt="" class="absolute hidden lg:block left-0 w-50" draggable="false"> --}}
     @yield('content')
-   
+
+    <div class="w-full pt-12 px-2">
+        <p class="text-white max-md:text-sm md:text-md" id="footer">COPYRIGHT &copy; MANIAC XV Information System | All Rights Reserved</p>
+    </div>
 </div>
 
 @yield('scripts')

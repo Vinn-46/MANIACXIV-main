@@ -33,12 +33,10 @@
                 <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
                     <th width="5%" class="text-center py-3">ID</th>
                     <th width="15%" class="text-center py-3">Player</th>
-                    <th width="10%" class="text-center py-3">Inventory</th>
                     <th width="15%" class="text-center py-3">Success</th>
                     <th width="15%" class="text-center py-3">Logs</th>
                     <th width="10%" class="text-center py-3">Score</th>
                     <th width="10%" class="text-center py-3">Rally Game Detail</th>
-                    <th width="20%" class="text-center py-3">Game Besar</th>
                 </tr>
                 </thead>
                 <tbody id="tBody">
@@ -46,21 +44,6 @@
                     <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
                         <td width="5%" class="text-center py-5 text-white">{{ $player->id }}</td>
                         <td width="15%" class="text-center py-5 text-white">{{ $player->team->name }}</td>
-                        <td width="10%" class="text-center text-white">
-                            @if ($player->inventory)
-                                @foreach ($player->inventory as $item)
-                                    @if ($item->relic->color === 'red')
-                                        <span class="text-red-500 font-semibold">{{ $item->qty }} 🔴</span><br>
-                                    @elseif ($item->relic->color === 'purple')
-                                        <span class="text-purple-500 font-semibold">{{ $item->qty }} 🟣</span><br>
-                                    @elseif ($item->relic->color === 'blue')
-                                        <span class="text-blue-500 font-semibold">{{ $item->qty }} 🔵</span><br>
-                                    @endif
-                                @endforeach
-                            @else
-                                <span class="text-slate-400 italic">No items</span>
-                            @endif
-                        </td>
                         <td width="15%" class="text-center text-white">
                             <div class="flex flex-col items-center gap-1">
                                 @foreach ($missions as $mission)
@@ -100,14 +83,6 @@
                                 onclick="window.location = '{{ route('super-si.player.index') }}/rallygame/{{ $player->id }}'"
                             >
                                 Detail
-                            </button>
-                        </td>
-                        <td width="20%" class="text-center">
-                            <button
-                                class="bg-indigo-900 text-slate-50 font-semibold py-2 px-5 rounded-md hover:bg-indigo-700 active:scale-95 transition-all"
-                                onclick="window.location = '{{ route('super-si.player.index') }}/marketlog/{{ $player->id }}'"
-                            >
-                                Game Besar
                             </button>
                         </td>
                     </tr>

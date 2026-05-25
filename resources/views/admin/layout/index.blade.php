@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Admin | MANIAC XIV</title>
+    <title>Admin | MANIAC XV</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
     <!-- Fonts -->

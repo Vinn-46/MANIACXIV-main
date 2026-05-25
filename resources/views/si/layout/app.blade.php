@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Game Besar Maniac XIV</title>
+    <title>Game Besar Maniac XV</title>
     
     {{-- Icon --}}
     <link rel="icon" href="{{ asset('asset2025/Icon.ico') }}" type="image/x-icon">

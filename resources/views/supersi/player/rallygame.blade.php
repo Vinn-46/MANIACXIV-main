@@ -78,8 +78,7 @@
                         <th width="5%" class="text-center py-3">No</th>
                         <th width="15%" class="text-center py-3">Rally Game</th>
                         <th width="10%" class="text-center py-3">Type</th>
-                        <th width="10%" class="text-center py-3">Tears Earned</th>
-                        <th width="20%" class="text-center py-3">Relics Earned</th>
+                        <th width="10%" class="text-center py-3">Points Earned</th>
                         <th width="20%" class="text-center py-3">Action</th>
                         <th width="20%" class="text-center py-3">Delete</th>
                     </tr>
@@ -94,22 +93,10 @@
                             <td width="15%" class="text-center">{{ $game->name }}</td>
                             <td width="10%" class="text-center">{{ $game->type }}</td>
 
-                            {{-- Tears Earned --}}
+                            {{-- Points Earned --}}
                             <td width="10%" class="text-center">
                                 @if ($score && $score->point)
-                                    <span class="text-sky-300 font-semibold">{{ $score->point->point }}</span>
-                                @else
-                                    <span class="text-slate-400 italic">-</span>
-                                @endif
-                            </td>
-
-                            {{-- Relics Earned --}}
-                            <td width="20%" class="text-center">
-                                @if ($score && $score->relicChosen)
-                                    @php $r = $score->relicChosen; @endphp
-                                    <span class="text-red-400 font-semibold">{{ $r->red_relic_qty }} 🔴</span><br>
-                                    <span class="text-purple-400 font-semibold">{{ $r->purple_relic_qty }} 🟣</span><br>
-                                    <span class="text-blue-400 font-semibold">{{ $r->blue_relic_qty }} 🔵</span><br>
+                                    <span class="text-sky-300 font-semibold">{{ $score->point->value }}</span>
                                 @else
                                     <span class="text-slate-400 italic">-</span>
                                 @endif
@@ -157,42 +144,9 @@
                     </label>
                     <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" required>
                         @foreach ($points as $point)
-                            <option value="{{ $point->id }}">Point {{ $point->point }} (Max relic: {{ $point->relic_qty }})</option>
+                            <option value="{{ $point->id }}">Point {{ $point->value }}</option>
                         @endforeach
                     </select>
-                </div>
-
-                {{-- Pilihan Relic --}}
-                <div class="form-control mt-4">
-                    <label class="label text-slate-50">Pilih Relic</label>
-                    <div class="flex gap-4">
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-red-500 font-semibold">🔴 Red</span>
-                                <input type="number" min="0" name="relics[red]" class="input input-bordered input-sm w-20 bg-slate-700 text-white" value="0" />
-                            </label>
-                        </div>
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-purple-500 font-semibold">🟣 Purple</span>
-                                <input type="number" min="0" name="relics[purple]" class="input input-bordered input-sm w-20 bg-slate-700 text-white" value="0" />
-                            </label>
-                        </div>
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-blue-500 font-semibold">🔵 Blue</span>
-                                <input type="number" min="0" name="relics[blue]" class="input input-bordered input-sm w-20 bg-slate-700 text-white" value="0" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Cek Stock Session --}}
-                <div class="form-control mt-4">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="checkSessionStock" value="1" checked />
-                        <span class="label-text text-slate-50">Cek stok sesi GameBesar</span>
-                    </label>
                 </div>
 
                 <button type="submit" class="w-full bg-green-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg hover:bg-green-700 active:scale-95 transition-all">
@@ -228,54 +182,10 @@
                     <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" required>
                         @foreach ($points as $point)
                             <option value="{{ $point->id }}" {{ isset($score) && $score->point_id == $point->id ? 'selected' : '' }}>
-                                Point {{ $point->point }} (Max relic: {{ $point->relic_qty }})
+                                Point {{ $point->value }}
                             </option>
                         @endforeach
                     </select>
-                </div>
-
-                {{-- Pilihan Relic --}}
-                <div class="form-control mt-4">
-                    <label class="label text-slate-50">Pilih Relic</label>
-                    <div class="flex gap-4">
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-red-500 font-semibold">🔴 Red</span>
-                                <input type="number" min="0" name="relics[red]" class="input input-bordered input-sm w-20 bg-slate-700 text-white"
-                                    value="0" />
-                            </label>
-                        </div>
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-purple-500 font-semibold">🟣 Purple</span>
-                                <input type="number" min="0" name="relics[purple]" class="input input-bordered input-sm w-20 bg-slate-700 text-white"
-                                    value="0" />
-                            </label>
-                        </div>
-                        <div>
-                            <label class="label cursor-pointer justify-start gap-2">
-                                <span class="label-text text-blue-500 font-semibold">🔵 Blue</span>
-                                <input type="number" min="0" name="relics[blue]" class="input input-bordered input-sm w-20 bg-slate-700 text-white"
-                                    value="0" />
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Opsi Cek Stock Session --}}
-                <div class="form-control mt-4">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="checkSessionStock" value="1" checked />
-                        <span class="label-text text-slate-50">Cek stok sesi GameBesar</span>
-                    </label>
-                </div>
-
-                {{-- Opsi Tambah Kembali Stock Session --}}
-                <div class="form-control mt-2">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="addBackSessionStock" value="1" checked />
-                        <span class="label-text text-slate-50">Tambah kembali stok sesi GameBesar</span>
-                    </label>
                 </div>
 
                 <button type="submit" class="w-full bg-yellow-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg hover:bg-yellow-700 active:scale-95 transition-all">
@@ -303,13 +213,7 @@
                 @csrf
                 @method('DELETE')
 
-                {{-- Opsi Tambah Kembali Stock Session --}}
-                <div class="form-control mt-4">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="add_back_session_stock" value="true" checked />
-                        <span class="label-text text-slate-50">Tambah kembali stok sesi GameBesar</span>
-                    </label>
-                </div>
+
 
                 <button type="submit" class="w-full bg-red-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg hover:bg-red-700 active:scale-95 transition-all">
                     Hapus Score

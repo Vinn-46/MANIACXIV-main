@@ -113,8 +113,7 @@
                 <thead>
                     <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
                         <th width="20%" class="text-center py-3">Name</th>
-                        <th width="20%" class="text-center">Score</th>
-                        <th width="20%" class="text-center">Relic</th>
+                        <th width="40%" class="text-center">Score</th>
                         <th width="40%" class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -123,19 +122,7 @@
                     @foreach($scores as $score)
                         <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
                             <td width="20%" class="text-center py-5">{{ $score->player->team->name }}</td>
-                            <td width="20%" class="text-center">{{ $score->point }}</td>
-                            <td width="20%" class="text-center">
-                                   @php $relic = $score->relicChosen; @endphp
-                                    @if ($relic)
-                                        <span class="text-red-500 font-semibold">{{ $relic->red_relic_qty }} 🔴</span><br>
-                                    @endif
-                                    @if ($relic)
-                                        <span class="text-purple-500 font-semibold">{{ $relic->purple_relic_qty }} 🟣</span><br>
-                                    @endif
-                                    @if ($relic)
-                                        <span class="text-blue-500 font-semibold">{{ $relic->blue_relic_qty }} 🔵</span><br>
-                                    @endif
-                            </td>
+                            <td width="40%" class="text-center">{{ $score->point->value ?? $score->point->point }}</td>
                             <td class="" width="40%">
                                 <div class="grid grid-cols-2 gap-3">
                                     <button
@@ -183,59 +170,12 @@
                     <select class="select select-bordered rounded bg-slate-300 text-slate-800 font-medium" required name="point_id">
                         <option disabled selected>Pick one</option>
                         @foreach($points as $point)
-                            <option value="{{ $point->id }}" {{ isset($score) && $point->id == $score->point_id ? 'selected' : '' }}>Point: {{ $point->point }} | Relics: {{ $point->relic_qty }}</option>
+                            <option value="{{ $point->id }}" {{ isset($score) && $point->id == $score->point_id ? 'selected' : '' }}>Point: {{ $point->value }}</option>
                         @endforeach
                     </select>
                 </label>
 
-                {{-- Relics Inputs --}}
-                @php
-                    $relic = isset($score) ? $score->relicChosen : null;
-                @endphp
-                <div class="grid grid-cols-3 gap-4 mt-4">
-                    <div>
-                        <label class="label text-slate-50">Red Relic</label>
-                        <input
-                            type="number"
-                            min="0"
-                            name="relics[red]"
-                            value="{{ old('relics.red', $relic->red_relic_qty ?? 0) }}"
-                            class="input input-bordered w-full text-black"
-                        />
-                    </div>
-                    <div>
-                        <label class="label text-slate-50">Purple Relic</label>
-                        <input
-                            type="number"
-                            min="0"
-                            name="relics[purple]"
-                            value="{{ old('relics.purple', $relic->purple_relic_qty ?? 0) }}"
-                            class="input input-bordered w-full text-black"
-                        />
-                    </div>
-                    <div>
-                        <label class="label text-slate-50">Blue Relic</label>
-                        <input
-                            type="number"
-                            min="0"
-                            name="relics[blue]"
-                            value="{{ old('relics.blue', $relic->blue_relic_qty ?? 0) }}"
-                            class="input input-bordered w-full text-black"
-                        />
-                    </div>
-                </div>
 
-                {{-- Checkbox Options --}}
-                <div class="form-control mt-4">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="check_session_stock" checked />
-                        <span class="label-text text-slate-50">Cek stok sesi GameBesar</span>
-                    </label>
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="add_back_session_stock" checked />
-                        <span class="label-text text-slate-50">Tambah kembali stok sesi jika diubah</span>
-                    </label>
-                </div>
 
                 {{-- Submit Button --}}
                 <button class="w-full bg-green-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg hover:bg-green-700 active:scale-95 transition-all">
@@ -262,13 +202,7 @@
                 @csrf
                 @method('DELETE')
 
-                {{-- Option: Return Relics to Session --}}
-                <div class="form-control mt-4">
-                    <label class="label cursor-pointer justify-start gap-2">
-                        <input type="checkbox" class="checkbox checkbox-sm" name="add_back_session_stock" checked />
-                        <span class="label-text text-slate-50">Tambah kembali stok sesi GameBesar</span>
-                    </label>
-                </div>
+
 
                 <button class="w-full bg-red-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg hover:bg-red-700 active:scale-95 transition-all">
                     Delete

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="p-10 min-h-screen flex flex-col items-center justify-center border border-black gap-y-3 lg:gap-y-1">
-    <img src="{{ asset('asset2025') }}/logo-maniac-xiv.png" alt="" class="sm:w-2/3 md:w-1/2 xl:w-1/3">
+    <img src="{{ asset('asset2025') }}/logo-maniac-xv.png" alt="" class="sm:w-2/3 md:w-1/2 xl:w-1/3">
     <div class="flex flex-col items-center sm:w-2/3 lg:w-1/2 gap-x-2 lg:gap-x-3 text-lg sm:text-xl lg:text-2xl font-medium text-primary">
         <div class="divider"></div>
         <p style="font-family: 'Poppins', sans-serif;" class="text-center">WEBSITE IS UNDER MAINTENANCE</p>
