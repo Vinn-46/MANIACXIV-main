@@ -189,13 +189,18 @@ Route::group(
 Route::group(
     ['middleware'=> 'si', 'prefix' => 'si', 'as'=>'si.'],
     function(){
-        Route::get('/', [Si\SiController::class, 'index'])->name('index');
+        // Dashboard langsung ke Game Besar (Target Base)
+        Route::get('/', [Si\TargetBaseController::class, 'index'])->name('index');
 
-        // Shop System (Black Market)
+        // Shop System
         Route::get('/shop', [Si\ShopController::class, 'index'])->name('shop.index');
         Route::post('/shop/player-details', [Si\ShopController::class, 'getPlayerDetails'])->name('shop.playerDetails');
         Route::post('/shop/buy-peluru', [Si\ShopController::class, 'buyPeluru'])->name('shop.buyPeluru');
         Route::post('/shop/upgrade-weapon', [Si\ShopController::class, 'upgradeWeapon'])->name('shop.upgradeWeapon');
+
+        // Target Base System (AJAX Routes)
+        Route::post('/game-besar/player-data', [Si\TargetBaseController::class, 'playerData'])->name('gameBesar.playerData');
+        Route::post('/game-besar/attack', [Si\TargetBaseController::class, 'attack'])->name('gameBesar.attack');
     }
 );
 

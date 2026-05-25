@@ -24,33 +24,23 @@
         
         <!-- Header & Nav -->
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">BLACK MARKET</h1>
-            <button onclick="window.location.href='{{ route('si.index') }}'" class="bg-[#733b22] hover:bg-[#5a2e1a] text-white px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Beranda
+            <div>
+                <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">SHOP</h1>
+                <h2 id="team-name-display" class="text-2xl font-['Lato'] font-bold text-[#733b22] mt-2 bg-[#dba668] inline-block px-4 py-1 rounded-lg shadow-inner">Silakan masuk lewat Arena...</h2>
+            </div>
+            <button onclick="openArena()" class="bg-[#733b22] hover:bg-[#5c2f1a] text-white border-2 border-[#dba668] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Arena
             </button>
         </div>
 
-        <!-- Player Selection -->
-        <div class="bg-gradient-to-r from-[#dba668] to-[#be8f57] p-6 rounded-2xl mb-8 flex flex-col md:flex-row items-center justify-between shadow-xl border-4 border-[#733b22] gap-4">
-            <div class="flex items-center whitespace-nowrap">
-                <span class="text-[#733b22] font-['Lato'] font-extrabold text-2xl uppercase tracking-wider">Pilih Tim :</span>
-            </div>
-            
-            <div class="w-full md:w-1/2 flex-grow">
-                <select id="pID" class="w-full py-4 px-6 rounded-xl text-xl font-['Lato'] font-bold shadow-inner text-[#733b22] border-4 border-[#733b22] bg-[#f0e9cf] focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer appearance-none" name="state" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23733B22%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 1.5rem auto;">
-                    <option selected disabled value="">-- Silakan Pilih Player --</option>
-                    @foreach ($players as $p)
-                        <option value="{{ $p->id }}">
-                            {{ $p->team_name }}
-                        </option>
-                    @endforeach 
-                </select>
-            </div>
-
-            <div class="whitespace-nowrap min-w-[180px] text-center">
-                <span id="loading-indicator" class="text-white font-bold hidden bg-black/40 px-4 py-3 rounded-lg text-lg"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat...</span>
-                <span id="ready-indicator" class="text-white font-bold bg-green-600/80 px-4 py-3 rounded-lg text-lg border-2 border-green-400 hidden"><i class="fa-solid fa-check mr-2"></i> Siap!</span>
-            </div>
+        <!-- Player Selection (Hidden as requested, team selected via URL) -->
+        <div class="hidden">
+            <select id="pID">
+                <option selected disabled value="">-- Silakan Pilih Player --</option>
+                @foreach ($players as $p)
+                    <option value="{{ $p->id }}">{{ $p->team_name }}</option>
+                @endforeach 
+            </select>
         </div>
 
         <!-- Resource Stats -->
@@ -101,7 +91,7 @@
                 <div>
                     <div class="flex justify-between items-center border-b-2 border-[#dba668] pb-4 mb-4">
                         <h2 class="text-3xl font-['Lato'] font-bold">Upgrade Senjata</h2>
-                        <span class="bg-[#dba668] text-[#733b22] px-3 py-1 rounded font-bold">Max LV. 3</span>
+                        <span class="bg-[#dba668] text-[#733b22] px-3 py-1 rounded font-bold">Max Level 3</span>
                     </div>
 
                     <div class="bg-black/40 rounded-xl p-6 flex flex-row items-end justify-between px-16 mb-6 mt-4 h-32">
@@ -150,6 +140,27 @@
     const btnUpgrade = $('#btn-upgrade');
 
     let currentHonorVal = 0;
+
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const teamId = urlParams.get('team_id');
+        if (teamId) {
+            selPlayer.val(teamId).trigger('change');
+            const teamName = selPlayer.find('option:selected').text();
+            $('#team-name-display').text($.trim(teamName));
+        } else {
+            Swal.fire('Perhatian', 'Mohon pilih tim melalui menu Arena (Target Base) terlebih dahulu.', 'warning');
+        }
+    });
+
+    function openArena() {
+        const teamId = selPlayer.val();
+        let url = "{{ route('si.index') }}";
+        if (teamId) {
+            url += "?team_id=" + teamId;
+        }
+        window.location.href = url;
+    }
 
     // Handle Player Selection
     selPlayer.on('change', function() {

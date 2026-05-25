@@ -41,7 +41,7 @@
 <body class="bg-gradient-to-t from-[#E2E3C4] to-[#FAFBF6]">
     <div class="absolute inset-0 z-0 bg-no-repeat bg-bottom bg-contain w-screen h-screen" style="background-image: url('{{ asset('asset2025/gameBesar/bg.png') }}');"></div>
 
-    <div class="flex justify-center items-center w-screen h-screen absolute">
+    <div class="relative z-10 flex justify-center w-screen min-h-screen py-6">
         {{-- Isi Konten --}}
         @yield("content")
     </div>
