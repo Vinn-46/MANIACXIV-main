@@ -16,7 +16,6 @@ class Player extends Model
 
     protected $fillable = [
         'team_id',
-        'points',
         'honor',
         'peluru',
         'weapon_level',

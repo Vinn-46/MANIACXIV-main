@@ -64,7 +64,6 @@ class PenposController extends Controller
             ]);
 
             $player->update([
-                'points' => $player->points + $point->value,
                 'honor' => $player->honor + $point->honor_reward,
                 'peluru' => $player->peluru + $point->peluru_reward,
             ]);
@@ -103,14 +102,10 @@ class PenposController extends Controller
 
             $honor_reward = $score->point->honor_reward;
             $peluru_reward = $score->point->peluru_reward;
-            $points_reward = $score->point->value;
-
             $newHonor = max($player->honor - $honor_reward, 0);
             $newPeluru = max($player->peluru - $peluru_reward, 0);
-            $newPoints = max($player->points - $points_reward, 0);
 
             $player->update([
-                'points' => $newPoints,
                 'honor' => $newHonor,
                 'peluru' => $newPeluru
             ]);

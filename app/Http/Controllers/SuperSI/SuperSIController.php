@@ -62,20 +62,12 @@ class SuperSIController extends Controller
             $player = $score->player;
             $oldPoint = $score->point;
             $newPoint = Point::find($request->get('point_id'));
-
-            $oldPoints = $oldPoint->value;
-            $newPoints = $newPoint->value;
-
+            
             $team = $player->team;
 
             // Update Score
             $score->update([
                 'point_id' => $newPoint->id
-            ]);
-
-            // Update Points
-            $player->update([
-                'points' => $player->points - $oldPoints + $newPoints
             ]);
 
             DB::commit();
@@ -96,11 +88,6 @@ class SuperSIController extends Controller
             $point = $score->point;
             $team = $player->team;
 
-            // Subtract the points from the player
-            $player->update([
-                'points' => $player->points - $point->value
-            ]);
-
             // Delete score
             $score->delete();
 
@@ -115,45 +102,119 @@ class SuperSIController extends Controller
 
     public function leaderboard(Request $request)
     {
-        $contests = Contest::all();
-        $leaderboard = DB::select("
-            SELECT 
-                p.id AS player_id, 	-- Kolom 1
-                t.name AS team_name,	-- Kolom 2
-                     p.points AS total_score
-                FROM players p
-                INNER JOIN teams t ON p.team_id = t.id
-                WHERE NOT t.name = 'SYSTEM'
-                GROUP BY p.id, t.name, p.points
-	            ORDER BY total_score DESC, t.name ASC;
-        ");
+        
+        $players = \App\Models\Player::with(['team', 'scores.point'])
+            ->whereHas('team', function($q) {
+                $q->where('name', '!=', 'SYSTEM');
+            })->get();
 
-        return view('supersi.leaderboard.index', compact('leaderboard', 'contests'));
+        $leaderboard = [];
+
+        foreach($players as $player) {
+            // 1. Total Honor Didapat (Lifetime)
+            $total_honor = $player->scores->sum(function($score) {
+                return $score->point ? $score->point->honor_reward : 0;
+            });
+            
+            // 2. Jumlah Pos Menang
+            $pos_menang = $player->scores->filter(function($score) {
+                return $score->point && $score->point->condition === 'win';
+            })->count();
+            
+            // 3. Jumlah Pos Dimainkan
+            $pos_dimainkan = $player->scores->count();
+
+            // Formula Rally
+            $rally_score = (($total_honor / 2400) * 100 * 0.30) 
+                         + (($pos_menang / 16) * 100 * 0.20)
+                         + (($pos_dimainkan / 16) * 100 * 0.10);
+
+            // 4. Total Poin Game Besar (game_besar_points + bonus_points)
+            $gamebes_poin = $player->game_besar_points + $player->bonus_points;
+            
+            // Formula Game Besar
+            $gamebes_score = ($gamebes_poin / 170) * 100 * 0.40;
+
+            // Total Akhir
+            $total_score = $rally_score + $gamebes_score;
+
+            $leaderboard[] = (object) [
+                'player_id' => $player->id,
+                'team_name' => $player->team->name,
+                'total_honor' => $total_honor,
+                'pos_menang' => $pos_menang,
+                'pos_dimainkan' => $pos_dimainkan,
+                'gamebes_poin' => $gamebes_poin,
+                'rally_score' => round($rally_score, 2),
+                'gamebes_score' => round($gamebes_score, 2),
+                'total_score' => round($total_score, 2)
+            ];
+        }
+
+        // Sort descending by total score, then alphabetically by team name
+        usort($leaderboard, function($a, $b) {
+            if ($b->total_score == $a->total_score) {
+                return strcmp($a->team_name, $b->team_name);
+            }
+            return $b->total_score <=> $a->total_score;
+        });
+
+        return view('supersi.leaderboard.index', compact('leaderboard'));
     }
 
     public function summarize(Request $request)
     {
-        $contest_id = $request->input('contest_id');
+        // For summarize, we just reuse the leaderboard calculation
+        // Since we don't have contest logic yet (it was broken in original anyway)
+        // We will just export the full leaderboard
+        $players = \App\Models\Player::with(['team', 'scores.point'])
+            ->whereHas('team', function($q) {
+                $q->where('name', '!=', 'SYSTEM');
+            })->get();
 
-        // Basic validation
-        if (!$contest_id) {
-            return response()->json(['error' => 'Contest ID required'], 400);
+        $leaderboard = [];
+
+        foreach($players as $player) {
+            $total_honor = $player->scores->sum(function($score) {
+                return $score->point ? $score->point->honor_reward : 0;
+            });
+            $pos_menang = $player->scores->filter(function($score) {
+                return $score->point && $score->point->condition === 'win';
+            })->count();
+            $pos_dimainkan = $player->scores->count();
+            $rally_score = (($total_honor / 2400) * 100 * 0.30) 
+                         + (($pos_menang / 16) * 100 * 0.20)
+                         + (($pos_dimainkan / 16) * 100 * 0.10);
+            $gamebes_poin = $player->game_besar_points + $player->bonus_points;
+            $gamebes_score = ($gamebes_poin / 170) * 100 * 0.40;
+            $total_score = $rally_score + $gamebes_score;
+
+            $leaderboard[] = [
+                'Rank' => 0,
+                'Player ID' => $player->id,
+                'Team Name' => $player->team->name,
+                'Total Honor' => $total_honor,
+                'Pos Menang' => $pos_menang,
+                'Pos Dimainkan' => $pos_dimainkan,
+                'Game Besar Points' => $gamebes_poin,
+                'Rally Score (60%)' => round($rally_score, 2),
+                'Gamebes Score (40%)' => round($gamebes_score, 2),
+                'Final Total Score' => round($total_score, 2)
+            ];
         }
 
-        // Need to customize this query to match the scoring rules
+        usort($leaderboard, function($a, $b) {
+            if ($b['Final Total Score'] == $a['Final Total Score']) {
+                return strcmp($a['Team Name'], $b['Team Name']);
+            }
+            return $b['Final Total Score'] <=> $a['Final Total Score'];
+        });
+        
+        // Add ranks
+        foreach($leaderboard as $idx => &$row) {
+            $row['Rank'] = $idx + 1;
+        }
 
-        $scores = DB::table('players as p')
-            ->join('teams as t', 'p.team_id', '=', 't.id')
-            ->select(
-                'p.id as Player ID',
-                't.name as Team Name',
-                'p.points as Total Score'
-            )
-            ->where('p.contest_id', $contest_id) // track contest in players ?
-            ->groupBy('p.id', 't.name', 'p.points')
-            ->orderByDesc('Total Score')
-            ->get();
-
-        return response()->json(['scores' => $scores]);
+        return response()->json(['scores' => $leaderboard]);
     }
 }

@@ -1,265 +1,86 @@
-@extends('supersi.layout.index', ['pageActive' => 'super-si.gamebesar', 'pageTitle' => 'Game Besar'])
-
-@php
-    if (!session()->has('tab')) {
-        $currTab = 'session';
-    } else {
-        $currTab = session()->get('tab');
-    }
-@endphp
-
-@section('styles')
-    <style>
-        [type='radio'],
-        [type='radio']:checked {
-            background: none;
-            /*border: none;*/
-            --tw-ring-offset-color: none;
-            --tw-ring-color: none;
-            --tw-ring-offset-shadow: none;
-            --tw-ring-shadow: none;
-            --tw-shadow: none;
-            --tw-shadow-colored: none;
-        }
-
-        .tabs-lifted>.tab.tab-active:not(.tab-disabled):not([disabled]),
-        .tabs-lifted>.tab:is(input:checked) {
-            background-color: #475569;
-        }
-
-        .tab {
-            --tab-border-color: transparent;
-            --tab-bg: #475569;
-        }
-    </style>
-@endsection
+@extends('supersi.layout.index', ['pageActive' => 'super-si.gamebesar', 'pageTitle' => 'Override Game Besar'])
 
 @section('content')
     {{--  Breadcrumbs  --}}
-    <div class="breadcrumbs text-sm">
+    <div class="breadcrumbs text-sm mb-4">
         <ul>
             <li>
-                <a href="{{ route('super-si.gamebesar.index') }}" class="font-medium">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        class="h-4 w-4 stroke-current mr-1">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z">
-                        </path>
+                <a href="{{ route('super-si.gamebesar.index') }}" class="font-medium text-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-4 w-4 stroke-current mr-1">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path>
                     </svg>
-                    Game Besar
+                    Override Poin Game Besar
                 </a>
             </li>
         </ul>
     </div>
 
-    {{--  Alert  --}}
-    <div>
-        @if (session()->has('addSuccess'))
-            <div role="alert" class="alert rounded-md bg-green-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session()->get('addSuccess') }}</span>
-            </div>
-        @elseif(session()->has('updateSuccess'))
-            <div role="alert" class="alert rounded-md bg-green-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session()->get('updateSuccess') }}</span>
-            </div>
-        @elseif(session()->has('error'))
-            <div role="alert" class="alert rounded-md bg-red-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span>{{ session()->get('error') }}</span>
-            </div>
-        @endif
-        @error('mission')
-            <div role="alert" class="alert rounded-md bg-red-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span><strong>{{ $message }}</strong></span>
-            </div>
-        @enderror
-        @error('open')
-            <div role="alert" class="alert rounded-md bg-red-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span><strong>{{ $message }}</strong></span>
-            </div>
-        @enderror
-        @error('close')
-            <div role="alert" class="alert rounded-md bg-red-300 border-none mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span><strong>{{ $message }}</strong></span>
-            </div>
-        @enderror
-    </div>
+    {{--  Alerts  --}}
+    @if (session()->has('updateSuccess'))
+        <div role="alert" class="alert rounded-md bg-green-500 text-white border-none mt-2 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ session()->get('updateSuccess') }}</span>
+        </div>
+    @elseif(session()->has('error'))
+        <div role="alert" class="alert rounded-md bg-red-500 text-white border-none mt-2 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ session()->get('error') }}</span>
+        </div>
+    @endif
+    @if($errors->any())
+        <div role="alert" class="alert rounded-md bg-red-500 text-white border-none mt-2 mb-4">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     {{--  Content  --}}
-    <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-3 rounded-md mt-4">
-    <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-3 rounded-md mt-4">
-        <div class="w-full my-6">
-            <!-- Backup Database Link -->
-            <a href="{{ route('super-si.backup.db') }}"
-                class="w-full inline-block text-center bg-blue-600 text-white font-semibold py-3 px-4 rounded hover:bg-blue-700 active:scale-95 transition-all">
-                Backup Database
-            </a>
-        </div>
-        <div role="tablist" class="tabs tabs-lifted">
-            {{--  Session  --}}
-            <input type="radio" name="my_tabs_2" role="tab" class="tab bg-slate-500 font-medium text-slate-50"
-                aria-label="Session" {{ $currTab == 'session' ? 'checked' : '' }} />
-            <div role="tabpanel" class="tab-content bg-slate-500 rounded p-6 overflow-auto">
-                {{--  Table  --}}
-                <div class="overflow-auto rounded" style="max-height: 600px">
-                    <table class="table table-xs table-pin-cols table-pin-rows">
-                        <thead class="">
-                            <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
-                                <th width="5%" class="text-center py-3">Sesi</th>
-                                <th width="20%" class="text-center py-3">Open</th>
-                                <th width="20%" class="text-center py-3">Close</th>
-                                <th width="25%" class="text-center py-3">Mission</th>
-                                <th width="10%" class="text-center py-3">Status</th>
-                                <th width="10%" class="text-center py-3">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tBody">
-                            @foreach ($sessions as $idx => $session)
-                                <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
-                                    <td width="5%" class="text-center py-5 text-white">{{ $idx + 1 }}</td>
-                                    <td width="20%" class="text-center py-5 text-white">{{ $session->open }}</td>
-                                    <td width="20%" class="text-center py-5 text-white">{{ $session->close }}</td>
-                                    <td width="25%" class="text-center py-5 text-white">{{ $session->mission->name }}</td>
-                                    <td width="10%" class="text-center py-5 text-white">
-                                        @php
-                                            $status = 'inactive';
-                                            $badge = 'bg-slate-600';
-
-                                            if (
-                                                $session->open <= \Illuminate\Support\Carbon::now() &&
-                                                $session->close >= \Illuminate\Support\Carbon::now()
-                                            ) {
-                                                $status = 'active';
-                                                $badge = 'bg-green-900';
-                                            }
-                                        @endphp
-                                        <div class="badge border-none text-slate-50 font-medium {{ $badge }}">
-                                            {{ $status }}
-                                        </div>
-                                    </td>
-                                    <td width="10%" class="text-center">
-                                        <button
-                                            class="bg-slate-900 text-slate-50 font-semibold py-2 px-5 rounded hover:bg-slate-700 active:scale-95 transition-all"
-                                            onclick="window.location = '{{ route('super-si.gamebesar.index') }}/session/{{ $session->id }}'">
-                                            Edit
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-                {{--  Add Session  --}}
-                <button
-                    class="w-full bg-sky-700 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-sky-600 active:scale-95 transition-all"
-                    onclick="openAddModal()">
-                    Add
-                </button>
-            </div>
+    <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-4 rounded-md mt-4 shadow-lg">
+        <h2 class="text-xl font-bold text-slate-900 mb-4 text-center">Tabel Override Poin Game Besar (Target Base)</h2>
+        
+        <div class="overflow-x-auto rounded bg-slate-500 p-2 shadow-inner">
+            <table class="table w-full">
+                <thead class="text-slate-100 bg-slate-700">
+                    <tr style="font-size: 1.1rem;">
+                        <th class="text-center py-3">ID</th>
+                        <th class="text-center py-3">Team Name</th>
+                        <th class="text-center py-3">Game Besar Points</th>
+                        <th class="text-center py-3">Bonus Points</th>
+                        <th class="text-center py-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($players as $idx => $player)
+                        <tr class="text-slate-100 font-medium border-b border-slate-600 hover:bg-slate-600 transition-colors" style="font-size: 0.95rem;">
+                            <form action="{{ route('super-si.gamebesar.updatePoints', $player->id) }}" method="POST">
+                                @csrf
+                                <td class="text-center py-4">{{ $player->id }}</td>
+                                <td class="text-center py-4 text-yellow-400 font-bold">{{ $player->team->name }}</td>
+                                <td class="text-center py-4">
+                                    <input type="number" name="game_besar_points" value="{{ $player->game_besar_points }}" 
+                                        class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                </td>
+                                <td class="text-center py-4">
+                                    <input type="number" name="bonus_points" value="{{ $player->bonus_points }}" 
+                                        class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                </td>
+                                <td class="text-center py-4">
+                                    <button type="submit" class="bg-blue-600 text-slate-50 font-semibold py-1.5 px-4 rounded hover:bg-blue-500 active:scale-95 transition-all shadow-md">
+                                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save
+                                    </button>
+                                </td>
+                            </form>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
-
-    {{--  Add Modal --}}
-    <dialog id="addModal" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box bg-slate-800">
-            <h3 class="text-lg font-bold">Add Session</h3>
-            <form action="{{ route('super-si.gamebesar.session.add') }}" method="POST" id="formAdd">
-                @csrf
-                <div class="grid grid-cols-1 gap-x-10 mb-4">
-                    <div class="grid grid-cols-1">
-                        <label class="form-control w-full">
-                            <div class="label">
-                                <span class="label-text text-slate-50">Misi</span>
-                            </div>
-                            <select name="mission_id" id="select" class="select-bordered rounded bg-slate-300 text-slate-800 font-medium" required>
-                                <option value="" disabled selected>-- Pilih Misi --</option>
-                                @foreach ($missions as $mission)
-                                    <option value="{{ $mission->id }}" class="text-slate-800" >{{ $mission->name }}</option>
-                                @endforeach
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label for="" class="form-control w-full">
-                            <div class="label">
-                                <span class="label-text text-slate-50">Tanggal Buka</span>
-                            </div>
-                            <div class="flex flex-col justify-center items-center gap-y-5">
-                                <input type="text" id="addOpenDate" name="open"
-                                    class="input input-bordered bg-white w-full text-slate-800 font-semibold border-slate-600"
-                                    readonly required>
-                            </div>
-                        </label>
-                        <label for="" class="form-control w-full">
-                            <div class="label">
-                                <span class="label-text text-slate-50">Tanggal Tutup</span>
-                            </div>
-                            <div class="flex flex-col justify-center items-center gap-y-5">
-                                <input type="text" id="addCloseDate" name="close"
-                                    class="input input-bordered bg-white w-full text-slate-800 font-semibold border-slate-600"
-                                    readonly required>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <button
-                    class="w-full bg-green-600 text-slate-50 font-semibold mt-4 py-2.5 px-4 rounded-lg select-none hover:bg-green-700 active:scale-95 transition-all">
-                    Add
-                </button>
-            </form>
-            <div class="modal-action">
-                <form method="dialog">
-                    <button
-                        class="bg-slate-600 text-slate-50 font-semibold py-2.5 px-4 rounded-lg select-none hover:bg-slate-500 active:scale-95 transition-all">Close</button>
-                </form>
-            </div>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
-    </dialog>
-@endsection
-
-@section('scripts')
-    <script type="module">
-        const calendar = minMaxDatePicker("#addOpenDate", '#addCloseDate', true);
-    </script>
-    <script>
-        const addModal = $("#addModal");
-        const formAdd = $("#formAdd");
-
-        const openAddModal = () => {
-            addModal[0].showModal();
-        }
-    </script>
 @endsection

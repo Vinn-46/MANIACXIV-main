@@ -98,7 +98,7 @@
 
         <ul class="space-y-2 font-medium">
             {{-- Dashboard --}}
-            <div class="divider text-sm">Rally Games</div>
+            <li class="pointer-events-none"><div class="divider text-sm">Rally Games</div></li>
             <li class="">
                 <a href="{{ route('super-si.index') }}" class="flex items-center p-2 rounded-lg {{ $pageActive == "super-si.rally" ? 'bg-slate-300 text-slate-800 ' : 'hover:bg-slate-100 group text-white hover:text-base-content' }} active:scale-95 transition-all">
                     <svg class="w-5 h-5 transition duration-75 group-hover:text-slate-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
@@ -108,7 +108,7 @@
                     <span class="ms-3">Rally Games</span>
                 </a>
             </li>
-            <div class="divider text-sm">Game Besar</div>
+            <li class="pointer-events-none"><div class="divider text-sm">Game Besar</div></li>
             <li>
                 <a href="{{ route('super-si.gamebesar.index') }}" class="flex items-center p-2 rounded-lg {{ $pageActive == "super-si.gamebesar" ? 'bg-slate-300 text-slate-800 ' : 'hover:bg-slate-100 group text-white hover:text-base-content' }} active:scale-95 transition-all">
                     <svg class="flex-shrink-0 w-5 h-5 transition duration-75 group-hover:text-slate-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -117,7 +117,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Game Besar</span>
                 </a>
             </li>
-            <div class="divider text-sm">Player</div>
+            <li class="pointer-events-none"><div class="divider text-sm">Player</div></li>
             <li>
                 <a href="{{ route('super-si.player.index') }}" class="flex items-center p-2 rounded-lg {{ $pageActive == "super-si.player" ? 'bg-slate-300 text-slate-800 ' : 'hover:bg-slate-100 group text-white hover:text-base-content' }} active:scale-95 transition-all">
                     <svg class="flex-shrink-0 w-5 h-5 transition duration-75 group-hover:text-slate-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -126,7 +126,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Player</span>
                 </a>
             </li>
-            <div class="divider text-sm">Leaderboard</div>
+            <li class="pointer-events-none"><div class="divider text-sm">Leaderboard</div></li>
             <li>
                 <a href="{{ route('super-si.leaderboard.index') }}" class="flex items-center p-2 rounded-lg {{ $pageActive == "super-si.leaderboard" ? 'bg-slate-300 text-slate-800 ' : 'hover:bg-slate-100 group text-white hover:text-base-content' }} active:scale-95 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0 w-5 h-5 transition duration-75 group-hover:text-slate-800">
@@ -135,7 +135,7 @@
                     <span class="flex-1 ms-3 whitespace-nowrap">Leaderboard</span>
                 </a>
             </li>
-            <div class="divider text-sm">Notification</div>
+            <li class="pointer-events-none"><div class="divider text-sm">Notification</div></li>
             <li>
                 <a href="{{ route('super-si.notification.index') }}" class="relative flex items-center p-2 rounded-lg {{ $pageActive == "super-si.notification" ? 'bg-slate-300 text-slate-800 ' : 'hover:bg-slate-100 group text-white hover:text-base-content' }} active:scale-95 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">

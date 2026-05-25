@@ -28,9 +28,17 @@
                 <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">SHOP</h1>
                 <h2 id="team-name-display" class="text-2xl font-['Lato'] font-bold text-[#733b22] mt-2 bg-[#dba668] inline-block px-4 py-1 rounded-lg shadow-inner">Silakan masuk lewat Arena...</h2>
             </div>
-            <button onclick="openArena()" class="bg-[#733b22] hover:bg-[#5c2f1a] text-white border-2 border-[#dba668] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Arena
-            </button>
+            <div class="flex gap-2">
+                <button onclick="openArena()" class="bg-[#733b22] hover:bg-[#5c2f1a] text-white border-2 border-[#dba668] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Arena
+                </button>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-red-800">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                    </button>
+                </form>
+            </div>
         </div>
 
         <!-- Player Selection (Hidden as requested, team selected via URL) -->

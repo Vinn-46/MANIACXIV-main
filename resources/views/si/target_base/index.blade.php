@@ -76,9 +76,17 @@
         <!-- Header & Nav -->
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">TARGET BASE</h1>
-            <button id="btn-shop" onclick="openShop()" class="bg-[#dba668] hover:bg-[#be8f57] text-[#733b22] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-[#733b22] hidden">
-                <i class="fa-solid fa-store mr-2"></i> Shop
-            </button>
+            <div class="flex gap-2">
+                <button id="btn-shop" onclick="openShop()" class="bg-[#dba668] hover:bg-[#be8f57] text-[#733b22] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-[#733b22] hidden">
+                    <i class="fa-solid fa-store mr-2"></i> Shop
+                </button>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-red-800">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                    </button>
+                </form>
+            </div>
         </div>
 
         <!-- Player Selection -->

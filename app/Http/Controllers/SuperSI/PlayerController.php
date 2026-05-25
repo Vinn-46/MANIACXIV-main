@@ -6,12 +6,12 @@ use App\Models\Point;
 use App\Models\Relic;
 use App\Models\Score;
 use App\Models\Player;
-use App\Models\Mission;
+
 use App\Models\Inventory;
 use App\Models\RallyGame;
 use App\Models\RelicChosen;
 use Illuminate\Http\Request;
-use App\Models\GameBesarSession;
+
 use Illuminate\Support\Facades\DB;
 use App\Events\UpdateAvailableStock;
 use App\Http\Controllers\Controller;
@@ -21,18 +21,13 @@ class PlayerController extends Controller
 {
     public function index()
     {
-        $dummy = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-                    11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
-                    23, 26];
-
-        $players = Player::whereNotIn('id', $dummy)
-            ->with(['inventory.relic'])
+        $players = Player::whereHas('team', function($q) {
+                $q->where('name', '!=', 'SYSTEM');
+            })
+            ->with(['team'])
             ->get();
 
-        // $players = Player::with(['successes'])->get(); // Komen untuk hari h
-
-        $missions = Mission::all(); // to loop over missions
-        return view('supersi.player.index', compact('players', 'missions'));
+        return view('supersi.player.index', compact('players'));
     }
 
     public function log(Player $player)
@@ -93,10 +88,7 @@ class PlayerController extends Controller
                 'point_id' => $point->id
             ]);
 
-            $player->update([
-                'points' => $player->points + $point->value
-            ]);
-
+            // removed points assignment
             DB::commit();
 
             return back()->with('addSuccess', "Score berhasil ditambahkan untuk tim <strong>{$team->name}</strong>.");
@@ -129,10 +121,7 @@ class PlayerController extends Controller
                 'point_id' => $newPoint->id
             ]);
 
-            $player->update([
-                'points' => $player->points - $oldPoints + $newPoints
-            ]);
-
+            // removed points assignment
             DB::commit();
 
             return back()->with('updateSuccess', "Score berhasil di-update untuk Tim <strong>{$team->name}</strong>.");
@@ -152,10 +141,7 @@ class PlayerController extends Controller
             $point = $score->point;
             $team = $player->team;
             
-            $player->update([
-                'points' => max(0, $player->points - $point->value)
-            ]);
-
+            // removed points assignment
             $score->delete();
 
             DB::commit();

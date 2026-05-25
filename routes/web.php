@@ -219,15 +219,8 @@ Route::group(
         // ===== GAME BESAR SESSION =====
         Route::get('/gamebesar', [SuperSI\GameBesarController::class, 'index'])
             ->name('gamebesar.index');
-        Route::get('/gamebesar/session/{session}', [SuperSI\GameBesarController::class, 'sessionDetail']);
-        Route::post('/gamebesar/session/add', [SuperSI\GameBesarController::class, 'addSession'])
-            ->name('gamebesar.session.add');
-        Route::post('/gamebesar/session/{session}/update', [SuperSI\GameBesarController::class, 'updateSession'])
-            ->name('gamebesar.session.update');
-        Route::post('/gamebesar/session/{session}/close', [SuperSI\GameBesarController::class, 'closeSession'])
-            ->name('gamebesar.session.close');
-        Route::patch('/gamebesar/reset-inventory', [SuperSI\GameBesarController::class, 'resetInventory'])
-            ->name('gamebesar.resetInventory');
+        Route::post('/gamebesar/update-points/{player}', [SuperSI\GameBesarController::class, 'updatePoints'])
+            ->name('gamebesar.updatePoints');
 
         // ===== PLAYER =====
         Route::get('/player', [SuperSI\PlayerController::class, 'index'])

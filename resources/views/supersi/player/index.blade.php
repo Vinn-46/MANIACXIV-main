@@ -33,7 +33,6 @@
                 <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
                     <th width="5%" class="text-center py-3">ID</th>
                     <th width="15%" class="text-center py-3">Player</th>
-                    <th width="15%" class="text-center py-3">Success</th>
                     <th width="15%" class="text-center py-3">Logs</th>
                     <th width="10%" class="text-center py-3">Score</th>
                     <th width="10%" class="text-center py-3">Rally Game Detail</th>
@@ -44,23 +43,6 @@
                     <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
                         <td width="5%" class="text-center py-5 text-white">{{ $player->id }}</td>
                         <td width="15%" class="text-center py-5 text-white">{{ $player->team->name }}</td>
-                        <td width="15%" class="text-center text-white">
-                            <div class="flex flex-col items-center gap-1">
-                                @foreach ($missions as $mission)
-                                    @php
-                                        $success = $player->successes->firstWhere('mission_id', $mission->id);
-                                    @endphp
-
-                                    @if ($success)
-                                        @if ($success->is_success)
-                                            <span class="text-green-400">✅ Misi {{ $mission->id }}</span>
-                                        @else
-                                            <span class="text-yellow-400">⚠️ Misi {{ $mission->id }} tidak selesai</span>
-                                        @endif
-                                    @endif
-                                @endforeach
-                            </div>
-                        </td>
                         <td width="15%" class="text-center">
                             <button
                                 class="bg-slate-900 text-slate-50 font-semibold py-2 px-5 rounded-md hover:bg-slate-700 active:scale-95 transition-all"

@@ -28,13 +28,24 @@ class GameResetter extends Seeder
         // Reset player data
         $participants = Player::whereHas('team', fn($q) => $q->where('name', '!=', 'SYSTEM'))->get();
         foreach ($participants as $player) {
-            $player->update(['points' => 0]);
+            $player->update([
+                'honor' => 0,
+                'peluru' => 0,
+                'weapon_level' => 1,
+                'game_besar_points' => 0,
+                'bonus_points' => 0
+            ]);
         }
 
         // Reset system player
         $system = Player::whereHas('team', fn($q) => $q->where('name', 'SYSTEM'))->first();
         if ($system) {
-            $system->update(['points' => 1000000]);
+            $system->update([
+                'honor' => 1000000,
+                'peluru' => 1000000,
+            ]);
         }
+        
+        \App\Models\PlayerTargetBase::query()->delete();
     }
 }

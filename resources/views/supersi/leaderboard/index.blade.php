@@ -136,29 +136,18 @@
     {{--  Content  --}}
     <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-3 rounded-md mt-4">
         {{--    Summarize    --}}
-        <div class="bg-slate-500 w-full mb-5 rounded p-4">
+        <div class="bg-slate-500 w-full mb-5 rounded p-4 flex flex-col items-center">
             <h1
-                class="text-center bg-slate-900 text-slate-100 mb-5 rounded py-3 text-lg font-semibold"
+                class="text-center bg-slate-900 text-slate-100 mb-5 rounded py-3 px-6 w-full text-lg font-semibold"
             >
-                Summarize Semifinal Score For Final
+                Export Leaderboard (CSV)
             </h1>
-            <div class="grid grid-cols-1 gap-y-4 md:gap-y-2 xl:grid-cols-3">
-                <div class="select2-container flex justify-center">
-                    <label for="" class="mr-5 font-medium">Choose Contest: </label>
-                    <select class="js-example-basic-single" name="contest" id="contest-select" required>
-                        <option selected disabled>-- Pick One --</option>
-                        @foreach($contests as $contest)
-                            <option value="{{ $contest->id }}">{{ $contest->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <button
-                    class="bg-slate-900 text-slate-50 font-semibold py-2 px-5 rounded hover:bg-slate-700 active:scale-95 transition-all xl:col-start-3 xl:col-end-4"
-                    id="btnSummarize"
-                >
-                    Summarize
-                </button>
-            </div>
+            <button
+                class="bg-green-600 text-slate-50 font-semibold py-2 px-8 rounded hover:bg-green-500 active:scale-95 transition-all text-lg"
+                id="btnSummarize"
+            >
+                <i class="fa-solid fa-file-excel mr-2"></i> Export Rekap
+            </button>
         </div>
 
         {{--    Table    --}}
@@ -169,18 +158,26 @@
                     <thead>
                         <tr>
                             <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rank</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Player ID</th>
                             <th style="padding: 8px 12px; border-bottom: 1px solid white;">Team Name</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Total Points</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Lifetime Honor</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Pos (Win/Play)</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rally Score</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Gamebes Points</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Gamebes Score</th>
+                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Final Total Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($leaderboard as $idx => $row)
                             <tr>
                                 <td style="padding: 8px 12px;">{{ $idx + 1 }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->player_id }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->team_name }}</td>
-                                <td style="padding: 8px 12px; border-left: 2px solid white;"><b>{{ $row->total_score }}</b></td>
+                                <td style="padding: 8px 12px;">{{ $row->team_name }} <br><span class="text-xs text-slate-300">ID: {{ $row->player_id }}</span></td>
+                                <td style="padding: 8px 12px;">{{ $row->total_honor }}</td>
+                                <td style="padding: 8px 12px;">{{ $row->pos_menang }} / {{ $row->pos_dimainkan }}</td>
+                                <td style="padding: 8px 12px;">{{ $row->rally_score }}</td>
+                                <td style="padding: 8px 12px;">{{ $row->gamebes_poin }}</td>
+                                <td style="padding: 8px 12px;">{{ $row->gamebes_score }}</td>
+                                <td style="padding: 8px 12px; border-left: 2px solid white; font-size: 1.1em; color: #fbbf24;"><b>{{ $row->total_score }}</b></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -192,29 +189,13 @@
 
 @section('scripts')
     <script>
-        $(document).ready(function() {
-            $("#contest-select").select2();
-        });
-
         $(document).ready(function () {
             $('#btnSummarize').click(function () {
-                const contest_id = $('#contest-select').val();
-
-                if (!contest_id) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops!',
-                        text: 'Please select a contest first.',
-                    });
-                    return;
-                }
-
                 $.ajax({
                     url: "{{ route('super-si.summarize') }}",
                     method: 'POST',
                     data: {
                         _token: '{{ csrf_token() }}',
-                        contest_id: contest_id,
                     },
                     success: function (res) {
                         const scores = res.scores;
@@ -229,31 +210,31 @@
                         const csvRows = [];
 
                         // Add header row
-                        csvRows.push(headers.join(','));
+                        csvRows.push(headers.join(';'));
 
                         // Add data rows
                         scores.forEach(row => {
                             const values = headers.map(header => {
-                                // Escape quotes and commas inside values
+                                // Escape quotes and semicolons inside values
                                 let val = row[header] ?? '';
                                 if (typeof val === 'string') {
                                     val = val.replace(/"/g, '""'); // Escape quotes
-                                    if (val.includes(',') || val.includes('\n')) {
+                                    if (val.includes(';') || val.includes('\n')) {
                                         val = `"${val}"`;
                                     }
                                 }
                                 return val;
                             });
-                            csvRows.push(values.join(','));
+                            csvRows.push(values.join(';'));
                         });
 
                         // Create downloadable CSV file
-                        const csvString = csvRows.join('\n');
+                        const csvString = "sep=;\n" + csvRows.join('\n');
                         const blob = new Blob([csvString], { type: 'text/csv' });
                         const url = URL.createObjectURL(blob);
                         const link = document.createElement('a');
                         link.href = url;
-                        link.download = `summary_contest_${contest_id}_${new Date().toISOString().slice(0,10)}.csv`;
+                        link.download = `rekap_leaderboard_semifinal_${new Date().toISOString().slice(0,10)}.csv`;
                         document.body.appendChild(link);
                         link.click();
                         document.body.removeChild(link);
