@@ -115,7 +115,7 @@
                                             -
                                         @elseif( $contest->type == "penyisihan" )
                                             <div class="flex flex-col gap-2">
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ asset("Soal Penyisihan Online") }}/Modul Penyisihan MANIAC XIV.pdf" target="_blank">Download</a>
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ asset("Soal Penyisihan Online") }}/Modul Penyisihan MANIAC XV.pdf" target="_blank">Download</a>
                                                 <a class="btn btn-outline btn-info btn-sm rounded-md px-5 py-0 w-full font-bold action" href="{{ route('team.contest.submission', $contest) }}">
                                                     {{ $action }}
                                                 </a>
