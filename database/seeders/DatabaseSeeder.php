@@ -38,6 +38,9 @@ class DatabaseSeeder extends Seeder
         // POINT SEEDER (creates point options for penpos)
         $this->call(PointSeeder::class);
 
+        // TARGET BASE SEEDER (creates target bases for Game Besar)
+        $this->call(TargetBaseSeeder::class);
+
         // USER "SYSTEM" SEEDER (create user called "SYSTEM" for Game Besar)
         // $this->call(SystemUserSeeder::class);
     }

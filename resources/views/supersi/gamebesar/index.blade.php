@@ -59,24 +59,24 @@
                 <tbody>
                     @foreach ($players as $idx => $player)
                         <tr class="text-slate-100 font-medium border-b border-slate-600 hover:bg-slate-600 transition-colors" style="font-size: 0.95rem;">
-                            <form action="{{ route('super-si.gamebesar.updatePoints', $player->id) }}" method="POST">
-                                @csrf
                                 <td class="text-center py-4">{{ $player->id }}</td>
                                 <td class="text-center py-4 text-yellow-400 font-bold">{{ $player->team->name }}</td>
                                 <td class="text-center py-4">
-                                    <input type="number" name="game_besar_points" value="{{ $player->game_besar_points }}" 
-                                        class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                    <form action="{{ route('super-si.gamebesar.updatePoints', $player->id) }}" method="POST" class="inline-flex items-center justify-center gap-2">
+                                        @csrf
+                                        <input type="number" name="game_besar_points" value="{{ $player->game_besar_points }}" 
+                                            class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
                                 </td>
                                 <td class="text-center py-4">
-                                    <input type="number" name="bonus_points" value="{{ $player->bonus_points }}" 
-                                        class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                        <input type="number" name="bonus_points" value="{{ $player->bonus_points }}" 
+                                            class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
                                 </td>
                                 <td class="text-center py-4">
-                                    <button type="submit" class="bg-blue-600 text-slate-50 font-semibold py-1.5 px-4 rounded hover:bg-blue-500 active:scale-95 transition-all shadow-md">
-                                        <i class="fa-solid fa-floppy-disk mr-1"></i> Save
-                                    </button>
+                                        <button type="submit" class="bg-blue-600 text-slate-50 font-semibold py-1.5 px-4 rounded hover:bg-blue-500 active:scale-95 transition-all shadow-md">
+                                            <i class="fa-solid fa-floppy-disk mr-1"></i> Save
+                                        </button>
+                                    </form>
                                 </td>
-                            </form>
                         </tr>
                     @endforeach
                 </tbody>

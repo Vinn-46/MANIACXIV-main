@@ -40,7 +40,7 @@ class PenposController extends Controller
 
             $team = Team::where('name', $request->get('tim'))->first();
             if ($team == null)
-                throw \Exception("Could not find team named '{$request->get('tim')}'");
+                throw new \Exception("Could not find team named '{$request->get('tim')}'");
 
             $player = Player::where('team_id', $team->id)->first();
 

@@ -4,7 +4,6 @@ namespace App\Events;
 
 use Carbon\Carbon;
 use App\Models\RallyGame;
-use App\Models\GameBesarSession;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\PrivateChannel;

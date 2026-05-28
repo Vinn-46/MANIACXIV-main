@@ -4,19 +4,13 @@ namespace App\Http\Controllers\SuperSI;
 
 use App\Models\Log;
 use App\Models\Point;
-use App\Models\Relic;
 use App\Models\Score;
 use App\Models\Contest;
-use App\Models\Inventory;
 use App\Models\RallyGame;
-use App\Models\RelicChosen;
 use Illuminate\Http\Request;
-use App\Models\GameBesarSession;
 use Illuminate\Support\Facades\DB;
-use App\Events\UpdateAvailableStock;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Events\UpdateTearsSemiPrivate;
 
 class SuperSIController extends Controller
 {
@@ -26,7 +20,7 @@ class SuperSIController extends Controller
                 ->orderByRaw("CASE type 
                     WHEN 'single' THEN 1 
                     WHEN 'battle' THEN 2 
-                    WHEN 'hel' THEN 3 
+                    WHEN 'inferno' THEN 3 
                     ELSE 4 END")
                 ->orderBy('scores_count', "DESC")
                 ->orderBy('name', "ASC")

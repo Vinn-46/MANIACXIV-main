@@ -176,11 +176,7 @@ Route::group(
             ->name('store');
         Route::delete('/{score}/destroy', [Penpos\PenposController::class, 'destroy'])
             ->name('destroy');
-        Route::post('/player-inventory', [Penpos\PenposController::class, 'getPlayerInventory'])
-            ->name('getPlayerInventory');
-        Route::post('/penpos/update-stock', [Penpos\PenposController::class, 'updateStock'])
-            ->name('updateStock');
-        Route::post('/penpos/inform-si', [Penpos\PenposController::class, 'informSI'])
+        Route::post('/inform-si', [Penpos\PenposController::class, 'informSI'])
             ->name('informSI');
     }
 );
