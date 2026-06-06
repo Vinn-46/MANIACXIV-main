@@ -226,13 +226,13 @@
             $('#next-weapon-subtitle').show();
             labelNextW.show().text("LV. 2").removeClass('text-red-400 text-3xl').addClass('text-green-400 text-5xl tracking-normal uppercase');
             boxCostW.show();
-            textCostW.text("1500 Honor");
+            textCostW.text("600 Honor");
             btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
         } else if (wLevel == 2) {
             $('#next-weapon-subtitle').show();
             labelNextW.show().text("LV. 3").removeClass('text-red-400 text-3xl').addClass('text-green-400 text-5xl tracking-normal uppercase');
             boxCostW.show();
-            textCostW.text("3000 Honor");
+            textCostW.text("1200 Honor");
             btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
         } else {
             $('#next-weapon-subtitle').hide();

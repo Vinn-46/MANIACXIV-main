@@ -14,7 +14,7 @@ class FinalPlayerSeeder extends Seeder
      */
     public function run(): void
     {
-        $notAllowed = collect(range(1, 20))
+        $notAllowed = collect(range(1, 20));
         $teams = Team::whereNotIn('id', $notAllowed)
                         ->where('status', 'verified')
                         ->where('name', '!=', 'SYSTEM')
