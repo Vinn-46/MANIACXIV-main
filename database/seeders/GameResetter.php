@@ -47,5 +47,7 @@ class GameResetter extends Seeder
         }
         
         \App\Models\PlayerTargetBase::query()->delete();
+        \App\Models\TargetBase::query()->delete();
+        DB::statement('ALTER TABLE target_bases AUTO_INCREMENT = 1');
     }
 }

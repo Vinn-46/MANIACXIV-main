@@ -262,13 +262,14 @@
             
             row.bases.forEach(base => {
                 const hpPercent = (base.current_hp / base.max_hp) * 100;
-                const destroyedClass = base.is_destroyed ? 'destroyed' : '';
-                const statusText = base.is_destroyed ? 'HANCUR' : 'HP: ' + base.current_hp + ' / ' + base.max_hp;
+                const isDestroyed = (base.is_destroyed === true || base.is_destroyed == 1 || base.is_destroyed === 'true');
+                const destroyedClass = isDestroyed ? 'destroyed' : '';
+                const statusText = isDestroyed ? 'HANCUR' : 'HP: ' + base.current_hp + ' / ' + base.max_hp;
                 
                 const targetName = base.type.toUpperCase() + ' ' + targetCounter[base.type]++;
                 
                 // Add to dropdown if not destroyed
-                if (!base.is_destroyed) {
+                if (!isDestroyed) {
                     $('#target-select').append(`<option value="${base.id}">${targetName} (${statusText})</option>`);
                 }
 
@@ -278,7 +279,7 @@
                          data-id="${base.id}" 
                          data-hp="${base.current_hp}" 
                          data-maxhp="${base.max_hp}"
-                         data-destroyed="${base.is_destroyed ? 1 : 0}"
+                         data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
                         <h3 class="font-extrabold text-2xl uppercase font-['dalek'] tracking-widest">${base.type}</h3>
                         <p class="font-bold text-sm mb-1">+${base.point_reward} Pts</p>

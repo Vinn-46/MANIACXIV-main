@@ -18,6 +18,10 @@ class PlayerTargetBase extends Model
         'destroyed_at',
     ];
 
+    protected $casts = [
+        'is_destroyed' => 'boolean',
+    ];
+
     public function player() : BelongsTo {
         return $this->belongsTo(Player::class, 'player_id');
     }
