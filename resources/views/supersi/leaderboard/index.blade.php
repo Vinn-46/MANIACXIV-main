@@ -150,34 +150,39 @@
             </button>
         </div>
 
-        {{--    Table    --}}
-        <div class="overflow-auto rounded">
-            <h1 class="text-center font-bold text-xl py-2">Leaderboard Rally and Game Besar</h1>
-            <div class="overflow-auto rounded" style="max-height: 450px">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rank</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Team Name</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Lifetime Honor</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Pos (Win/Play)</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Rally Score</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Gamebes Points</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white;">Gamebes Score</th>
-                            <th style="padding: 8px 12px; border-bottom: 1px solid white; border-left: 2px solid white;">Final Total Score</th>
+        <div class="rounded-lg shadow-2xl mb-4">
+            <h1 class="text-center font-bold text-2xl py-4 bg-slate-800 text-white rounded-t-lg border-b border-slate-700 tracking-wide">
+                <i class="fa-solid fa-trophy text-amber-400 mr-2"></i> Leaderboard Rally and Game Besar
+            </h1>
+            <div class="overflow-auto bg-slate-700/40 rounded-b-lg backdrop-blur-sm" style="max-height: 500px">
+                <table class="w-full text-left border-collapse">
+                    <thead style="position: sticky; top: 0; z-index: 10;" class="bg-slate-800 text-slate-200 shadow-md">
+                        <tr class="text-xs uppercase tracking-wider">
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Rank</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Team Name</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Lifetime Honor</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Pos (Win/Play)</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Rally Score</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Gamebes Pts</th>
+                            <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Gamebes Score</th>
+                            <th class="py-4 px-3 font-bold text-center border-b border-slate-600 bg-slate-900 border-l border-slate-700 text-amber-400">Final Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="text-slate-900 text-sm bg-slate-100">
                         @foreach($leaderboard as $idx => $row)
-                            <tr>
-                                <td style="padding: 8px 12px;">{{ $idx + 1 }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->team_name }} <br><span class="text-xs text-slate-300">ID: {{ $row->player_id }}</span></td>
-                                <td style="padding: 8px 12px;">{{ $row->total_honor }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->pos_menang }} / {{ $row->pos_dimainkan }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->rally_score }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->gamebes_poin }}</td>
-                                <td style="padding: 8px 12px;">{{ $row->gamebes_score }}</td>
-                                <td style="padding: 8px 12px; border-left: 2px solid white; font-size: 1.1em; color: #fbbf24;"><b>{{ $row->total_score }}</b></td>
+                            <tr class="hover:bg-slate-200 transition-all duration-200 border-b border-slate-300 last:border-0 group">
+                                <td class="py-3 px-3 text-center font-medium">
+                                    <span class="bg-slate-300 text-slate-800 px-2 py-1 rounded text-xs group-hover:bg-slate-400">{{ $idx + 1 }}</span>
+                                </td>
+                                <td class="py-3 px-3 text-center font-bold text-slate-900 text-base tracking-wide">{{ $row->team_name }}</td>
+                                <td class="py-3 px-3 text-center">{{ number_format($row->total_honor) }}</td>
+                                <td class="py-3 px-3 text-center text-slate-700">{{ $row->pos_menang }} <span class="mx-1 text-slate-400">/</span> {{ $row->pos_dimainkan }}</td>
+                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->rally_score) }}</td>
+                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->gamebes_poin) }}</td>
+                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->gamebes_score) }}</td>
+                                <td class="py-3 px-3 text-center border-l border-slate-300 bg-slate-200 group-hover:bg-slate-300 transition-colors">
+                                    <span class="text-lg font-extrabold text-slate-900 drop-shadow-sm">{{ number_format($row->total_score) }}</span>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
