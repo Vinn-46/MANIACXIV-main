@@ -105,11 +105,11 @@
                             {{-- Action (Create / Update) --}}
                             <td width="20%" class="text-center">
                                 @if ($score)
-                                    <button class="bg-yellow-600 text-white px-3 py-1 rounded hover:bg-yellow-700 transition-all" onclick="openUpdateModal({{ $score->id }})">
+                                    <button class="bg-yellow-600 text-white px-3 py-1 rounded hover:bg-yellow-700 transition-all" onclick="openUpdateModal({{ $score->id }}, '{{ $game->type }}', {{ $score->point_id }})">
                                         Update
                                     </button>
                                 @else
-                                    <button class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition-all" onclick="openCreateModal({{ $player->id }}, {{ $game->id }})">
+                                    <button class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 transition-all" onclick="openCreateModal({{ $player->id }}, {{ $game->id }}, '{{ $game->type }}')">
                                         Add
                                     </button>
                                 @endif
@@ -142,10 +142,7 @@
                     <label class="label">
                         <span class="label-text text-slate-50">Pilih Point</span>
                     </label>
-                    <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" required>
-                        @foreach ($points as $point)
-                            <option value="{{ $point->id }}">Point {{ $point->value }}</option>
-                        @endforeach
+                    <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" id="createPointSelect" required>
                     </select>
                 </div>
 
@@ -179,12 +176,7 @@
                     <label class="label">
                         <span class="label-text text-slate-50">Pilih Point</span>
                     </label>
-                    <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" required>
-                        @foreach ($points as $point)
-                            <option value="{{ $point->id }}" {{ isset($score) && $score->point_id == $point->id ? 'selected' : '' }}>
-                                Point {{ $point->value }}
-                            </option>
-                        @endforeach
+                    <select name="point_id" class="select select-bordered bg-slate-700 text-white w-full" id="updatePointSelect" required>
                     </select>
                 </div>
 
@@ -232,21 +224,38 @@
         </form>
     </dialog>
     <script>
-    function openCreateModal(playerId, gameId) {
+    const pointsData = @json($points);
+
+    function populateSelect(selectId, gameType, selectedId = null) {
+        const select = document.getElementById(selectId);
+        select.innerHTML = '';
+        pointsData.filter(p => p.type === gameType).forEach(p => {
+            let label = 'Kalah';
+            if (p.condition === 'win') label = 'Menang';
+            if (p.condition === 'draw') label = 'Draw';
+            
+            const isSelected = p.id === selectedId ? 'selected' : '';
+            select.innerHTML += `<option value="${p.id}" ${isSelected}>${label} (${p.honor_reward} Honor, ${p.peluru_reward} Peluru)</option>`;
+        });
+    }
+
+    function openCreateModal(playerId, gameId, gameType) {
         console.log('playerId:', playerId, 'gameId:', gameId);
         const modal = document.getElementById('createScoreModal');
         const form = modal.querySelector('form');
 
         form.action = `/super-si/player/${playerId}/score/create/${gameId}`;
+        populateSelect('createPointSelect', gameType);
         modal.showModal();
     }
 
-    function openUpdateModal(scoreId) {
+    function openUpdateModal(scoreId, gameType, currentPointId) {
         console.log('scoreId:', scoreId);
         const modal = document.getElementById('updateScoreModal');
         const form = modal.querySelector('form');
 
         form.action = `/super-si/player/score/update/${scoreId}`;
+        populateSelect('updatePointSelect', gameType, currentPointId);
         modal.showModal();
     }
 
