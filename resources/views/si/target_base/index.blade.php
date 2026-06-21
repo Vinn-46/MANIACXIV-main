@@ -35,9 +35,9 @@
         }
         
         /* Styles for different types */
-        .target-small { width: 120px; height: 120px; background: linear-gradient(135deg, #ef4444, #991b1b); border: 4px solid #7f1d1d; color: white; }
-        .target-medium { width: 150px; height: 150px; background: linear-gradient(135deg, #f59e0b, #b45309); border: 4px solid #78350f; color: white; }
-        .target-large { width: 180px; height: 180px; background: linear-gradient(135deg, #10b981, #047857); border: 4px solid #064e3b; color: white; }
+        .target-small { width: 150px; height: 150px; background: #A66C3A; color: white; }
+        .target-medium { width: 170px; height: 170px; background: #E5C18D; color: #593118; }
+        .target-large { width: 200px; height: 200px; background: #FFF6CB; color: #411512; }
 
         .hp-bar-bg {
             width: 80%;
@@ -47,9 +47,20 @@
             margin-top: 10px;
             overflow: hidden;
         }
+
+        .hp-bar-fill-small{
+            background: #D0D37C; /* merah */
+        }
+
+        .hp-bar-fill-medium{
+            background: #9D933C; /* kuning */
+        }
+
+        .hp-bar-fill-large{
+            background: #d1ce80; /* hijau */
+        }
         .hp-bar-fill {
             height: 100%;
-            background-color: #4ade80;
             transition: width 0.3s ease-in-out;
         }
 
@@ -67,37 +78,173 @@
             gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
+        .container{
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            margin-bottom: 20px;
+        }
+
+        .menu{
+            background-color: #8b181b;
+            font-family: 'Roboto';
+            font-size: 20px;
+            color: white;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+
+        .right{
+            justify-self: end;
+        }
+        .navbar-nav{
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .active-link,
+        .active-link:hover {
+            background-color: white;
+            color: #8b181b !important;
+            border-radius: 20px;
+        }
+        .image-container {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .image-container img {
+            width: 100%;
+            display: block;
+        }
+        .text-amunisi {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            font-family: 'Roboto';
+        }
+        .jumlah-amunisi {
+            position: absolute;
+            top: 60%;         
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            font-weight: 900;
+            color: white;
+            font-family: 'Roboto';
+        }
+        .team-name{
+           background-color: #8b181b;
+            font-family: 'Roboto';
+            font-size: 20px;
+            color: white;
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+        }
+        #pID {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border-radius: 1.5rem;
+            border: none;
+            outline: none;
+
+            background-color: #8b181b;
+            color: white;
+
+            font-family: 'Roboto';
+            font-size: 20px;
+            font-weight: bold;
+
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 18px center;
+            background-size: 20px;
+
+            padding-right: 50px;
+        }
+        .navbar-nav a {
+            padding: 8px 25px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .nav-link:hover:not(.active-link) {
+            color: #FFD700; 
+            background: transparent;
+        }
+        #arena-container{
+    min-height: 600px;
+}
+        #arena-container.active-arena {
+            background-image: url("{{ asset('asset2026/Target Base/bg.png') }}");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
     </style>
 @endsection
 
 @section("content")
-    <div class="c-bg-white shadow-lg p-6 rounded-lg w-full max-w-[85vw] mx-auto flex flex-col relative">
-        
-        <!-- Header & Nav -->
-        <div class="flex justify-between items-center mb-4">
-            <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">TARGET BASE</h1>
-            <div class="flex gap-2">
-                <button id="btn-shop" onclick="openShop()" class="bg-[#dba668] hover:bg-[#be8f57] text-[#733b22] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-[#733b22] hidden">
-                    <i class="fa-solid fa-store mr-2"></i> Shop
-                </button>
+<div class="w-full max-w-[85vw] mx-auto min-h-[80vh]">
+     <!-- Header & Nav -->
+        <div class="container">
+            <div></div>
+            <div class = "menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('si.index') ? 'active-link' : '' }}"aria-current="page" href="{{ route('si.index') }}">TARGET BASE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }}"href="{{ route('si.shop.index') }}">SHOP</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-red-800">
-                        <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
+                    <button type="submit" class="bg-white hover:bg-[#590212] text-[#8b181b] px-6 py-2 rounded-full font-['Roboto'] font-bold text-lg shadow-md transition-colors">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i> LOGOUT
                     </button>
                 </form>
             </div>
         </div>
-
+   <div class="c-bg-white shadow-lg px-16 py-8 rounded-lg w-full max-w-[85vw] mx-auto flex flex-col relative min-h-screen">
         <!-- Player Selection -->
-        <div class="bg-gradient-to-r from-[#dba668] to-[#be8f57] p-4 rounded-2xl mb-6 flex flex-col md:flex-row items-center justify-between shadow-xl border-4 border-[#733b22] gap-4">
+        <div class="p-4 rounded-2xl mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center whitespace-nowrap">
-                <span class="text-[#733b22] font-['Lato'] font-extrabold text-2xl uppercase tracking-wider">Pilih Tim :</span>
+                <span class="team-name">TEAM NAME</span>
             </div>
             
             <div class="w-full md:w-1/2 flex-grow">
-                <select id="pID" class="w-full py-3 px-6 rounded-xl text-xl font-['Lato'] font-bold shadow-inner text-[#733b22] border-4 border-[#733b22] bg-[#f0e9cf] focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer appearance-none" name="state" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23733B22%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 1rem top 50%; background-size: 1.5rem auto;">
-                    <option selected disabled value="">-- Silakan Pilih Player --</option>
+                <select id="pID">
+                    <option selected disabled value="">-- PILIH TIM --</option>
                     @foreach ($players as $p)
                         <option value="{{ $p->id }}">
                             {{ $p->team_name }}
@@ -107,8 +254,8 @@
             </div>
 
             <div class="whitespace-nowrap min-w-[150px] text-center flex items-center justify-end gap-2">
-                <span id="loading-indicator" class="text-white font-bold hidden bg-black/40 px-4 py-3 rounded-lg text-lg"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat...</span>
-                <button id="btn-reset" class="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 rounded-lg text-lg border-2 border-red-800 hidden shadow-md transition-colors" title="Tutup Arena dan Sembunyikan Piramida">
+                <span id="loading-indicator" class="text-white font-bold hidden bg-black/40 px-4 py-3 rounded-full text-lg"><i class="fa-solid fa-spinner fa-spin mr-2"></i> Memuat...</span>
+                <button id="btn-reset" class="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-3 rounded-full text-lg hidden shadow-md transition-colors" title="Tutup Arena dan Sembunyikan Piramida">
                     <i class="fa-solid fa-xmark"></i> Tutup
                 </button>
             </div>
@@ -116,35 +263,37 @@
 
         <!-- Resource Stats -->
         <div class="grid grid-cols-2 gap-6 mb-6">
-            <div class="resource-card p-3 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg">
-                <span class="text-lg font-['Lato'] font-bold uppercase mb-1">Amunisi Peluru</span>
-                <span class="text-3xl font-extrabold" id="display-peluru">-</span>
+            <div class="image-container">
+                <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
+                <div class="text-amunisi">AMUNISI PELURU</div>
+                <span class="jumlah-amunisi" id="display-peluru">0</span>
             </div>
-            <div class="resource-card p-3 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg">
-                <span class="text-lg font-['Lato'] font-bold uppercase mb-1">Level Senjata</span>
-                <span class="text-3xl font-extrabold" id="display-weapon">-</span>
+            <div class="image-container">
+                <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
+                <div class="text-amunisi">LEVEL SENJATA</div>
+                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">LVL.1</span>
             </div>
         </div>
 
         <!-- Attack Control Panel (Hidden initially) -->
-        <div id="attack-controls" class="bg-gradient-to-r from-[#dba668] to-[#be8f57] p-4 rounded-xl mb-6 shadow-xl border-4 border-[#733b22] flex flex-col md:flex-row items-end justify-center gap-4 hidden">
+        <div id="attack-controls" class="bg-[#847E30] p-4 rounded-xl mb-6 shadow-xl flex flex-col md:flex-row items-end justify-center gap-8 hidden">
             <div class="w-full md:w-auto flex flex-col">
-                <label class="text-[#733b22] font-extrabold mb-2 uppercase text-sm tracking-widest">Pilih Target:</label>
-                <select id="target-select" class="w-full md:w-64 py-2 px-4 rounded-lg text-lg font-bold text-[#733b22] border-2 border-[#733b22] bg-[#f0e9cf] focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer">
+                <label class="text-white font-bold mb-2 text-sm">Pilih Target:</label>
+                <select id="target-select" class="w-full md:w-64 py-2 px-4 rounded-lg text-lg font-bold text-white bg-white/40 focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer">
                     <!-- Populated via JS -->
                 </select>
             </div>
             <div class="w-full md:w-auto flex flex-col">
-                <label class="text-[#733b22] font-extrabold mb-2 uppercase text-sm tracking-widest">Jumlah Tembakan:</label>
-                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-[#733b22] text-center border-2 border-[#733b22] bg-[#f0e9cf] focus:outline-none focus:ring-4 focus:ring-[#733b22]">
+                <label class="text-white font-bold mb-2 text-sm">Jumlah Tembakan:</label>
+                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-white text-center bg-white/40 focus:outline-none focus:ring-4 focus:ring-[#733b22]">
             </div>
-            <button id="btn-fire" class="bg-red-600 hover:bg-red-700 text-white font-black px-8 py-2 rounded-lg text-xl shadow-lg transition-transform hover:scale-105 active:scale-95 border-b-4 border-red-800">
+            <button id="btn-fire" class="bg-[#8b181b] hover:bg-[#590212] text-white font-black px-8 py-2 rounded-lg text-xl shadow-lg transition-transform hover:scale-105 active:scale-95">
                 <i class="fa-solid fa-crosshairs mr-2"></i> TEMBAK!
             </button>
         </div>
 
         <!-- Target Pyramid Area -->
-        <div class="flex-grow bg-black/80 rounded-2xl border-4 border-[#ae8350] p-6 shadow-2xl relative overflow-hidden" id="arena-container">
+        <div class="flex-grow bg-black/80 rounded-2xl bg-[#590212] p-6 shadow-2xl relative overflow-hidden" id="arena-container">
             <!-- Overlay Placeholder -->
             <div id="arena-overlay" class="absolute inset-0 z-10 bg-black/60 flex items-center justify-center backdrop-blur-sm">
                 <h2 class="text-4xl font-bold text-white text-center font-['Lato'] drop-shadow-lg">SILAKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
@@ -156,7 +305,8 @@
         </div>
 
     </div>
-@endsection
+</div>
+    @endsection
 
 @section("script")
 <script>
@@ -220,7 +370,7 @@
                 weaponDamage = damageMap[wLevel] || 5;
 
                 displayPeluru.text(currentPeluru);
-                displayWeapon.text("LV. " + wLevel + " (DMG: " + weaponDamage + ")");
+                displayWeapon.text("LVL. " + wLevel + " (DMG: " + weaponDamage + ")");
 
                 renderPyramid(res.bases);
                 
@@ -229,6 +379,13 @@
                 $('#btn-reset').removeClass('hidden');
                 $('#btn-shop').removeClass('hidden');
                 $('#attack-controls').removeClass('hidden');
+
+                arenaOverlay.addClass('hidden');
+                
+
+                $('#arena-container').addClass('active-arena'); // tambahkan ini
+
+                $('#btn-reset').removeClass('hidden');
             },
             error: function(err) {
                 $('#loading-indicator').addClass('hidden');
@@ -281,11 +438,11 @@
                          data-maxhp="${base.max_hp}"
                          data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
-                        <h3 class="font-extrabold text-2xl uppercase font-['dalek'] tracking-widest">${base.type}</h3>
-                        <p class="font-bold text-sm mb-1">+${base.point_reward} Pts</p>
-                        <p class="hp-text font-bold text-lg mb-1">${statusText}</p>
-                        <div class="hp-bar-bg">
-                            <div class="hp-bar-fill" style="width: ${hpPercent}%"></div>
+                        <h3 class=" text-6xl uppercase font-['Playbill']">${base.type}</h3>
+                        <p class="font-bold text-sm mb-1">+${base.point_reward} pts</p>
+                        <p class="hp-text font-['Playbill'] text-2xl">${statusText}</p>
+                        <div class="hp-bar-bg hp-bar-bg-${base.type}">
+                            <div class="hp-bar-fill hp-bar-fill-${base.type}" style="width: ${hpPercent}%"></div>
                         </div>
                     </div>
                 `;
@@ -461,8 +618,9 @@
         $(this).addClass('hidden');
         arenaOverlay.removeClass('hidden');
         pyramidWrapper.addClass('opacity-0');
-        displayPeluru.text('-');
-        displayWeapon.text('-');
+        displayPeluru.text('0');
+        displayWeapon.text('LVL.1');
+        $('#arena-container').removeClass('active-arena');
     });
 </script>
 @endsection

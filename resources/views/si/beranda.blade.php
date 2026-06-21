@@ -9,8 +9,8 @@
 @endsection
 
 @section("content")
-    <div class="c-bg-white shadow-2xl p-10 rounded-2xl max-w-[60vw] w-full text-center border-4 border-[#ae8350]">
-        <h1 class="text-6xl font-['dalek'] text-[#733b22] mb-2 drop-shadow-md" style="text-shadow: -3px 2px 0px #be8f57">PANEL GAME BESAR</h1>
+    <div class="c-bg-white shadow-2xl p-10 rounded-2xl max-w-[60vw] w-full text-center border-4 border-[#8b181b]">
+        <h1 class="text-6xl font-['dalek'] text-[#8b181b] mb-2 drop-shadow-md" style="text-shadow: -3px 2px 0px #8b181b">PANEL GAME BESAR</h1>
         <p class="text-2xl font-['Lato'] font-bold text-[#733b22] mb-10 opacity-90">Sistem Informasi (SI) Dashboard</p>
 
         <div class="grid grid-cols-2 gap-10">
