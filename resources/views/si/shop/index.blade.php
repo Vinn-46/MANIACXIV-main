@@ -26,11 +26,11 @@
         <div class="flex justify-between items-center mb-6">
             <div>
                 <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">SHOP</h1>
-                <h2 id="team-name-display" class="text-2xl font-['Lato'] font-bold text-[#733b22] mt-2 bg-[#dba668] inline-block px-4 py-1 rounded-lg shadow-inner">Silakan masuk lewat Arena...</h2>
+                <h2 id="team-name-display" class="text-2xl font-['Lato'] font-bold text-[#733b22] mt-2 bg-[#dba668] inline-block px-4 py-1 rounded-lg shadow-inner hidden"></h2>
             </div>
             <div class="flex gap-2">
                 <button onclick="openArena()" class="bg-[#733b22] hover:bg-[#5c2f1a] text-white border-2 border-[#dba668] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Arena
+                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Target Base
                 </button>
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
@@ -62,8 +62,8 @@
                 <span class="text-4xl font-extrabold" id="display-peluru">-</span>
             </div>
             <div class="resource-card p-4 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg h-32">
-                <span class="text-xl font-['Lato'] font-bold uppercase mb-2">Level Senjata</span>
-                <span class="text-4xl font-extrabold" id="display-weapon">-</span>
+                <span class="text-xl font-['Lato'] font-bold uppercase mb-2">Nama Senjata</span>
+                <span class="text-3xl font-extrabold" id="display-weapon">-</span>
             </div>
         </div>
 
@@ -99,18 +99,21 @@
                 <div>
                     <div class="flex justify-between items-center border-b-2 border-[#dba668] pb-4 mb-4">
                         <h2 class="text-3xl font-['Lato'] font-bold">Upgrade Senjata</h2>
-                        <span class="bg-[#dba668] text-[#733b22] px-3 py-1 rounded font-bold">Max Level 3</span>
                     </div>
 
-                    <div class="bg-black/40 rounded-xl p-6 flex flex-row items-end justify-between px-16 mb-6 mt-4 h-32">
-                        <div class="text-center flex flex-col items-center justify-end h-full">
-                            <span class="text-sm font-semibold opacity-70 mb-2">Saat Ini</span>
-                            <span class="text-5xl font-extrabold" id="current-weapon-label">LV. -</span>
+                    <div class="bg-black/40 rounded-xl p-4 flex flex-col xl:flex-row items-center justify-between gap-4 mb-6 mt-4">
+                        <div class="text-center w-full xl:w-5/12 flex flex-col justify-center">
+                            <span class="text-sm font-semibold opacity-70 mb-1 block">Saat Ini</span>
+                            <span class="text-xl font-extrabold uppercase" id="current-weapon-label">-</span>
+                        </div>
+                        
+                        <div class="hidden xl:flex justify-center items-center w-2/12">
+                            <i class="fa-solid fa-angles-right text-[#dba668] text-2xl opacity-70"></i>
                         </div>
 
-                        <div class="text-center flex flex-col items-center justify-end h-full" id="next-weapon-box">
-                            <span class="text-sm font-semibold opacity-70 mb-2" id="next-weapon-subtitle">Selanjutnya</span>
-                            <span class="text-5xl font-extrabold text-green-400" id="next-weapon-label">LV. -</span>
+                        <div class="text-center w-full xl:w-5/12 flex flex-col justify-center" id="next-weapon-box">
+                            <span class="text-sm font-semibold opacity-70 mb-1 block" id="next-weapon-subtitle">Selanjutnya</span>
+                            <span class="text-xl font-extrabold text-green-400 uppercase" id="next-weapon-label">-</span>
                         </div>
                     </div>
 
@@ -148,6 +151,13 @@
     const btnUpgrade = $('#btn-upgrade');
 
     let currentHonorVal = 0;
+    let currentWeaponLevel = 1;
+
+    const weaponNames = {
+        1: "Peacemaker",
+        2: "Sharpshooter",
+        3: "Eagle Eye"
+    };
 
     $(document).ready(function() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -155,9 +165,9 @@
         if (teamId) {
             selPlayer.val(teamId).trigger('change');
             const teamName = selPlayer.find('option:selected').text();
-            $('#team-name-display').text($.trim(teamName));
+            $('#team-name-display').text($.trim(teamName)).removeClass('hidden');
         } else {
-            Swal.fire('Perhatian', 'Mohon pilih tim melalui menu Arena (Target Base) terlebih dahulu.', 'warning');
+            Swal.fire('Perhatian', 'Mohon pilih tim melalui menu Target Base terlebih dahulu.', 'warning');
         }
     });
 
@@ -216,27 +226,28 @@
         currentHonorVal = honor;
         displayHonor.text(honor);
         displayPeluru.text(peluru);
-        displayWeapon.text("LV. " + wLevel);
+        currentWeaponLevel = wLevel;
+        displayWeapon.text(weaponNames[wLevel]);
     }
 
     function updateUpgradeUI(wLevel) {
-        labelCurrentW.text("LV. " + wLevel);
+        labelCurrentW.text(weaponNames[wLevel]);
         
         if (wLevel == 1) {
             $('#next-weapon-subtitle').show();
-            labelNextW.show().text("LV. 2").removeClass('text-red-400 text-3xl').addClass('text-green-400 text-5xl tracking-normal uppercase');
+            labelNextW.show().text("Sharpshooter").removeClass('text-red-400 text-2xl').addClass('text-green-400 text-xl tracking-normal uppercase');
             boxCostW.show();
             textCostW.text("600 Honor");
             btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
         } else if (wLevel == 2) {
             $('#next-weapon-subtitle').show();
-            labelNextW.show().text("LV. 3").removeClass('text-red-400 text-3xl').addClass('text-green-400 text-5xl tracking-normal uppercase');
+            labelNextW.show().text("Eagle Eye").removeClass('text-red-400 text-2xl').addClass('text-green-400 text-xl tracking-normal uppercase');
             boxCostW.show();
             textCostW.text("1200 Honor");
             btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
         } else {
             $('#next-weapon-subtitle').hide();
-            labelNextW.show().text("MAX").removeClass('text-green-400 text-5xl').addClass('text-red-400 text-4xl tracking-widest uppercase');
+            labelNextW.show().text("MAX").removeClass('text-green-400 text-xl').addClass('text-red-400 text-2xl tracking-widest uppercase');
             boxCostW.hide();
             btnUpgrade.prop('disabled', true).text("SENJATA MAKSIMAL");
         }
@@ -286,7 +297,7 @@
                     },
                     success: function(res) {
                         if (res.success) {
-                            updateUIResources(res.new_honor, res.new_peluru, displayWeapon.text().replace("LV. ", ""));
+                            updateUIResources(res.new_honor, res.new_peluru, currentWeaponLevel);
                             Swal.fire('Berhasil!', res.message, 'success');
                             inputPeluru.val(1).trigger('input');
                         } else {

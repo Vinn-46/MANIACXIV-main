@@ -222,7 +222,7 @@
                         <a class="nav-link {{ request()->routeIs('si.index') ? 'active-link' : '' }}"aria-current="page" href="{{ route('si.index') }}">TARGET BASE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }}"href="{{ route('si.shop.index') }}">SHOP</a>
+                        <a class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }}" href="javascript:void(0)" onclick="openShop()">SHOP</a>
                     </li>
                 </ul>
             </div>
@@ -270,8 +270,8 @@
             </div>
             <div class="image-container">
                 <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
-                <div class="text-amunisi">LEVEL SENJATA</div>
-                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">LVL.1</span>
+                <div class="text-amunisi">NAMA SENJATA</div>
+                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">Peacemaker</span>
             </div>
         </div>
 
@@ -279,13 +279,13 @@
         <div id="attack-controls" class="bg-[#847E30] p-4 rounded-xl mb-6 shadow-xl flex flex-col md:flex-row items-end justify-center gap-8 hidden">
             <div class="w-full md:w-auto flex flex-col">
                 <label class="text-white font-bold mb-2 text-sm">Pilih Target:</label>
-                <select id="target-select" class="w-full md:w-64 py-2 px-4 rounded-lg text-lg font-bold text-white bg-white/40 focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer">
+                <select id="target-select" class="w-full md:w-64 py-2 px-4 rounded-lg text-lg font-bold text-black bg-white focus:outline-none focus:ring-4 focus:ring-[#733b22] cursor-pointer">
                     <!-- Populated via JS -->
                 </select>
             </div>
             <div class="w-full md:w-auto flex flex-col">
                 <label class="text-white font-bold mb-2 text-sm">Jumlah Tembakan:</label>
-                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-white text-center bg-white/40 focus:outline-none focus:ring-4 focus:ring-[#733b22]">
+                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-black text-center bg-white focus:outline-none focus:ring-4 focus:ring-[#733b22]">
             </div>
             <button id="btn-fire" class="bg-[#8b181b] hover:bg-[#590212] text-white font-black px-8 py-2 rounded-lg text-xl shadow-lg transition-transform hover:scale-105 active:scale-95">
                 <i class="fa-solid fa-crosshairs mr-2"></i> TEMBAK!
@@ -325,6 +325,12 @@
         1: 5,
         2: 10,
         3: 15
+    };
+
+    const weaponNames = {
+        1: "Peacemaker",
+        2: "Sharpshooter",
+        3: "Eagle Eye"
     };
 
     $(document).ready(function() {
@@ -370,7 +376,7 @@
                 weaponDamage = damageMap[wLevel] || 5;
 
                 displayPeluru.text(currentPeluru);
-                displayWeapon.text("LVL. " + wLevel + " (DMG: " + weaponDamage + ")");
+                displayWeapon.text(weaponNames[wLevel] + " (DMG: " + weaponDamage + ")");
 
                 renderPyramid(res.bases);
                 
@@ -572,7 +578,7 @@
                         // Trigger change to highlight the next available target
                         $('#target-select').trigger('change');
 
-                        Swal.fire('💥 TARGET HANCUR!', res.message, 'success');
+                        Swal.fire('Target hancur!', res.message, 'success');
                     } else {
                         const hpPercent = (newHp / maxHp) * 100;
                         el.find('.hp-text').text('HP: ' + newHp + ' / ' + maxHp);
@@ -619,7 +625,7 @@
         arenaOverlay.removeClass('hidden');
         pyramidWrapper.addClass('opacity-0');
         displayPeluru.text('0');
-        displayWeapon.text('LVL.1');
+        displayWeapon.text('Peacemaker');
         $('#arena-container').removeClass('active-arena');
     });
 </script>
