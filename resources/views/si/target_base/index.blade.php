@@ -127,7 +127,7 @@
         }
         .text-amunisi {
             position: absolute;
-            top: 35%;
+            top: 28%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
@@ -139,7 +139,7 @@
         }
         .jumlah-amunisi {
             position: absolute;
-            top: 60%;         
+            top: 63%;         
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 30px;
@@ -271,7 +271,7 @@
             <div class="image-container">
                 <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
                 <div class="text-amunisi">NAMA SENJATA</div>
-                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">Peacemaker</span>
+                <span class="jumlah-amunisi text-center leading-tight w-full" id="display-weapon">Peacemaker</span>
             </div>
         </div>
 
@@ -376,7 +376,7 @@
                 weaponDamage = damageMap[wLevel] || 5;
 
                 displayPeluru.text(currentPeluru);
-                displayWeapon.text(weaponNames[wLevel] + " (DMG: " + weaponDamage + ")");
+                displayWeapon.html(weaponNames[wLevel] + "<br><span class='text-xl'>Damage: " + weaponDamage + "</span>");
 
                 renderPyramid(res.bases);
                 
