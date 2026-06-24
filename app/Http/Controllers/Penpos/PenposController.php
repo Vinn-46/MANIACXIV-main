@@ -25,7 +25,14 @@ class PenposController extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
 
-        return view('penpos.index', compact('points', 'scores'));
+        $hasActiveCall = false;
+        if (Auth::user()->rallyGame) {
+            $hasActiveCall = Notification::where('rally_game_id', Auth::user()->rallyGame->id)
+                ->where('resolved', false)
+                ->exists();
+        }
+
+        return view('penpos.index', compact('points', 'scores', 'hasActiveCall'));
     }
 
     public function store(Request $request)
@@ -138,9 +145,15 @@ class PenposController extends Controller
     {
         $rallyGameId = $request->input('rallyGame_id');
 
+        $activeCall = Notification::where('rally_game_id', $rallyGameId)->where('resolved', false)->exists();
+        if ($activeCall) {
+            return response()->json(['success' => false, 'message' => 'Panggilan SI sebelumnya belum direspon. Mohon tunggu.']);
+        }
+
         Notification::create([
             'rally_game_id' => $rallyGameId,
             'called_at' => now(),
+            'resolved' => false,
         ]);
 
         broadcast(new InformSI($rallyGameId));

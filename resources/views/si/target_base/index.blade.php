@@ -127,7 +127,7 @@
         }
         .text-amunisi {
             position: absolute;
-            top: 28%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
@@ -139,7 +139,7 @@
         }
         .jumlah-amunisi {
             position: absolute;
-            top: 63%;         
+            top: 60%;         
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 30px;
@@ -222,7 +222,7 @@
                         <a class="nav-link {{ request()->routeIs('si.index') ? 'active-link' : '' }}"aria-current="page" href="{{ route('si.index') }}">TARGET BASE</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }}" href="javascript:void(0)" onclick="openShop()">SHOP</a>
+                        <a id="nav-shop" class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }} opacity-50 pointer-events-none" href="javascript:void(0)" onclick="openShop()">SHOP</a>
                     </li>
                 </ul>
             </div>
@@ -266,12 +266,12 @@
             <div class="image-container">
                 <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
                 <div class="text-amunisi">AMUNISI PELURU</div>
-                <span class="jumlah-amunisi" id="display-peluru">0</span>
+                <span class="jumlah-amunisi" id="display-peluru">-</span>
             </div>
             <div class="image-container">
                 <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
                 <div class="text-amunisi">NAMA SENJATA</div>
-                <span class="jumlah-amunisi text-center leading-tight w-full" id="display-weapon">Peacemaker</span>
+                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">-</span>
             </div>
         </div>
 
@@ -376,7 +376,7 @@
                 weaponDamage = damageMap[wLevel] || 5;
 
                 displayPeluru.text(currentPeluru);
-                displayWeapon.html(weaponNames[wLevel] + "<br><span class='text-xl'>Damage: " + weaponDamage + "</span>");
+                displayWeapon.text(weaponNames[wLevel]);
 
                 renderPyramid(res.bases);
                 
@@ -384,6 +384,7 @@
                 pyramidWrapper.removeClass('opacity-0');
                 $('#btn-reset').removeClass('hidden');
                 $('#btn-shop').removeClass('hidden');
+                $('#nav-shop').removeClass('opacity-50 pointer-events-none');
                 $('#attack-controls').removeClass('hidden');
 
                 arenaOverlay.addClass('hidden');
@@ -620,12 +621,13 @@
     $('#btn-reset').on('click', function() {
         selPlayer.val(''); // Reset selection
         $('#btn-shop').addClass('hidden');
+        $('#nav-shop').addClass('opacity-50 pointer-events-none');
         $('#attack-controls').addClass('hidden');
         $(this).addClass('hidden');
         arenaOverlay.removeClass('hidden');
         pyramidWrapper.addClass('opacity-0');
-        displayPeluru.text('0');
-        displayWeapon.text('Peacemaker');
+        displayPeluru.text('-');
+        displayWeapon.text('-');
         $('#arena-container').removeClass('active-arena');
     });
 </script>

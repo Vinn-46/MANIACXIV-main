@@ -64,15 +64,20 @@
                                 <td width="25%" class="text-center">
                                     <form action="{{ route('super-si.gamebesar.updatePoints', $player->id) }}" method="POST" class="inline-flex items-center justify-center gap-2">
                                         @csrf
+                                        <span class="val-display">{{ $player->game_besar_points }}</span>
                                         <input type="number" name="game_besar_points" value="{{ $player->game_besar_points }}" 
-                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center" min="0">
+                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center val-input hidden" min="0">
                                 </td>
                                 <td width="25%" class="text-center">
+                                        <span class="val-display">{{ $player->bonus_points }}</span>
                                         <input type="number" name="bonus_points" value="{{ $player->bonus_points }}" 
-                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center" min="0">
+                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center val-input hidden" min="0">
                                 </td>
                                 <td width="15%" class="text-center sticky right-0 bg-slate-400 z-5">
-                                        <button type="submit" class="bg-slate-900 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-slate-700 active:scale-95 transition-all">
+                                        <button type="button" class="bg-yellow-600 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-yellow-700 active:scale-95 transition-all btn-edit" onclick="toggleEdit(this)">
+                                            Edit
+                                        </button>
+                                        <button type="submit" class="bg-slate-900 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-slate-700 active:scale-95 transition-all btn-save hidden">
                                             Save
                                         </button>
                                     </form>
@@ -83,4 +88,16 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    function toggleEdit(btn) {
+        const row = btn.closest('tr');
+        row.querySelectorAll('.val-display').forEach(el => el.classList.add('hidden'));
+        row.querySelectorAll('.val-input').forEach(el => el.classList.remove('hidden'));
+        row.querySelector('.btn-edit').classList.add('hidden');
+        row.querySelector('.btn-save').classList.remove('hidden');
+    }
+</script>
 @endsection

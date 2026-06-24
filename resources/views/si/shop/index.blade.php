@@ -166,8 +166,6 @@
             selPlayer.val(teamId).trigger('change');
             const teamName = selPlayer.find('option:selected').text();
             $('#team-name-display').text($.trim(teamName)).removeClass('hidden');
-        } else {
-            Swal.fire('Perhatian', 'Mohon pilih tim melalui menu Target Base terlebih dahulu.', 'warning');
         }
     });
 
