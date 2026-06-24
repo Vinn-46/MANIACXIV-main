@@ -134,6 +134,20 @@
 
 @section("script")
 <script>
+    // Custom SweetAlert Theme for Game Besar
+    window.Swal = Swal.mixin({
+        background: '#F0E9CF',
+        color: '#733b22',
+        confirmButtonColor: '#733b22',
+        cancelButtonColor: '#a15b38',
+        customClass: {
+            popup: 'border-2 border-[#dba668] rounded-xl shadow-2xl font-sans',
+            title: 'font-extrabold text-[#733b22]',
+            confirmButton: 'font-bold rounded-lg px-6 py-2',
+            cancelButton: 'font-bold rounded-lg px-6 py-2'
+        }
+    });
+
     const selPlayer = $('#pID');
     const displayHonor = $('#display-honor');
     const displayPeluru = $('#display-peluru');

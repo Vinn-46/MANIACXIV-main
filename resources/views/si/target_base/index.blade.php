@@ -28,11 +28,6 @@
         .target-box:active:not(.destroyed) {
             transform: scale(0.95);
         }
-        .target-box.destroyed {
-            opacity: 0.5;
-            cursor: not-allowed;
-            filter: grayscale(100%);
-        }
         
         /* Styles for different types */
         .target-small { width: 150px; height: 150px; background: #A66C3A; color: white; }
@@ -198,9 +193,58 @@
             color: #FFD700; 
             background: transparent;
         }
+
+        /* Animations */
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+        .anim-shake {
+            animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        .anim-damage {
+            background-color: #ef4444 !important;
+            transform: scale(0.9);
+            transition: all 0.1s ease-in-out;
+        }
+
+        @keyframes burnStamp {
+            0% { transform: scale(3); opacity: 0; }
+            50% { transform: scale(0.8); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .target-box.destroyed {
+            background-color: #111827 !important;
+            border: 2px solid #ef4444;
+            color: #ef4444 !important;
+            transition: all 0.5s ease-out;
+            opacity: 0.8;
+            box-shadow: inset 0 0 15px rgba(239, 68, 68, 0.4);
+        }
+        .target-box.destroyed .hp-text {
+            animation: burnStamp 0.4s ease-out forwards;
+            color: #ef4444 !important;
+            font-size: 2.5rem !important;
+            text-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
+            font-weight: bold;
+        }
+        .target-box.destroyed h3, .target-box.destroyed .hp-bar-bg {
+            opacity: 0.3;
+        }
+
         #arena-container{
-    min-height: 600px;
-}
+            min-height: 600px;
+        }
         #arena-container.active-arena {
             background-image: url("{{ asset('asset2026/Target Base/bg.png') }}");
             background-position: center;
@@ -310,6 +354,20 @@
 
 @section("script")
 <script>
+    // Custom SweetAlert Theme for Game Besar
+    window.Swal = Swal.mixin({
+        background: '#F0E9CF',
+        color: '#733b22',
+        confirmButtonColor: '#733b22',
+        cancelButtonColor: '#a15b38',
+        customClass: {
+            popup: 'border-2 border-[#dba668] rounded-xl shadow-2xl font-sans',
+            title: 'font-extrabold text-[#733b22]',
+            confirmButton: 'font-bold rounded-lg px-6 py-2',
+            cancelButton: 'font-bold rounded-lg px-6 py-2'
+        }
+    });
+
     const selPlayer = $('#pID');
     const displayPeluru = $('#display-peluru');
     const displayWeapon = $('#display-weapon');
@@ -540,7 +598,15 @@
         const playerId = selPlayer.val();
         const el = $('#box-' + targetId);
         
-        el.addClass('scale-95 brightness-150');
+        // Trigger animations
+        const arena = $('#arena-container');
+        arena.removeClass('anim-shake');
+        void arena[0].offsetWidth; // trigger reflow
+        arena.addClass('anim-shake');
+
+        el.removeClass('anim-damage');
+        void el[0].offsetWidth;
+        el.addClass('anim-damage');
 
         $.ajax({
             url: "{{ route('si.gameBesar.attack') }}",
@@ -553,7 +619,7 @@
             },
             success: function(res) {
                 isAttacking = false;
-                el.removeClass('scale-95 brightness-150');
+                setTimeout(() => el.removeClass('anim-damage'), 200);
 
                 if (res.success) {
                     // Update visual state
@@ -579,7 +645,9 @@
                         // Trigger change to highlight the next available target
                         $('#target-select').trigger('change');
 
-                        Swal.fire('Target hancur!', res.message, 'success');
+                        setTimeout(() => {
+                            Swal.fire('Target hancur!', res.message, 'success');
+                        }, 800);
                     } else {
                         const hpPercent = (newHp / maxHp) * 100;
                         el.find('.hp-text').text('HP: ' + newHp + ' / ' + maxHp);
