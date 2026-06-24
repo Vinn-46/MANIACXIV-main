@@ -255,7 +255,7 @@
             $('#next-weapon-subtitle').show();
             labelNextW.show().text("Eagle Eye").removeClass('text-red-400 text-2xl').addClass('text-green-400 text-xl tracking-normal uppercase');
             boxCostW.show();
-            textCostW.text("1200 Honor");
+            textCostW.text("800 Honor");
             btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
         } else {
             $('#next-weapon-subtitle').hide();
