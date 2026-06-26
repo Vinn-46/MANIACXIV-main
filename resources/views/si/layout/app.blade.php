@@ -9,7 +9,7 @@
     <title>Game Besar Maniac XV</title>
     
     {{-- Icon --}}
-    <link rel="icon" href="{{ asset('asset2025/Icon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
     
     {{-- Tailwind --}}
     @vite('resources/css/app.css')
