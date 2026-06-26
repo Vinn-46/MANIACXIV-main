@@ -3,7 +3,7 @@
 @section("style")
     <style>
         :root{
-            --c1: #733B22; 
+            --c1: #733B22;
         }
     </style>
 @endsection

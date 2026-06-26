@@ -3,7 +3,7 @@
 @section("style")
     <style>
         :root{
-            --c1: #733B22; 
+            --c1: #733B22;
         }
         .resource-card {
             background: rgba(229, 209, 184, 0.9);
@@ -28,7 +28,7 @@
         .target-box:active:not(.destroyed) {
             transform: scale(0.95);
         }
-        
+
         /* Styles for different types */
         .target-small { width: 150px; height: 150px; background: #A66C3A; color: white; }
         .target-medium { width: 170px; height: 170px; background: #E5C18D; color: #593118; }
@@ -65,7 +65,7 @@
             transform: scale(1.05) translateY(-5px);
             z-index: 20;
         }
-        
+
         .pyramid-row {
             display: flex;
             justify-content: center;
@@ -79,24 +79,6 @@
             margin-bottom: 20px;
         }
 
-        .menu{
-            background-color: #8b181b;
-            font-family: 'Roboto';
-            font-size: 20px;
-            color: white;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            padding-left: 20px;
-            padding-right: 20px;
-            border-radius: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-        }
-
-        .right{
-            justify-self: end;
-        }
         .navbar-nav{
             display: flex;
             gap: 30px;
@@ -130,32 +112,17 @@
             font-size: 20px;
             font-weight: bold;
             color: white;
-            font-family: 'Roboto';
         }
         .jumlah-amunisi {
             position: absolute;
-            top: 60%;         
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 30px;
             font-weight: 900;
             color: white;
-            font-family: 'Roboto';
         }
-        .team-name{
-           background-color: #8b181b;
-            font-family: 'Roboto';
-            font-size: 20px;
-            color: white;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            padding-left: 20px;
-            padding-right: 20px;
-            border-radius: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-        }
+
         #pID {
             width: 100%;
             padding-top: 10px;
@@ -169,14 +136,10 @@
             background-color: #8b181b;
             color: white;
 
-            font-family: 'Roboto';
-            font-size: 20px;
-            font-weight: bold;
-
             appearance: none;
             -webkit-appearance: none;
             -moz-appearance: none;
-            
+
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 18px center;
@@ -190,7 +153,7 @@
             display: inline-block;
         }
         .nav-link:hover:not(.active-link) {
-            color: #FFD700; 
+            color: #FFD700;
             background: transparent;
         }
 
@@ -251,49 +214,42 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-        
+
     </style>
 @endsection
 
 @section("content")
-<div class="w-full max-w-[85vw] mx-auto min-h-[80vh]">
+<div class="w-full max-w-[85vw] mx-auto min-h-[80vh] font-['Creato Display']">
      <!-- Header & Nav -->
-        <div class="container">
-            <div></div>
-            <div class = "menu">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('si.index') ? 'active-link' : '' }}"aria-current="page" href="{{ route('si.index') }}">TARGET BASE</a>
-                    </li>
-                    <li class="nav-item">
-                        <a id="nav-shop" class="nav-link {{ request()->routeIs('si.shop.index') ? 'active-link' : '' }} opacity-50 pointer-events-none" href="javascript:void(0)" onclick="openShop()">SHOP</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="right">
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="bg-white hover:bg-[#590212] text-[#8b181b] px-6 py-2 rounded-full font-['Roboto'] font-bold text-lg shadow-md transition-colors">
-                        <i class="fa-solid fa-right-from-bracket mr-2"></i> LOGOUT
-                    </button>
-                </form>
-            </div>
+    <div class="w-full flex flex-row justify-center items-stretch gap-4 mb-6">
+        <div class="flex-1"></div>
+        <div class="flex flex-row px-10 py-3 gap-2 rounded-full text-lg text-white font-bold bg-[#8b181b]">
+            <button class="px-5 py-2 rounded-full {{ request()->routeIs('si.index') ? 'bg-white text-[#8b181b]' : 'text-white' }}">TARGET BASE</button>
+            <button class="px-5 py-2 rounded-full {{ request()->routeIs('si.shop.index') ? 'bg-white text-[#8b181b]' : 'text-white' }}" onclick="openTab('{{ route('si.shop.index') }}')">SHOP</button>
         </div>
-   <div class="c-bg-white shadow-lg px-16 py-8 rounded-lg w-full max-w-[85vw] mx-auto flex flex-col relative min-h-screen">
+        <form method="POST" action="{{ route('logout') }}" class="flex flex-1 justify-end">
+            @csrf
+            <button type="submit" class="bg-white hover:bg-[#f3f3f3] text-[#8b181b] px-6 py-2 rounded-full text-lg font-bold shadow-md transition-colors">
+                <i class="fa-solid fa-right-from-bracket mr-2"></i> LOGOUT
+            </button>
+        </form>
+    </div>
+
+    <div class="c-bg-white shadow-lg p-12 rounded-[36px] w-full max-w-[85vw] mx-auto flex flex-col relative min-h-screen">
         <!-- Player Selection -->
-        <div class="p-4 rounded-2xl mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center whitespace-nowrap">
-                <span class="team-name">TEAM NAME</span>
+        <div class="rounded-2xl mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div id="team-name-display" class="flex items-center px-6 py-2 rounded-full uppercase text-lg text-white font-bold bg-[#8b181b]">
+                TEAM NAME
             </div>
-            
+
             <div class="w-full md:w-1/2 flex-grow">
-                <select id="pID">
+                <select id="pID" class="text-lg font-bold">
                     <option selected disabled value="">-- PILIH TIM --</option>
                     @foreach ($players as $p)
                         <option value="{{ $p->id }}">
                             {{ $p->team_name }}
                         </option>
-                    @endforeach 
+                    @endforeach
                 </select>
             </div>
 
@@ -342,7 +298,7 @@
             <div id="arena-overlay" class="absolute inset-0 z-10 bg-black/60 flex items-center justify-center backdrop-blur-sm">
                 <h2 class="text-4xl font-bold text-white text-center font-['Lato'] drop-shadow-lg">SILAKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
             </div>
-            
+
             <div id="pyramid-wrapper" class="w-full h-full flex flex-col items-center justify-center opacity-0 transition-opacity duration-500">
                 <!-- Pyramid will be rendered here by JS -->
             </div>
@@ -396,12 +352,14 @@
         const teamId = urlParams.get('team_id');
         if (teamId) {
             selPlayer.val(teamId).trigger('change');
+            const teamName = selPlayer.find('option:selected').text();
+            $('#team-name-display').text($.trim(teamName));
         }
     });
 
-    function openShop() {
+    function openTab(route) {
         const teamId = selPlayer.val();
-        let url = "{{ route('si.shop.index') }}";
+        let url = route;
         if (teamId) {
             url += "?team_id=" + teamId;
         }
@@ -428,7 +386,7 @@
             },
             success: function(res) {
                 $('#loading-indicator').addClass('hidden');
-                
+
                 currentPeluru = res.peluru;
                 const wLevel = res.weapon_level;
                 weaponDamage = damageMap[wLevel] || 5;
@@ -437,16 +395,15 @@
                 displayWeapon.text(weaponNames[wLevel]);
 
                 renderPyramid(res.bases);
-                
+
                 arenaOverlay.addClass('hidden');
                 pyramidWrapper.removeClass('opacity-0');
                 $('#btn-reset').removeClass('hidden');
                 $('#btn-shop').removeClass('hidden');
-                $('#nav-shop').removeClass('opacity-50 pointer-events-none');
                 $('#attack-controls').removeClass('hidden');
 
                 arenaOverlay.addClass('hidden');
-                
+
 
                 $('#arena-container').addClass('active-arena'); // tambahkan ini
 
@@ -479,27 +436,27 @@
 
         rows.forEach(row => {
             if (row.bases.length === 0) return;
-            
+
             let rowHtml = `<div class="pyramid-row" id="${row.id}">`;
-            
+
             row.bases.forEach(base => {
                 const hpPercent = (base.current_hp / base.max_hp) * 100;
                 const isDestroyed = (base.is_destroyed === true || base.is_destroyed == 1 || base.is_destroyed === 'true');
                 const destroyedClass = isDestroyed ? 'destroyed' : '';
                 const statusText = isDestroyed ? 'HANCUR' : 'HP: ' + base.current_hp + ' / ' + base.max_hp;
-                
+
                 const targetName = base.type.toUpperCase() + ' ' + targetCounter[base.type]++;
-                
+
                 // Add to dropdown if not destroyed
                 if (!isDestroyed) {
                     $('#target-select').append(`<option value="${base.id}">${targetName} (${statusText})</option>`);
                 }
 
                 rowHtml += `
-                    <div class="target-box target-${base.type} ${destroyedClass} rounded-2xl" 
+                    <div class="target-box target-${base.type} ${destroyedClass} rounded-2xl"
                          id="box-${base.id}"
-                         data-id="${base.id}" 
-                         data-hp="${base.current_hp}" 
+                         data-id="${base.id}"
+                         data-hp="${base.current_hp}"
                          data-maxhp="${base.max_hp}"
                          data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
@@ -529,11 +486,11 @@
             }
 
             $('#target-select').val(targetId);
-            
+
             // Highlight selected
             $('.target-box').removeClass('selected-target');
             el.addClass('selected-target');
-            
+
             // Reset bullet input to 1
             $('#bullet-count').val(1);
         });
@@ -556,12 +513,12 @@
     $('#btn-fire').on('click', function() {
         const targetId = $('#target-select').val();
         const bulletCount = parseInt($('#bullet-count').val());
-        
+
         if (!targetId) {
             Swal.fire('Perhatian', 'Tidak ada target yang dipilih atau semua target sudah hancur.', 'warning');
             return;
         }
-        
+
         if (isNaN(bulletCount) || bulletCount < 1) {
             Swal.fire('Perhatian', 'Jumlah tembakan harus minimal 1.', 'warning');
             return;
@@ -597,7 +554,7 @@
         isAttacking = true;
         const playerId = selPlayer.val();
         const el = $('#box-' + targetId);
-        
+
         // Trigger animations
         const arena = $('#arena-container');
         arena.removeClass('anim-shake');
@@ -625,23 +582,23 @@
                     // Update visual state
                     currentPeluru = res.new_peluru;
                     displayPeluru.text(currentPeluru);
-                    
+
                     const newHp = res.current_hp;
                     const isDestroyed = res.is_destroyed;
                     const maxHp = parseInt(el.data('maxhp'));
 
                     el.data('hp', newHp);
-                    
+
                     if (isDestroyed) {
                         el.data('destroyed', 1);
                         el.addClass('destroyed');
                         el.removeClass('selected-target'); // Remove highlight if destroyed
                         el.find('.hp-text').text('HANCUR');
                         el.find('.hp-bar-fill').css('width', '0%');
-                        
+
                         // Remove from dropdown
                         $(`#target-select option[value="${targetId}"]`).remove();
-                        
+
                         // Trigger change to highlight the next available target
                         $('#target-select').trigger('change');
 
@@ -652,14 +609,14 @@
                         const hpPercent = (newHp / maxHp) * 100;
                         el.find('.hp-text').text('HP: ' + newHp + ' / ' + maxHp);
                         el.find('.hp-bar-fill').css('width', hpPercent + '%');
-                        
+
                         // Update dropdown text
                         const targetName = el.data('name');
                         $(`#target-select option[value="${targetId}"]`).text(`${targetName} (HP: ${newHp} / ${maxHp})`);
-                        
+
                         // Re-trigger highlight in case they manually changed
                         $('#target-select').trigger('change');
-                        
+
                         const Toast = Swal.mixin({
                             toast: true,
                             position: 'top-end',
@@ -689,7 +646,6 @@
     $('#btn-reset').on('click', function() {
         selPlayer.val(''); // Reset selection
         $('#btn-shop').addClass('hidden');
-        $('#nav-shop').addClass('opacity-50 pointer-events-none');
         $('#attack-controls').addClass('hidden');
         $(this).addClass('hidden');
         arenaOverlay.removeClass('hidden');

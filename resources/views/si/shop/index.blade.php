@@ -3,66 +3,69 @@
 @section("style")
     <style>
         :root{
-            --c1: #733B22; 
+            --c1: #733B22;
         }
+
         .resource-card {
             background: rgba(229, 209, 184, 0.9);
             border: 4px solid #ae8350;
             border-bottom-color: #8b5f1e;
             border-right-color: #8b5f1e;
         }
-        .shop-card {
-            background: rgba(110, 72, 26, 0.95);
-            border: 4px solid #dba668;
-            color: #e5d1b8;
+
+        .image-container {
+            background-image: url("{{ asset('asset2026/Target Base/papan.png') }}");
+            width: 325px;
+            height: 132px;
         }
     </style>
 @endsection
 
 @section("content")
-    <div class="c-bg-white shadow-lg p-6 rounded-lg w-full max-w-[80vw] mx-auto min-h-[80vh] flex flex-col relative">
-        
-        <!-- Header & Nav -->
-        <div class="flex justify-between items-center mb-6">
-            <div>
-                <h1 class="text-5xl font-['dalek'] text-[#733b22]" style="text-shadow: -3px 2px 0px #be8f57">SHOP</h1>
-                <h2 id="team-name-display" class="text-2xl font-['Lato'] font-bold text-[#733b22] mt-2 bg-[#dba668] inline-block px-4 py-1 rounded-lg shadow-inner hidden"></h2>
-            </div>
-            <div class="flex gap-2">
-                <button onclick="openArena()" class="bg-[#733b22] hover:bg-[#5c2f1a] text-white border-2 border-[#dba668] px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors">
-                    <i class="fa-solid fa-arrow-left mr-2"></i> Kembali ke Target Base
-                </button>
-                <form method="POST" action="{{ route('logout') }}" class="inline">
-                    @csrf
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-full font-['Lato'] font-bold text-lg shadow-md transition-colors border-2 border-red-800">
-                        <i class="fa-solid fa-right-from-bracket mr-2"></i> Logout
-                    </button>
-                </form>
+<div class="max-w-[1300px] w-[85vw] mx-auto min-h-[80vh] font-['Creato Display'] flex flex-col box-border">
+     <div class="w-full flex flex-row justify-center items-stretch gap-4 mb-6">
+        <div class="flex-1"></div>
+        <div class="flex flex-row px-10 py-3 gap-2 rounded-full text-lg text-white font-bold bg-[#8b181b]">
+            <button class="px-5 py-2 rounded-full {{ request()->routeIs('si.index') ? 'bg-white text-[#8b181b]' : 'text-white' }}" onclick="openTab('{{ route('si.index') }}')">TARGET BASE</button>
+            <button id="nav-shop" class="px-5 py-2 rounded-full {{ request()->routeIs('si.shop.index') ? 'bg-white text-[#8b181b]' : 'text-white' }}">SHOP</button>
+        </div>
+        <form method="POST" action="{{ route('logout') }}" class="flex flex-1 justify-end">
+            @csrf
+            <button type="submit" class="bg-white hover:bg-[#f3f3f3] text-[#8b181b] px-6 py-2 rounded-full text-lg font-bold shadow-md transition-colors">
+                <i class="fa-solid fa-right-from-bracket mr-2"></i> LOGOUT
+            </button>
+        </form>
+    </div>
+
+    <div class="c-bg-white shadow-lg p-12 rounded-[36px] flex flex-col grow gap-10">
+        <!-- Player Selection -->
+        <div class="rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div id="team-name-display" class="flex items-center px-6 py-2 rounded-full uppercase text-lg text-white font-bold bg-[#8b181b]">
+                TEAM NAME
             </div>
         </div>
 
         <!-- Player Selection (Hidden as requested, team selected via URL) -->
         <div class="hidden">
-            <select id="pID">
+            <select disabled id="pID" class="text-lg font-bold">
                 <option selected disabled value="">-- Silakan Pilih Player --</option>
                 @foreach ($players as $p)
                     <option value="{{ $p->id }}">{{ $p->team_name }}</option>
-                @endforeach 
+                @endforeach
             </select>
         </div>
 
-        <!-- Resource Stats -->
-        <div class="grid grid-cols-3 gap-6 mb-8">
-            <div class="resource-card p-4 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg h-32">
-                <span class="text-xl font-['Lato'] font-bold uppercase mb-2">Total Honor</span>
+        <div class="flex flex-row justify-between gap-12">
+            <div class="image-container flex flex-col justify-center items-center text-white">
+                <span class="text-xl font-bold uppercase mb-2">Total Honor</span>
                 <span class="text-4xl font-extrabold" id="display-honor">-</span>
             </div>
-            <div class="resource-card p-4 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg h-32">
-                <span class="text-xl font-['Lato'] font-bold uppercase mb-2">Amunisi Peluru</span>
+            <div class="image-container flex flex-col justify-center items-center text-white">
+                <span class="text-xl font-bold uppercase mb-2">Amunisi Peluru</span>
                 <span class="text-4xl font-extrabold" id="display-peluru">-</span>
             </div>
-            <div class="resource-card p-4 rounded-xl flex flex-col items-center justify-center text-[#733b22] shadow-lg h-32">
-                <span class="text-xl font-['Lato'] font-bold uppercase mb-2">Nama Senjata</span>
+            <div class="image-container flex flex-col justify-center items-center text-white">
+                <span class="text-xl font-bold uppercase mb-2">Nama Senjata</span>
                 <span class="text-3xl font-extrabold" id="display-weapon">-</span>
             </div>
         </div>
@@ -70,35 +73,72 @@
         <!-- Actions -->
         <div class="grid grid-cols-2 gap-8 flex-grow">
             <!-- Buy Peluru -->
-            <div class="shop-card rounded-2xl p-6 shadow-2xl flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-center border-b-2 border-[#dba668] pb-4 mb-4">
-                        <h2 class="text-3xl font-['Lato'] font-bold">Beli Peluru</h2>
-                        <span class="bg-[#dba668] text-[#733b22] px-3 py-1 rounded font-bold">1 = 100 Honor</span>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="block text-lg font-['Lato'] mb-2 font-semibold">Jumlah Peluru</label>
-                        <input type="number" id="peluru-amount" min="1" value="1" disabled
-                            class="w-full text-2xl font-bold text-center text-black py-2 rounded focus:outline-none focus:ring-4 focus:ring-[#dba668]">
+            <div class="flex flex-col bg-[#fbf5e5] rounded-[24px] border-2 border-[#8b181b] overflow-hidden">
+                <div class="flex justify-between items-center p-4 bg-[#8b181b]">
+                    <h2 class="text-white text-xl font-bold">Beli Peluru</h2>
+                    <span class="px-3 py-1 rounded-full font-bold bg-white text-[#8b181b]">1 = 100 HONOR</span>
+                </div>
+
+                <div class="h-full flex flex-col  justify-between gap-4 px-5 pt-5 pb-8">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-md text-[#8b181b] font-semibold">Jumlah Peluru</label>
+                            <input type="number" id="peluru-amount" min="1" value="1" disabled
+                                class="w-full rounded-lg text-center text-lg text-white font-bold bg-[#b3ae6b] border-none">
+                        </div>
+                        <div class="flex flex-row justify-between items-center px-4 py-2 rounded-lg bg-[#847e31] text-white">
+                            <span class="text-lg font-bold">Total Harga:</span>
+                            <span class="text-lg font-bold" id="peluru-cost">100 Honor</span>
+                        </div>
                     </div>
 
-                    <div class="bg-black/40 rounded p-4 flex justify-between items-center mb-6">
-                        <span class="text-xl font-bold">Total Harga:</span>
-                        <span class="text-3xl font-extrabold text-[#facc15]" id="peluru-cost">100 Honor</span>
-                    </div>
+                    <button id="btn-buy-peluru" disabled class="self-center px-12 py-2 rounded-lg bg-[#847e31] hover:brightness-90 disabled:brightness-50 text-white font-bold text-lg shadow-lg transition-all active:scale-95">
+                        Beli Sekarang
+                    </button>
                 </div>
-                
-                <button id="btn-buy-peluru" disabled class="bg-green-600 hover:bg-green-500 disabled:bg-gray-500 text-white w-full py-4 rounded-xl font-['Lato'] font-bold text-2xl shadow-lg transition-all active:scale-95">
-                    BELI SEKARANG
-                </button>
             </div>
 
             <!-- Upgrade Weapon -->
-            <div class="shop-card rounded-2xl p-6 shadow-2xl flex flex-col justify-between">
+            <div class="flex flex-col bg-[#fbf5e5] rounded-[24px] border-2 border-[#8b181b] overflow-hidden">
+                <div class="flex justify-between items-center p-4  bg-[#8b181b]">
+                    <h2 class="text-white text-xl font-bold">Upgrade Senjata</h2>
+                    <span class="px-3 py-1 rounded-full font-bold bg-white text-[#8b181b]">Max Level 3</span>
+                </div>
+
+                <div class="h-full flex flex-col  justify-between gap-4 px-5 pt-5 pb-8">
+                    <div class="flex flex-col gap-4">
+                        <div class="w-full flex flex-row justify-evenly gap-4 px-8 py-4 rounded-lg  text-white bg-[#b3ae6b]">
+                            <div class="flex flex-col text-center">
+                                <span class="font-medium">Saat Ini</span>
+                                <span id="current-weapon-label" class="text-2xl font-extrabold">-</span>
+                            </div>
+
+                            <div class="hidden xl:flex justify-center items-center w-2/12">
+                                <i class="fa-solid fa-angles-right text-white text-2xl opacity-70"></i>
+                            </div>
+
+                            <div class="flex flex-col text-center">
+                                <span class="font-medium">Selanjutnya</span>
+                                <span id="next-weapon-label" class="text-2xl font-extrabold">-</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-row justify-between items-center px-4 py-2 rounded-lg bg-[#847e31] text-white">
+                            <span class="text-lg font-bold">Total Harga:</span>
+                            <span class="text-lg font-bold" id="upgrade-cost">- Honor</span>
+                        </div>
+                    </div>
+
+                    <button id="btn-upgrade" disabled class="self-center px-12 py-2 rounded-lg bg-[#847e31] hover:brightness-90 disabled:brightness-50 text-white font-bold text-lg shadow-lg transition-all active:scale-95">
+                        Upgrade Weapon
+                    </button>
+                </div>
+            </div>
+
+            <!-- Upgrade Weapon -->
+            <div class="shop-card rounded-2xl p-6 shadow-2xl flex flex-col justify-between hidden">
                 <div>
                     <div class="flex justify-between items-center border-b-2 border-[#dba668] pb-4 mb-4">
-                        <h2 class="text-3xl font-['Lato'] font-bold">Upgrade Senjata</h2>
+                        <h2 class="text-3xl font-bold">Upgrade Senjata</h2>
                     </div>
 
                     <div class="bg-black/40 rounded-xl p-4 flex flex-col xl:flex-row items-center justify-between gap-4 mb-6 mt-4">
@@ -106,7 +146,7 @@
                             <span class="text-sm font-semibold opacity-70 mb-1 block">Saat Ini</span>
                             <span class="text-xl font-extrabold uppercase" id="current-weapon-label">-</span>
                         </div>
-                        
+
                         <div class="hidden xl:flex justify-center items-center w-2/12">
                             <i class="fa-solid fa-angles-right text-[#dba668] text-2xl opacity-70"></i>
                         </div>
@@ -122,8 +162,8 @@
                         <span class="text-3xl font-extrabold text-[#facc15]" id="upgrade-cost">- Honor</span>
                     </div>
                 </div>
-                
-                <button id="btn-upgrade" disabled class="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-500 text-white w-full py-4 rounded-xl font-['Lato'] font-bold text-2xl shadow-lg transition-all active:scale-95">
+
+                <button id="btn-upgrade" disabled class="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-500 text-white w-full py-4 rounded-xl font-bold text-2xl shadow-lg transition-all active:scale-95">
                     UPGRADE SENJATA
                 </button>
             </div>
@@ -152,7 +192,7 @@
     const displayHonor = $('#display-honor');
     const displayPeluru = $('#display-peluru');
     const displayWeapon = $('#display-weapon');
-    
+
     const inputPeluru = $('#peluru-amount');
     const textPeluruCost = $('#peluru-cost');
     const btnBuyPeluru = $('#btn-buy-peluru');
@@ -179,13 +219,13 @@
         if (teamId) {
             selPlayer.val(teamId).trigger('change');
             const teamName = selPlayer.find('option:selected').text();
-            $('#team-name-display').text($.trim(teamName)).removeClass('hidden');
+            $('#team-name-display').text($.trim(teamName));
         }
     });
 
-    function openArena() {
+    function openTab(route) {
         const teamId = selPlayer.val();
-        let url = "{{ route('si.index') }}";
+        let url = route;
         if (teamId) {
             url += "?team_id=" + teamId;
         }
@@ -244,24 +284,24 @@
 
     function updateUpgradeUI(wLevel) {
         labelCurrentW.text(weaponNames[wLevel]);
-        
+
         if (wLevel == 1) {
             $('#next-weapon-subtitle').show();
-            labelNextW.show().text("Sharpshooter").removeClass('text-red-400 text-2xl').addClass('text-green-400 text-xl tracking-normal uppercase');
+            labelNextW.show().text("Sharpshooter");
             boxCostW.show();
             textCostW.text("600 Honor");
-            btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
+            btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else if (wLevel == 2) {
             $('#next-weapon-subtitle').show();
-            labelNextW.show().text("Eagle Eye").removeClass('text-red-400 text-2xl').addClass('text-green-400 text-xl tracking-normal uppercase');
+            labelNextW.show().text("Eagle Eye");
             boxCostW.show();
             textCostW.text("800 Honor");
-            btnUpgrade.prop('disabled', false).text("UPGRADE SENJATA");
+            btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else {
             $('#next-weapon-subtitle').hide();
-            labelNextW.show().text("MAX").removeClass('text-green-400 text-xl').addClass('text-red-400 text-2xl tracking-widest uppercase');
+            labelNextW.show().text("MAX");
             boxCostW.hide();
-            btnUpgrade.prop('disabled', true).text("SENJATA MAKSIMAL");
+            btnUpgrade.prop('disabled', true).text("Senjata Maksimal");
         }
     }
 
@@ -276,7 +316,7 @@
     btnBuyPeluru.on('click', function() {
         const playerId = selPlayer.val();
         const amount = parseInt(inputPeluru.val());
-        
+
         if (isNaN(amount) || amount < 1) {
             Swal.fire('Oops...', 'Masukkan jumlah peluru yang valid!', 'warning');
             return;
