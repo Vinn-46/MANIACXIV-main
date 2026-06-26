@@ -195,6 +195,7 @@
         .btn-ghost{
             color: #8b181b;
         }
+        
     </style>
     @yield('cdn')
     @yield('styles')

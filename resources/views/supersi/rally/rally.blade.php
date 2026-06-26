@@ -170,7 +170,12 @@
                     <select class="select select-bordered rounded bg-slate-300 text-slate-800 font-medium" required name="point_id">
                         <option disabled selected>Pick one</option>
                         @foreach($points as $point)
-                            <option value="{{ $point->id }}" {{ isset($score) && $point->id == $score->point_id ? 'selected' : '' }}>Point: {{ $point->value }}</option>
+                            @php
+                                $label = 'Kalah';
+                                if ($point->condition === 'win') $label = 'Menang';
+                                if ($point->condition === 'draw') $label = 'Draw';
+                            @endphp
+                            <option value="{{ $point->id }}" {{ isset($score) && $point->id == $score->point_id ? 'selected' : '' }}>{{ $label }} ({{ $point->honor_reward }} Honor, {{ $point->peluru_reward }} Peluru)</option>
                         @endforeach
                     </select>
                 </label>

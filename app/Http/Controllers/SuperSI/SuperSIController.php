@@ -59,6 +59,21 @@ class SuperSIController extends Controller
             
             $team = $player->team;
 
+            // Calculate currency adjustments
+            $oldHonor = $oldPoint->honor_reward;
+            $oldPeluru = $oldPoint->peluru_reward;
+            $newHonorReward = $newPoint->honor_reward;
+            $newPeluruReward = $newPoint->peluru_reward;
+
+            // Update Player Currency
+            $newPlayerHonor = max($player->honor - $oldHonor + $newHonorReward, 0);
+            $newPlayerPeluru = max($player->peluru - $oldPeluru + $newPeluruReward, 0);
+
+            $player->update([
+                'honor' => $newPlayerHonor,
+                'peluru' => $newPlayerPeluru
+            ]);
+
             // Update Score
             $score->update([
                 'point_id' => $newPoint->id
@@ -81,6 +96,15 @@ class SuperSIController extends Controller
             $player = $score->player;
             $point = $score->point;
             $team = $player->team;
+
+            // Reverse Player Currency
+            $honor_reward = $point->honor_reward;
+            $peluru_reward = $point->peluru_reward;
+            
+            $player->update([
+                'honor' => max($player->honor - $honor_reward, 0),
+                'peluru' => max($player->peluru - $peluru_reward, 0)
+            ]);
 
             // Delete score
             $score->delete();

@@ -45,35 +45,40 @@
     <div class="flex flex-col justify-center content-center w-full bg-slate-400 p-4 rounded-md mt-4 shadow-lg">
         <h2 class="text-xl font-bold text-slate-900 mb-4 text-center">Tabel Override Poin Game Besar (Target Base)</h2>
         
-        <div class="overflow-x-auto rounded bg-slate-500 p-2 shadow-inner">
-            <table class="table w-full">
-                <thead class="text-slate-100 bg-slate-700">
-                    <tr style="font-size: 1.1rem;">
-                        <th class="text-center py-3">ID</th>
-                        <th class="text-center py-3">Team Name</th>
-                        <th class="text-center py-3">Game Besar Points</th>
-                        <th class="text-center py-3">Bonus Points</th>
-                        <th class="text-center py-3">Action</th>
+        <div class="overflow-auto rounded" style="max-height: 500px">
+            <table class="table table-xs table-pin-cols table-pin-rows">
+                <thead>
+                    <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
+                        <th width="10%" class="text-center py-3">ID</th>
+                        <th width="25%" class="text-center">Team Name</th>
+                        <th width="25%" class="text-center">Game Besar Points</th>
+                        <th width="25%" class="text-center">Bonus Points</th>
+                        <th width="15%" class="text-center sticky right-0 z-10">Action</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tBody">
                     @foreach ($players as $idx => $player)
-                        <tr class="text-slate-100 font-medium border-b border-slate-600 hover:bg-slate-600 transition-colors" style="font-size: 0.95rem;">
-                                <td class="text-center py-4">{{ $player->id }}</td>
-                                <td class="text-center py-4 text-yellow-400 font-bold">{{ $player->team->name }}</td>
-                                <td class="text-center py-4">
+                        <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
+                                <td width="10%" class="text-center py-5">{{ $player->id }}</td>
+                                <td width="25%" class="text-center">{{ $player->team->name }}</td>
+                                <td width="25%" class="text-center">
                                     <form action="{{ route('super-si.gamebesar.updatePoints', $player->id) }}" method="POST" class="inline-flex items-center justify-center gap-2">
                                         @csrf
+                                        <span class="val-display">{{ $player->game_besar_points }}</span>
                                         <input type="number" name="game_besar_points" value="{{ $player->game_besar_points }}" 
-                                            class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center val-input hidden" min="0">
                                 </td>
-                                <td class="text-center py-4">
+                                <td width="25%" class="text-center">
+                                        <span class="val-display">{{ $player->bonus_points }}</span>
                                         <input type="number" name="bonus_points" value="{{ $player->bonus_points }}" 
-                                            class="input input-sm input-bordered bg-slate-700 text-white w-24 text-center" min="0">
+                                            class="input input-sm input-bordered bg-slate-50 text-slate-900 w-24 text-center val-input hidden" min="0">
                                 </td>
-                                <td class="text-center py-4">
-                                        <button type="submit" class="bg-blue-600 text-slate-50 font-semibold py-1.5 px-4 rounded hover:bg-blue-500 active:scale-95 transition-all shadow-md">
-                                            <i class="fa-solid fa-floppy-disk mr-1"></i> Save
+                                <td width="15%" class="text-center sticky right-0 bg-slate-400 z-5">
+                                        <button type="button" class="bg-yellow-600 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-yellow-700 active:scale-95 transition-all btn-edit" onclick="toggleEdit(this)">
+                                            Edit
+                                        </button>
+                                        <button type="submit" class="bg-slate-900 text-slate-50 font-semibold py-2 px-3 rounded hover:bg-slate-700 active:scale-95 transition-all btn-save hidden">
+                                            Save
                                         </button>
                                     </form>
                                 </td>
@@ -83,4 +88,16 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    function toggleEdit(btn) {
+        const row = btn.closest('tr');
+        row.querySelectorAll('.val-display').forEach(el => el.classList.add('hidden'));
+        row.querySelectorAll('.val-input').forEach(el => el.classList.remove('hidden'));
+        row.querySelector('.btn-edit').classList.add('hidden');
+        row.querySelector('.btn-save').classList.remove('hidden');
+    }
+</script>
 @endsection

@@ -95,12 +95,9 @@
                         </div>
                         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a href="{{ route('index') }}">Home</a>
-                            </li>
-                            <li>
-                                <form method="POST" action="{{ route('logout') }}">
+                                <a href="javascript:void(0)" onclick="this.nextElementSibling.submit();">Logout</a>
+                                <form method="POST" action="{{ route('logout') }}" class="hidden">
                                     @csrf
-                                    <button type="submit">Logout</button>
                                 </form>
                             </li>
                         </ul>

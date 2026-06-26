@@ -19,8 +19,10 @@
         <span class="flex-grow text-start break-words">
             Hi, <strong>{{ ucfirst($user->username) }}</strong>! Have a nice day :)
         </span>
-        <button class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500 transition-all font-semibold flex-shrink-0" onclick="openConfirmInformSIModal({{ $user->rallyGame->id }})">
-            Panggil SI
+        <button id="btn-panggil-si" class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500 transition-all font-semibold flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed" 
+            onclick="openConfirmInformSIModal({{ $user->rallyGame->id }})" 
+            {{ $hasActiveCall ? 'disabled' : '' }}>
+            {{ $hasActiveCall ? 'Menunggu SI...' : 'Panggil SI' }}
         </button>
     </div>
     <div role="alert" class="alert rounded-lg mt-4 text-start bg-[#F0E9CF]">
@@ -386,8 +388,13 @@
         .then(data => {
             if (data.success) {
                 showNotifError('SI has been notified.', false);
+                const btn = document.getElementById('btn-panggil-si');
+                if (btn) {
+                    btn.disabled = true;
+                    btn.innerText = 'Menunggu SI...';
+                }
             } else {
-                showNotifError('Failed to notify SI.', true);
+                showNotifError(data.message || 'Failed to notify SI.', true);
             }
         })
         .catch(() => {

@@ -79,7 +79,15 @@ class PlayerController extends Controller
                 'point_id' => $point->id
             ]);
 
-            // removed points assignment
+            // Add Player Currency
+            $honor_reward = $point->honor_reward;
+            $peluru_reward = $point->peluru_reward;
+
+            $player->update([
+                'honor' => max($player->honor + $honor_reward, 0),
+                'peluru' => max($player->peluru + $peluru_reward, 0),
+            ]);
+
             DB::commit();
 
             return back()->with('addSuccess', "Score berhasil ditambahkan untuk tim <strong>{$team->name}</strong>.");
@@ -112,7 +120,21 @@ class PlayerController extends Controller
                 'point_id' => $newPoint->id
             ]);
 
-            // removed points assignment
+            // Calculate currency adjustments
+            $oldHonor = $oldPoint->honor_reward;
+            $oldPeluru = $oldPoint->peluru_reward;
+            $newHonorReward = $newPoint->honor_reward;
+            $newPeluruReward = $newPoint->peluru_reward;
+
+            // Update Player Currency
+            $newPlayerHonor = max($player->honor - $oldHonor + $newHonorReward, 0);
+            $newPlayerPeluru = max($player->peluru - $oldPeluru + $newPeluruReward, 0);
+
+            $player->update([
+                'honor' => $newPlayerHonor,
+                'peluru' => $newPlayerPeluru
+            ]);
+
             DB::commit();
 
             return back()->with('updateSuccess', "Score berhasil di-update untuk Tim <strong>{$team->name}</strong>.");
@@ -132,7 +154,15 @@ class PlayerController extends Controller
             $point = $score->point;
             $team = $player->team;
             
-            // removed points assignment
+            // Reverse Player Currency
+            $honor_reward = $point->honor_reward;
+            $peluru_reward = $point->peluru_reward;
+            
+            $player->update([
+                'honor' => max($player->honor - $honor_reward, 0),
+                'peluru' => max($player->peluru - $peluru_reward, 0)
+            ]);
+
             $score->delete();
 
             DB::commit();

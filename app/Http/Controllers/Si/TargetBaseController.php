@@ -109,17 +109,28 @@ class TargetBaseController extends Controller
                 return response()->json(['success' => false, 'message' => 'Target sudah hancur!']);
             }
 
-            // Deduct bullets
-            $player->peluru -= $jumlah;
-            $player->save();
 
             // Calculate total damage
             $damagePerShot = self::DAMAGE_MAP[$player->weapon_level] ?? 5;
-            $totalDamage = $damagePerShot * $jumlah;
+            
+            // Calculate how many shots are actually needed to destroy the target
+            $shotsNeeded = (int) ceil($pb->current_hp / $damagePerShot);
+            $actualShotsUsed = min($jumlah, $shotsNeeded);
+            $excessBullets = $jumlah - $actualShotsUsed;
+
+            // Deduct only the bullets actually used
+            $player->peluru -= $actualShotsUsed;
+            $player->save();
+
+            $totalDamage = $damagePerShot * $actualShotsUsed;
             
             // Apply damage
             $pb->current_hp -= $totalDamage;
-            $msg = "Berhasil menembak target {$jumlah} kali! (-{$totalDamage} HP)";
+            
+            $msg = "Berhasil menembak target {$actualShotsUsed} kali! (-{$totalDamage} HP)";
+            if ($excessBullets > 0) {
+                $msg .= "<br>{$excessBullets} peluru dikembalikan ke stok karena target hanya butuh {$actualShotsUsed} tembakan.";
+            }
             $rewarded = 0;
 
             if ($pb->current_hp <= 0) {
@@ -130,7 +141,10 @@ class TargetBaseController extends Controller
                 $rewarded = $pb->targetBase->point_reward;
                 $player->game_besar_points += $rewarded;
                 
-                $msg = "TARGET HANCUR! Tim mendapatkan {$rewarded} Poin Game Besar!";
+                $msg = "Target hancur! Tim mendapatkan {$rewarded} Poin Game Besar.";
+                if ($excessBullets > 0) {
+                    $msg .= "<br>{$excessBullets} peluru dikembalikan ke stok karena target hanya butuh {$actualShotsUsed} tembakan.";
+                }
 
                 // Hitung logika Bonus Poin "Balapan Kecepatan" per Kategori (Type)
                 $type = $pb->targetBase->type;
@@ -161,7 +175,7 @@ class TargetBaseController extends Controller
                     
                     $player->bonus_points += $bonus;
                     
-                    $msg .= "<br><br>🎉 <b>LUAR BIASA!</b> Kategori <b>" . strtoupper($type) . "</b> rata (Urutan Ke-{$rank})! Tim mendapat <b>BONUS {$bonus} POIN!</b>";
+                    $msg .= "<br><br>Kategori {$type} hangus! Tim mendapat bonus {$bonus} poin.";
                 }
 
                 $player->save();
