@@ -36,7 +36,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session()->get('addSuccess') }}</span>
+                <span>{!! session()->get('addSuccess') !!}</span>
             </div>
         @elseif(session()->has('updateSuccess'))
             <div role="alert" class="alert rounded-md bg-green-300 border-none mt-2">
@@ -45,7 +45,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session()->get('updateSuccess') }}</span>
+                <span>{!! session()->get('updateSuccess') !!}</span>
             </div>
         @elseif(session()->has('deleteSuccess'))
             <div role="alert" class="alert rounded-md bg-green-300 border-none mt-2">
@@ -54,7 +54,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session()->get('deleteSuccess') }}</span>
+                <span>{!! session()->get('deleteSuccess') !!}</span>
             </div>
         @elseif(session()->has('error'))
             <div role="alert" class="alert rounded-md bg-red-300 border-none mt-2">
@@ -63,7 +63,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session()->get('error') }}</span>
+                <span>{!! session()->get('error') !!}</span>
             </div>
         @endif
     </div>

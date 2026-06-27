@@ -74,7 +74,7 @@
                     @foreach($scores as $score)
                         <tr class="" style="font-size: 1rem;">
                             <td class="py-5 text-slate-800 text-center font-semibold break-words max-w-xl">{{ $score->rallyGame->name }}</td>
-                            <td class="text-center py-5 text-slate-800 font-bold " width="50%">{{ $score->point->point }}</td>
+                            <td class="text-center py-5 text-slate-800 font-bold " width="50%">{{ $score->point->value }}</td>
                         </tr>
                     @endforeach
                 @else

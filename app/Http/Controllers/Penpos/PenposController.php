@@ -75,6 +75,11 @@ class PenposController extends Controller
                 'peluru' => $player->peluru + $point->peluru_reward,
             ]);
 
+            \App\Models\Log::create([
+                'player_id' => $player->id,
+                'desc' => "Menyelesaikan pos <strong>" . Auth::user()->rallyGame->name . "</strong> dengan point <strong>{$point->value}</strong>"
+            ]);
+
             $scores = RallyGame::getPenposScores(Auth::user()->rallyGame->id);
 
             DB::commit();

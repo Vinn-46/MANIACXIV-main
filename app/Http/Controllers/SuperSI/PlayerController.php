@@ -88,6 +88,11 @@ class PlayerController extends Controller
                 'peluru' => max($player->peluru + $peluru_reward, 0),
             ]);
 
+            \App\Models\Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Super SI] Menambahkan point <strong>{$point->value}</strong> untuk pos <strong>{$rallyGame->name}</strong>"
+            ]);
+
             DB::commit();
 
             return back()->with('addSuccess', "Score berhasil ditambahkan untuk tim <strong>{$team->name}</strong>.");
@@ -135,6 +140,11 @@ class PlayerController extends Controller
                 'peluru' => $newPlayerPeluru
             ]);
 
+            \App\Models\Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Super SI] Mengubah point pos <strong>" . $score->rallyGame->name . "</strong> dari <strong>{$oldPoints}</strong> menjadi <strong>{$newPoints}</strong>"
+            ]);
+
             DB::commit();
 
             return back()->with('updateSuccess', "Score berhasil di-update untuk Tim <strong>{$team->name}</strong>.");
@@ -161,6 +171,11 @@ class PlayerController extends Controller
             $player->update([
                 'honor' => max($player->honor - $honor_reward, 0),
                 'peluru' => max($player->peluru - $peluru_reward, 0)
+            ]);
+
+            \App\Models\Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Super SI] Menghapus point pos <strong>" . $score->rallyGame->name . "</strong> (sebelumnya <strong>{$point->value}</strong> point)"
             ]);
 
             $score->delete();
