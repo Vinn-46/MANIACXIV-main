@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Game Besar Maniac XV</title>
-    
+
     {{-- Icon --}}
     <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
-    
+
     {{-- Tailwind --}}
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
@@ -19,13 +19,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+
     {{-- Font --}}
     <link rel="stylesheet" href="{{ asset('css/font.css') }}">
 
     {{-- Internal CSS --}}
     @yield("style")
     <style>
+        @font-face {
+            font-family: 'Duality';
+            src: url("{{ asset('fonts/duality/duality.otf') }}") format("opentype");
+            letter-spacing: 0.5em;
+        }
+
+        @font-face {
+            font-family: 'Rustler';
+            src: url("{{ asset('fonts/rustler/RUSTLER_.TTF')}}") format("opentype");
+            font-weight: 500;
+            letter-spacing: 2em;
+        }
+
         body, html{
             margin: 0;
             padding: 0;
@@ -34,7 +47,7 @@
             --ff-dalek: "dalek";        {{-- Tidak jalan --}}
         }
         .c-bg-white{
-            background-color: rgba(255, 255, 255, 0.6)    
+            background-color: rgba(255, 255, 255, 0.6)
         }
     </style>
 </head>
