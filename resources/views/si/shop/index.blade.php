@@ -22,7 +22,7 @@
 @endsection
 
 @section("content")
-<div class="max-w-[1300px] w-[85vw] mx-auto min-h-[80vh] font-['Creato Display'] flex flex-col box-border">
+<div class="max-w-[1300px] w-[85vw] h-[80vh] max-h-[900px] mx-auto font-['Creato Display'] flex flex-col box-border">
      <div class="w-full flex flex-row justify-center items-stretch gap-4 mb-6">
         <div class="flex-1"></div>
         <div class="flex flex-row px-10 py-3 gap-2 rounded-full text-lg text-white font-bold bg-[#8b181b]">
@@ -79,7 +79,7 @@
                     <span class="px-3 py-1 rounded-full font-bold bg-white text-[#8b181b]">1 = 100 HONOR</span>
                 </div>
 
-                <div class="h-full flex flex-col  justify-between gap-4 px-5 pt-5 pb-8">
+                <div class="h-full flex flex-col justify-between gap-36 px-5 pt-5 pb-8">
                     <div class="flex flex-col gap-4">
                         <div class="flex flex-col gap-2">
                             <label class="text-md text-[#8b181b] font-semibold">Jumlah Peluru</label>

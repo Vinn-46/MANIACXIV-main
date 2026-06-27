@@ -30,9 +30,9 @@
         }
 
         /* Styles for different types */
-        .target-small { width: 150px; height: 150px; background: #A66C3A; color: white; }
-        .target-medium { width: 170px; height: 170px; background: #E5C18D; color: #593118; }
-        .target-large { width: 200px; height: 200px; background: #FFF6CB; color: #411512; }
+        .target-small { width: 160px; height: 160px; background: #A66C3A; color: white; }
+        .target-medium { width: 185px; height: 180px; background: #E5C18D; color: #593118; }
+        .target-large { width: 210px; height: 210px; background: #FFF6CB; color: #411512; }
 
         .hp-bar-bg {
             width: 80%;
@@ -61,7 +61,7 @@
 
         .target-box.selected-target {
             box-shadow: 0 0 0 6px #3b82f6, 0 0 20px rgba(59, 130, 246, 0.8) !important;
-            border-color: #3b82f6 !important;
+            border-color: white !important;
             transform: scale(1.05) translateY(-5px);
             z-index: 20;
         }
@@ -219,7 +219,7 @@
 @endsection
 
 @section("content")
-<div class="w-full max-w-[85vw] mx-auto min-h-[80vh] font-['Creato Display']">
+<div class="max-w-[1300px] w-[85vw] mx-auto min-h-[80vh] font-['Creato Display'] flex flex-col box-border">
      <!-- Header & Nav -->
     <div class="w-full flex flex-row justify-center items-stretch gap-4 mb-6">
         <div class="flex-1"></div>
@@ -293,10 +293,10 @@
         </div>
 
         <!-- Target Pyramid Area -->
-        <div class="flex-grow bg-black/80 rounded-2xl bg-[#590212] p-6 shadow-2xl relative overflow-hidden" id="arena-container">
+        <div class="flex-grow bg-[#431414] rounded-2xl p-6 shadow-2xl relative overflow-hidden" id="arena-container">
             <!-- Overlay Placeholder -->
             <div id="arena-overlay" class="absolute inset-0 z-10 bg-black/60 flex items-center justify-center backdrop-blur-sm">
-                <h2 class="text-4xl font-bold text-white text-center font-['Lato'] drop-shadow-lg">SILAKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
+                <h2 class="text-4xl font-bold text-white text-center drop-shadow-lg">SILAKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
             </div>
 
             <div id="pyramid-wrapper" class="w-full h-full flex flex-col items-center justify-center opacity-0 transition-opacity duration-500">
@@ -374,6 +374,10 @@
         $('#btn-shop').addClass('hidden');
         $('#btn-reset').addClass('hidden');
         $('#attack-controls').addClass('hidden');
+
+        const teamName = selPlayer.find('option:selected').text();
+        $('#team-name-display').text($.trim(teamName));
+
         arenaOverlay.removeClass('hidden');
         pyramidWrapper.addClass('opacity-0');
 
@@ -453,16 +457,16 @@
                 }
 
                 rowHtml += `
-                    <div class="target-box target-${base.type} ${destroyedClass} rounded-2xl"
+                    <div class="target-box target-${base.type} ${destroyedClass} font-['Duality'] rounded-2xl"
                          id="box-${base.id}"
                          data-id="${base.id}"
                          data-hp="${base.current_hp}"
                          data-maxhp="${base.max_hp}"
                          data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
-                        <h3 class=" text-6xl uppercase font-['Playbill']">${base.type}</h3>
-                        <p class="font-bold text-sm mb-1">+${base.point_reward} pts</p>
-                        <p class="hp-text font-['Playbill'] text-2xl">${statusText}</p>
+                        <h3 class=" text-5xl font-['Rustler'] font-extrabold uppercase tracking-wide">${base.type}</h3>
+                        <p class="font-bold text-lg mb-1">+${base.point_reward} pts</p>
+                        <p class="hp-text text-2xl">${statusText}</p>
                         <div class="hp-bar-bg hp-bar-bg-${base.type}">
                             <div class="hp-bar-fill hp-bar-fill-${base.type}" style="width: ${hpPercent}%"></div>
                         </div>
