@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Dashboard' }}</title>
-    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.webp" type="image/webp">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -47,7 +47,7 @@
             </ul>
         </div>
         <a class="btn btn-ghost text-2xl">
-            <img src="{{ asset('asset2026') }}/logoNoBg.png" alt="" class="w-8 rounded">
+            <img src="{{ asset('asset2026') }}/logoNoBg.webp" alt="" class="w-8 rounded">
             Maniac XV
         </a>
     </div>

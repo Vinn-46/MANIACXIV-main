@@ -7,35 +7,6 @@
 
 @section('styles')
     <style>
-        #footer {
-            color: oklch(var(--s));
-        }
-
-        body {
-            background: url("{{ asset('asset2024') }}/main/bg-transparent.png") no-repeat center;
-            {{--background: url("{{ asset('asset2024') }}/main/peserta-contest-2.png") no-repeat center;--}}
-            background-size: cover;
-        }
-
-        #cloud {
-            animation: cloudMoving 3s ease-in-out infinite;
-        }
-
-        #mount-flip {
-            transform: scaleX(-1);
-        }
-
-        @keyframes cloudMoving {
-            50% {
-                /*top: -1rem;*/
-                transform: translateY(-0.8rem);
-            }
-            0%, 100% {
-                /*top: -0.1rem;*/
-                transform: translateY(0);
-            }
-        }
-
         .c-container{
             width: 100vw;
             height: 100vh;
@@ -46,11 +17,10 @@
 @section('content')
     {{--  Container  --}}
     <div class="c-container w-full max-w-7xl relative">
-        <!-- <img draggable="false" src="{{ asset('asset2024') }}/main/cloud.png" alt="" class="absolute left-1/6 z-[1] w-80 top-[-0.1rem] select-none" id="cloud"> -->
-        <h1 class="text-4xl mb-2 text-center text-accent font-bold z-[9]">{{ $contest->name }}</h1>
-        <div class="bg-slate-100 h-[20%] mb-10 p-2 rounded grid grid-cols-1">
-            <h2 class="text-xl text-center font-bold text-black z-[9]">Waktu Kumpul</h2>
-            <h2 class="text-xl md:text-2xl text-center font-black text-red-600 z-[9] pt-2">{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', \Illuminate\Support\Carbon::parse($contest->close_date)->subMinute(30), 'Asia/Jakarta')->format('d F Y g:i A') }}</h2>
+        <div class="bg-orange-50/90 mb-10 p-8 rounded flex flex-col gap-2 justify-between text-center">
+            <h1 class="text-4xl mb-2 text-dark-brown font-bold">{{ $contest->name }}</h1>
+            <h2 class="text-xl font-bold text-accent">Batas Waktu Pengumpulan</h2>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-red-600">{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', \Illuminate\Support\Carbon::parse($contest->close_date)->subMinute(30), 'Asia/Jakarta')->format('d F Y g:i A') }}</h2>
         </div>
         <div class="card rounded-lg shadow-md data z-[9]">
             {{--  Header  --}}

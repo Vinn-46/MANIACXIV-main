@@ -3,7 +3,7 @@
 @section('styles')
     <style>
         li:hover {
-            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}"), default !important;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}"), default !important;
         }
     </style>
 @endsection

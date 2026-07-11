@@ -9,7 +9,7 @@
     <title>Game Besar Maniac XV</title>
 
     {{-- Icon --}}
-    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/webp">
 
     {{-- Tailwind --}}
     @vite('resources/css/app.css')
@@ -52,7 +52,7 @@
     </style>
 </head>
 <body class="relative min-h-screen overflow-x-hidden">
-    <div class="fixed inset-0 z-10 bg-no-repeat bg-center bg-cover" style="background-image: url('{{ asset('asset2026/Target Base/background.png') }}');"></div>
+    <div class="fixed inset-0 z-10 bg-no-repeat bg-center bg-cover" style="background-image: url('{{ asset('asset2026/Target Base/background.webp') }}');"></div>
 
     <div class="relative z-10 flex justify-center w-full min-h-screen py-6">
         {{-- Isi Konten --}}

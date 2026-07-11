@@ -14,7 +14,7 @@
         }
 
         .image-container {
-            background-image: url("{{ asset('asset2026/Target Base/papan.png') }}");
+            background-image: url("{{ asset('asset2026/Target Base/papan.webp') }}");
             width: 325px;
             height: 132px;
         }

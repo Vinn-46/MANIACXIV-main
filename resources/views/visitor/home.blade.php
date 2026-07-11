@@ -127,12 +127,12 @@
             margin: 0;
             padding: 0;
         }
-        
+
         .register-button{
             margin-top: 20%;
             width: var(--register-button);
         }
-        
+
         .win-up{
             width: var(--win-up);
         }
@@ -233,7 +233,7 @@
         .dec-3 {
             width: 22%;
         }
-        
+
         .dec-3-1{
             transform: rotate(3.14159rad);
         }
@@ -249,7 +249,7 @@
         .dec-3-5 {
             margin-bottom: 3%;
         }
-        
+
         .c-c1{
             z-index: -1;
             top: -10%;
@@ -316,9 +316,9 @@
             margin: 0;
             position: relative;
         }
-        
+
         .juara-1-1 {
-            margin-left: auto; 
+            margin-left: auto;
             margin-right: auto;
             display: block;
             top: 4vw;
@@ -380,7 +380,7 @@
 
         /* Pastikan container-nya relative */
         .container-poster {
-            position: relative; 
+            position: relative;
         }
 
         /* Ini kodemu yang asli, tidak ada yang diubah */
@@ -397,9 +397,9 @@
             z-index: 10; /* Berada di paling atas */
             left: 50%;
             transform: translateX(-50%);
-            
+
             /* INI KUNCINYA: Membuat gambar polosan tidak terlihat sama sekali */
-            opacity: 0; 
+            opacity: 0;
         }
 
         /* video */
@@ -417,53 +417,39 @@
     <div class="container-fluid p-0">
         <div class="container-page-1 position-relative">
             <div class="d-flex align-items-center flex-column" data-aos="fade-up">
-                <img src="{{ asset('asset2026/home/Title.png') }}" alt="Logo Maniac" class="logo-maniac z-1">
+                <img src="{{ asset('asset2026/home/Title.webp') }}" alt="Logo Maniac" class="logo-maniac z-1">
             </div>
         </div>
         <div class="container-page-2 position-relative">
             <div class="d-flex align-items-center flex-column">
-                <img src="{{ asset('asset2026/home/winUp.png') }}" class="win-up z-1">
+                <img src="{{ asset('asset2026/home/winUp.webp') }}" class="win-up z-1">
                 <div class="register-now">
-                    <a class = "d-flex align-items-center flex-column"href="{{ route('register') }}"><img src="{{ asset('asset2026/home/Register Button.png') }}" class="register-button mb-3 z-1"></a>
+                    <a class = "d-flex align-items-center flex-column"href="{{ route('register') }}"><img src="{{ asset('asset2026/home/Register Button.webp') }}" class="register-button mb-3 z-1"></a>
                 </div>
             </div>
         </div>
         <div class="container-page-3 position-relative" data-aos="fade-down" data-aos-delay="50">
-            <div class="container-axe d-flex justify-content-center ">
-                <!-- <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
-                <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2"> -->
-            </div>
-            
             <div class="container-poster d-flex justify-content-center position-relative">
                 <!-- LAYER BAWAH (Visual): Ini gambar yang dilihat oleh user (Poster + Bingkai) -->
-                <img src="{{ asset('asset2026/home/bingkai.png') }}" alt="Poster Maniac" class="poster">
+                <img src="{{ asset('asset2026/home/bingkai.webp') }}" alt="Poster Maniac" class="poster">
 
                 <!-- LAYER ATAS (Tersembunyi): Ini gambar yang akan didownload user (Hanya Poster) -->
-                <img src="{{ asset('asset2026/home/poster.png') }}" alt="Download Poster" class="poster-download">
+                <img src="{{ asset('asset2026/home/poster.webp') }}" alt="Download Poster" class="poster-download">
             </div>
         </div>
         <div class="container-page-4 position-relative" data-aos="fade-right" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center">
-                <img src="{{ asset('asset2026/home/TimelineLogo.png') }}" class="dec-3 dec-3-2">
-                <img src="{{ asset('asset2026/home/Timeline.png') }}" alt="Timeline Maniac" class="timeline">
+                <img src="{{ asset('asset2026/home/TimelineLogo.webp') }}" class="dec-3 dec-3-2">
+                <img src="{{ asset('asset2026/home/Timeline.webp') }}" alt="Timeline Maniac" class="timeline">
             </div>
         </div>
         <div class="container-page-5 position-relative" data-aos="fade-left" data-aos-delay="100">
             <div class="d-flex justify-content-center flex-column align-items-center ">
-                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1 position-absolute"> -->
-                <img src="{{ asset('asset2026/home/Prizes.png') }}" class="prizes-text z-1">
-                <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-4 position-absolute"> -->
+                <img src="{{ asset('asset2026/home/Prizes.webp') }}" class="prizes-text z-1">
                 <div class="container-juara">
                     <div class="img-juara-1 d-flex justify-content-center align-items-center">
-                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-2.png') }}" alt="Juara II" class="juara juara-1-2"> --}}
-                        <img src="{{ asset('asset2026/home/prizepool.png') }}" alt="Juara I" class="juara juara-1-1">
-                        {{-- <img src="{{ asset('asset2025/pendaftaran/juara-3.png') }}" alt="Juara III" class="juara juara-1-3"> --}}
+                        <img src="{{ asset('asset2026/home/prizepool.webp') }}" alt="Juara I" class="juara juara-1-1">
                     </div>
-                    {{-- <div class="img-juara-2 d-flex justify-content-center align-items-center">
-                        <img src="{{ asset('asset2025/pendaftaran/Harapan -1.png') }}" alt="Harapan I" class="juara-2 juara-2-1">
-                        <img src="{{ asset('asset2025/pendaftaran/text-usp.png') }}" alt="Teks usp" class="container-usp">
-                        <img src="{{ asset('asset2025/pendaftaran/Harapan -2.png') }}" alt="Harapan II" class="juara-2 juara-2-2">
-                    </div>  --}}
                 </div>
                 {{-- <div class="container-text-3 d-flex justify-content-center flex-column ">
                     <p>*Terdiri atas 3 orang dari SMA/SMK yang sama</p>
@@ -471,39 +457,10 @@
                 </div> --}}
             </div>
         </div>
-        
-        {{-- <div class="container-page-6"  data-aos="fade-down" data-aos-delay="50">
-            <div class="d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 dec-3-1">
-                <h1 class="text-prizes">Workshop</h1>
-                <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-3 ">
-            </div>
-            <div class="position-relative">
-                <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah">
-                <div class="container-axe d-flex justify-content-center ">
-                    <!--<img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-1">
-                    <img src="{{ asset('asset2024/main/axe.png') }}" class="position-absolute axe axe-2">-->
-                </div>
-                <div class="wrap-axe-poster">
-                    <div class="container-axe-poster d-flex justify-content-center">
-                        <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-1">
-                        <div class="wrap-poster d-flex justify-content-center position-relative">
-                            <div class="container-poster d-flex justify-content-center">
-                                <img src="{{ asset('asset2025/pendaftaran/poster-workshop.png') }}" alt="Poster Workshop" class="poster w-100">
-                            </div>
-                        </div>
-                        <div class="wrap-dec-2">
-                            <img src="{{ asset('asset2025/pendaftaran/2.png') }}" class="dec-2 dec-2-2 position-absolute">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>--}}
 
         <div class="container-page-6 position-relative">
-            <!-- <img src="{{ asset('asset2025/pendaftaran/cloud/c4.png') }}" class="position-absolute c-c1"> -->
             <div class="container-text-iframe d-flex justify-content-center flex-column align-items-center ">
-                <img src="{{ asset('asset2026/home/Join Now.png') }}" class="dec-3 dec-3-5">
+                <img src="{{ asset('asset2026/home/Join Now.webp') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
                     <iframe src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" frameborder="0"

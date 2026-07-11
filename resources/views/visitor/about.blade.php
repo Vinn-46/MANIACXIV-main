@@ -12,43 +12,6 @@
             --video-w: 200%;
         }
 
-            {
-                {
-                -- .container-bg {
-                    --
-                }
-            }
-
-                {
-                    {
-                    -- background-image: url("{{ asset('asset2024/main/bg-transparent.png') }}");
-                    --
-                }
-            }
-
-                {
-                    {
-                    -- background-repeat: repeat-y;
-                    --
-                }
-            }
-
-                {
-                    {
-                    -- background-size: cover;
-                    --
-                }
-            }
-
-                {
-                    {
-                    --
-                }
-
-                --
-            }
-        }
-
         .box {
             background-color: #8b181b;
             border-radius: 20px 20px 0 0;
@@ -171,7 +134,7 @@
                 --video-h: 240px;
                 --title: 75%;
             }
-            
+
             .carousel-image-wrapper {
                 max-width: 70%;
             }
@@ -208,7 +171,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="container py-5 d-flex align-items-center flex-column">
-           <img src="{{ asset('asset2026/ABOUT US/title.png') }}" alt="What is MANIAC" class="title" data-aos="zoom-in">
+           <img src="{{ asset('asset2026/ABOUT US/title.webp') }}" alt="What is MANIAC" class="title" data-aos="zoom-in">
             <br>
             <div class="center-image">
                 <div class="box py-5">
@@ -277,7 +240,7 @@
 
             <br>
             <div class="d-flex justify-content-center py-2 mt-5">
-                <img src="{{ asset('asset2026/ABOUT US/joinNow.png') }}" alt="JOIN NOW" class="img-fluid" style="max-width: 300px;">
+                <img src="{{ asset('asset2026/ABOUT US/joinNow.webp') }}" alt="JOIN NOW" class="img-fluid" style="max-width: 300px;">
             </div>
             <div class="container py-2 d-flex justify-content-center">
                 <div class="video-container" data-aos="fade-up">

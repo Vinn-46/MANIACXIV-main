@@ -40,161 +40,20 @@
             font-family: Lato;
         }
 
-        .burung{
-            position: absolute;
-            width: 15vw;
-            z-index: -1;
-        }
-
-        .burung-kanan-atas{
-            top: 0;
-            transform: scaleX(-1);
-            right: -7%;
-        }
-
-        .burung-kiri-tengah{
-            left: -7%;
-        }
-
-        .burung-kanan-bawah{
-            transform: scaleX(-1);
-            right: -7%;
-            top: 50%;
-            width: 13vw;
-        }
-
         .faq-title{
-            width: var(--faq-title);
+            max-width: 100%;
         }
-
-        @media screen and (max-width: 575px) {
-            :root{
-                --faq-title: 60%;
-            }
-            
-            .burung {
-                width: 30vw;
-            }
-
-            .burung-kanan-atas {
-                top: 4%;
-                right: -14%;
-            }
-
-            .burung-kiri-tengah {
-                left: -14%;
-            }
-
-            .burung-kanan-bawah {
-                right: -14%
-            }
-        }
-
-        @media (min-width: 576px) and (max-width: 768px) {
-            :root{
-                --faq-title: 60%;
-            }
-            
-            .burung {
-                width: 30vw;
-            }
-
-            .burung-kanan-atas {
-                top: 2.5%;
-                right: -14%;
-            }
-
-            .burung-kiri-tengah {
-                left: -14%;
-            }
-
-            .burung-kanan-bawah {
-                right: -13%
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 992px) {
-            :root{
-                --faq-title: 60%;
-            }
-            
-            .burung {
-                width: 26vw;
-            }
-
-            .burung-kanan-atas {
-                top: 0;
-                right: -13%;
-            }
-
-            .burung-kiri-tengah {
-                left: -13%;
-            }
-
-            .burung-kanan-bawah {
-                right: -12%
-            }
-        }
-
-        @media (min-width: 993px) and (max-width: 1200px) {
-            :root{
-                --faq-title: 60%;
-            }
-            
-            .burung {
-                width: 20vw;
-            }
-
-            .burung-kanan-atas {
-                top: 0;
-                right: -10%;
-            }
-
-            .burung-kiri-tengah {
-                left: -10%;
-            }
-
-            .burung-kanan-bawah {
-                right: -10%
-            }
-        }
-
-        @media screen and (min-width: 1201px) {
-            :root{
-                --faq-title: 60%;
-            }
-            
-            .burung {
-                width: 17vw;
-            }
-
-            .burung-kanan-atas {
-                top: 0;
-                right: -8%;
-            }
-
-            .burung-kiri-tengah {
-                top: 15%;
-                left: -8%;
-            }
-
-            .burung-kanan-bawah {
-                right: -8%;
-                top: 35%;
-            }
-        }
-
     </style>
 @endsection
 
 @section('content')
     <div class="container-fluid">
         <div class="container py-5 d-flex align-items-center flex-column">
-            <img src="{{ asset('asset2026/FAQ/faq_title.png') }}" alt="FAQ-title" class="faq-title">
+            <img src="{{ asset('asset2026/FAQ/faq_title.webp') }}" alt="FAQ-title" class="faq-title">
             <br>
             <div class="faq">
                 <div class="accordion" id="accordionExample">
-                    <div class="accordion-item" data-aos="fade-up">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -208,7 +67,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="50">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -225,7 +84,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -245,7 +104,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="150">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -266,7 +125,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -280,7 +139,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="250">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
@@ -294,7 +153,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
@@ -310,7 +169,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="350">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
@@ -324,7 +183,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
@@ -346,7 +205,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="450">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
@@ -362,7 +221,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
@@ -376,7 +235,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="550">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
@@ -392,7 +251,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
@@ -409,7 +268,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="650">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
@@ -423,7 +282,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="700">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
@@ -441,7 +300,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="750">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
@@ -457,7 +316,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="800">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
@@ -471,7 +330,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="850">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
@@ -485,7 +344,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="900">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
@@ -499,7 +358,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="950">
+                    <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse20" aria-expanded="false" aria-controls="collapse20">

@@ -75,7 +75,7 @@
 
         .wrap-all {
             padding-bottom: 4%;
-            font-family: 'Creato Display', sans-serif !important; 
+            font-family: 'Creato Display', sans-serif !important;
             font-weight: 700;
             letter-spacing: 1.2px;
             width: 100vw;
@@ -193,7 +193,7 @@
 
         @media (min-width: 381px) and (max-width: 575px) {
             .wrap-all img {
-                width: 48vw; 
+                width: 48vw;
             }
 
             img.logo-maniac {
@@ -213,11 +213,11 @@
             .wrap-all img {
                 width: 35vw;
             }
-            
+
             img.logo-maniac {
                 width: 70%;
             }
-            
+
             .text-login {
                 text-shadow: -3px 2px 0px #be8f57;
             }
@@ -261,7 +261,7 @@
             }
         }
 
-        
+
 
         .show-password path:nth-child(1),
         .show-password path:nth-child(3),
@@ -300,10 +300,8 @@
 
 @section('content')
     <div class="container-fluid m-0 p-0">
-        <!-- <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri"> -->
         <div class="wrap-all d-flex justify-content-center align-items-center flex-column ">
-            <img data-aos="fade-in" src="{{ asset('asset2026/Title.png') }}" alt="logo-maniac" class="logo-maniac z-1">
+            <img data-aos="fade-in" src="{{ asset('asset2026/Title.webp') }}" alt="logo-maniac" class="logo-maniac z-1">
             @if (session()->has('gagal'))
                 <div class="alert alert-danger" role="alert">
                     {{ session()->get('gagal') }}
@@ -314,7 +312,6 @@
                     {{ $message }}
                 </div>
             @enderror
-            {{-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-1 z-1"> --}}
             <div class="container-form d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                 data-aos-delay="50">
                 <form method="POST" action="{{ route('login') }}"
@@ -346,17 +343,17 @@
                         <div class=" txtPass rounded ">
                             <input id="password" class="input-1 block mt-1 w-full @error('password') is-invalid @enderror"
                             type="password" name="password" autocomplete="current-password" />
-                           
+
                             <!-- Ganti src ini dengan path gambar mata tertutup milikmu -->
-                            <img src="{{ asset('asset2026/pendaftaran/hide.png') }}" class="togle-position eye-close" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer;">
-                            
+                            <img src="{{ asset('asset2026/pendaftaran/hide.webp') }}" class="togle-position eye-close" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer;">
+
                             <!-- Ganti src ini dengan path gambar mata terbuka milikmu -->
-                            <img src="{{ asset('asset2026/pendaftaran/show.png') }}" class="togle-position eye" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer; display: none;">
+                            <img src="{{ asset('asset2026/pendaftaran/show.webp') }}" class="togle-position eye" onclick="togglePasswordVisibility()" style="width: 25px; cursor: pointer; display: none;">
                             @error('password')
                                 <div id="sumberError" class="error-password invalid-feedback alert-danger" >
                                     {{ $message }}
                                 </div>
-                                
+
                             @enderror
                         </div>
                         <div id="error" style="max-width: 21em !important;
@@ -389,7 +386,7 @@
 
                         <!-- Button Log in -->
                         <button type="submit" class="bg-transparent border-0 p-0" style="margin-top: 1.5rem; margin-bottom: 2rem; display: flex; justify-content: center; width: 100%;">
-                            <img src="{{ asset('asset2026/pendaftaran/login.png') }}" alt="Log in" style="width: 70%; max-width: 220px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="{{ asset('asset2026/pendaftaran/login.webp') }}" alt="Log in" style="width: 70%; max-width: 220px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         </button>
                     </div>
                     <div class="register-box d-flex align-items-center flex-column">
@@ -397,14 +394,13 @@
                     </div>
             </div>
             </form>
-            {{-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="dec-2 z-1"> --}}
         </div>
     </div>
 @endsection
 
 @section('script')
     <script>
-        
+
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const eyeOpen = document.querySelector('.eye');

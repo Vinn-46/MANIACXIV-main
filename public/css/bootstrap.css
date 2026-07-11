@@ -4739,7 +4739,7 @@ fieldset:disabled .btn {
         var(--bs-accordion-border-color);
 }
 .accordion-button:not(.collapsed)::after {
-    background-image: url("../asset2024/main/arrow-top.png");
+    background-image: url("../asset2026/arrow-up.webp");
     /* transform: var(--bs-accordion-btn-icon-transform); */
 }
 .accordion-button::after {
@@ -4748,7 +4748,7 @@ fieldset:disabled .btn {
     height: var(--bs-accordion-btn-icon-width);
     margin-left: auto;
     content: "";
-    background-image: url("../asset2024/main/arrow-down.png");
+    background-image: url("../asset2026/arrow-down.webp");
     background-repeat: no-repeat;
     background-size: var(--bs-accordion-btn-icon-width);
     transition: var(--bs-accordion-btn-icon-transition);
@@ -7745,7 +7745,7 @@ fieldset:disabled .btn {
         var(--bs-focus-ring-opacity)
     );
 }
-    
+
 .focus-ring-secondary {
     --bs-focus-ring-color: rgba(
         var(--bs-secondary-rgb),

@@ -209,7 +209,7 @@
             min-height: 600px;
         }
         #arena-container.active-arena {
-            background-image: url("{{ asset('asset2026/Target Base/bg.png') }}");
+            background-image: url("{{ asset('asset2026/Target Base/bg.webp') }}");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -264,12 +264,12 @@
         <!-- Resource Stats -->
         <div class="grid grid-cols-2 gap-6 mb-6">
             <div class="image-container">
-                <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
+                <img src ="{{ asset('asset2026/Target Base/papan.webp') }}" alt="Gambar">
                 <div class="text-amunisi">AMUNISI PELURU</div>
                 <span class="jumlah-amunisi" id="display-peluru">-</span>
             </div>
             <div class="image-container">
-                <img src ="{{ asset('asset2026/Target Base/papan.png') }}" alt="Gambar">
+                <img src ="{{ asset('asset2026/Target Base/papan.webp') }}" alt="Gambar">
                 <div class="text-amunisi">NAMA SENJATA</div>
                 <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">-</span>
             </div>

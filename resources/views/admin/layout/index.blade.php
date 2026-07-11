@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | MANIAC XV</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.webp" type="image/webp">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Icons -->
@@ -40,9 +40,7 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2024') }}/cursor/CURSOR.cur"),
-                url("{{ asset('asset2024') }}/cursor/CURSOR.svg"),
-                url("{{ asset('asset2024') }}/cursor/CURSOR.png"), auto;
+            cursor: url("{{ asset('asset2026') }}/cursor/cursor.webp"), auto;
         }
 
         .divider {
@@ -52,7 +50,6 @@
         .divider::before,
         .divider::after {
             background-color: oklch(var(--b2)) !important;
-            ;
         }
 
         .bg-dark-brown {
@@ -89,7 +86,7 @@
 
         .bg-pale-cream {
             background-color: #c0a77e;
-        } 
+        }
     </style>
     {{-- Tailwind --}}
     @vite(['resources/css/app.css', 'resources/js/datepicker.js', 'resources/js/swiper.js'])
@@ -107,7 +104,7 @@
         <div class="h-full px-3 py-4 overflow-y-auto bg-pale-cream">
             <a href="{{ route('admin.dashboard') }}" class="flex items-center ps-2.5">
                 <div class="avatar mr-3">
-                    <img src="{{ asset('asset2026') }}/logoNoBg.png" class="h-6 me-3 sm:h-7" alt="Logo ManiacXIV" />
+                    <img src="{{ asset('asset2026/logoNoBg.webp') }}" class="h-6 me-3 sm:h-7" alt="Logo ManiacXIV" />
                 </div>
             </a>
             <ul class="space-y-2 font-medium mt-4">

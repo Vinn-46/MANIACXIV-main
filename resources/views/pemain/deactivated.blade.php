@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peserta | Deactivated Page</title>
-    <link rel="icon" href="{{ asset('asset2026') }}/icon.png" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026') }}/icon.webp" type="image/webp">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -14,17 +14,17 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
-            background: url("{{ asset('asset2026') }}/pendaftaran/background.png") no-repeat center;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}") 0 0, auto;
+            background: url("{{ asset('asset2026') }}/pendaftaran/background.webp") no-repeat center;
             background-size: cover;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.webp') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.webp') }}") 16 16, text !important;
         }
 
         body::-webkit-scrollbar {
@@ -83,30 +83,11 @@
 {{--  Content  --}}
 <div class="p-10 mt-10 flex flex-col items-center">
     <div class="card rounded-lg shadow-md data max-w-lg">
-        <!-- <img
-            src="{{ asset('asset2024') }}/main/viking-head.png"
-            alt=""
-            class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
-            draggable="false"
-        >
-        <img
-            src="{{ asset('asset2024') }}/main/axe.png"
-            alt=""
-            class="absolute hidden sm:block w-28 sm:w-32 top-[-4.4rem] sm:top-[-4.7rem] sm:left-[37.5%] z-[-1]"
-            draggable="false"
-        >
-        <img
-            src="{{ asset('asset2024') }}/main/axe.png"
-            alt=""
-            class="absolute hidden sm:block w-28 sm:w-32 top-[-4.4rem] sm:top-[-4.7rem] sm:right-[37.5%] z-[-1]"
-            style="transform: scaleX(-1)"
-            draggable="false"
-        > -->
         <h1 class="text-2xl bg-base-300 p-4 font-black rounded-t-lg text-center text-primary select-none">Account Deactivated!</h1>
         <div class="card-body bg-base-200 rounded-b-lg">
             <div class="flex justify-center items-center">
                 <img
-                    src="{{ asset('asset2026') }}/Title.png"
+                    src="{{ asset('asset2026') }}/Title.webp"
                     alt=""
                     class="w-80 rounded"
                 >

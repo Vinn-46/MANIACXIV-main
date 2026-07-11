@@ -63,7 +63,7 @@
             transform: scaleY(-1);
             margin-top: 2vw;
         }
-        
+
         .btn-register{
             background-color: #847E31;
         }
@@ -86,13 +86,13 @@
         .burung{
             width: 20%;
         }
-        
+
         .burung-kanan-atas{
             top: 5%%;
             right: -10%;
             transform: scaleX(-1);
         }
-        
+
         .burung-kiri-atas{
             top: 25%;
             left: -10%;
@@ -103,12 +103,12 @@
             right: -10%;
             transform: scaleX(-1);
         }
-        
+
         .burung-kiri-bawah{
             top: 65%;
             left: -10%;
         }
-        
+
         .burung-kanan-bawah{
             top: 85%;
             right: -10%;
@@ -152,17 +152,8 @@
 @section('content')
     <div class="container-xxl position-relative">
         <div class="title d-flex justify-content-center w-100 py-2 position-relative">
-            <img class="w-50 z-1" src="{{ asset('asset2026/Title.png') }}" alt="logo-maniac" data-aos="fade-in">
-            <img class="position-absolute clouds" style="width: 500px; height: 200px; top: 100px; right: 20px;"
-                src="{{ asset('asset2024/main/cloud.png') }}" alt="">
-
+            <img class="w-50 z-1" src="{{ asset('asset2026/Title.webp') }}" alt="logo-maniac" data-aos="fade-in">
         </div>
-        <!-- <img src="{{ asset('asset2025/pendaftaran/3.png') }}" class="hiasan hiasan-atas">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-atas position-absolute">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-atas position-absolute">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-tengah position-absolute">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kiri-bawah position-absolute">
-        <img src="{{asset('asset2025/pendaftaran/burung.png')}}" class="burung burung-kanan-bawah position-absolute"> -->
         <div class="container-fluid"></div>
         <div class="w-75 container position-relative mt-4" id="formContainer" data-aos="fade-up" data-aos-delay="100">
             <form class="row g-3 needs-validation" novalidate method="POST" action="{{ route('register') }}"
@@ -344,7 +335,7 @@
                     <label for="validationCustom03" class="form-label text-dark label-stroke">Kartu Pelajar/ Surat
                         Keterangan Sekolah</label>
                     <input type="file" class="form-control @error('foto_anggota1') is-invalid @enderror"
-                        id="validationCustom03" required name="foto_anggota1">
+                        id="validationCustom03" required name="foto_anggota1" accept="image/png, image/jpeg, image/jpg" />
                     <p class="text-danger">*) Format yang didukung jpg, jpeg, png. MAX 10MB </p>
                     @error('foto_anggota1')
                         <div class="invalid-feedback alert-danger">
@@ -399,7 +390,7 @@
                     <label for="validationCustom03" class="form-label text-dark label-stroke">Kartu Pelajar/ Surat
                         Keterangan Sekolah</label>
                     <input type="file" class="form-control @error('foto_anggota2') is-invalid @enderror"
-                        id="validationCustom03" required name="foto_anggota2">
+                        id="validationCustom03" required name="foto_anggota2" accept="image/png, image/jpeg, image/jpg" />
                     <p class="text-danger">*) Format yang didukung jpg, jpeg, png. MAX 10MB </p>
 
                     @error('nomor_anggota2')

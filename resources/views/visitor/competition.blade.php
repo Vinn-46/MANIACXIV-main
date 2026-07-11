@@ -27,7 +27,7 @@
         .container-page {
             padding-top: 3%;
             text-align: center;
-            position: relative; 
+            position: relative;
         }
 
         .box-container {
@@ -116,7 +116,7 @@
                 font-size: var(--font-medium);
             }
         }
-       
+
         @media (max-width: 480px) {
             :root{
                 --competitions-title: 40%;
@@ -150,7 +150,7 @@
         }
 
         .bird-left-1 {
-            top: 30%; 
+            top: 30%;
             left: -115px;
         }
 
@@ -198,11 +198,8 @@
 
 @section('content')
 <div class="container-fluid overflow-x-hidden">
-    <div class="container py-5 d-flex align-items-center flex-column"> 
-    <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-right-1" alt="Burung Kanan Atas">
-    <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-left-1" alt="Burung Kiri Tengah">
-    <img src="{{ asset('asset2025/pendaftaran/burung.png') }}" class="bird bird-right-2" alt="Burung Kanan Bawah">
-        <img src="{{ asset('asset2026/COMPETITION BOARD/competitions.png') }}" alt="competitions-title" class="competitions-title mb-4">
+    <div class="container py-5 d-flex align-items-center flex-column">
+        <img src="{{ asset('asset2026/COMPETITION BOARD/competitions.webp') }}" alt="competitions-title" class="competitions-title mb-4">
         <br>
         <div class="box-container">
             <div data-aos="fade-up" data-aos-delay="100">
@@ -230,16 +227,12 @@
         <br>
 
 <div class="d-flex flex-column align-items-center mb-2">
-    <img src="{{ asset('asset2026/COMPETITION BOARD/guidebook.png') }}" alt="guidebook-title" class="guidebook-title mb-4">
+    <img src="{{ asset('asset2026/COMPETITION BOARD/guidebook.webp') }}" alt="guidebook-title" class="guidebook-title mb-4">
     <br>
     <a href="https://bit.ly/GuidebookMANIACXV" target="_blank">
-        {{-- <button class="button btn-lg">
-            <img src="{{ asset('asset2025/arrow-left.png') }}" alt="Arrow" style="width: 30px; height: auto;">
-            Download
-        </button>  --}}
         <button class="button btn-lg">
             Guide Book Maniac XV
-        </button> 
+        </button>
     </a>
 </div>
 

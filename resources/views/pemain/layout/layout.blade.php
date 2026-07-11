@@ -6,15 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? 'Dashboard' }}</title>
-    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/webp">
     @vite('resources/css/app.css')
     <style>
         * {
             scroll-behavior: smooth;
         }
-        
+
         body {
-            background-image: url("{{ asset('asset2026/home/bg.png') }}") !important;
+            background-image: url("{{ asset('asset2026/home/bg.webp') }}") !important;
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
@@ -22,15 +22,15 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}") 0 0, auto;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.webp') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.webp') }}") 16 16, text !important;
         }
 
         body::-webkit-scrollbar {
@@ -52,7 +52,7 @@
         .bg-dark-red {
             background-color: #8b181b;
         }
-        
+
         .bg-white {
             background-color: #ffffff;
         }
@@ -77,12 +77,12 @@
             width: 100%;
             position: relative;
         }
-        
+
         .icon {
             width: 36px;
             height: 36px;
         }
-        
+
         .nav{
             padding: 15px 30px;
         }
@@ -114,7 +114,7 @@
                 --menu-padding: 20px 30px;
             }
         }
-        
+
         @media screen and (min-width: 769px) and (max-width: 992px) {
             :root{
                 --logo: 270px;
@@ -125,7 +125,7 @@
                 display: none !important;
             }
         }
-        
+
         @media screen and (min-width: 576px) and (max-width: 768px) {
             :root{
                 --logo: 240px;
@@ -136,7 +136,7 @@
                 display: none;
             }
         }
-        
+
         @media screen and (min-width: 383px) and (max-width: 575px) {
             :root{
                 --logo: 200px;
@@ -195,7 +195,7 @@
         .btn-ghost{
             color: #8b181b;
         }
-        
+
     </style>
     @yield('cdn')
     @yield('styles')
@@ -215,7 +215,7 @@
         </div>
         <a class="bg-transparent rounded-lg flex">
             <span class="flex items-center">
-                <img src="{{ asset('asset2026/!header_footer/Logo.png') }}" alt="logo maniac" class="logo">
+                <img src="{{ asset('asset2026/!header_footer/Logo.webp') }}" alt="logo maniac" class="logo">
             </span>
         </a>
     </div>
@@ -259,12 +259,6 @@
 
 {{--  Content  --}}
 <div class="p-10 flex flex-col items-center">
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c1.png" alt="" class="absolute hidden lg:block left-0 w-50 translate-y-[80%]" draggable="false"> --}}
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c2.png" alt="" class="absolute hidden lg:block right-0 w-50" draggable="false"> --}}
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c3.png" alt="" class="absolute hidden lg:block left-0 w-50" draggable="false"> --}}
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c4.png" alt="" class="absolute hidden lg:block right-0 w-50" draggable="false"> --}}
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c5.png" alt="" class="absolute hidden lg:block right-0 w-50 translate-y-[200%]" draggable="false">--}}
-    {{-- <img src="{{ asset('asset2025') }}/pendaftaran/cloud/c6.png" alt="" class="absolute hidden lg:block left-0 w-50" draggable="false"> --}}
     @yield('content')
 
     <div class="w-full pt-12 px-2">
@@ -274,20 +268,16 @@
 
 @yield('scripts')
 <div class="relative w-full">
-    <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="w-full">
+    <img src="{{ asset('asset2026/!header_footer/Footer.webp') }}" class="w-full">
     <div class="absolute bottom-0 left-0 w-full text-center pb-6 md:pb-16">
         <p class="text-white" style="font-size: clamp(10px, 1.8vw, 14px)">
             &copy; Developed by MANIAC XV commitee <br> <span class="font-bold">Social Media</span>
         </p>
         <div class="flex justify-center items-center gap-7 mt-4">
-    
-            <a href="https://www.instagram.com/maniac_ubaya?" target="_blank" rel="noopener"><img src="{{ asset('asset2024/footer/IG.png') }}" class="icon" alt="Instagram"> </a>
-
-            <a href="https://line.me/R/ti/p/%40994nxsfr" target="_blank" rel="noopener"><img src="{{ asset('asset2024/footer/line.png') }}" class="icon" alt="Line"></a>
-
-            <a href="mailto:maniac.ubayaa@gmail.com" target="_blank" rel="noopener"><img src="{{ asset('asset2024/footer/email.png') }}" class="icon" alt="Email"></a>
-
-            <a href="https://www.tiktok.com/@maniac_ubaya" target="_blank" rel="noopener"><img src="{{ asset('asset2025/pendaftaran/icon-tiktok.png') }}" class="icon" alt="TikTok"></a>
+            <a href="https://www.instagram.com/maniac_ubaya?" target="_blank" rel="noopener"><img src="{{ asset('asset2026/!header_footer/socials_ig.webp') }}" class="icon" alt="Instagram"> </a>
+            <a href="https://line.me/R/ti/p/%40994nxsfr" target="_blank" rel="noopener"><img src="{{ asset('asset2026/!header_footer/socials_line.webp') }}" class="icon" alt="Line"></a>
+            <a href="mailto:maniac.ubayaa@gmail.com" target="_blank" rel="noopener"><img src="{{ asset('asset2026/!header_footer/socials_gmail.webp') }}" class="icon" alt="Email"></a>
+            <a href="https://www.tiktok.com/@maniac_ubaya" target="_blank" rel="noopener"><img src="{{ asset('asset2026/!header_footer/socials_tt.webp') }}" class="icon" alt="TikTok"></a>
         </div>
     </div>
 </div>

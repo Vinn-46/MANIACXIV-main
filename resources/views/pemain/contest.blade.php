@@ -7,11 +7,6 @@
 
 @section('styles')
     <style>
-        body {
-            background: url("{{ asset('asset2024') }}/main/peserta-contest.png") no-repeat center;
-            background-size: cover;
-        }
-
         .action:hover {
             color: #E7EADF !important;
         }
@@ -21,13 +16,7 @@
 @section('content')
     <div class="grid grid-cols-1 gap-10 w-full max-w-7xl">
         {{--   Introduction    --}}
-        <div class="card rounded-lg shadow-md data bg-light-brown p-4">
-            {{-- <img
-                src="{{ asset('asset2024') }}/main/viking-head.png"
-                alt=""
-                class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
-                draggable="false"
-            > --}}
+        <div class="card rounded-lg shadow-md data bg-orange-50/90 p-4">
             <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Contest Maniac XV 🏆</h1>
             <div class="md:card-body max-md:p-4 bg-cream rounded-lg mt-4">
                 <p class="pb-3 sm:pb-0 break-words">
@@ -52,7 +41,7 @@
         </div>
 
         {{--   Available Contest    --}}
-        <div class="card rounded-lg shadow-md data bg-light-brown p-4">
+        <div class="card rounded-lg shadow-md data bg-orange-50/90 p-4">
             <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Available Contest</h1>
             <div class="md:card-body max-md:p-4 bg-cream rounded-lg mt-4">
                 <div class="overflow-x-auto">
@@ -80,7 +69,7 @@
                                     <td width="15%" class="text-center">
                                         {{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', \Illuminate\Support\Carbon::parse($contest->close_date)->subMinute(30), 'Asia/Jakarta')->format('d F Y g:i A') }}
                                     </td>
-                                    
+
                                     {{-- Waktu Toleransi --}}
                                     <td width="15%" class="text-center">
                                         @if($contest->type == "pengumuman")
@@ -138,7 +127,7 @@
                                                 Hubungi Panitia
                                             @endif
                                         @else
-                                            <a class="btn btn-outline btn-info btn-sm rounded-md px-5 py-0 w-full font-bold action" 
+                                            <a class="btn btn-outline btn-info btn-sm rounded-md px-5 py-0 w-full font-bold action"
                                               href="{{ route('team.contest.submission', $contest) }}">
                                                 {{ $action }}
                                             </a>
@@ -156,7 +145,7 @@
         </div>
 
         {{--   Upcoming Contest    --}}
-        <div class="card rounded-lg shadow-md data bg-light-brown p-4">
+        <div class="card rounded-lg shadow-md data bg-orange-50/90 p-4">
             <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Upcoming Contest</h1>
             <div class="md:card-body max-md:p-4 bg-cream rounded-lg mt-4">
                 <div class="overflow-x-auto">
@@ -177,7 +166,7 @@
                                         <td width="15%" class="text-center">{{ $contest->name }}</td>
                                         <td width="15%" class="text-center">{{  Str::ucfirst($contest->type) }}</td>
                                         <td width="25%" class="text-center">{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $contest->open_date, 'Asia/Jakarta')->format('d F Y g:i A') }}</td>
-                                        
+
                                         {{-- Waktu Kumpul --}}
                                         <td width="25%" class="text-center">
                                             @if($contest->type == "pengumuman")
@@ -186,7 +175,7 @@
                                                 {{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', \Illuminate\Support\Carbon::parse($contest->close_date)->subMinute(30), 'Asia/Jakarta')->format('d F Y g:i A') }}
                                             @endif
                                         </td>
-                                            
+
                                         {{-- Waktu Toleransi --}}
                                         <td width="25%" class="text-center">
                                             @if($contest->type == "pengumuman")
@@ -210,7 +199,7 @@
         </div>
 
         {{--   Finished Contest    --}}
-        <div class="card rounded-lg shadow-md data bg-light-brown p-4">
+        <div class="card rounded-lg shadow-md data bg-orange-50/90 p-4">
             <h1 class="text-xl md:text-xl font-bold bg-cream py-2 px-4 text-center text-dark-brown rounded-md uppercase">Finished Contest</h1>
             <div class="md:card-body max-md:p-4 bg-cream rounded-lg mt-4">
                 <div class="overflow-x-auto">
@@ -231,7 +220,7 @@
                                         <td width="15%" class="text-center">{{ $contest->name }}</td>
                                         <td width="15%" class="text-center">{{ Str::ucfirst($contest->type) }}</td>
                                         <td width="25%" class="text-center">{{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $contest->open_date, 'Asia/Jakarta')->format('d F Y g:i A') }}</td>
-                                        
+
                                         {{-- Waktu Kumpul --}}
                                         <td width="25%" class="text-center">
                                             @if($contest->type == "pengumuman")
@@ -240,7 +229,7 @@
                                                 {{ \Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', \Illuminate\Support\Carbon::parse($contest->close_date)->subMinute(30), 'Asia/Jakarta')->format('d F Y g:i A') }}
                                             @endif
                                         </td>
-                                        
+
                                         {{-- Waktu Toleransi --}}
                                         <td width="25%" class="text-center">
                                             @if($contest->type == "pengumuman")

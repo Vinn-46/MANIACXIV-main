@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peserta | {{ $title ?? 'Pembayaran' }}</title>
 
-    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/x-icon">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -15,17 +15,17 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2026') }}/cursor/cursor.png"), auto;
-            background: url("{{ asset('asset2026') }}/pendaftaran/background.png") no-repeat center;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}"), auto;
+            background: url("{{ asset('asset2026/pendaftaran/background.webp') }}") no-repeat center;
             background-size: cover;
         }
 
         button:hover, a:hover, li:hover {
-            cursor: url("{{ asset('asset2026') }}/cursor/pointer.png"), pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.webp') }}"), pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2026') }}/cursor/type.png"), text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.webp') }}"), text !important;
         }
 
         body::-webkit-scrollbar {
@@ -61,21 +61,16 @@
 </head>
 <body class="min-h-screen relative">
 {{--  Navigation Bar  --}}
-<div class="navbar bg-[#8B181B] px-4 mb-2 c-z-1 rounded-br-xl rounded-bl-xl ">
-    <div class="flex-1">
-        <a class="btn btn-ghost text-2xl">
-            <div class="bg-white p-2 rounded-lg mr-1">
-                <img src="{{ asset('asset2025') }}/logo-maniac.png" alt="" class="w-16 rounded">
-            </div>      
-            <div class="text-white">
-                Maniac XV
-            </div>      
+<div class="navbar flex justify-between bg-[#8B181B] px-4 mb-2 c-z-1 rounded-br-xl rounded-bl-xl ">
+    <div>
+        <a class="btn btn-ghost text-2xl max-w-full inline-flex items-center">
+            <img class="max-w-full max-h-full object-contain" src="{{ asset('asset2026/Logo.webp') }}" alt="Home" />
         </a>
     </div>
-    <div class="flex-none z-50 text-white ">
-        <ul class="menu menu-horizontal px-6 ">
+    <div class="flex-none z-50 text-white">
+        <ul class="menu menu-horizontal px-6">
             <li>
-                <details class="">
+                <details>
                     <summary>
                         Menu
                     </summary>
@@ -103,12 +98,6 @@
 {{--  Content  --}}
 <div class="p-10 mt-7 flex flex-col items-center c-z-1">
     <div class="card rounded-lg shadow-md data">
-        {{-- <img
-            src="{{ asset('asset2024') }}/main/viking-head.png"
-            alt=""
-            class="absolute w-32 top-[-4.3rem] left-[-4rem] animate-pulse"
-            draggable="false"
-        > --}}
         <h1 class="text-2xl bg-[#8B181B] p-5 font-black rounded-t-lg text-center text-white ">{{ $heading ?? "Verifikasi Bukti Pembayaran" }}</h1>
         <div class="card-body bg-[#FBF5E5] rounded-b-lg">
             <div class="grid grid-cols-1 md:grid-cols-3 place-content-center gap-7 md:gap-12">

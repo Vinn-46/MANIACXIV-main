@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Penpos | MANIAC XV</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('asset2025') }}/Icon.ico" type="image/png">
+    <link rel="icon" href="{{ asset('asset2026/icon/webp') }}" type="image/webp">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Icons -->
@@ -39,9 +39,7 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2024') }}/cursor/CURSOR.cur"),
-            url("{{ asset('asset2024') }}/cursor/CURSOR.svg"),
-            url("{{ asset('asset2024') }}/cursor/CURSOR.png"), auto;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}"), auto;
         }
 
 
@@ -90,7 +88,7 @@
                     <div class="dropdown dropdown-end">
                         <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                             <div class="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2026') }}/icon.png" />
+                                <img alt="Tailwind CSS Navbar component" src="{{ asset('asset2026/icon.webp') }}" />
                             </div>
                         </div>
                         <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">

@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/font.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
-    <link rel="icon" href="{{ asset('asset2026/icon.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/webp">
 
     <style>
         html {
@@ -33,17 +33,17 @@
         }
 
         body {
-            cursor: url("{{ asset('asset2026/cursor/cursor.png') }}") 0 0, auto;
+            cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}") 0 0, auto;
         }
 
         button:hover,
         a:hover,
         li:hover {
-            cursor: url("{{ asset('asset2026/cursor/pointer.png') }}") 16 0, pointer !important;
+            cursor: url("{{ asset('asset2026/cursor/pointer.webp') }}") 16 0, pointer !important;
         }
 
         input:hover {
-            cursor: url("{{ asset('asset2026/cursor/type.png') }}") 16 16, text !important;
+            cursor: url("{{ asset('asset2026/cursor/type.webp') }}") 16 16, text !important;
         }
 
         #navbarNav {
@@ -51,14 +51,14 @@
         }
 
         body {
-            background-image: url("{{ asset('asset2026/home/bg.png') }}") !important;
+            background-image: url("{{ asset('asset2026/home/bg.webp') }}") !important;
             background-size: cover;
             background-position: center top;
             background-repeat: no-repeat;
             min-height: 100vh;
         }
 
-        .active-link {
+        .navbar-nav .nav-item .active-link {
             background-color: white;
             color: #8b181b !important;
             border-radius: 20px;
@@ -326,7 +326,7 @@
             <h2 accesskey=""class="mb-2">Batch Pendaftaran Early Bird Telah Berakhir</h2>
             <p class="mb-6">*Batch pendaftaran normal akan dibuka pada Senin, 11 Juni 2026</p>
         </div>
-        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" style="width: 100%" class="notif-bg">
+        <img src="{{ asset('asset2026/!header_footer/Footer.webp') }}" style="width: 100%" class="notif-bg">
     </div>
     @if (Route::has('login'))
         <div class="nav-wrapper d-flex align-items-center">
@@ -334,7 +334,7 @@
             <!-- Logo -->
             <div class="logo d-flex" style="width: 270px">
                 <div class="c-logo d-flex .align-items-center rounded">
-                    <img src="{{ asset('asset2026/!header_footer/Logo.png') }}" class="logo-header">
+                    <img src="{{ asset('asset2026/!header_footer/Logo.webp') }}" class="logo-header">
                 </div>
             </div>
 
@@ -390,7 +390,7 @@
                         {{-- <path fill-rule="evenodd" --}}
                         {{-- d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" /> --}}
                         {{-- </svg>&nbsp; --}}
-                        <img src="{{ asset('asset2026/User.png') }}" style="width: 70px">
+                        <img src="{{ asset('asset2026/User.webp') }}" style="width: 70px">
                     </strong>
                 </button>
                 <ul class="dropdown-menu bg-red">
@@ -422,16 +422,12 @@
                             }
                         @endphp
                         <li>
-                            <a href="{{ url($endpoint) }}"
-                                style="font-size: 1rem !important; letter-spacing: 1px !important;"
-                                class="dropdown-item text-white">Dashboard</a>
+                            <a href="{{ url($endpoint) }}" class="dropdown-item text-white">Dashboard</a>
                         </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST" id="logout">
                                 @csrf
-                                <button class="btn-logout dropdown-item text-white"
-                                    style="font-size: 1rem !important; letter-spacing: 1px !important;"
-                                    type="submit">Logout</button>
+                                <button class="btn-logout dropdown-item text-white" type="submit">Logout</button>
                             </form>
                         </li>
                     @else
@@ -475,14 +471,14 @@
                         <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1 {{ request()->routeIs('visitor.faq') ? 'active-link' : '' }}"
                             href="{{ route('visitor.faq') }}">FAQ</a>
                     </li>
-                    <li>
+                    <li class="nav-item offcanvas-item">
                         {{-- <a class="nav-link text-white offcanvas-item" href="{{ asset('asset2024/main/guidebook.pdf') }}" download="Guidebook MANIAC XIII.pdf">GUIDEBOOK</a> --}}
-                        <a class="nav-link" href="#contact">CONTACT</a>
+                        <a class="nav-link d-flex align-items-center gap-2 px-2 mb-1" href="#contact">CONTACT</a>
                     </li>
                     <li>
                         <hr class="text-white">
                         <div class="d-flex align-items-center gap-2 px-2">
-                            <img src="{{ asset('asset2026/User.png') }}"
+                            <img src="{{ asset('asset2026/User.webp') }}"
                                 style="width: 60px; border: 2px solid white; border-radius: 50%;">
                         </div>
 
@@ -570,7 +566,7 @@
     <main class="position-relative p-0 m-0 w-100">
         @yield('content')
         <span class="d-block" style="height: 7rem;"></span>
-        <img src="{{ asset('asset2026/!header_footer/Footer.png') }}" class="bottom-web-home">
+        <img src="{{ asset('asset2026/!header_footer/Footer.webp') }}" class="bottom-web-home">
     </main>
 
     <footer id="contact" class="w-100 bg-red pt-2">
@@ -583,34 +579,31 @@
                         Penyisihan (online), Semifinal (Rally Games & Game Besar), dan Final (presentasi). Materi yang
                         dilombakan adalah mengenai User Interface dan User Experience. MANIAC diselenggarakan oleh
                         Program Studi Teknik Informatika Program Digital Media Technology Universitas Surabaya.</p>
-                    <img src="{{ asset('asset2024/footer/logo-ubaya.png') }}" width="150px" height="auto"
+                    <img src="{{ asset('asset2026/LogoUbaya.webp') }}" width="150px" height="auto"
                         alt="logo-ubaya" class="pt-3">
-                    <img src="{{ asset('asset2024/footer/logo-maniac.png') }}" width="150px" height="auto"
+                    <img src="{{ asset('asset2026/LogoManiac.webp') }}" width="150px" height="auto"
                         alt="logo-maniac" class="pt-3">
                 </div>
                 <div class="col-lg-6 ps-lg-5 pt-sm-2">
                     <h5 class="text-white"><strong>SOCIAL MEDIA</strong></h5>
                     <div class="grid gap-4">
                         <div class="text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2024/footer/IG.png') }}" alt="Instagram">
-                            <a class="mb-0 sosmedLink text-white" href="https://www.instagram.com/maniac_ubaya?"
-                                target="_blank" rel="noopener">
+                            <img class="icon" src="{{ asset('asset2026/!header_footer/socials_ig.webp') }}" alt="Instagram">
+                            <a class="mb-0 sosmedLink text-white" href="https://www.instagram.com/maniac_ubaya?" target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
                         </div>
                         <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-tiktok.png') }}"
+                            <img class="icon" src="{{ asset('asset2026/!header_footer/socials_tt.webp') }}"
                                 alt="TikTok">
-                            <a class="mb-0 sosmedLink text-white" href="https://www.tiktok.com/@maniac_ubaya"
-                                target="_blank" rel="noopener">
+                            <a class="mb-0 sosmedLink text-white" href="https://www.tiktok.com/@maniac_ubaya" target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
                         </div>
                         <div class="mt-2 text-white d-flex align-items-center">
-                            <img class="icon" src="{{ asset('asset2025/pendaftaran/icon-youtube.png') }}"
+                            <img class="icon" src="{{ asset('asset2026/!header_footer/socials_yt.webp') }}"
                                 alt="YouTube">
-                            <a class="mb-0 sosmedLink text-white" href="https://www.youtube.com/@maniacubaya9585"
-                                target="_blank" rel="noopener">
+                            <a class="mb-0 sosmedLink text-white" href="https://www.youtube.com/@maniacubaya9585" target="_blank" rel="noopener">
                                 &nbsp;@maniac_ubaya
                             </a>
                         </div>
@@ -619,63 +612,27 @@
                         <div class="d-flex flex-column">
                             <a class="text-white pb-2 sosmedLink" href="https://line.me/R/ti/p/%40994nxsfr"
                                 target="_blank" rel="noopener">
-                                <img class="icon" src="{{ asset('asset2024/footer/line.png') }}" alt="line">
+                                <img class="icon" src="{{ asset('asset2026/!header_footer/socials_line.webp') }}" alt="line">
                                 @994nxsfr
                             </a>
                             <a class="text-white pb-2 sosmedLink" href="mailto:maniac.ubayaa@gmail.com"
                                 target="_blank" rel="noopener">
-                                <img class="icon" src="{{ asset('asset2024/footer/email.png') }}" alt="email">
+                                <img class="icon" src="{{ asset('asset2026/!header_footer/socials_gmail.webp') }}" alt="email">
                                 maniac.ubayaa@gmail.com
                             </a>
                             <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282229088089" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
-                                <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
-                                    alt="whatsapp">
+                                <img class="icon" src="{{ asset('asset2026/!header_footer/socials_wa.webp') }}" alt="whatsapp">
                                 082229088089 (Jovanka)
                             </a>
                             <a class="text-white pb-2 sosmedLink" href="https://wa.me/+6282232958165" target="_blank"
                                 rel="noopener" style="font-size: 1rem;">
-                                <img class="icon" src="{{ asset('asset2024/footer/whatsapp.png') }}"
-                                    alt="whatsapp">
+                                <img class="icon" src="{{ asset('asset2026/!header_footer/socials_wa.webp') }}" alt="whatsapp">
                                 082232958165 (Nadya)
                             </a>
                         </div>
                     </div>
                 </div>
-                <!--
-                <div class="col-lg-10 pt-sm-2 mt-5">
-                    <h5 class="text-white"><strong>SPONSORED BY</strong></h5>
-                    <div class="d-flex flex-wrap">
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2025/footer/sponsor/Zurich.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2025/footer/sponsor/Okebis.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Teh Sepeda Balap.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                            <img src="{{ asset('asset2024/footer/LogoSPRent.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Crystalin.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/pilot.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
-                            {{-- Tarok logo sponsor --}}
-                                <img src="{{ asset('asset2025/footer/sponsor/Kristin.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
-                        </div>
-                    </div>
-                </div> -->
                 <br>
                 <br>
                 <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XV Information System, All
@@ -695,19 +652,19 @@
         // Mengambil object dengan id notificationOverlay yang mana adalah container keseluruhan notif bahwa pendaftaran tutup sementara
         const notificationOverlay = document.getElementById('notificationOverlay');
 
-        // Menampilkan notif 
+        // Menampilkan notif
         // Ini adalah bentuk arrow function yang unik di javascript
         const showStaticNotification = () => {
             // Mengganti class object notificationOverlay dengan class baru yang salah satunya berisi perintah non-hide yang berisi display block
             notificationOverlay.setAttribute("class", "overflow-hidden container-notif bg-white text-center non-hide")
 
-            // Membuat timer hitung mundur, untuk menjalankan function Menyembunyikan notif 
+            // Membuat timer hitung mundur, untuk menjalankan function Menyembunyikan notif
             setTimeout(() => {
                 hideNotification();
             }, 5000);
         }
 
-        // Menyembunyikan notif 
+        // Menyembunyikan notif
         // Jika sudah mencapai 5 detik maka objek dengan class notificationOverlay akan di sembunyikan dengan diberikan class hide
         // yang berisi perintah display : none
         const hideNotification = () => {
