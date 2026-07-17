@@ -30,7 +30,7 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $openDate = strtotime('9 May 2026');
-        $closeDate = strtotime('17 July 2026');
+        $closeDate = strtotime('22 July 2026');
         $now = time();
         
         // Pendaftaran early bird ditutup sementara, dan dibuka lagi di tanggal 9 Mei
@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
         }
 
         if ($now >= $closeDate) {
-            return redirect()->route('login')->with('gagal', 'Pendaftaran telah ditutup. Sampai jumpa di Maniac XV');
+            return redirect()->route('login')->with('gagal', 'Pendaftaran telah ditutup. Sampai jumpa di Maniac XVI');
         }
 
         return view('auth.register');
@@ -56,7 +56,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $openDate = strtotime('9 May 2026');
-        $closeDate = strtotime('17 July 2026');
+        $closeDate = strtotime('22 July 2026');
         $now = time();
 
         if ($now < $openDate) {
@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
         }
 
         if ($now >= $closeDate) {
-            return redirect()->route('login')->with('gagal', 'Pendaftaran telah ditutup. Sampai jumpa di Maniac XV');
+            return redirect()->route('login')->with('gagal', 'Pendaftaran telah ditutup. Sampai jumpa di Maniac XVI');
         }
 
         // dd($request->all());
