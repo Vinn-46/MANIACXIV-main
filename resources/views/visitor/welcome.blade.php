@@ -633,6 +633,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-10 pt-sm-2 mt-5">
+                    <h5 class="text-white"><strong>SPONSORED BY</strong></h5>
+                    <div class="d-flex flex-wrap">
+                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
+                            {{-- logo sponsor 1 --}}
+                            <img src="{{ asset('asset2026/Sponsor/Okebis.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                        </div>
+                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
+                            {{-- logo sponsor 2 --}}
+                            <img src="{{ asset('asset2026/Sponsor/OwnProject.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                        </div>
+                        <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
+                            {{-- logo sponsor 3 --}}
+                                <img src="{{ asset('asset2026/Sponsor/Bakmie22.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <br>
                 <p class="text-white text-start pe-5 pb-2 pt-5">COPYRIGHT &copy; MANIAC XV Information System, All
