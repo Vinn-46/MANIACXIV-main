@@ -30,32 +30,42 @@
         }
 
         /* Styles for different types */
-        .target-small { width: 160px; height: 160px; background: #A66C3A; color: white; }
-        .target-medium { width: 185px; height: 180px; background: #E5C18D; color: #593118; }
-        .target-large { width: 210px; height: 210px; background: #FFF6CB; color: #411512; }
+        .target-small { width: 160px; height: 160px; background: #a67443; color: #43210d; }
+        .target-medium { width: 185px; height: 180px; background: #e2c18d; color: #593118; }
+        .target-large { width: 210px; height: 210px; background: #faf6cd; color: #411512; }
+
+        .hp-text-font {
+            font-family: 'Rustler', 'Duality', 'Creato Display', serif;
+            letter-spacing: 0.05em;
+        }
+
+        .cow-small { width: 85px; height: 85px; }
+        .cow-medium { width: 110px; height: 110px; }
+        .cow-large { width: 135px; height: 135px; }
 
         .hp-bar-bg {
-            width: 80%;
-            height: 10px;
-            background-color: rgba(0,0,0,0.5);
-            border-radius: 5px;
-            margin-top: 10px;
+            width: 75%;
+            height: 8px;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .hp-bar-fill-small{
-            background: #D0D37C; /* merah */
+            background: #D0D37C;
         }
 
         .hp-bar-fill-medium{
-            background: #9D933C; /* kuning */
+            background: #9D933C;
         }
 
         .hp-bar-fill-large{
-            background: #d1ce80; /* hijau */
+            background: #d1ce80;
         }
+
         .hp-bar-fill {
             height: 100%;
+            background-color: #847e31;
             transition: width 0.3s ease-in-out;
         }
 
@@ -92,35 +102,13 @@
             color: #8b181b !important;
             border-radius: 20px;
         }
-        .image-container {
-            position: relative;
-            width: 300px;
-            margin: 0 auto;
-        }
 
-        .image-container img {
-            width: 100%;
-            display: block;
-        }
-        .text-amunisi {
-            position: absolute;
-            top: 35%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            text-align: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: white;
-        }
-        .jumlah-amunisi {
-            position: absolute;
-            top: 60%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            font-weight: 900;
-            color: white;
+        .image-container {
+            background-image: url("{{ asset('asset2026/Target Base/papan.webp') }}");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 325px;
+            height: 132px;
         }
 
         #pID {
@@ -197,16 +185,17 @@
         .target-box.destroyed .hp-text {
             animation: burnStamp 0.4s ease-out forwards;
             color: #ef4444 !important;
-            font-size: 2.5rem !important;
+            font-size: 1.75rem !important;
             text-shadow: 0 0 10px rgba(239, 68, 68, 0.8);
             font-weight: bold;
         }
-        .target-box.destroyed h3, .target-box.destroyed .hp-bar-bg {
-            opacity: 0.3;
+        .target-box.destroyed img, .target-box.destroyed .hp-bar-bg {
+            opacity: 0.2;
         }
 
-        #arena-container{
-            min-height: 600px;
+        #arena-container {
+            min-height: 520px;
+            background-color: #3b1212;
         }
         #arena-container.active-arena {
             background-image: url("{{ asset('asset2026/Target Base/bg.webp') }}");
@@ -238,13 +227,13 @@
     <div class="c-bg-white shadow-lg p-12 rounded-[36px] w-full max-w-[85vw] mx-auto flex flex-col relative min-h-screen">
         <!-- Player Selection -->
         <div class="rounded-2xl mb-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div id="team-name-display" class="flex items-center px-6 py-2 rounded-full uppercase text-lg text-white font-bold bg-[#8b181b]">
-                TEAM NAME
+            <div id="team-name-display" class="flex items-center px-6 py-2 rounded-full uppercase text-lg text-white font-bold bg-[#8b181b] whitespace-nowrap">
+                TIM 1
             </div>
 
-            <div class="w-full md:w-1/2 flex-grow">
+            <div class="w-full flex-grow">
                 <select id="pID" class="text-lg font-bold">
-                    <option selected disabled value="">-- PILIH TIM --</option>
+                    <option selected disabled value="">PILIH TIM</option>
                     @foreach ($players as $p)
                         <option value="{{ $p->id }}">
                             {{ $p->team_name }}
@@ -262,16 +251,26 @@
         </div>
 
         <!-- Resource Stats -->
-        <div class="grid grid-cols-2 gap-6 mb-6">
-            <div class="image-container">
-                <img src ="{{ asset('asset2026/Target Base/papan.webp') }}" alt="Gambar">
-                <div class="text-amunisi">AMUNISI PELURU</div>
-                <span class="jumlah-amunisi" id="display-peluru">-</span>
+        <div class="flex flex-row justify-center gap-12 mb-6">
+            <!-- Amunisi Peluru Board -->
+            <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
+                <span class="text-xl font-bold uppercase">Amunisi Peluru</span>
+                <div class="flex flex-row items-center justify-center gap-3">
+                    <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
+                    <span class="text-4xl font-extrabold" id="display-peluru">0</span>
+                </div>
+                <div class="h-2"></div>
             </div>
-            <div class="image-container">
-                <img src ="{{ asset('asset2026/Target Base/papan.webp') }}" alt="Gambar">
-                <div class="text-amunisi">NAMA SENJATA</div>
-                <span class="jumlah-amunisi whitespace-nowrap" id="display-weapon">-</span>
+
+            <!-- Level Senjata Board -->
+            <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
+                <span class="text-xl font-bold uppercase">Level Senjata</span>
+                <div class="flex flex-row items-center justify-center my-auto">
+                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-12 object-contain" alt="Senjata">
+                </div>
+                <div class="w-full flex justify-end px-6 pb-1">
+                    <span class="text-sm font-extrabold whitespace-nowrap">LVL. <span id="board-weapon-lvl">1</span> <span id="board-weapon-dmg">(DMG: 5)</span></span>
+                </div>
             </div>
         </div>
 
@@ -285,18 +284,18 @@
             </div>
             <div class="w-full md:w-auto flex flex-col">
                 <label class="text-white font-bold mb-2 text-sm">Jumlah Tembakan:</label>
-                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-black text-center bg-white focus:outline-none focus:ring-4 focus:ring-[#733b22]">
+                <input type="number" id="bullet-count" value="1" min="1" class="w-full md:w-32 py-2 px-4 rounded-lg text-lg font-bold text-white text-center bg-[#b3ae6b] border-none focus:outline-none focus:ring-4 focus:ring-[#733b22]">
             </div>
-            <button id="btn-fire" class="bg-[#8b181b] hover:bg-[#590212] text-white font-black px-8 py-2 rounded-lg text-xl shadow-lg transition-transform hover:scale-105 active:scale-95">
-                <i class="fa-solid fa-crosshairs mr-2"></i> TEMBAK!
+            <button id="btn-fire" class="bg-[#8b181b] hover:bg-[#590212] text-white font-bold px-8 py-2 rounded-lg text-lg shadow-lg transition-transform hover:scale-105 active:scale-95">
+                TEMBAK
             </button>
         </div>
 
         <!-- Target Pyramid Area -->
-        <div class="flex-grow bg-[#431414] rounded-2xl p-6 shadow-2xl relative overflow-hidden" id="arena-container">
+        <div class="flex-grow rounded-2xl p-6 shadow-2xl relative overflow-hidden flex flex-col justify-center" id="arena-container">
             <!-- Overlay Placeholder -->
-            <div id="arena-overlay" class="absolute inset-0 z-10 bg-black/60 flex items-center justify-center backdrop-blur-sm">
-                <h2 class="text-4xl font-bold text-white text-center drop-shadow-lg">SILAKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
+            <div id="arena-overlay" class="absolute inset-0 z-10 bg-[#3b1212] flex items-center justify-center">
+                <h2 class="text-3xl font-extrabold text-white text-center tracking-wider">SILAHKAN PILIH TIM UNTUK MEMULAI PENYERANGAN</h2>
             </div>
 
             <div id="pyramid-wrapper" class="w-full h-full flex flex-col items-center justify-center opacity-0 transition-opacity duration-500">
@@ -306,7 +305,7 @@
 
     </div>
 </div>
-    @endsection
+@endsection
 
 @section("script")
 <script>
@@ -326,12 +325,11 @@
 
     const selPlayer = $('#pID');
     const displayPeluru = $('#display-peluru');
-    const displayWeapon = $('#display-weapon');
     const arenaOverlay = $('#arena-overlay');
     const pyramidWrapper = $('#pyramid-wrapper');
 
     let currentPeluru = 0;
-    let weaponDamage = 0;
+    let weaponDamage = 5;
     let isAttacking = false;
 
     // Damage mapping matches controller
@@ -341,10 +339,10 @@
         3: 15
     };
 
-    const weaponNames = {
-        1: "Peacemaker",
-        2: "Sharpshooter",
-        3: "Eagle Eye"
+    const weaponImages = {
+        1: "{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}",
+        2: "{{ asset('asset2026/gamebes/SHOTGUN MANIAC XV.png') }}",
+        3: "{{ asset('asset2026/gamebes/MUSKET MANIAC XV.png') }}"
     };
 
     $(document).ready(function() {
@@ -371,7 +369,6 @@
         if (!playerId) return;
 
         $('#loading-indicator').removeClass('hidden');
-        $('#btn-shop').addClass('hidden');
         $('#btn-reset').addClass('hidden');
         $('#attack-controls').addClass('hidden');
 
@@ -390,28 +387,24 @@
             },
             success: function(res) {
                 $('#loading-indicator').addClass('hidden');
-
                 currentPeluru = res.peluru;
-                const wLevel = res.weapon_level;
+                const wLevel = res.weapon_level || 1;
                 weaponDamage = damageMap[wLevel] || 5;
 
                 displayPeluru.text(currentPeluru);
-                displayWeapon.text(weaponNames[wLevel]);
+
+                const imgPath = weaponImages[wLevel] || weaponImages[1];
+                $('#board-weapon-img').attr('src', imgPath);
+                $('#board-weapon-lvl').text(wLevel);
+                $('#board-weapon-dmg').text('(DMG: ' + weaponDamage + ')');
 
                 renderPyramid(res.bases);
 
                 arenaOverlay.addClass('hidden');
                 pyramidWrapper.removeClass('opacity-0');
                 $('#btn-reset').removeClass('hidden');
-                $('#btn-shop').removeClass('hidden');
                 $('#attack-controls').removeClass('hidden');
-
-                arenaOverlay.addClass('hidden');
-
-
-                $('#arena-container').addClass('active-arena'); // tambahkan ini
-
-                $('#btn-reset').removeClass('hidden');
+                $('#arena-container').addClass('active-arena');
             },
             error: function(err) {
                 $('#loading-indicator').addClass('hidden');
@@ -429,7 +422,7 @@
         const mediumBases = bases.filter(b => b.type === 'medium');
         const largeBases = bases.filter(b => b.type === 'large');
 
-        // Create rows (Inverted pyramid per user request: Top 4 Small, Mid 3 Medium, Bot 2 Large)
+        // Create rows (Inverted pyramid: Top 4 Small, Mid 3 Medium, Bot 2 Large)
         const rows = [
             { id: 'row-small', bases: smallBases },
             { id: 'row-medium', bases: mediumBases },
@@ -447,7 +440,7 @@
                 const hpPercent = (base.current_hp / base.max_hp) * 100;
                 const isDestroyed = (base.is_destroyed === true || base.is_destroyed == 1 || base.is_destroyed === 'true');
                 const destroyedClass = isDestroyed ? 'destroyed' : '';
-                const statusText = isDestroyed ? 'HANCUR' : 'HP: ' + base.current_hp + ' / ' + base.max_hp;
+                const statusText = isDestroyed ? 'HANCUR' : 'HP: ' + base.current_hp + '/' + base.max_hp;
 
                 const targetName = base.type.toUpperCase() + ' ' + targetCounter[base.type]++;
 
@@ -457,18 +450,19 @@
                 }
 
                 rowHtml += `
-                    <div class="target-box target-${base.type} ${destroyedClass} font-['Duality'] rounded-2xl"
+                    <div class="target-box target-${base.type} ${destroyedClass} rounded-2xl flex flex-col items-center justify-between py-2"
                          id="box-${base.id}"
                          data-id="${base.id}"
                          data-hp="${base.current_hp}"
                          data-maxhp="${base.max_hp}"
                          data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
-                        <h3 class=" text-5xl font-['Rustler'] font-extrabold uppercase tracking-wide">${base.type}</h3>
-                        <p class="font-bold text-lg mb-1">+${base.point_reward} pts</p>
-                        <p class="hp-text text-2xl">${statusText}</p>
-                        <div class="hp-bar-bg hp-bar-bg-${base.type}">
-                            <div class="hp-bar-fill hp-bar-fill-${base.type}" style="width: ${hpPercent}%"></div>
+                        <img src="{{ asset('asset2026/gamebes/cow.png') }}" class="cow-${base.type} object-contain pointer-events-none my-auto" alt="Sapi">
+                        <div class="w-full flex flex-col items-center mb-1">
+                            <p class="hp-text hp-text-font text-base md:text-lg font-bold mb-1">${statusText}</p>
+                            <div class="hp-bar-bg hp-bar-bg-${base.type}">
+                                <div class="hp-bar-fill hp-bar-fill-${base.type}" style="width: ${hpPercent}%"></div>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -478,7 +472,7 @@
             pyramidWrapper.append(rowHtml);
         });
 
-        // Optional: click to select in dropdown
+        // Click to select target box
         $('.target-box').on('click', function() {
             const el = $(this);
             const targetId = el.data('id');
@@ -541,7 +535,7 @@
         Swal.fire({
             title: 'Konfirmasi Tembakan',
             html: `Tembak <b>${targetName}</b> sebanyak <b>${bulletCount}x</b>?<br><br>Estimasi Damage: <b>${expectedDamage} HP</b>`,
-            icon: 'crosshairs',
+            icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#dc2626',
             cancelButtonColor: '#6b7280',
@@ -596,7 +590,7 @@
                     if (isDestroyed) {
                         el.data('destroyed', 1);
                         el.addClass('destroyed');
-                        el.removeClass('selected-target'); // Remove highlight if destroyed
+                        el.removeClass('selected-target');
                         el.find('.hp-text').text('HANCUR');
                         el.find('.hp-bar-fill').css('width', '0%');
 
@@ -611,12 +605,12 @@
                         }, 800);
                     } else {
                         const hpPercent = (newHp / maxHp) * 100;
-                        el.find('.hp-text').text('HP: ' + newHp + ' / ' + maxHp);
+                        el.find('.hp-text').text('HP: ' + newHp + '/' + maxHp);
                         el.find('.hp-bar-fill').css('width', hpPercent + '%');
 
                         // Update dropdown text
                         const targetName = el.data('name');
-                        $(`#target-select option[value="${targetId}"]`).text(`${targetName} (HP: ${newHp} / ${maxHp})`);
+                        $(`#target-select option[value="${targetId}"]`).text(`${targetName} (HP: ${newHp}/${maxHp})`);
 
                         // Re-trigger highlight in case they manually changed
                         $('#target-select').trigger('change');
@@ -649,13 +643,11 @@
     // Reset button to hide pyramid and maintain secrecy
     $('#btn-reset').on('click', function() {
         selPlayer.val(''); // Reset selection
-        $('#btn-shop').addClass('hidden');
         $('#attack-controls').addClass('hidden');
         $(this).addClass('hidden');
         arenaOverlay.removeClass('hidden');
         pyramidWrapper.addClass('opacity-0');
-        displayPeluru.text('-');
-        displayWeapon.text('-');
+        displayPeluru.text('0');
         $('#arena-container').removeClass('active-arena');
     });
 </script>

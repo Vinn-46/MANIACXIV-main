@@ -15,6 +15,8 @@
 
         .image-container {
             background-image: url("{{ asset('asset2026/Target Base/papan.webp') }}");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
             width: 325px;
             height: 132px;
         }
@@ -56,17 +58,33 @@
         </div>
 
         <div class="flex flex-row justify-between gap-12">
-            <div class="image-container flex flex-col justify-center items-center text-white">
-                <span class="text-xl font-bold uppercase mb-2">Total Honor</span>
-                <span class="text-4xl font-extrabold" id="display-honor">-</span>
+            <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
+                <span class="text-xl font-bold uppercase">Total Honor</span>
+                <div class="flex flex-row items-center justify-center gap-3">
+                    <img src="{{ asset('asset2026/gamebes/LENCANA BINTANG.png') }}" class="h-10 object-contain" alt="Honor">
+                    <span class="text-4xl font-extrabold" id="display-honor">0</span>
+                </div>
+                <div class="h-2"></div>
             </div>
-            <div class="image-container flex flex-col justify-center items-center text-white">
-                <span class="text-xl font-bold uppercase mb-2">Amunisi Peluru</span>
-                <span class="text-4xl font-extrabold" id="display-peluru">-</span>
+
+            <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
+                <span class="text-xl font-bold uppercase">Amunisi Peluru</span>
+                <div class="flex flex-row items-center justify-center gap-3">
+                    <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
+                    <span class="text-4xl font-extrabold" id="display-peluru">0</span>
+                </div>
+                <div class="h-2"></div>
             </div>
-            <div class="image-container flex flex-col justify-center items-center text-white">
-                <span class="text-xl font-bold uppercase mb-2">Nama Senjata</span>
-                <span class="text-3xl font-extrabold" id="display-weapon">-</span>
+
+            <!-- Level Senjata Board -->
+            <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
+                <span class="text-xl font-bold uppercase">Level Senjata</span>
+                <div class="flex flex-row items-center justify-center my-auto">
+                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-12 object-contain" alt="Senjata">
+                </div>
+                <div class="w-full flex justify-end px-6 pb-1">
+                    <span class="text-base font-extrabold">LVL. <span id="board-weapon-lvl">1</span></span>
+                </div>
             </div>
         </div>
 
@@ -79,12 +97,15 @@
                     <span class="px-3 py-1 rounded-full font-bold bg-white text-[#8b181b]">1 = 100 HONOR</span>
                 </div>
 
-                <div class="h-full flex flex-col justify-between gap-36 px-5 pt-5 pb-8">
+                <div class="h-full flex flex-col justify-between gap-6 px-5 pt-5 pb-8">
                     <div class="flex flex-col gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="text-md text-[#8b181b] font-semibold">Jumlah Peluru</label>
+                            <div class="flex items-center gap-2">
+                                <label class="text-md text-[#8b181b] font-semibold">Jumlah Peluru</label>
+                                <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-5 object-contain" alt="Peluru">
+                            </div>
                             <input type="number" id="peluru-amount" min="1" value="1" disabled
-                                class="w-full rounded-lg text-center text-lg text-white font-bold bg-[#b3ae6b] border-none">
+                                class="w-full rounded-lg text-center text-lg text-white font-bold bg-[#b3ae6b] border-none py-2">
                         </div>
                         <div class="flex flex-row justify-between items-center px-4 py-2 rounded-lg bg-[#847e31] text-white">
                             <span class="text-lg font-bold">Total Harga:</span>
@@ -100,26 +121,27 @@
 
             <!-- Upgrade Weapon -->
             <div class="flex flex-col bg-[#fbf5e5] rounded-[24px] border-2 border-[#8b181b] overflow-hidden">
-                <div class="flex justify-between items-center p-4  bg-[#8b181b]">
+                <div class="flex justify-between items-center p-4 bg-[#8b181b]">
                     <h2 class="text-white text-xl font-bold">Upgrade Senjata</h2>
                     <span class="px-3 py-1 rounded-full font-bold bg-white text-[#8b181b]">Max Level 3</span>
                 </div>
 
-                <div class="h-full flex flex-col  justify-between gap-4 px-5 pt-5 pb-8">
+                <div class="h-full flex flex-col justify-between gap-4 px-5 pt-5 pb-8">
                     <div class="flex flex-col gap-4">
-                        <div class="w-full flex flex-row justify-evenly gap-4 px-8 py-4 rounded-lg  text-white bg-[#b3ae6b]">
-                            <div class="flex flex-col text-center">
-                                <span class="font-medium">Saat Ini</span>
-                                <span id="current-weapon-label" class="text-2xl font-extrabold">-</span>
+                        <div class="w-full flex flex-row items-center justify-between px-6 py-4 rounded-lg text-white bg-[#b3ae6b]">
+                            <div class="w-1/2 flex justify-center items-center">
+                                <img id="upgrade-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-16 max-w-full object-contain" alt="Senjata">
                             </div>
 
-                            <div class="hidden xl:flex justify-center items-center w-2/12">
-                                <i class="fa-solid fa-angles-right text-white text-2xl opacity-70"></i>
-                            </div>
-
-                            <div class="flex flex-col text-center">
-                                <span class="font-medium">Selanjutnya</span>
-                                <span id="next-weapon-label" class="text-2xl font-extrabold">-</span>
+                            <div class="w-1/2 flex flex-row justify-around items-center text-center">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium opacity-90">Saat Ini</span>
+                                    <span id="current-weapon-label" class="text-xl font-extrabold">LVL. 1</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-medium opacity-90">Selanjutnya</span>
+                                    <span id="next-weapon-label" class="text-xl font-extrabold">LVL. 2</span>
+                                </div>
                             </div>
                         </div>
                         <div class="flex flex-row justify-between items-center px-4 py-2 rounded-lg bg-[#847e31] text-white">
@@ -129,43 +151,9 @@
                     </div>
 
                     <button id="btn-upgrade" disabled class="self-center px-12 py-2 rounded-lg bg-[#847e31] hover:brightness-90 disabled:brightness-50 text-white font-bold text-lg shadow-lg transition-all active:scale-95">
-                        Upgrade Weapon
+                        Upgrade Senjata
                     </button>
                 </div>
-            </div>
-
-            <!-- Upgrade Weapon -->
-            <div class="shop-card rounded-2xl p-6 shadow-2xl flex flex-col justify-between hidden">
-                <div>
-                    <div class="flex justify-between items-center border-b-2 border-[#dba668] pb-4 mb-4">
-                        <h2 class="text-3xl font-bold">Upgrade Senjata</h2>
-                    </div>
-
-                    <div class="bg-black/40 rounded-xl p-4 flex flex-col xl:flex-row items-center justify-between gap-4 mb-6 mt-4">
-                        <div class="text-center w-full xl:w-5/12 flex flex-col justify-center">
-                            <span class="text-sm font-semibold opacity-70 mb-1 block">Saat Ini</span>
-                            <span class="text-xl font-extrabold uppercase" id="current-weapon-label">-</span>
-                        </div>
-
-                        <div class="hidden xl:flex justify-center items-center w-2/12">
-                            <i class="fa-solid fa-angles-right text-[#dba668] text-2xl opacity-70"></i>
-                        </div>
-
-                        <div class="text-center w-full xl:w-5/12 flex flex-col justify-center" id="next-weapon-box">
-                            <span class="text-sm font-semibold opacity-70 mb-1 block" id="next-weapon-subtitle">Selanjutnya</span>
-                            <span class="text-xl font-extrabold text-green-400 uppercase" id="next-weapon-label">-</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-black/40 rounded p-4 flex justify-between items-center mb-6" id="upgrade-cost-box">
-                        <span class="text-xl font-bold">Biaya Upgrade:</span>
-                        <span class="text-3xl font-extrabold text-[#facc15]" id="upgrade-cost">- Honor</span>
-                    </div>
-                </div>
-
-                <button id="btn-upgrade" disabled class="bg-blue-600 hover:bg-blue-500 disabled:bg-gray-500 text-white w-full py-4 rounded-xl font-bold text-2xl shadow-lg transition-all active:scale-95">
-                    UPGRADE SENJATA
-                </button>
             </div>
         </div>
 
@@ -191,7 +179,6 @@
     const selPlayer = $('#pID');
     const displayHonor = $('#display-honor');
     const displayPeluru = $('#display-peluru');
-    const displayWeapon = $('#display-weapon');
 
     const inputPeluru = $('#peluru-amount');
     const textPeluruCost = $('#peluru-cost');
@@ -199,18 +186,16 @@
 
     const labelCurrentW = $('#current-weapon-label');
     const labelNextW = $('#next-weapon-label');
-    const boxNextW = $('#next-weapon-box');
-    const boxCostW = $('#upgrade-cost-box');
     const textCostW = $('#upgrade-cost');
     const btnUpgrade = $('#btn-upgrade');
 
     let currentHonorVal = 0;
     let currentWeaponLevel = 1;
 
-    const weaponNames = {
-        1: "Peacemaker",
-        2: "Sharpshooter",
-        3: "Eagle Eye"
+    const weaponImages = {
+        1: "{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}",
+        2: "{{ asset('asset2026/gamebes/SHOTGUN MANIAC XV.png') }}",
+        3: "{{ asset('asset2026/gamebes/MUSKET MANIAC XV.png') }}"
     };
 
     $(document).ready(function() {
@@ -237,8 +222,6 @@
         const playerId = $(this).val();
         if (!playerId) return;
 
-        $('#loading-indicator').removeClass('hidden');
-        $('#ready-indicator').addClass('hidden');
         disableAll();
 
         $.ajax({
@@ -249,14 +232,11 @@
                 player_id: playerId
             },
             success: function(res) {
-                $('#loading-indicator').addClass('hidden');
-                $('#ready-indicator').removeClass('hidden');
                 updateUIResources(res.honor, res.peluru, res.weapon_level);
                 enablePeluruInput();
                 updateUpgradeUI(res.weapon_level);
             },
             error: function(err) {
-                $('#loading-indicator').addClass('hidden');
                 Swal.fire('Error', 'Gagal memuat data player.', 'error');
             }
         });
@@ -279,28 +259,30 @@
         displayHonor.text(honor);
         displayPeluru.text(peluru);
         currentWeaponLevel = wLevel;
-        displayWeapon.text(weaponNames[wLevel]);
+
+        const imgPath = weaponImages[wLevel] || weaponImages[1];
+        $('#board-weapon-img').attr('src', imgPath);
+        $('#board-weapon-lvl').text(wLevel);
     }
 
     function updateUpgradeUI(wLevel) {
-        labelCurrentW.text(weaponNames[wLevel]);
+        const imgPath = weaponImages[wLevel] || weaponImages[1];
+        $('#upgrade-weapon-img').attr('src', imgPath);
 
         if (wLevel == 1) {
-            $('#next-weapon-subtitle').show();
-            labelNextW.show().text("Sharpshooter");
-            boxCostW.show();
+            labelCurrentW.text("LVL. 1");
+            labelNextW.text("LVL. 2");
             textCostW.text("600 Honor");
             btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else if (wLevel == 2) {
-            $('#next-weapon-subtitle').show();
-            labelNextW.show().text("Eagle Eye");
-            boxCostW.show();
+            labelCurrentW.text("LVL. 2");
+            labelNextW.text("LVL. 3");
             textCostW.text("800 Honor");
             btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else {
-            $('#next-weapon-subtitle').hide();
-            labelNextW.show().text("MAX");
-            boxCostW.hide();
+            labelCurrentW.text("LVL. 3");
+            labelNextW.text("MAX");
+            textCostW.text("-");
             btnUpgrade.prop('disabled', true).text("Senjata Maksimal");
         }
     }
@@ -368,9 +350,10 @@
     // Upgrade Weapon Action
     btnUpgrade.on('click', function() {
         const playerId = selPlayer.val();
-        const cost = parseInt(textCostW.text().replace(/\D/g, ''));
+        const costStr = textCostW.text().replace(/\D/g, '');
+        const cost = parseInt(costStr);
 
-        if (currentHonorVal < cost) {
+        if (isNaN(cost) || currentHonorVal < cost) {
             Swal.fire('Honor Tidak Cukup!', `Dibutuhkan ${cost} Honor untuk upgrade.`, 'error');
             return;
         }
