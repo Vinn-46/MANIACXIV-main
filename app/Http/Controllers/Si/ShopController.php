@@ -91,9 +91,9 @@ class ShopController extends Controller
             $cost = 0;
 
             if ($currentLevel == 1) {
-                $cost = 600;
+                $cost = 300;
             } elseif ($currentLevel == 2) {
-                $cost = 800;
+                $cost = 600;
             } else {
                 return response()->json([
                     'success' => false,

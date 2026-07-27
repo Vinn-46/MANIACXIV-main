@@ -272,12 +272,12 @@
         if (wLevel == 1) {
             labelCurrentW.text("LVL. 1");
             labelNextW.text("LVL. 2");
-            textCostW.text("600 Honor");
+            textCostW.text("300 Honor");
             btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else if (wLevel == 2) {
             labelCurrentW.text("LVL. 2");
             labelNextW.text("LVL. 3");
-            textCostW.text("800 Honor");
+            textCostW.text("600 Honor");
             btnUpgrade.prop('disabled', false).text("Upgrade Senjata");
         } else {
             labelCurrentW.text("LVL. 3");
