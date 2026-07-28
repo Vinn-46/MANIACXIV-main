@@ -19,8 +19,8 @@
         <span class="flex-grow text-start break-words">
             Hi, <strong>{{ ucfirst($user->username) }}</strong>! Have a nice day :)
         </span>
-        <button id="btn-panggil-si" class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500 transition-all font-semibold flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed" 
-            onclick="openConfirmInformSIModal({{ $user->rallyGame->id }})" 
+        <button id="btn-panggil-si" class="bg-yellow-400 text-black px-4 py-1 rounded hover:bg-yellow-500 transition-all font-semibold flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            onclick="openConfirmInformSIModal({{ $user->rallyGame->id }})"
             {{ $hasActiveCall ? 'disabled' : '' }}>
             {{ $hasActiveCall ? 'Menunggu SI...' : 'Panggil SI' }}
         </button>
@@ -172,27 +172,7 @@
         }
     }
 
-    function onScanSuccess(decodedText, decodedResult) {
-        if ($("#tim").attr("value") != decodedText) {
-            notyf.success({
-                message: `Sukses Scanning ${decodedText}`,
-                duration: 1750,
-                dismissible: true
-            });
-        }
-
-        $("#tim").attr("value", decodedText);
-
-        // console.log(`Code matched = ${decodedText}`, decodedResult);
-    }
-
-    function onScanFailure(error) {
-        // handle scan failure, usually better to ignore and keep scanning.
-        // for example:
-        // console.warn(`Code scan error = ${error}`);
-    }
-
-    let html5QrcodeScanner = new Html5QrcodeScanner(
+    const scanner = new Html5QrcodeScanner(
         "reader", {
             fps: 10,
             qrbox: {
@@ -200,9 +180,23 @@
                 height: 250
             }
         },
-        /* verbose= */
         false);
-    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+    scanner.render((decodedText, decodedResult) => {
+        notyf.success({
+            message: `Sukses Scanning ${decodedText}`,
+            duration: 1750,
+            dismissible: true
+        });
+        $("#tim").attr("value", decodedText);
+
+        // Stop scanning once we have the result. We are manually getting the button to stop
+        // the camera since Html5QrcodeScanner sets its getters to private.
+        const cameraStopButton = document.getElementById("html5-qrcode-button-camera-stop");
+        if (cameraStopButton) {
+            cameraStopButton.click();
+        }
+    }, () => {});
 </script>
 <script>
     const btnSubmit = document.getElementById('btnSubmit');
