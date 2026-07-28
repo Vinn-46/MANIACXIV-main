@@ -2,8 +2,6 @@
 
 @section('styles')
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
-
         @font-face {
             font-family: 'Rustler';
             src: url("{{ asset('fonts/rustler/RUSTLER_.TTF')}}") format("opentype");

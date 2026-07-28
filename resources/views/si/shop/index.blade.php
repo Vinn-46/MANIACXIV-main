@@ -61,7 +61,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Total Honor</span>
                 <div class="flex flex-row items-center justify-center gap-3">
-                    <img src="{{ asset('asset2026/gamebes/LENCANA BINTANG.png') }}" class="h-10 object-contain" alt="Honor">
+                    <img src="{{ asset('asset2026/gamebes/lencana.webp') }}" class="h-10 object-contain" alt="Honor">
                     <span class="text-4xl font-extrabold" id="display-honor">0</span>
                 </div>
                 <div class="h-2"></div>
@@ -70,7 +70,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Amunisi Peluru</span>
                 <div class="flex flex-row items-center justify-center gap-3">
-                    <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
+                    <img src="{{ asset('asset2026/gamebes/bullet.webp) }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
                     <span class="text-4xl font-extrabold" id="display-peluru">0</span>
                 </div>
                 <div class="h-2"></div>
@@ -80,7 +80,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Level Senjata</span>
                 <div class="flex flex-row items-center justify-center my-auto">
-                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-14 object-contain" alt="Senjata">
+                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/revolver.webp') }}" class="h-14 object-contain" alt="Senjata">
                 </div>
                 <div class="w-full flex justify-end px-6 pb-1">
                     <span class="text-base font-extrabold">LVL. <span id="board-weapon-lvl">1</span></span>
@@ -102,7 +102,7 @@
                         <div class="flex flex-col gap-2">
                             <div class="flex items-center gap-2">
                                 <label class="text-md text-[#8b181b] font-semibold">Jumlah Peluru</label>
-                                <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-5 object-contain" alt="Peluru">
+                                <img src="{{ asset('asset2026/gamebes/bullet.webp') }}" class="h-5 object-contain" alt="Peluru">
                             </div>
                             <input type="number" id="peluru-amount" min="1" value="1" disabled
                                 class="w-full rounded-lg text-center text-lg text-white font-bold bg-[#b3ae6b] border-none py-2">
@@ -130,7 +130,7 @@
                     <div class="flex flex-col gap-4">
                         <div class="w-full flex flex-row items-center justify-between px-6 py-4 rounded-lg text-white bg-[#b3ae6b]">
                             <div class="w-1/2 flex justify-center items-center">
-                                <img id="upgrade-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-16 max-w-full object-contain" alt="Senjata">
+                                <img id="upgrade-weapon-img" src="{{ asset('asset2026/gamebes/revolver.webp') }}" class="h-16 max-w-full object-contain" alt="Senjata">
                             </div>
 
                             <div class="w-1/2 flex flex-row justify-around items-center text-center">
@@ -193,9 +193,9 @@
     let currentWeaponLevel = 1;
 
     const weaponImages = {
-        1: "{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}",
-        2: "{{ asset('asset2026/gamebes/SHOTGUN MANIAC XV.png') }}",
-        3: "{{ asset('asset2026/gamebes/MUSKET MANIAC XV.png') }}"
+        1: "{{ asset('asset2026/gamebes/revolver.webp') }}",
+        2: "{{ asset('asset2026/gamebes/shotgun.webp') }}",
+        3: "{{ asset('asset2026/gamebes/musket.webp') }}"
     };
 
     $(document).ready(function() {

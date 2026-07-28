@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Peserta | Deactivated Page</title>
-    <link rel="icon" href="{{ asset('asset2026') }}/icon.webp" type="image/webp">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/webp">
     @vite('resources/css/app.css')
     <style>
         * {
@@ -15,7 +15,7 @@
 
         body {
             cursor: url("{{ asset('asset2026/cursor/cursor.webp') }}") 0 0, auto;
-            background: url("{{ asset('asset2026') }}/pendaftaran/background.webp") no-repeat center;
+            background: url("{{ asset('asset2026/pendaftaran/background.webp') }}") no-repeat center;
             background-size: cover;
         }
 

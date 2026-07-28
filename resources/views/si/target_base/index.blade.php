@@ -256,7 +256,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Amunisi Peluru</span>
                 <div class="flex flex-row items-center justify-center gap-3">
-                    <img src="{{ asset('asset2026/gamebes/BULLET MANIAC XV.png') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
+                    <img src="{{ asset('asset2026/gamebes/bullet.webp') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
                     <span class="text-4xl font-extrabold" id="display-peluru">0</span>
                 </div>
                 <div class="h-2"></div>
@@ -266,7 +266,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Level Senjata</span>
                 <div class="flex flex-row items-center justify-center my-auto">
-                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}" class="h-14 object-contain" alt="Senjata">
+                    <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/revolver.webp') }}" class="h-14 object-contain" alt="Senjata">
                 </div>
                 <div class="w-full flex justify-end px-6 pb-1">
                     <span class="text-sm font-extrabold whitespace-nowrap">LVL. <span id="board-weapon-lvl">1</span> <span id="board-weapon-dmg">(DMG: 5)</span></span>
@@ -340,9 +340,9 @@
     };
 
     const weaponImages = {
-        1: "{{ asset('asset2026/gamebes/REVOLVER MANIAC XV.png') }}",
-        2: "{{ asset('asset2026/gamebes/SHOTGUN MANIAC XV.png') }}",
-        3: "{{ asset('asset2026/gamebes/MUSKET MANIAC XV.png') }}"
+        1: "{{ asset('asset2026/gamebes/revolver.webp') }}",
+        2: "{{ asset('asset2026/gamebes/shotgun.webp') }}",
+        3: "{{ asset('asset2026/gamebes/musket.webp') }}"
     };
 
     $(document).ready(function() {
@@ -457,7 +457,7 @@
                          data-maxhp="${base.max_hp}"
                          data-destroyed="${isDestroyed ? 1 : 0}"
                          data-name="${targetName}">
-                        <img src="{{ asset('asset2026/gamebes/cow.png') }}" class="cow-${base.type} object-contain pointer-events-none my-auto" alt="Sapi">
+                        <img src="{{ asset('asset2026/gamebes/cow.webp') }}" class="cow-${base.type} object-contain pointer-events-none my-auto" alt="Sapi">
                         <div class="w-full flex flex-col items-center mb-1">
                             <p class="hp-text hp-text-font text-base md:text-lg font-bold mb-1">${statusText}</p>
                             <div class="hp-bar-bg hp-bar-bg-${base.type}">

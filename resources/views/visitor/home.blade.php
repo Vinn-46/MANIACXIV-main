@@ -2,9 +2,6 @@
 
 @section('styles')
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-        @import url('https://fonts.cdnfonts.com/css/augustus');
-
         /* Variabel */
         @media (max-width: 575px) {
             :root {
@@ -463,7 +460,7 @@
                 <img src="{{ asset('asset2026/home/Join Now.webp') }}" class="dec-3 dec-3-5">
                 <div class="container-video d-flex justify-content-center align-items-center z-1" data-aos="zoom-in"
                     data-aos-delay="50">
-                    <iframe src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" frameborder="0"
+                    <iframe loading="lazy" src="https://www.youtube.com/embed/rDMyy3Ln-oA?si=3To5aAn0mAVfwgqw" frameborder="0"
                         class="iframe d-flex align-items-center justify-content-center"></iframe>
                 </div>
             </div>

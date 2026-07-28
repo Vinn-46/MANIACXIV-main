@@ -8,8 +8,6 @@
     <title>MANIAC XV</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -638,15 +636,15 @@
                     <div class="d-flex flex-wrap">
                         <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
                             {{-- logo sponsor 1 --}}
-                            <img src="{{ asset('asset2026/Sponsor/Okebis.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                            <img src="{{ asset('asset2026/Sponsor/Okebis.webp') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
                         </div>
                         <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
                             {{-- logo sponsor 2 --}}
-                            <img src="{{ asset('asset2026/Sponsor/OwnProject.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                            <img src="{{ asset('asset2026/Sponsor/OwnProject.webp') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
                         </div>
                         <div class="container-logo d-flex justify-content-center align-items-center me-2 mb-2">
                             {{-- logo sponsor 3 --}}
-                                <img src="{{ asset('asset2026/Sponsor/Bakmie22.png') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
+                                <img src="{{ asset('asset2026/Sponsor/Bakmie22.webp') }}" width="80px" height="auto" class="pt-2 pb-2" alt="logo-kristin">
                         </div>
                     </div>
                 </div>

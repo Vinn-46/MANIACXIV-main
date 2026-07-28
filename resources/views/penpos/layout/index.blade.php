@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Penpos | MANIAC XV</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('asset2026/icon/webp') }}" type="image/webp">
+    <link rel="icon" href="{{ asset('asset2026/icon.webp') }}" type="image/webp">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
     <!-- Icons -->
