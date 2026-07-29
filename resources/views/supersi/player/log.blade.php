@@ -22,6 +22,11 @@
                 </a>
             </li>
             <li>
+                <span class="inline-flex items-center gap-2">
+                    {{ $player->team->name ?? 'N/A' }}
+                </span>
+            </li>
+            <li>
               <span class="inline-flex items-center gap-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -49,12 +54,12 @@
             Back
         </button>
         {{--  Table  --}}
-        <div class="overflow-auto rounded" style="max-height: 450px">
+        <div class="overflow-auto rounded">
             <table class="table table-xs table-pin-cols table-pin-rows">
                 <thead class="">
                 <tr class="text-slate-900 font-medium" style="font-size: 1.1rem;">
-                    <th width="50%" class="text-center py-3">Description</th>
-                    <th width="50%" class="text-center py-3">Created At</th>
+                    <th class="text-center py-3">Description</th>
+                    <th class="text-center py-3">Created At</th>
                 </tr>
                 </thead>
                 <tbody id="tBody">
@@ -63,7 +68,7 @@
                         @foreach($logs as $log)
                             <tr class="">
                                 <td class="py-5 text-slate-800 text-lg break-words max-w-xl">{!! $log->desc !!}</td>
-                                <td class="text-center py-5 text-slate-800 text-lg" width="50%">{{ $log->created_at }}</td>
+                                <td class="text-center py-5 text-slate-800 text-lg" width="20%">{{ $log->created_at }}</td>
                             </tr>
                         @endforeach
                     @else

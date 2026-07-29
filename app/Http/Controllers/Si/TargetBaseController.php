@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Si;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Log;
 use App\Models\Player;
 use App\Models\TargetBase;
 use App\Models\PlayerTargetBase;
@@ -35,11 +36,11 @@ class TargetBaseController extends Controller
 
         $playerId = $request->player_id;
         $player = Player::findOrFail($playerId);
-        
+
         // Ensure player has base targets initialized
         $basesCount = TargetBase::count();
         $playerBasesCount = PlayerTargetBase::where('player_id', $playerId)->count();
-        
+
         if ($playerBasesCount < $basesCount) {
             $allBases = TargetBase::all();
             foreach ($allBases as $base) {
@@ -112,7 +113,7 @@ class TargetBaseController extends Controller
 
             // Calculate total damage
             $damagePerShot = self::DAMAGE_MAP[$player->weapon_level] ?? 5;
-            
+
             // Calculate how many shots are actually needed to destroy the target
             $shotsNeeded = (int) ceil($pb->current_hp / $damagePerShot);
             $actualShotsUsed = min($jumlah, $shotsNeeded);
@@ -123,24 +124,27 @@ class TargetBaseController extends Controller
             $player->save();
 
             $totalDamage = $damagePerShot * $actualShotsUsed;
-            
+
+            $oldHp = $pb->current_hp;
             // Apply damage
             $pb->current_hp -= $totalDamage;
-            
+
             $msg = "Berhasil menembak target {$actualShotsUsed} kali! (-{$totalDamage} HP)";
             if ($excessBullets > 0) {
                 $msg .= "<br>{$excessBullets} peluru dikembalikan ke stok karena target hanya butuh {$actualShotsUsed} tembakan.";
             }
+
             $rewarded = 0;
+            $bonus = 0;
 
             if ($pb->current_hp <= 0) {
                 $pb->current_hp = 0;
                 $pb->is_destroyed = true;
                 $pb->destroyed_at = Carbon::now();
-                
+
                 $rewarded = $pb->targetBase->point_reward;
                 $player->game_besar_points += $rewarded;
-                
+
                 $msg = "Target hancur! Tim mendapatkan {$rewarded} Poin Game Besar.";
                 if ($excessBullets > 0) {
                     $msg .= "<br>{$excessBullets} peluru dikembalikan ke stok karena target hanya butuh {$actualShotsUsed} tembakan.";
@@ -149,7 +153,7 @@ class TargetBaseController extends Controller
                 // Hitung logika Bonus Poin "Balapan Kecepatan" per Kategori (Type)
                 $type = $pb->targetBase->type;
                 $targetIdsOfType = TargetBase::where('type', $type)->pluck('id')->toArray();
-                
+
                 // Cek sisa target bertipe sama untuk player ini
                 // Gunakan != $pb->id karena $pb belum di-save ke database pada baris ini
                 $remainingOfThisType = PlayerTargetBase::where('player_id', $player->id)
@@ -157,7 +161,7 @@ class TargetBaseController extends Controller
                                         ->where('id', '!=', $pb->id)
                                         ->where('is_destroyed', false)
                                         ->count();
-                
+
                 if ($remainingOfThisType == 0) {
                     // Cari berapa banyak player LAIN yang sudah menghancurkan seluruh target bertipe ini
                     $otherPlayersCompleted = PlayerTargetBase::whereIn('target_base_id', $targetIdsOfType)
@@ -168,20 +172,36 @@ class TargetBaseController extends Controller
                                 ->havingRaw('COUNT(id) = ?', [count($targetIdsOfType)])
                                 ->get()
                                 ->count();
-                                
+
                     $rank = $otherPlayersCompleted + 1;
                     $bonus = 21 - $rank;
                     if ($bonus < 1) $bonus = 1; // Sesuai aturan: tim ke-20 mendapat 1 poin
-                    
+
                     $player->bonus_points += $bonus;
-                    
+
                     $msg .= "<br><br>Kategori {$type} hangus! Tim mendapat bonus {$bonus} poin.";
                 }
 
                 $player->save();
             }
-            
+
             $pb->save();
+
+            $msgBullets = ($actualShotsUsed != $jumlah) ? "$actualShotsUsed/$jumlah" : $jumlah;
+            $msgHp = "$oldHp - $totalDamage → <strong>{$pb->current_hp}</strong>";
+
+            $msgPoints = "";
+            if ($rewarded > 0) {
+                $msgPoints = " | Poin: <strong>+$rewarded</strong>";
+                if ($bonus > 0) {
+                    $msgPoints .= ", <strong>++$bonus</strong>";
+                }
+            }
+
+            Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Target Base] Menembak base <strong>{$pb->id}</strong> (<strong>{$pb->targetBase->type}</strong>) dengan <strong>$msgBullets</strong> peluru (HP: $msgHp$msgPoints)",
+            ]);
 
             DB::commit();
 

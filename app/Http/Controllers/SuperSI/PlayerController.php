@@ -36,7 +36,7 @@ class PlayerController extends Controller
     public function score(Player $player)
     {
         $scores = Score::where('player_id', '=', $player->id)->get();
-        return view('supersi.player.score', compact('scores'));
+        return view('supersi.player.score', compact('player', 'scores'));
     }
 
     public function rallyGame(Player $player)
@@ -90,7 +90,7 @@ class PlayerController extends Controller
 
             \App\Models\Log::create([
                 'player_id' => $player->id,
-                'desc' => "[Super SI] Menambahkan point <strong>{$point->honor_reward}</strong> untuk pos <strong>{$rallyGame->name}</strong>"
+                'desc' => "[Super SI] Menambahkan <strong>{$honor_reward}</strong> honor dan <strong>{$peluru_reward}</strong> peluru untuk pos <strong>{$rallyGame->name}</strong>"
             ]);
 
             DB::commit();

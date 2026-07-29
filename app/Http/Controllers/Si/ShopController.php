@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Si;
 
 use App\Http\Controllers\Controller;
+use App\Models\Log;
 use App\Models\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,9 +56,15 @@ class ShopController extends Controller
                 ], 400);
             }
 
+            $oldHonor = $player->honor;
             $player->honor -= $cost;
             $player->peluru += $amount;
             $player->save();
+
+            Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Shop] Membeli <strong>$amount</strong> peluru (Honor: $oldHonor - $cost → <strong>{$player->honor}</strong>)",
+            ]);
 
             DB::commit();
 
@@ -86,7 +93,7 @@ class ShopController extends Controller
             DB::beginTransaction();
 
             $player = Player::findOrFail($request->player_id);
-
+            $currentHonor = $player->honor;
             $currentLevel = $player->weapon_level;
             $cost = 0;
 
@@ -111,6 +118,11 @@ class ShopController extends Controller
             $player->honor -= $cost;
             $player->weapon_level += 1;
             $player->save();
+
+            Log::create([
+                'player_id' => $player->id,
+                'desc' => "[Shop] Melakukan upgrade senjata ke level <strong>{$player->weapon_level}</strong> (Honor: {$currentHonor} - $cost → {$player->honor})",
+            ]);
 
             DB::commit();
 

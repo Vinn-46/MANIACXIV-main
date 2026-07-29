@@ -34,6 +34,11 @@
                 </a>
             </li>
             <li>
+                <span class="inline-flex items-center gap-2">
+                    {{ $player->team->name ?? 'N/A' }}
+                </span>
+            </li>
+            <li>
               <span class="inline-flex items-center gap-2">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
