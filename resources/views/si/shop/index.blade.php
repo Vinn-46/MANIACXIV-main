@@ -70,7 +70,7 @@
             <div class="image-container relative flex flex-col items-center justify-between py-3 text-white">
                 <span class="text-xl font-bold uppercase">Amunisi Peluru</span>
                 <div class="flex flex-row items-center justify-center gap-3">
-                    <img src="{{ asset('asset2026/gamebes/bullet.webp) }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
+                    <img src="{{ asset('asset2026/gamebes/bullet.webp') }}" class="h-10 object-contain" alt="Peluru" style="transform: rotate(-90deg);">
                     <span class="text-4xl font-extrabold" id="display-peluru">0</span>
                 </div>
                 <div class="h-2"></div>
@@ -83,7 +83,7 @@
                     <img id="board-weapon-img" src="{{ asset('asset2026/gamebes/revolver.webp') }}" class="h-14 object-contain" alt="Senjata">
                 </div>
                 <div class="w-full flex justify-end px-6 pb-1">
-                    <span class="text-base font-extrabold">LVL. <span id="board-weapon-lvl">1</span></span>
+                    <span class="text-base font-extrabold">LVL. <span id="board-weapon-lvl">1</span> <span id="board-weapon-dmg">(DMG: 5)</span></span>
                 </div>
             </div>
         </div>
@@ -260,9 +260,11 @@
         displayPeluru.text(peluru);
         currentWeaponLevel = wLevel;
 
+        const weaponDamage = [0, 5, 10, 15][wLevel];
         const imgPath = weaponImages[wLevel] || weaponImages[1];
         $('#board-weapon-img').attr('src', imgPath);
         $('#board-weapon-lvl').text(wLevel);
+        $('#board-weapon-dmg').text('(DMG: ' + weaponDamage + ')');
     }
 
     function updateUpgradeUI(wLevel) {

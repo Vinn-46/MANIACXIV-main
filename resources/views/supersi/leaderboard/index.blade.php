@@ -165,7 +165,7 @@
                             <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Rally Score</th>
                             <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Gamebes Pts</th>
                             <th class="py-4 px-3 font-semibold text-center border-b border-slate-600">Gamebes Score</th>
-                            <th class="py-4 px-3 font-bold text-center border-b border-slate-600 bg-slate-900 border-l border-slate-700 text-amber-400">Final Score</th>
+                            <th class="py-4 px-3 font-bold text-center border-b bg-slate-900 border-l border-slate-700 text-amber-400">Final Score</th>
                         </tr>
                     </thead>
                     <tbody class="text-slate-900 text-sm bg-slate-100">
@@ -177,11 +177,11 @@
                                 <td class="py-3 px-3 text-center font-bold text-slate-900 text-base tracking-wide">{{ $row->team_name }}</td>
                                 <td class="py-3 px-3 text-center">{{ number_format($row->total_honor) }}</td>
                                 <td class="py-3 px-3 text-center text-slate-700">{{ $row->pos_menang }} <span class="mx-1 text-slate-400">/</span> {{ $row->pos_dimainkan }}</td>
-                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->rally_score) }}</td>
-                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->gamebes_poin) }}</td>
-                                <td class="py-3 px-3 text-center font-medium">{{ number_format($row->gamebes_score) }}</td>
+                                <td class="py-3 px-3 text-center font-medium" title="{{ $row->rally_score }}">{{ number_format($row->rally_score, 2) }}</td>
+                                <td class="py-3 px-3 text-center font-medium" title="{{ $row->gamebes_poin }}">{{ number_format($row->gamebes_poin, 2) }}</td>
+                                <td class="py-3 px-3 text-center font-medium" title="{{ $row->gamebes_score }}">{{ number_format($row->gamebes_score, 2) }}</td>
                                 <td class="py-3 px-3 text-center border-l border-slate-300 bg-slate-200 group-hover:bg-slate-300 transition-colors">
-                                    <span class="text-lg font-extrabold text-slate-900 drop-shadow-sm">{{ number_format($row->total_score) }}</span>
+                                    <span class="text-lg font-extrabold text-slate-900 drop-shadow-sm" title="{{ $row->total_score }}">{{ number_format($row->total_score, 2) }}</span>
                                 </td>
                             </tr>
                         @endforeach

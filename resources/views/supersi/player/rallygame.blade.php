@@ -96,7 +96,7 @@
                             {{-- Points Earned --}}
                             <td width="10%" class="text-center">
                                 @if ($score && $score->point)
-                                    <span class="text-sky-300 font-semibold">{{ $score->point->value }}</span>
+                                    <span class="text-sky-300 font-semibold">{{ $score->point->honor_reward }}</span>
                                 @else
                                     <span class="text-slate-400 italic">-</span>
                                 @endif
@@ -136,7 +136,7 @@
             <h3 class="text-lg font-bold text-white">Tambah Score</h3>
             <form action="" method="POST" id="formCreateScore">
                 @csrf
-                
+
                 {{-- Pilih Point --}}
                 <div class="form-control mt-4">
                     <label class="label">
@@ -233,7 +233,7 @@
             let label = 'Kalah';
             if (p.condition === 'win') label = 'Menang';
             if (p.condition === 'draw') label = 'Draw';
-            
+
             const isSelected = p.id === selectedId ? 'selected' : '';
             select.innerHTML += `<option value="${p.id}" ${isSelected}>${label} (${p.honor_reward} Honor, ${p.peluru_reward} Peluru)</option>`;
         });

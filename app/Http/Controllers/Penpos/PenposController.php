@@ -77,7 +77,7 @@ class PenposController extends Controller
 
             \App\Models\Log::create([
                 'player_id' => $player->id,
-                'desc' => "Menyelesaikan pos <strong>" . Auth::user()->rallyGame->name . "</strong> dengan point <strong>{$point->value}</strong>"
+                'desc' => "Menyelesaikan pos <strong>" . Auth::user()->rallyGame->name . "</strong> dengan point <strong>{$point->honor_reward}</strong>"
             ]);
 
             $scores = RallyGame::getPenposScores(Auth::user()->rallyGame->id);

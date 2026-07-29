@@ -190,7 +190,7 @@
                         <option disabled selected>Pilih Tipe Rally Games</option>
                         <option value="single">Single</option>
                         <option value="battle">Battle</option>
-                        <option value="hel">Hel</option>
+                        <option value="inferno">Inferno</option>
                     </select>
                 </label>
                 <label for="" class="form-control w-full">

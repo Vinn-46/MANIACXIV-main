@@ -17,15 +17,15 @@ class SuperSIController extends Controller
     public function index()
     {
         $rallyGames = RallyGame::withCount('scores')
-                ->orderByRaw("CASE type 
-                    WHEN 'single' THEN 1 
-                    WHEN 'battle' THEN 2 
-                    WHEN 'inferno' THEN 3 
+                ->orderByRaw("CASE type
+                    WHEN 'single' THEN 1
+                    WHEN 'battle' THEN 2
+                    WHEN 'inferno' THEN 3
                     ELSE 4 END")
                 ->orderBy('scores_count', "DESC")
                 ->orderBy('name', "ASC")
                 ->get();
-                            
+
         return view('supersi.rally.index', compact('rallyGames'));
     }
 
@@ -34,7 +34,7 @@ class SuperSIController extends Controller
         $scores = $rallyGame->scores()
             ->with('point')
             ->join('points', 'scores.point_id', '=', 'points.id')
-            ->select('scores.*', 'points.value')
+            ->select('scores.*', 'points.honor_reward')
             ->orderBy('scores.updated_at', 'DESC')
             ->paginate(10);
 
@@ -56,7 +56,7 @@ class SuperSIController extends Controller
             $player = $score->player;
             $oldPoint = $score->point;
             $newPoint = Point::find($request->get('point_id'));
-            
+
             $team = $player->team;
 
             // Calculate currency adjustments
@@ -100,7 +100,7 @@ class SuperSIController extends Controller
             // Reverse Player Currency
             $honor_reward = $point->honor_reward;
             $peluru_reward = $point->peluru_reward;
-            
+
             $player->update([
                 'honor' => max($player->honor - $honor_reward, 0),
                 'peluru' => max($player->peluru - $peluru_reward, 0)
@@ -120,7 +120,7 @@ class SuperSIController extends Controller
 
     public function leaderboard(Request $request)
     {
-        
+
         $players = \App\Models\Player::with(['team', 'scores.point'])
             ->whereHas('team', function($q) {
                 $q->where('name', '!=', 'SYSTEM');
@@ -128,32 +128,19 @@ class SuperSIController extends Controller
 
         $leaderboard = [];
 
-        foreach($players as $player) {
-            // 1. Total Honor Didapat (Lifetime)
+        foreach ($players as $player) {
             $total_honor = $player->scores->sum(function($score) {
                 return $score->point ? $score->point->honor_reward : 0;
             });
-            
-            // 2. Jumlah Pos Menang
             $pos_menang = $player->scores->filter(function($score) {
                 return $score->point && $score->point->condition === 'win';
             })->count();
-            
-            // 3. Jumlah Pos Dimainkan
             $pos_dimainkan = $player->scores->count();
-
-            // Formula Rally
-            $rally_score = (($total_honor / 2400) * 100 * 0.30) 
+            $rally_score = (($total_honor / 2800) * 100 * 0.30)
                          + (($pos_menang / 16) * 100 * 0.20)
                          + (($pos_dimainkan / 16) * 100 * 0.10);
-
-            // 4. Total Poin Game Besar (game_besar_points + bonus_points)
             $gamebes_poin = $player->game_besar_points + $player->bonus_points;
-            
-            // Formula Game Besar
             $gamebes_score = ($gamebes_poin / 170) * 100 * 0.40;
-
-            // Total Akhir
             $total_score = $rally_score + $gamebes_score;
 
             $leaderboard[] = (object) [
@@ -163,9 +150,9 @@ class SuperSIController extends Controller
                 'pos_menang' => $pos_menang,
                 'pos_dimainkan' => $pos_dimainkan,
                 'gamebes_poin' => $gamebes_poin,
-                'rally_score' => round($rally_score, 2),
-                'gamebes_score' => round($gamebes_score, 2),
-                'total_score' => round($total_score, 2)
+                'rally_score' => $rally_score,
+                'gamebes_score' => $gamebes_score,
+                'total_score' => $total_score,
             ];
         }
 
@@ -192,7 +179,7 @@ class SuperSIController extends Controller
 
         $leaderboard = [];
 
-        foreach($players as $player) {
+        foreach ($players as $player) {
             $total_honor = $player->scores->sum(function($score) {
                 return $score->point ? $score->point->honor_reward : 0;
             });
@@ -200,7 +187,7 @@ class SuperSIController extends Controller
                 return $score->point && $score->point->condition === 'win';
             })->count();
             $pos_dimainkan = $player->scores->count();
-            $rally_score = (($total_honor / 2400) * 100 * 0.30) 
+            $rally_score = (($total_honor / 2800) * 100 * 0.30)
                          + (($pos_menang / 16) * 100 * 0.20)
                          + (($pos_dimainkan / 16) * 100 * 0.10);
             $gamebes_poin = $player->game_besar_points + $player->bonus_points;
@@ -215,9 +202,9 @@ class SuperSIController extends Controller
                 'Pos Menang' => $pos_menang,
                 'Pos Dimainkan' => $pos_dimainkan,
                 'Game Besar Points' => $gamebes_poin,
-                'Rally Score (60%)' => round($rally_score, 2),
-                'Gamebes Score (40%)' => round($gamebes_score, 2),
-                'Final Total Score' => round($total_score, 2)
+                'Rally Score (60%)' => $rally_score,
+                'Gamebes Score (40%)' => $gamebes_score,
+                'Final Total Score' => $total_score,
             ];
         }
 
@@ -227,7 +214,7 @@ class SuperSIController extends Controller
             }
             return $b['Final Total Score'] <=> $a['Final Total Score'];
         });
-        
+
         // Add ranks
         foreach($leaderboard as $idx => &$row) {
             $row['Rank'] = $idx + 1;

@@ -42,10 +42,10 @@ class PlayerController extends Controller
     public function rallyGame(Player $player)
     {
         $team = $player->team;
-        $rallyGames = RallyGame::orderByRaw("CASE type 
-                WHEN 'single' THEN 1 
-                WHEN 'battle' THEN 2 
-                WHEN 'inferno' THEN 3 
+        $rallyGames = RallyGame::orderByRaw("CASE type
+                WHEN 'single' THEN 1
+                WHEN 'battle' THEN 2
+                WHEN 'inferno' THEN 3
                 ELSE 4 END")
             ->orderBy('name', "ASC")
             ->get();
@@ -90,7 +90,7 @@ class PlayerController extends Controller
 
             \App\Models\Log::create([
                 'player_id' => $player->id,
-                'desc' => "[Super SI] Menambahkan point <strong>{$point->value}</strong> untuk pos <strong>{$rallyGame->name}</strong>"
+                'desc' => "[Super SI] Menambahkan point <strong>{$point->honor_reward}</strong> untuk pos <strong>{$rallyGame->name}</strong>"
             ]);
 
             DB::commit();
@@ -116,8 +116,8 @@ class PlayerController extends Controller
             $oldPoint = $score->point;
             $newPoint = Point::find($request->get('point_id'));
 
-            $oldPoints = $oldPoint->value;
-            $newPoints = $newPoint->value;
+            $oldPoints = $oldPoint->honor_reward;
+            $newPoints = $newPoint->honor_reward;
 
             $team = $player->team;
 
@@ -163,11 +163,11 @@ class PlayerController extends Controller
             $player = $score->player;
             $point = $score->point;
             $team = $player->team;
-            
+
             // Reverse Player Currency
             $honor_reward = $point->honor_reward;
             $peluru_reward = $point->peluru_reward;
-            
+
             $player->update([
                 'honor' => max($player->honor - $honor_reward, 0),
                 'peluru' => max($player->peluru - $peluru_reward, 0)
@@ -175,7 +175,7 @@ class PlayerController extends Controller
 
             \App\Models\Log::create([
                 'player_id' => $player->id,
-                'desc' => "[Super SI] Menghapus point pos <strong>" . $score->rallyGame->name . "</strong> (sebelumnya <strong>{$point->value}</strong> point)"
+                'desc' => "[Super SI] Menghapus point pos <strong>" . $score->rallyGame->name . "</strong> (sebelumnya <strong>{$point->honor_reward}</strong> point)"
             ]);
 
             $score->delete();

@@ -13,7 +13,6 @@ class Point extends Model
     protected $fillable = [
         'type',
         'condition',
-        'value',
         'honor_reward',
         'peluru_reward',
     ];

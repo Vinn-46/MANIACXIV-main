@@ -122,7 +122,7 @@
                     @foreach($scores as $score)
                         <tr class="text-slate-900 font-medium" style="font-size: 0.9rem;">
                             <td width="20%" class="text-center py-5">{{ $score->player->team->name }}</td>
-                            <td width="40%" class="text-center">{{ $score->point->value ?? $score->point->point }}</td>
+                            <td width="40%" class="text-center">{{ $score->point->honor_reward }}</td>
                             <td class="" width="40%">
                                 <div class="grid grid-cols-2 gap-3">
                                     <button

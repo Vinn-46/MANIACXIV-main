@@ -16,51 +16,42 @@ class PointSeeder extends Seeder
         $points = [
             'single' => [
                 'win' => [
-                    'value' => 100,
                     'peluru_reward' => 2,
                     'honor_reward' => 100,
                 ],
                 'draw' => [
-                    'value' => 50,
                     'peluru_reward' => 1,
                     'honor_reward' => 50,
                 ],
                 'lose' => [
-                    'value' => 0,
                     'peluru_reward' => 0,
                     'honor_reward' => 0,
                 ],
             ],
             'battle' => [
                 'win' => [
-                    'value' => 200,
                     'peluru_reward' => 4,
                     'honor_reward' => 200,
                 ],
                 'draw' => [
-                    'value' => 100,
                     'peluru_reward' => 2,
                     'honor_reward' => 100,
                 ],
                 'lose' => [
-                    'value' => 0,
                     'peluru_reward' => 1,
                     'honor_reward' => 0,
                 ],
             ],
             'inferno' => [
                 'win' => [
-                    'value' => 300,
                     'peluru_reward' => 6,
                     'honor_reward' => 300,
                 ],
                 'draw' => [
-                    'value' => 100,
                     'peluru_reward' => 3,
                     'honor_reward' => 150,
                 ],
                 'lose' => [
-                    'value' => 0,
                     'peluru_reward' => 1,
                     'honor_reward' => 0,
                 ],
@@ -72,7 +63,6 @@ class PointSeeder extends Seeder
                 Point::create([
                     'type' => $type,
                     'condition' => $condition,
-                    'value' => $data['value'],
                     'peluru_reward' => $data['peluru_reward'],
                     'honor_reward' => $data['honor_reward'],
                 ]);

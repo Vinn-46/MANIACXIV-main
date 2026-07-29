@@ -48,7 +48,7 @@ class RallyGame extends Model
         $scores = $this->scores()
             ->with('point')  // Eager Loading to increase performance of query
             ->join('points', 'scores.point_id', '=', 'points.id')
-            ->orderBy('points.value', 'DESC')
+            ->orderBy('points.honor_reward', 'DESC')
             ->get();
         return $scores;
     }
