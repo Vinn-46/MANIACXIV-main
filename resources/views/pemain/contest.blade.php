@@ -111,16 +111,26 @@
                                             </div>
                                         @elseif($contest->type == "final")
                                             {{-- Pengumpulan tugas final berdasarkan drive setiap tim (Cara manual, kalau mau ada yang otomatis perlu update erd dan buat tampilan untuk acara input link pengumpulannya) --}}
-                                            @if($team->id == 44)
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1YMikJwC4bY9uL-CsnZRAJBoQddCfAt_o?usp=drive_link" target="_blank">Join</a>
-                                            @elseif($team->id == 43)
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1BEpL2jTr46fviaTngK9Ovefddn11oI-X?usp=drive_link" target="_blank">Join</a>
-                                            @elseif($team->id == 42)
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/13VcxGvmeVaN6E1GGan9s3XdaipDrXfbQ?usp=drive_link" target="_blank">Join</a>
-                                            @elseif($team->id == 41)
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1rE9kNkoCGMdw8SHwhSI0VarWL1XrUsMT?usp=drive_link" target="_blank">Join</a>
-                                            @elseif($team->id == 39)
-                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1b5xHlR7SuvsIHuQiku_o7S4xXEiKcVwR?usp=drive_link" target="_blank">Join</a>
+                                            @if($team->id == 22) 
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/13X_6ksWbhEvK0J3nEqDDQcd7QVQorOzA?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 26)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1wPYbGv3k7jF0zwykRP1jg8JlZjGwws9f?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 28)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1aQ6uhyRHRjy_mgivWjFP-5NJ_9XelqAg?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 29)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1iW_M_Prmp-uCiPRMcJRBKNpIImGaUB00?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 30)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1TPVB8hi5Xi9Flouiol2nRxg4sPWU94Xf?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 31)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1uHRWFGVCsqNVp7SfQymOWvGMjYi7G7Yw?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 32)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1KdowLcuym8BGyGPw-DJn1rGhbZKTT1up?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 34)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1u0SOz2Js_U6S5b9wlUW8KAlSCW6Uqz_a?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 35)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1gqwTqRWH-jq8E8SNDopWKfqX1rVew8gL?usp=drive_link" target="_blank">Join</a>
+                                            @elseif($team->id == 21)
+                                                <a class="btn btn-outline btn-sm rounded-md px-5 py-0 w-full font-bold action" href="https://drive.google.com/drive/folders/1R-632LcOqpskFJ3wQETNneeA6NKxQ37K?usp=sharing" target="_blank">Join</a>
                                             @elseif($team->id == 1)
                                                 Test Berhasil
                                             @else
